@@ -34,6 +34,12 @@ public class PlayerLook : MonoBehaviour
         // Make the player body follow the camera's horizontal rotation (optional)
     }
 
+    public Vector2 GetLookInput()
+    {
+        return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+    }
+
+
     void Update()
     {
         // Toggle cursor lock and visibility when Alt is pressed
