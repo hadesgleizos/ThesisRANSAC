@@ -13,11 +13,24 @@ public class PlayerPerformance : MonoBehaviour
         gameTime += Time.deltaTime;
     }
 
-    // Function to simulate health loss (you can modify this as needed)
-    public void TakeDamage(float damage)
+public void TakeDamage(float damage)
+{
+    playerHealth -= damage;
+    Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
+
+    // Check if the player is dead
+    if (playerHealth <= 0)
     {
-        playerHealth -= damage;
+        HandlePlayerDeath();
     }
+}
+
+private void HandlePlayerDeath()
+{
+    Debug.Log("Player is dead!");
+    // Add logic for handling player death (e.g., game over screen, respawn, etc.)
+}
+
 
     // Function to increase zombie kill count
     public void ZombieKilled()

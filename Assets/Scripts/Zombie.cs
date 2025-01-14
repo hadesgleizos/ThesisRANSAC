@@ -84,14 +84,19 @@ private IEnumerator AttackPlayer()
     // Trigger attack animation
     animator.SetTrigger("Attack");
 
-    // Wait for animation to play before dealing damage
+    // Wait for the animation to play before dealing damage
     yield return new WaitForSeconds(0.5f);
 
-    // Check if player is still in range before dealing damage
+    // Check if the player is still in range before dealing damage
     if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
     {
-        // Deal damage to player here
-        // player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        // Deal damage to the player
+        PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
+        if (playerPerformance != null)
+        {
+            playerPerformance.TakeDamage(damage);
+            Debug.Log($"Zombie dealt {damage} damage to the player.");
+        }
     }
 
     // Wait for attack cooldown
@@ -106,6 +111,7 @@ private IEnumerator AttackPlayer()
     canAttack = true;
     isAttacking = false;
 }
+
 
     public void TakeDamage(float damageAmount, CollisionType hitLocation)
     {
