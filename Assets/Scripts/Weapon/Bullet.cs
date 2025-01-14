@@ -2,18 +2,33 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private bool hasHit = false; // Flag to prevent multiple collisions
+
     private void OnCollisionEnter(Collision objectWeHit)
     {
+        if (hasHit) return; // Ignore subsequent collisions
+        hasHit = true;
+
         CreateBulletImpactEffect(objectWeHit);
-        
-        // Only destroy bullet if it hits something valid
-        if(objectWeHit.gameObject.CompareTag("Target") || 
-           objectWeHit.gameObject.CompareTag("Zombie") ||
-           objectWeHit.gameObject.CompareTag("Dirt") ||
-           objectWeHit.gameObject.CompareTag("Metal") ||
-           objectWeHit.gameObject.CompareTag("Wood"))
+
+        // Destroy bullet immediately if it hits something valid
+        if (objectWeHit.gameObject.CompareTag("Target") || 
+            objectWeHit.gameObject.CompareTag("Zombie") ||
+            objectWeHit.gameObject.CompareTag("Dirt") ||
+            objectWeHit.gameObject.CompareTag("Metal") ||
+            objectWeHit.gameObject.CompareTag("Wood"))
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            // Remove physics to prevent bouncing
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = Vector3.zero;
+                rb.isKinematic = true;
+            }
         }
     }
 
@@ -22,7 +37,7 @@ public class Bullet : MonoBehaviour
         ContactPoint contact = objectWeHit.contacts[0];
         GameObject effectPrefab;
 
-        // Choose which effect to use based on what we hit
+        // Choose effect based on the object's tag
         switch (objectWeHit.gameObject.tag)
         {
             case "Zombie":
@@ -42,21 +57,20 @@ public class Bullet : MonoBehaviour
                 break;
         }
 
-        // Only create effect if we have a valid prefab
+        // Instantiate effect if a valid prefab exists
         if (effectPrefab != null)
         {
-            // Create the effect
-            GameObject hole = Instantiate(
+            GameObject impactEffect = Instantiate(
                 effectPrefab,
                 contact.point,
                 Quaternion.LookRotation(contact.normal)
             );
 
-            hole.transform.SetParent(objectWeHit.gameObject.transform);
-            hole.transform.position += hole.transform.forward / 1000;
+            impactEffect.transform.SetParent(objectWeHit.gameObject.transform);
+            impactEffect.transform.position += impactEffect.transform.forward / 1000;
 
-            // Optional: Destroy the impact effect after some time
-            Destroy(hole, 5f);  // Adjust time as needed
+            // Destroy the effect after a delay
+            Destroy(impactEffect, 5f);
         }
         else
         {
