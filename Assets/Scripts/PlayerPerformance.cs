@@ -18,6 +18,12 @@ public class PlayerPerformance : MonoBehaviour
         {
             Debug.LogError("uiManager not found in the scene!");
         }
+
+        // Update the UI with the initial health
+        if (uiManager != null)
+        {
+            uiManager.setHealth(playerHealth.ToString());
+        }
     }
 
     void Update()
@@ -30,6 +36,13 @@ public class PlayerPerformance : MonoBehaviour
         playerHealth -= damage;
         Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
 
+        // Update the health on the UI
+        if (uiManager != null)
+        {
+            uiManager.setHealth(playerHealth.ToString());
+        }
+
+        // Check if the player is dead
         if (playerHealth <= 0)
         {
             HandlePlayerDeath();
