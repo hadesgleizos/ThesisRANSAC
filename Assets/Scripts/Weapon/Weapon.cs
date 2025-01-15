@@ -195,72 +195,74 @@ public class Weapon : MonoBehaviour
     // --------------------------------------
     //  Shooting logic
     // --------------------------------------
-    private void FireWeapon()
+private void FireWeapon()
+{
+    bulletsLeft--;
+    SoundManager.Instance.PlaySound(currentWeaponStats.shootingSound);
+
+    // Play muzzle effect
+    if (currentWeaponStats.muzzleEffectPrefab && muzzlePoint != null)
     {
-        bulletsLeft--;
-        SoundManager.Instance.PlaySound(currentWeaponStats.shootingSound);
-
-        // Muzzle effect
-        if (currentWeaponStats.muzzleEffectPrefab && muzzlePoint != null)
-        {
-            ParticleSystem muzzleEffect = Instantiate(
-                currentWeaponStats.muzzleEffectPrefab,
-                muzzlePoint.position,
-                muzzlePoint.rotation
-            );
-            muzzleEffect.Play();
-            Destroy(muzzleEffect.gameObject, 0.2f);
-        }
-
-        // Animator recoil
-        if (weaponAnimator != null)
-        {
-            weaponAnimator.SetTrigger("RECOIL");
-        }
-
-        // Calculate bullet direction + spread
-        Vector3 shootingDirection = CalculateDirectionAndSpread();
-
-        // Spawn bullet
-        GameObject bullet = Instantiate(
-            currentWeaponStats.bulletPrefab,
+        ParticleSystem muzzleEffect = Instantiate(
+            currentWeaponStats.muzzleEffectPrefab,
             muzzlePoint.position,
-            Quaternion.identity
+            muzzlePoint.rotation
         );
-        bullet.transform.forward = shootingDirection;
-        bullet.GetComponent<Rigidbody>().AddForce(
-            shootingDirection * currentWeaponStats.bulletVelocity,
-            ForceMode.VelocityChange
-        );
-        Destroy(bullet, currentWeaponStats.bulletLifetime);
+        muzzleEffect.Play();
+        Destroy(muzzleEffect.gameObject, 0.2f);
+    }
 
-        // Optional raycast for immediate hits
-        if (Physics.Raycast(muzzlePoint.position, shootingDirection, out RaycastHit hit, 100f))
+    // Play shooting animation
+    if (weaponAnimator != null)
+    {
+        weaponAnimator.SetTrigger("FIRE");
+    }
+
+    // Calculate bullet direction + spread
+    Vector3 shootingDirection = CalculateDirectionAndSpread();
+
+    // Spawn bullet
+    GameObject bullet = Instantiate(
+        currentWeaponStats.bulletPrefab,
+        muzzlePoint.position,
+        Quaternion.identity
+    );
+    bullet.transform.forward = shootingDirection;
+    bullet.GetComponent<Rigidbody>().AddForce(
+        shootingDirection * currentWeaponStats.bulletVelocity,
+        ForceMode.VelocityChange
+    );
+    Destroy(bullet, currentWeaponStats.bulletLifetime);
+
+    // Optional raycast for immediate hits
+    if (Physics.Raycast(muzzlePoint.position, shootingDirection, out RaycastHit hit, 100f))
+    {
+        Debug.DrawLine(muzzlePoint.position, hit.point, Color.red, 2f);
+        Debug.Log($"Hit object: {hit.collider.gameObject.name}");
+
+        takeDamage damageComponent = hit.collider.GetComponent<takeDamage>()
+                                 ?? hit.collider.GetComponentInParent<takeDamage>();
+        if (damageComponent != null)
         {
-            Debug.DrawLine(muzzlePoint.position, hit.point, Color.red, 2f);
-            Debug.Log($"Hit object: {hit.collider.gameObject.name}");
-
-            takeDamage damageComponent = hit.collider.GetComponent<takeDamage>()
-                                         ?? hit.collider.GetComponentInParent<takeDamage>();
-            if (damageComponent != null)
-            {
-                Debug.Log($"Applying damage: {currentWeaponStats.damage}");
-                damageComponent.HIT(currentWeaponStats.damage, CollisionType.BODY);
-            }
-            else
-            {
-                Debug.Log("No takeDamage component found on hit object");
-            }
+            Debug.Log($"Applying damage: {currentWeaponStats.damage}");
+            damageComponent.HIT(currentWeaponStats.damage, CollisionType.BODY);
         }
         else
         {
-            Debug.Log("Raycast didn't hit anything");
+            Debug.Log("No takeDamage component found on hit object");
         }
-
-        // Shooting cooldown
-        readyToShoot = false;
-        Invoke(nameof(ResetShot), currentWeaponStats.shootingDelay);
     }
+    else
+    {
+        Debug.Log("Raycast didn't hit anything");
+    }
+
+    // Set readyToShoot to false and reset after shooting delay
+    readyToShoot = false;
+
+    // Synchronize fire rate and animation
+    Invoke(nameof(ResetShot), currentWeaponStats.shootingDelay);
+}
 
     private IEnumerator FireBurst()
     {
@@ -273,10 +275,14 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void ResetShot()
+private void ResetShot()
+{
+    readyToShoot = true;
+    if (weaponAnimator != null)
     {
-        readyToShoot = true;
+        weaponAnimator.ResetTrigger("FIRE"); // Reset animation trigger to prepare for next shot
     }
+}
 
     private Vector3 CalculateDirectionAndSpread()
     {
