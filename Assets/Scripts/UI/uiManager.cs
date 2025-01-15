@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class uiManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Text health, ammo, score;
+    public GameObject[] weaponIndicator = new GameObject[2];
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    // Start is called before the first frame update
+    private void Start()
+    {   }
+
+    public void setHealth (string i){health.text = i;}
+    public void setAmmo (string i){ammo.text = i;}
+    public void setScore (string i){score.text = i;}
+
+    public void setWeaponToDisplay (int e){
+        for (int i = 0; i < weaponIndicator.Length; i++){
+            weaponIndicator[i].SetActive(false);
+        }
+        for(int i = 0; i < weaponIndicator.Length; i++){
+            if(i == e) weaponIndicator[i].SetActive(true);
+        }
     }
 }
