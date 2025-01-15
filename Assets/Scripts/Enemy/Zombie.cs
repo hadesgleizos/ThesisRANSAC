@@ -143,42 +143,38 @@ private IEnumerator AttackPlayer()
 private void Die()
 {
     isDead = true;
-    
-    // Stop the NavMeshAgent
+
     if (agent != null)
     {
         agent.isStopped = true;
         agent.enabled = false;
     }
 
-    // Handle physics
     Rigidbody rb = GetComponent<Rigidbody>();
     if (rb != null)
     {
-        rb.isKinematic = true;  // Make it kinematic to prevent physics interference
+        rb.isKinematic = true;
     }
 
-    // Disable all colliders including those on child objects
     Collider[] colliders = GetComponentsInChildren<Collider>();
     foreach (Collider collider in colliders)
     {
         collider.enabled = false;
     }
 
-    // Play death animation
     if (animator != null)
     {
         animator.SetTrigger("Death");
     }
 
-    // Record the kill
     if (playerPerformance != null)
     {
-        playerPerformance.ZombieKilled();
+        playerPerformance.ZombieKilled(); // Already correctly updating kills
     }
 
     Destroy(gameObject, 3f);
 }
+
 
     private IEnumerator UpdateSpeedRoutine()
     {

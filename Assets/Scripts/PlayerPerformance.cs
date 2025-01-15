@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPerformance : MonoBehaviour
@@ -7,36 +5,55 @@ public class PlayerPerformance : MonoBehaviour
     public float playerHealth = 100f;
     public int zombiesKilled = 0;
     public float gameTime = 0f;
+    public int pointsPerKill = 10; // Customizable points per kill
+    private int currentScore = 0; // Tracks the current score
+
+    private uiManager uiManager;
+
+    void Start()
+    {
+        // Find the uiManager in the scene
+        uiManager = FindObjectOfType<uiManager>();
+        if (uiManager == null)
+        {
+            Debug.LogError("uiManager not found in the scene!");
+        }
+    }
 
     void Update()
     {
         gameTime += Time.deltaTime;
     }
 
-public void TakeDamage(float damage)
-{
-    playerHealth -= damage;
-    Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
-
-    // Check if the player is dead
-    if (playerHealth <= 0)
+    public void TakeDamage(float damage)
     {
-        HandlePlayerDeath();
+        playerHealth -= damage;
+        Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
+
+        if (playerHealth <= 0)
+        {
+            HandlePlayerDeath();
+        }
     }
-}
 
-private void HandlePlayerDeath()
-{
-    Debug.Log("Player is dead!");
-    // Add logic for handling player death (e.g., game over screen, respawn, etc.)
-}
+    private void HandlePlayerDeath()
+    {
+        Debug.Log("Player is dead!");
+        // Handle game over logic
+    }
 
-
-    // Function to increase zombie kill count
     public void ZombieKilled()
     {
         zombiesKilled++;
-        Debug.Log("Zombies Killed: " + zombiesKilled); // Log the number of zombies killed
+        currentScore += pointsPerKill; // Add points for the kill
+
+        // Update score on UI
+        if (uiManager != null)
+        {
+            uiManager.setScore(currentScore.ToString());
+        }
+
+        Debug.Log($"Zombies Killed: {zombiesKilled}, Current Score: {currentScore}");
     }
 
     public float GetHealth()
@@ -46,10 +63,6 @@ private void HandlePlayerDeath()
 
     public float GetKillRate()
     {
-        // Avoid division by zero
-        if (gameTime <= 0)
-            return 0;
-
-        return (float)zombiesKilled / gameTime; // Cast zombiesKilled to float for accurate division
+        return gameTime > 0 ? (float)zombiesKilled / gameTime : 0;
     }
 }
