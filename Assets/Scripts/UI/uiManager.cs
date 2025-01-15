@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class uiManager : MonoBehaviour
 {
-    public Text health, ammo, score;
+    public TextMeshProUGUI health, ammo, score;
     public GameObject[] weaponIndicator = new GameObject[2];
 
     // Start is called before the first frame update
