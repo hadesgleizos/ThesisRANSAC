@@ -15,14 +15,14 @@ MonoBehaviour:
   weaponName: AK47
   damage: 27
   defaultHitType: 1
-  shootingDelay: 0.15
+  shootingDelay: 0.13
   bulletsPerBurst: 0
   spreadIntensity: 0.1
   bulletPrefab: {fileID: 4952933345522236764, guid: 021a79f1ab17e7e44806836f8162c19f, type: 3}
   bulletVelocity: 1000
   bulletLifetime: 0.5
   reloadTime: 2.2
-  magazineSize: 30
+  magazineSize: 999
   totalAmmo: 999
   firingMode: 2
   muzzleEffectPrefab: {fileID: 2952334647116243401, guid: 1b5b2d716d0dfaa46bd20a07a4347d72, type: 3}

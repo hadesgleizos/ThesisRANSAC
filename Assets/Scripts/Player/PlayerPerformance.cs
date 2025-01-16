@@ -16,13 +16,13 @@ public class PlayerPerformance : MonoBehaviour
         uiManager = FindObjectOfType<uiManager>();
         if (uiManager == null)
         {
-            Debug.LogError("uiManager not found in the scene!");
+            Debug.LogWarning("uiManager not found in the scene. Health and score updates will be disabled.");
         }
 
         // Update the UI with the initial health
         if (uiManager != null)
         {
-            uiManager.setHealth(playerHealth.ToString());
+            uiManager.setHealth(((int)playerHealth).ToString());
         }
     }
 
@@ -33,13 +33,13 @@ public class PlayerPerformance : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        playerHealth -= damage;
+        playerHealth = Mathf.Max(playerHealth - damage, 0);
         Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
 
         // Update the health on the UI
         if (uiManager != null)
         {
-            uiManager.setHealth(playerHealth.ToString());
+            uiManager.setHealth(((int)playerHealth).ToString());
         }
 
         // Check if the player is dead
@@ -52,7 +52,7 @@ public class PlayerPerformance : MonoBehaviour
     private void HandlePlayerDeath()
     {
         Debug.Log("Player is dead!");
-        // Handle game over logic
+        enabled = false; // Stop Update() calls
     }
 
     public void ZombieKilled()
@@ -66,6 +66,9 @@ public class PlayerPerformance : MonoBehaviour
             uiManager.setScore(currentScore.ToString());
         }
 
+        // Notify Spawner of the kill
+        Spawner.Instance?.IncrementKillCount();
+
         Debug.Log($"Zombies Killed: {zombiesKilled}, Current Score: {currentScore}");
     }
 
@@ -76,6 +79,7 @@ public class PlayerPerformance : MonoBehaviour
 
     public float GetKillRate()
     {
-        return gameTime > 0 ? (float)zombiesKilled / gameTime : 0;
+        if (gameTime < 1f) return 0; // Avoid calculation for very small game times
+        return (float)zombiesKilled / gameTime;
     }
 }

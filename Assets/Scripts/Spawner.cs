@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public static Spawner Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Ensure only one instance exists
+        }
+    }
+
     [Header("Zombie Settings")]
     public GameObject zombiePrefab;
     public float spawnRate = 0.1f;  // Initial spawn rate

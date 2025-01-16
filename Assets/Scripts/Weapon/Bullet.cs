@@ -4,33 +4,30 @@ public class Bullet : MonoBehaviour
 {
     private bool hasHit = false; // Flag to prevent multiple collisions
 
-    private void OnCollisionEnter(Collision objectWeHit)
+private void OnCollisionEnter(Collision objectWeHit)
+{
+    CreateBulletImpactEffect(objectWeHit);
+
+    // Destroy bullet immediately if it hits something valid
+    if (objectWeHit.gameObject.CompareTag("Target") || 
+        objectWeHit.gameObject.CompareTag("Zombie") ||
+        objectWeHit.gameObject.CompareTag("Dirt") ||
+        objectWeHit.gameObject.CompareTag("Metal") ||
+        objectWeHit.gameObject.CompareTag("Wood"))
     {
-        if (hasHit) return; // Ignore subsequent collisions
-        hasHit = true;
-
-        CreateBulletImpactEffect(objectWeHit);
-
-        // Destroy bullet immediately if it hits something valid
-        if (objectWeHit.gameObject.CompareTag("Target") || 
-            objectWeHit.gameObject.CompareTag("Zombie") ||
-            objectWeHit.gameObject.CompareTag("Dirt") ||
-            objectWeHit.gameObject.CompareTag("Metal") ||
-            objectWeHit.gameObject.CompareTag("Wood"))
+        Destroy(gameObject);
+    }
+    else
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            // Remove physics to prevent bouncing
-            Rigidbody rb = GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.velocity = Vector3.zero;
-                rb.isKinematic = true;
-            }
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
         }
     }
+}
+
 
     void CreateBulletImpactEffect(Collision objectWeHit)
     {
