@@ -132,7 +132,7 @@ private IEnumerator AttackPlayer()
         }
 
         health -= damageAmount * multiplier;
-        animator.SetTrigger("Hit");
+        // animator.SetTrigger("Hit"); // Commented out to avoid error
 
         if (health <= 0 && !isDead)
         {
