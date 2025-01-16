@@ -65,4 +65,24 @@ public class uiManager : MonoBehaviour
             health.color = defaultColor; // Default custom color for health > 60%
         }
     }
+    public void ToggleUI(bool isActive)
+{
+    health.gameObject.SetActive(isActive);
+    ammo.gameObject.SetActive(isActive);
+    score.gameObject.SetActive(isActive);
+
+    foreach (var weapon in weaponIndicator)
+    {
+        weapon.SetActive(false); // Ensure all weapon indicators are initially disabled
+    }
+}
+
+public void UpdateWeaponUI(int weaponIndex)
+{
+    for (int i = 0; i < weaponIndicator.Length; i++)
+    {
+        weaponIndicator[i].SetActive(i == weaponIndex);
+    }
+}
+
 }

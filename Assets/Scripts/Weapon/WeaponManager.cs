@@ -9,6 +9,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject[] weaponPrefabs;       // Array of rig-attached weapon prefabs
     public GameObject[] fakeGunPrefabs;      // Array of fake gun prefabs for each weapon
     public GameObject arms;                  // Reference to the arms GameObject
+    public uiManager uiManagerInstance;
 
     public bool[] weaponsOwned;              // Tracks whether the weapon is currently in inventory
     private bool[] weaponEverOwned;          // Tracks whether we've EVER owned this weapon at least once
@@ -51,81 +52,72 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public void EquipWeapon(int index)
+public void EquipWeapon(int index)
+{
+    if (index < 0 || index >= weaponStatsArray.Length || index >= weaponPrefabs.Length)
     {
-        // Validate index
-        if (index < 0 || index >= weaponStatsArray.Length || index >= weaponPrefabs.Length)
+        Debug.LogWarning($"Invalid weapon index: {index}. Unable to equip.");
+        return;
+    }
+
+    if (weaponScript != null && currentWeaponIndex >= 0 && weaponsOwned[currentWeaponIndex])
+    {
+        weaponScript.CancelReloadAndSound();
+        ammoCounts[currentWeaponIndex] = weaponScript.GetBulletsLeft();
+        totalAmmoCounts[currentWeaponIndex] = weaponScript.GetTotalAmmo();
+    }
+
+    currentWeaponIndex = index;
+
+    for (int i = 0; i < weaponPrefabs.Length; i++)
+    {
+        if (weaponPrefabs[i] != null)
         {
-            Debug.LogWarning($"Invalid weapon index: {index}. Unable to equip.");
-            return;
-        }
-
-        // Cancel reload on the old weapon, if any
-        if (weaponScript != null && currentWeaponIndex >= 0 && weaponsOwned[currentWeaponIndex])
-        {
-            weaponScript.CancelReloadAndSound();
-
-            // Save old weapon's current ammo
-            ammoCounts[currentWeaponIndex] = weaponScript.GetBulletsLeft();
-            totalAmmoCounts[currentWeaponIndex] = weaponScript.GetTotalAmmo();
-        }
-
-        Debug.Log($"Equipping weapon at index: {index}");
-        currentWeaponIndex = index;
-
-        // Enable the chosen weapon prefab, disable all others
-        for (int i = 0; i < weaponPrefabs.Length; i++)
-        {
-            if (weaponPrefabs[i] != null)
-            {
-                weaponPrefabs[i].SetActive(i == index);
-            }
-        }
-
-        // Apply new weapon’s stats
-        if (weaponScript != null)
-        {
-            weaponScript.enabled = true;
-            weaponScript.currentWeaponStats = weaponStatsArray[index];
-
-            // Restore ammo if we have it saved
-            if (ammoCounts.ContainsKey(index))
-            {
-                weaponScript.SetBulletsLeft(ammoCounts[index]);
-            }
-            else
-            {
-                // If no entry yet, default to the weapon's full magazine
-                weaponScript.SetBulletsLeft(weaponStatsArray[index].magazineSize);
-            }
-
-            if (totalAmmoCounts.ContainsKey(index))
-            {
-                weaponScript.SetTotalAmmo(totalAmmoCounts[index]);
-            }
-            else
-            {
-                // If no entry yet, default to the weapon's total ammo
-                weaponScript.SetTotalAmmo(weaponStatsArray[index].totalAmmo);
-            }
-
-            // Apply animations, etc.
-            weaponScript.ApplyWeaponStats();
-
-            // ----------------------------------------------------
-            // If user is currently holding Mouse0,
-            // force the new weapon to wait until the user releases.
-            // ----------------------------------------------------
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                weaponScript.suppressShootingUntilRelease = true;
-            }
-            else
-            {
-                weaponScript.suppressShootingUntilRelease = false;
-            }
+            weaponPrefabs[i].SetActive(i == index);
         }
     }
+
+    if (weaponScript != null)
+    {
+        weaponScript.enabled = true;
+        weaponScript.currentWeaponStats = weaponStatsArray[index];
+
+        if (ammoCounts.ContainsKey(index))
+        {
+            weaponScript.SetBulletsLeft(ammoCounts[index]);
+        }
+        else
+        {
+            weaponScript.SetBulletsLeft(weaponStatsArray[index].magazineSize);
+        }
+
+        if (totalAmmoCounts.ContainsKey(index))
+        {
+            weaponScript.SetTotalAmmo(totalAmmoCounts[index]);
+        }
+        else
+        {
+            weaponScript.SetTotalAmmo(weaponStatsArray[index].totalAmmo);
+        }
+
+        weaponScript.ApplyWeaponStats();
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            weaponScript.suppressShootingUntilRelease = true;
+        }
+        else
+        {
+            weaponScript.suppressShootingUntilRelease = false;
+        }
+    }
+
+    // Update UI for the newly equipped weapon
+    if (uiManagerInstance != null)
+    {
+        uiManagerInstance.UpdateWeaponUI(index);
+    }
+}
 
     public void DisableAllWeapons()
     {
@@ -171,23 +163,27 @@ public void AddWeapon(int index)
         return;
     }
 
-    // If dictionary doesn't have the key, treat as brand-new pickup
     if (!ammoCounts.ContainsKey(index))
     {
         ammoCounts[index] = weaponStatsArray[index].magazineSize; 
         totalAmmoCounts[index] = weaponStatsArray[index].totalAmmo;
         Debug.Log($"New weapon pickup at index {index}, giving full ammo!");
     }
-    else
-    {
-        Debug.Log($"Weapon {index} re-added with leftover ammo (ammoCounts={ammoCounts[index]}, total={totalAmmoCounts[index]})");
-    }
 
-    // Mark as owned
     weaponsOwned[index] = true;
     weaponEverOwned[index] = true;
 
-    // Now equip
+    if (!arms.activeSelf)
+    {
+        arms.SetActive(true); // Enable arms on first pickup
+    }
+
+    // Enable UI on first pickup
+    if (uiManagerInstance != null && !uiManagerInstance.gameObject.activeSelf)
+    {
+        uiManagerInstance.ToggleUI(true);
+    }
+
     EquipWeapon(index);
 }
 
