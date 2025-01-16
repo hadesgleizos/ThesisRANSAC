@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,55 +36,42 @@ public class PSOManager : MonoBehaviour
     public float lowHealthThreshold = 0.5f;
     public float lowKillRateThreshold = 0.2f;
 
-    // Performance tracking
     private Stopwatch stopwatch = new Stopwatch();
     private float totalExecutionTime = 0f;
     private long totalMemoryUsage = 0;
     private int runCount = 0;
 
-    private bool isWaveActive = false; // Tracks whether a wave is active
-
-    // Smoothing adjustments
-    private float smoothedKillRate = 0f;
-    private const float smoothingFactor = 0.1f; // Adjust smoothing strength (0.1 for faster, 0.01 for slower)
+    private int previousKillCount = 0; // Track the player's previous kill count
+    private bool isWaveActive = true; // Tracks whether a wave is currently active
 
     private void Start()
     {
-        // Listen to wave events from Spawner
+        // Subscribe to wave events
         Spawner.OnWaveStart += OnWaveStart;
         Spawner.OnWaveEnd += OnWaveEnd;
 
         InitializeParticles();
+        StartCoroutine(EvaluatePlayerPerformance());
     }
 
     private void OnDestroy()
     {
-        // Unsubscribe from events to avoid memory leaks
+        // Unsubscribe to avoid memory leaks
         Spawner.OnWaveStart -= OnWaveStart;
         Spawner.OnWaveEnd -= OnWaveEnd;
     }
 
-private void OnWaveStart(int waveNumber)
-{
-    isWaveActive = true;
-    evaluationTimer = 0f;
+    private void OnWaveStart(int waveNumber)
+    {
+        isWaveActive = true;
+        UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} started.");
+    }
 
-    UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} started. Continuing with previous difficulty settings.");
-
-    // No reset here; previous adjustments are carried over
-    StartCoroutine(EvaluatePlayerPerformance());
-}
-
-private void OnWaveEnd(int waveNumber)
-{
-    isWaveActive = false;
-
-    UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} ended. Stopping real-time adjustments.");
-
-    // Stop real-time adjustments at the end of the wave
-    StopCoroutine(EvaluatePlayerPerformance());
-}
-
+    private void OnWaveEnd(int waveNumber)
+    {
+        isWaveActive = false;
+        UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} ended. Pausing performance evaluation.");
+    }
 
     private void InitializeParticles()
     {
@@ -100,9 +88,12 @@ private void OnWaveEnd(int waveNumber)
                     UnityEngine.Random.Range(minSpawnRate, maxSpawnRate),
                     UnityEngine.Random.Range(minSpeed, maxSpeed)
                 ),
-                Velocity = new Vector2(
-                    UnityEngine.Random.Range(-1f, 1f),
-                    UnityEngine.Random.Range(-1f, 1f)
+                Velocity = Vector2.ClampMagnitude(
+                    new Vector2(
+                        UnityEngine.Random.Range(-1f, 1f),
+                        UnityEngine.Random.Range(-1f, 1f)
+                    ),
+                    0.5f // Maximum velocity
                 )
             };
             particles.Add(newParticle);
@@ -111,120 +102,166 @@ private void OnWaveEnd(int waveNumber)
 
     private IEnumerator EvaluatePlayerPerformance()
     {
-        while (isWaveActive) // Continuously evaluate performance during the active wave
+        while (true)
         {
-            evaluationTimer += Time.deltaTime;
-
-            if (evaluationTimer >= evaluationInterval)
+            if (isWaveActive)
             {
-                evaluationTimer = 0f;
+                evaluationTimer += Time.deltaTime;
 
-                // Calculate wave-specific metrics
-                float waveKillRate = spawner.GetWaveKillCount() / Mathf.Max(1f, spawner.GetWaveElapsedTime());
-                float healthPercentage = playerPerformance.GetHealth() / 100f;
+                if (evaluationTimer >= evaluationInterval)
+                {
+                    evaluationTimer = 0f;
 
-                // Smooth the kill rate
-                smoothedKillRate = Mathf.Lerp(smoothedKillRate, waveKillRate, smoothingFactor);
+                    int currentKillCount = spawner.GetWaveKillCount();
+                    float killRate = (currentKillCount - previousKillCount) / Mathf.Max(1f, evaluationInterval);
+                    previousKillCount = currentKillCount;
 
-                // Adjust evaluation interval dynamically
-                AdjustEvaluationInterval(smoothedKillRate);
+                    float healthPercentage = playerPerformance.GetHealth() / 100f;
 
-                UnityEngine.Debug.Log($"[PSOManager] Smoothed Kill Rate: {smoothedKillRate:F3}, Health: {healthPercentage:P1}, Eval Interval: {evaluationInterval:F2}s");
-
-                // Adjust difficulty dynamically during the wave
-                AdjustWaveDifficulty(smoothedKillRate, healthPercentage);
+                    MeasurePerformance(killRate, healthPercentage);
+                }
             }
-
-            yield return null; // Continue evaluating in real-time
+            yield return null;
         }
     }
 
-    private void AdjustEvaluationInterval(float waveKillRate)
+    private void MeasurePerformance(float killRate, float healthPercentage)
     {
-        // Faster adjustments when kill rate is low, slower when stable
-        evaluationInterval = Mathf.Lerp(0.5f, 2f, Mathf.Clamp01(waveKillRate / 0.5f)); // Adjust range as needed
+        long memoryBefore = GC.GetTotalMemory(false);
+        stopwatch.Restart();
+
+        UpdateParticles(killRate, healthPercentage);
+        AdjustDifficulty(killRate, healthPercentage);
+
+        stopwatch.Stop();
+        long memoryAfter = GC.GetTotalMemory(false);
+
+        float elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+        long memoryUsed = memoryAfter - memoryBefore;
+
+        totalExecutionTime += elapsedMilliseconds;
+        totalMemoryUsage += memoryUsed;
+        runCount++;
+
+        float averageTime = totalExecutionTime / runCount;
+        long averageMemory = totalMemoryUsage / runCount;
+
+        UnityEngine.Debug.Log($"Rolling Average Execution Time: {averageTime} ms");
+        UnityEngine.Debug.Log($"Rolling Average Memory Usage: {averageMemory} bytes");
     }
 
-    private void AdjustWaveDifficulty(float waveKillRate, float healthPercentage)
+private void AdjustDifficulty(float killRate, float healthPercentage)
+{
+    Vector2 bestParticle = GetGlobalBestPosition();
+    float currentSpawnRate = spawner.GetCurrentSpawnRate();
+    float currentSpeed = spawner.GetCurrentZombieSpeed();
+
+    float bestSpawnRate = bestParticle.x;
+    float bestSpeed = bestParticle.y;
+
+    bool isStruggling = (healthPercentage < lowHealthThreshold || killRate < lowKillRateThreshold);
+
+    float newSpawnRate;
+    float newSpeed;
+
+    if (isStruggling)
     {
-        // Best position calculated by PSO
-        Vector2 bestParticle = GetGlobalBestPosition();
-        float currentSpawnRate = spawner.GetCurrentSpawnRate();
-        float currentSpeed = spawner.GetCurrentZombieSpeed();
-
-        // Determine if the player is struggling or excelling
-        bool isStruggling = healthPercentage < lowHealthThreshold || waveKillRate < lowKillRateThreshold;
-
-        float newSpawnRate, newSpeed;
-
-        if (isStruggling)
-        {
-            // Reduce difficulty dynamically during the wave
-            newSpawnRate = Mathf.Lerp(currentSpawnRate, bestParticle.x, bigDropFactor);
-            newSpeed = Mathf.Lerp(currentSpeed, bestParticle.y, bigDropFactor);
-        }
-        else
-        {
-            // Gradually increase difficulty dynamically during the wave
-            newSpawnRate = Mathf.Lerp(currentSpawnRate, bestParticle.x, smallUpFactor);
-            newSpeed = Mathf.Lerp(currentSpeed, bestParticle.y, smallUpFactor);
-        }
-
-        // Clamp new values to valid ranges
-        newSpawnRate = Mathf.Clamp(newSpawnRate, minSpawnRate, maxSpawnRate);
-        newSpeed = Mathf.Clamp(newSpeed, minSpeed, maxSpeed);
-
-        // Apply adjustments dynamically during the wave
-        spawner.UpdateSpawnRate(newSpawnRate);
-        spawner.SetAllZombieSpeeds(newSpeed);
-
-        UnityEngine.Debug.Log($"[PSOManager] Adjustments - Spawn Rate: {newSpawnRate:F3}, Speed: {newSpeed:F3}");
+        // Aggressively reduce spawn rate and speed
+        newSpawnRate = Mathf.Lerp(currentSpawnRate, bestSpawnRate, bigDropFactor);
+        newSpeed = Mathf.Lerp(currentSpeed, bestSpeed, bigDropFactor); // Reduce speed more aggressively
     }
+    else
+    {
+        // Gradually increase spawn rate and speed
+        newSpawnRate = Mathf.Lerp(currentSpawnRate, bestSpawnRate, smallUpFactor);
+        newSpeed = Mathf.Lerp(currentSpeed, bestSpeed, smallUpFactor);
+    }
+
+    // Clamp values to ensure they stay within bounds
+    newSpawnRate = Mathf.Clamp(newSpawnRate, minSpawnRate, maxSpawnRate);
+    newSpeed = Mathf.Clamp(newSpeed, minSpeed, maxSpeed);
+
+    // Apply adjustments
+    spawner.UpdateSpawnRate(newSpawnRate);
+    spawner.SetAllZombieSpeeds(newSpeed);
+
+    UnityEngine.Debug.Log($"[PSOManager] Adjustments - Spawn Rate: {newSpawnRate:F3}, Speed: {newSpeed:F3}");
+}
+
 
     private void UpdateParticles(float killRate, float healthPercentage)
     {
-        Vector2 globalBest = GetGlobalBestPosition();
+        Vector2 globalBestPos = GetGlobalBestPosition();
+
         foreach (Particle particle in particles)
         {
             particle.Velocity = inertiaWeight * particle.Velocity
-                                + cognitiveWeight * UnityEngine.Random.Range(0f, 1f) * (particle.BestPosition - particle.Position)
-                                + socialWeight * UnityEngine.Random.Range(0f, 1f) * (globalBest - particle.Position);
+                + cognitiveWeight * UnityEngine.Random.Range(0f, 1f) * (particle.BestPosition - particle.Position)
+                + socialWeight * UnityEngine.Random.Range(0f, 1f) * (globalBestPos - particle.Position);
 
             particle.Position += particle.Velocity;
 
             particle.Position.x = Mathf.Clamp(particle.Position.x, minSpawnRate, maxSpawnRate);
             particle.Position.y = Mathf.Clamp(particle.Position.y, minSpeed, maxSpeed);
 
-            float fitness = EvaluateParticle(particle, killRate, healthPercentage);
-            if (fitness > EvaluateParticle(new Particle { Position = particle.BestPosition }, killRate, healthPercentage))
+            float currentFitness = EvaluateParticle(particle, killRate, healthPercentage);
+
+            var temp = new Particle { Position = particle.BestPosition };
+            float bestFitness = EvaluateParticle(temp, killRate, healthPercentage);
+
+            if (currentFitness > bestFitness)
             {
                 particle.BestPosition = particle.Position;
             }
         }
     }
 
-    private float EvaluateParticle(Particle particle, float killRate, float healthPct)
+private float EvaluateParticle(Particle particle, float killRate, float healthPct)
+{
+    float spawnRate = particle.Position.x;
+    float speed = particle.Position.y;
+
+    // Scale the ideal kill rate based on both spawn rate and speed
+    float idealKillRate = Mathf.Lerp(
+        0.1f, // Minimum ideal kill rate
+        0.8f, // Maximum ideal kill rate
+        ((spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate) + 
+         (speed - minSpeed) / (maxSpeed - minSpeed)) / 2f  // Average of both normalized values
+    );
+
+    float killRateDiff = Mathf.Abs(killRate - idealKillRate);
+    float healthFactor = 1f - healthPct;
+
+    // Separate evaluation for spawn rate and speed
+    float spawnRateFitness = 1f - killRateDiff;
+    float speedFitness = healthPct;  // Higher health means speed can be higher
+
+    // Combine both factors
+    float fitness = (spawnRateFitness + speedFitness) / 2f;
+
+    // Modified struggle penalty that affects both parameters independently
+    if (healthPct < lowHealthThreshold || killRate < lowKillRateThreshold)
     {
-        float spawnRate = particle.Position.x;
-        float speed = particle.Position.y;
-
-        float desiredKillRate = Mathf.Lerp(0.1f, 0.8f, (spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate));
-        float killRateDiff = Mathf.Abs(killRate - desiredKillRate);
-        float healthFactor = 1f - healthPct;
-
-        float fitness = (1f - killRateDiff) * (1f + healthFactor);
-        if (healthPct < lowHealthThreshold || killRate < lowKillRateThreshold) fitness *= 0.5f;
-        return fitness;
+        float spawnRatePenalty = spawnRate / maxSpawnRate;
+        float speedPenalty = speed / maxSpeed;
+        fitness *= (1f - (spawnRatePenalty + speedPenalty) / 2f);
     }
+
+    return fitness;
+}
+
 
     private Vector2 GetGlobalBestPosition()
     {
-        float bestFitness = float.MinValue;
         Vector2 bestPosition = Vector2.zero;
+        float bestFitness = float.MinValue;
+
+        float currentKillRate = playerPerformance.GetKillRate();
+        float currentHealthPct = playerPerformance.GetHealth() / 100f;
 
         foreach (Particle particle in particles)
         {
-            float fitness = EvaluateParticle(particle, playerPerformance.GetKillRate(), playerPerformance.GetHealth() / 100f);
+            float fitness = EvaluateParticle(particle, currentKillRate, currentHealthPct);
             if (fitness > bestFitness)
             {
                 bestFitness = fitness;
