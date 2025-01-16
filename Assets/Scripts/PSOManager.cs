@@ -1,9 +1,9 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics; // For Stopwatch
 using System; // For GC to measure memory usage
+using System.Linq; // Add this line for Average()
 
 public class PSOManager : MonoBehaviour
 {
@@ -43,6 +43,12 @@ public class PSOManager : MonoBehaviour
 
     private int previousKillCount = 0; // Track the player's previous kill count
     private bool isWaveActive = true; // Tracks whether a wave is currently active
+
+    [Header("Kill Rate Tracking")]
+    private float currentKillRate = 0f;
+    private Queue<float> killRateHistory = new Queue<float>();
+    public int killRateHistorySize = 10; // Store last 10 measurements
+    public bool debugKillRate = true; // Toggle for debug logging
 
     private void Start()
     {
@@ -113,12 +119,27 @@ public class PSOManager : MonoBehaviour
                     evaluationTimer = 0f;
 
                     int currentKillCount = spawner.GetWaveKillCount();
-                    float killRate = (currentKillCount - previousKillCount) / Mathf.Max(1f, evaluationInterval);
+                    UnityEngine.Debug.Log($"[PSOManager] Previous Kill Count: {previousKillCount}, Current Kill Count: {currentKillCount}");
+                    
+                    currentKillRate = (currentKillCount - previousKillCount) / Mathf.Max(1f, evaluationInterval);
                     previousKillCount = currentKillCount;
 
-                    float healthPercentage = playerPerformance.GetHealth() / 100f;
+                    killRateHistory.Enqueue(currentKillRate);
+                    if (killRateHistory.Count > killRateHistorySize)
+                    {
+                        killRateHistory.Dequeue();
+                    }
 
-                    MeasurePerformance(killRate, healthPercentage);
+                    float averageKillRate = killRateHistory.Count > 0 ? killRateHistory.Average() : 0f;
+
+                    UnityEngine.Debug.Log($"[PSOManager] KILL RATE UPDATE ----");
+                    UnityEngine.Debug.Log($"[PSOManager] Current Kill Rate: {currentKillRate:F2}/s");
+                    UnityEngine.Debug.Log($"[PSOManager] Average Kill Rate: {averageKillRate:F2}/s");
+                    UnityEngine.Debug.Log($"[PSOManager] Active Spawners: {spawner.GetActiveSpawnerCount()}");
+                    UnityEngine.Debug.Log($"[PSOManager] ----");
+
+                    float healthPercentage = playerPerformance.GetHealth() / 100f;
+                    MeasurePerformance(currentKillRate, healthPercentage);
                 }
             }
             yield return null;
@@ -221,12 +242,15 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
     float spawnRate = particle.Position.x;
     float speed = particle.Position.y;
 
-    // Scale the ideal kill rate based on both spawn rate and speed
+    // Get the number of active spawners
+    int activeSpawners = spawner.GetActiveSpawnerCount(); // You'll need to add this method to your Spawner script
+    
+    // Scale the ideal kill rate based on spawn rate, speed, and number of active spawners
     float idealKillRate = Mathf.Lerp(
         0.1f, // Minimum ideal kill rate
-        0.8f, // Maximum ideal kill rate
+        0.8f * activeSpawners, // Maximum ideal kill rate scales with number of spawners
         ((spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate) + 
-         (speed - minSpeed) / (maxSpeed - minSpeed)) / 2f  // Average of both normalized values
+         (speed - minSpeed) / (maxSpeed - minSpeed)) / 2f
     );
 
     float killRateDiff = Mathf.Abs(killRate - idealKillRate);

@@ -160,7 +160,7 @@ public class Spawner : MonoBehaviour
 
     public int GetActiveSpawnerCount()
     {
-        // Return the number of active spawners
-        return activeZombies.Count; // or however you're tracking your spawners
+        // Return the number of spawn points instead of active zombies
+        return spawnPoints.Count;
     }
 }
