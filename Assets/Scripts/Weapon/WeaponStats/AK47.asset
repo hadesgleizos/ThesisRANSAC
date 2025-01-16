@@ -19,7 +19,7 @@ MonoBehaviour:
   bulletsPerBurst: 0
   spreadIntensity: 0.1
   bulletPrefab: {fileID: 4952933345522236764, guid: 021a79f1ab17e7e44806836f8162c19f, type: 3}
-  bulletVelocity: 100
+  bulletVelocity: 1000
   bulletLifetime: 0.5
   reloadTime: 2.2
   magazineSize: 30

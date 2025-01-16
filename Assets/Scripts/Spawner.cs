@@ -157,4 +157,10 @@ public class Spawner : MonoBehaviour
     {
         return zombieSpeed;
     }
+
+    public int GetActiveSpawnerCount()
+    {
+        // Return the number of active spawners
+        return activeZombies.Count; // or however you're tracking your spawners
+    }
 }
