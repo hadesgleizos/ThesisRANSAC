@@ -16,6 +16,12 @@ public class SoundManager : MonoBehaviour
     public AudioClip emptyMagazineSound;
     public AudioClip horrorImpactSound;
 
+    // Footstep Sounds
+    public AudioClip dirtFootstep;
+    public AudioClip grassFootstep;
+    public AudioClip concreteFootstep;
+    public AudioClip metalFootstep;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,6 +39,36 @@ public class SoundManager : MonoBehaviour
         if (clip != null && generalAudioSource != null)
         {
             generalAudioSource.PlayOneShot(clip);
+        }
+    }
+
+    
+
+    public void PlayFootstep(string groundType)
+    {
+        AudioClip clipToPlay = null;
+
+        switch (groundType)
+        {
+            case "Dirt":
+                clipToPlay = dirtFootstep;
+                break;
+            case "Grass":
+                clipToPlay = grassFootstep;
+                break;
+            case "Concrete":
+                clipToPlay = concreteFootstep;
+                break;
+            case "Metal":
+                clipToPlay = metalFootstep;
+                break;
+            default:
+                break;
+        }
+
+        if (clipToPlay != null)
+        {
+            PlaySound(clipToPlay);
         }
     }
 }
