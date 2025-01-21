@@ -221,27 +221,63 @@ private void FireWeapon()
     // Calculate bullet direction + spread
     Vector3 shootingDirection = CalculateDirectionAndSpread();
 
-    // Spawn bullet
-    GameObject bullet = Instantiate(
-        currentWeaponStats.bulletPrefab,
-        muzzlePoint.position,
-        Quaternion.identity
-    );
-    bullet.transform.forward = shootingDirection;
-    bullet.GetComponent<Rigidbody>().AddForce(
-        shootingDirection * currentWeaponStats.bulletVelocity,
-        ForceMode.VelocityChange
-    );
-    Destroy(bullet, currentWeaponStats.bulletLifetime);
-
-    // Optional raycast for immediate hits
+    // Raycast for hitscan
     if (Physics.Raycast(muzzlePoint.position, shootingDirection, out RaycastHit hit, 100f))
     {
         Debug.DrawLine(muzzlePoint.position, hit.point, Color.red, 2f);
-        Debug.Log($"Hit object: {hit.collider.gameObject.name}");
+        Debug.Log($"Hit object: {hit.collider.gameObject.name} with tag: {hit.collider.gameObject.tag}");
 
+        // Get the parent object to check the tag for main entity (e.g., zombie)
+        GameObject hitObject = hit.collider.gameObject;
+        GameObject parentObject = hitObject.transform.root.gameObject; // Get the root parent (the whole zombie)
+
+        // Impact effect logic
+        GameObject effectPrefab;
+
+        // Check the tag of the parent object instead of the hit object
+        switch (parentObject.tag)
+        {
+            case "Zombie":
+                Debug.Log("Zombie tag detected, applying zombie effect.");
+                effectPrefab = GlobalReferences.Instance.zombieImpactEffectPrefab;
+                break;
+            case "Dirt":
+                effectPrefab = GlobalReferences.Instance.dirtImpactEffectPrefab;
+                break;
+            case "Metal":
+                effectPrefab = GlobalReferences.Instance.metalImpactEffectPrefab;
+                break;
+            case "Wood":
+                effectPrefab = GlobalReferences.Instance.woodImpactEffectPrefab;
+                break;
+            default:
+                effectPrefab = GlobalReferences.Instance.bulletImpactEffectPrefab;
+                break;
+        }
+
+        // Check if the prefab is valid
+        if (effectPrefab != null)
+        {
+            GameObject impactEffect = Instantiate(
+                effectPrefab,
+                hit.point, // Use hit.point for the impact position
+                Quaternion.LookRotation(hit.normal) // Use hit.normal for the rotation
+            );
+
+            impactEffect.transform.SetParent(hit.collider.gameObject.transform);
+            impactEffect.transform.position += impactEffect.transform.forward / 1000;
+
+            // Destroy the effect after a delay
+            Destroy(impactEffect, 5f);
+        }
+        else
+        {
+            Debug.LogWarning($"No impact effect prefab assigned for tag: {hit.collider.gameObject.tag}");
+        }
+
+        // Handle damage
         takeDamage damageComponent = hit.collider.GetComponent<takeDamage>()
-                                 ?? hit.collider.GetComponentInParent<takeDamage>();
+                                     ?? hit.collider.GetComponentInParent<takeDamage>();
         if (damageComponent != null)
         {
             Debug.Log($"Applying damage: {currentWeaponStats.damage}");
@@ -263,6 +299,8 @@ private void FireWeapon()
     // Synchronize fire rate and animation
     Invoke(nameof(ResetShot), currentWeaponStats.shootingDelay);
 }
+
+
 
     private IEnumerator FireBurst()
     {

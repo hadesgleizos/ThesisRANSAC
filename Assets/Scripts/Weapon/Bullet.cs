@@ -29,49 +29,51 @@ private void OnCollisionEnter(Collision objectWeHit)
 }
 
 
-    void CreateBulletImpactEffect(Collision objectWeHit)
+public void CreateBulletImpactEffect(Collision objectWeHit) // Change to public
+{
+    ContactPoint contact = objectWeHit.contacts[0];
+    GameObject effectPrefab;
+
+    // Choose effect based on the object's tag
+    switch (objectWeHit.gameObject.tag)
     {
-        ContactPoint contact = objectWeHit.contacts[0];
-        GameObject effectPrefab;
+        case "Zombie":
+            effectPrefab = GlobalReferences.Instance.zombieImpactEffectPrefab;
+            break;
+        case "Dirt":
+            effectPrefab = GlobalReferences.Instance.dirtImpactEffectPrefab;
+            break;
+        case "Metal":
+            effectPrefab = GlobalReferences.Instance.metalImpactEffectPrefab;
+            break;
+        case "Wood":
+            effectPrefab = GlobalReferences.Instance.woodImpactEffectPrefab;
+            break;
+        default:
+            effectPrefab = GlobalReferences.Instance.bulletImpactEffectPrefab;
+            break;
+    }
 
-        // Choose effect based on the object's tag
-        switch (objectWeHit.gameObject.tag)
-        {
-            case "Zombie":
-                effectPrefab = GlobalReferences.Instance.zombieImpactEffectPrefab;
-                break;
-            case "Dirt":
-                effectPrefab = GlobalReferences.Instance.dirtImpactEffectPrefab;
-                break;
-            case "Metal":
-                effectPrefab = GlobalReferences.Instance.metalImpactEffectPrefab;
-                break;
-            case "Wood":
-                effectPrefab = GlobalReferences.Instance.woodImpactEffectPrefab;
-                break;
-            default:
-                effectPrefab = GlobalReferences.Instance.bulletImpactEffectPrefab;
-                break;
-        }
+    // Instantiate effect if a valid prefab exists
+    if (effectPrefab != null)
+    {
+        GameObject impactEffect = Instantiate(
+            effectPrefab,
+            contact.point,
+            Quaternion.LookRotation(contact.normal)
+        );
 
-        // Instantiate effect if a valid prefab exists
-        if (effectPrefab != null)
-        {
-            GameObject impactEffect = Instantiate(
-                effectPrefab,
-                contact.point,
-                Quaternion.LookRotation(contact.normal)
-            );
+        impactEffect.transform.SetParent(objectWeHit.gameObject.transform);
+        impactEffect.transform.position += impactEffect.transform.forward / 1000;
 
-            impactEffect.transform.SetParent(objectWeHit.gameObject.transform);
-            impactEffect.transform.position += impactEffect.transform.forward / 1000;
-
-            // Destroy the effect after a delay
-            Destroy(impactEffect, 5f);
-        }
-        else
-        {
-            Debug.LogWarning($"No impact effect prefab assigned for tag: {objectWeHit.gameObject.tag}");
-        }
+        // Destroy the effect after a delay
+        Destroy(impactEffect, 5f);
+    }
+    else
+    {
+        Debug.LogWarning($"No impact effect prefab assigned for tag: {objectWeHit.gameObject.tag}");
     }
 }
+
+    }
+
