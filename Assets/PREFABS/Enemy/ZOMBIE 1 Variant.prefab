@@ -438,15 +438,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4378302944070100, guid: 46e3fad9d63edad4e95366d675950f78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54.12921
+      value: 42.40805
       objectReference: {fileID: 0}
     - target: {fileID: 4378302944070100, guid: 46e3fad9d63edad4e95366d675950f78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000023841858
+      value: -0.12334871
       objectReference: {fileID: 0}
     - target: {fileID: 4378302944070100, guid: 46e3fad9d63edad4e95366d675950f78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -201.21317
+      value: -205.36032
       objectReference: {fileID: 0}
     - target: {fileID: 4378302944070100, guid: 46e3fad9d63edad4e95366d675950f78, type: 3}
       propertyPath: m_LocalRotation.w
@@ -689,6 +689,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58db196bbe8471d458923c6e8ed5d5ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footstepInterval: 0.5
+  footstepAudioSource: {fileID: 0}
+  defaultFootstepClip: {fileID: 0}
+  footstepVolume: 0.7
+  raycastOrigin: {fileID: 0}
+  raycastDistance: 10
   damage: 8
   attackRange: 2
   attackCooldown: 0.5

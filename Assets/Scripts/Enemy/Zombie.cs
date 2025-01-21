@@ -20,7 +20,6 @@ public class Zombie : MonoBehaviour
     private bool isAttacking = false;     // Flag to track if zombie is attacking
     public float health = 100f;
 
-
     void Start()
     {
         // Get the NavMeshAgent component
@@ -73,45 +72,44 @@ public class Zombie : MonoBehaviour
         }
     }
 
-private IEnumerator AttackPlayer()
-{
-    if (!agent || !agent.isOnNavMesh) yield break;
-
-    isAttacking = true;
-    canAttack = false; // Prevent attack spam
-    agent.isStopped = true;
-
-    // Trigger attack animation
-    animator.SetTrigger("Attack");
-
-    // Wait for the animation to play before dealing damage
-    yield return new WaitForSeconds(0.5f);
-
-    // Check if the player is still in range before dealing damage
-    if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
+    private IEnumerator AttackPlayer()
     {
-        // Deal damage to the player
-        PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
-        if (playerPerformance != null)
+        if (!agent || !agent.isOnNavMesh) yield break;
+
+        isAttacking = true;
+        canAttack = false; // Prevent attack spam
+        agent.isStopped = true;
+
+        // Trigger attack animation
+        animator.SetTrigger("Attack");
+
+        // Wait for the animation to play before dealing damage
+        yield return new WaitForSeconds(0.5f);
+
+        // Check if the player is still in range before dealing damage
+        if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
         {
-            playerPerformance.TakeDamage(damage);
-            Debug.Log($"Zombie dealt {damage} damage to the player.");
+            // Deal damage to the player
+            PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
+            if (playerPerformance != null)
+            {
+                playerPerformance.TakeDamage(damage);
+                Debug.Log($"Zombie dealt {damage} damage to the player.");
+            }
         }
+
+        // Wait for attack cooldown
+        yield return new WaitForSeconds(attackCooldown);
+
+        // Resume movement and reset attack state only if agent is still valid
+        if (agent && agent.isOnNavMesh && !isDead)
+        {
+            agent.isStopped = false;
+        }
+        
+        canAttack = true;
+        isAttacking = false;
     }
-
-    // Wait for attack cooldown
-    yield return new WaitForSeconds(attackCooldown);
-
-    // Resume movement and reset attack state only if agent is still valid
-    if (agent && agent.isOnNavMesh && !isDead)
-    {
-        agent.isStopped = false;
-    }
-    
-    canAttack = true;
-    isAttacking = false;
-}
-
 
     public void TakeDamage(float damageAmount, CollisionType hitLocation)
     {
@@ -132,7 +130,6 @@ private IEnumerator AttackPlayer()
         }
 
         health -= damageAmount * multiplier;
-        // animator.SetTrigger("Hit"); // Commented out to avoid error
 
         if (health <= 0 && !isDead)
         {
@@ -140,41 +137,40 @@ private IEnumerator AttackPlayer()
         }
     }
 
-private void Die()
-{
-    isDead = true;
-
-    if (agent != null)
+    private void Die()
     {
-        agent.isStopped = true;
-        agent.enabled = false;
+        isDead = true;
+
+        if (agent != null)
+        {
+            agent.isStopped = true;
+            agent.enabled = false;
+        }
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
+
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Death");
+        }
+
+        if (playerPerformance != null)
+        {
+            playerPerformance.ZombieKilled(); // Already correctly updating kills
+        }
+
+        Destroy(gameObject, 3f);
     }
-
-    Rigidbody rb = GetComponent<Rigidbody>();
-    if (rb != null)
-    {
-        rb.isKinematic = true;
-    }
-
-    Collider[] colliders = GetComponentsInChildren<Collider>();
-    foreach (Collider collider in colliders)
-    {
-        collider.enabled = false;
-    }
-
-    if (animator != null)
-    {
-        animator.SetTrigger("Death");
-    }
-
-    if (playerPerformance != null)
-    {
-        playerPerformance.ZombieKilled(); // Already correctly updating kills
-    }
-
-    Destroy(gameObject, 3f);
-}
-
 
     private IEnumerator UpdateSpeedRoutine()
     {
