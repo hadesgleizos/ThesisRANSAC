@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip rifleShootingSound;
     public AudioClip reloadSound;
     public AudioClip emptyMagazineSound;
+    public AudioClip horrorImpactSound;
 
     private void Awake()
     {
