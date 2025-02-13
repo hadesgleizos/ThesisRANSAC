@@ -18,7 +18,7 @@ public class Resolutions : MonoBehaviour
     private void Start()
     {
         // If "ScreenMode" doesn't exist, set a default. 
-        //   3 = Windowed, 2 = MaximizedWindow, 1 = ExclusiveFullScreen, 0 = FullScreenWindow
+        //    2 = Windowed, 1 = Borderless Windowed, 0 = FullScreenWindow
         // Change this default to 3 if you really want standard windowed mode:
         if (!PlayerPrefs.HasKey("ScreenMode"))
         {
@@ -77,9 +77,6 @@ public class Resolutions : MonoBehaviour
         resolutionDropDown.onValueChanged.AddListener(SetResolution);
     }
 
-    /// <summary>
-    /// Called whenever the user picks a new resolution in the dropdown.
-    /// </summary>
     public void SetResolution(int resolutionIndex)
     {
         resolution = filteredResolutions[resolutionIndex];
@@ -115,9 +112,6 @@ public class Resolutions : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Resets to a guaranteed-safe resolution (1280x720 windowed).
-    /// </summary>
     private void ResetToSafeResolution()
     {
         Debug.LogWarning("Resetting to 1280x720 (Windowed) to avoid game crash.");

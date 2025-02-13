@@ -18,11 +18,9 @@ public class ASyncLoader : MonoBehaviour
 
     private void Awake()
     {
-        // This ensures this GameObject persists across scene loads.
         DontDestroyOnLoad(gameObject);
     }
 
-    // Single-scene loading (unchanged)
     public void LoadLevelBtn(string levelToLoad)
     {
         mainMenu.SetActive(false);
@@ -40,8 +38,6 @@ public class ASyncLoader : MonoBehaviour
             yield return null;
         }
     }
-
-    // Loads the base scene (Single) then the specified stage scene (Additive).
     public void LoadBaseThenStageBtn(string stageToLoad)
     {
         mainMenu.SetActive(false);
