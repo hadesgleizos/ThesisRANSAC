@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &410629153053744964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2220407571524243575}
+  - component: {fileID: 2171757968262649058}
+  m_Layer: 0
+  m_Name: PSOManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2220407571524243575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410629153053744964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 30.78555, y: 3.3179739, z: -205.68196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2171757968262649058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410629153053744964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18163d65727c28e4093cbfe04feab424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPerformance: {fileID: 0}
+  spawner: {fileID: 0}
+  swarmSize: 30
+  inertiaWeight: 0.5
+  cognitiveWeight: 1.5
+  socialWeight: 1.5
+  minSpawnRate: 0.5
+  maxSpawnRate: 1
+  minSpeed: 0.4
+  maxSpeed: 0.9
+  bigDropFactor: 0.7
+  smallUpFactor: 3
+  lowHealthThreshold: 0.5
+  lowKillRateThreshold: 0.1
