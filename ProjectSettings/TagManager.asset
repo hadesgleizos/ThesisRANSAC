@@ -12,6 +12,7 @@ TagManager:
   - Metal
   - Wood
   - Grass
+  - Concrete
   layers:
   - Default
   - TransparentFX

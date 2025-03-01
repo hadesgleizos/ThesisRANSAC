@@ -719,6 +719,18 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4997336747663392891, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_text
+      value: Press e to open the door
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -729,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.966626
+      value: 0.4375
       objectReference: {fileID: 0}
     - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_fontColor.g
@@ -737,7 +749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_fontColor.r
-      value: 0.9386792
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_sharedMaterial
@@ -745,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
     - target: {fileID: 5083114492694229313, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294377455
+      value: 4285595392
       objectReference: {fileID: 0}
     - target: {fileID: 5640070293605722783, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_Name
@@ -1285,6 +1301,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: cf0f3950f5c009246b186e56aec14040, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: concreteFootstep
+      value: 
+      objectReference: {fileID: 8300000, guid: c73661c07b818e14384535c342e57437, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: horrorImpactSound
       value: 
       objectReference: {fileID: 8300000, guid: aee6cbeb28b6b884ca174d07bf661a8a, type: 3}
@@ -1331,6 +1351,10 @@ PrefabInstance:
     - target: {fileID: 7925624045133070212, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925624045133070212, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: m_TagString
+      value: Concrete
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
