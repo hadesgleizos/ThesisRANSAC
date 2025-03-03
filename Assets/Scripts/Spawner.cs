@@ -1,10 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;  // Import TextMeshPro for UI
+using UnityEngine.SceneManagement;  // For restarting the game
 
 public class Spawner : MonoBehaviour
 {
     public static Spawner Instance { get; private set; }
+
+    [Header("UI Elements")]
+    public GameObject ScoreScreen;  // Reference to the Score Screen UI
+    public TMP_Text ScorePoints;    // Reference to the Score text
+
+    // NEW: Reference to PlayerPerformance
+    public PlayerPerformance playerPerformance;
 
     private void Awake()
     {
@@ -14,13 +23,13 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Ensure only one instance exists
+            Destroy(gameObject);
         }
     }
 
     [Header("Zombie Settings")]
     public GameObject zombiePrefab;
-    public float spawnRate = 0.1f;  // Initial spawn rate
+    public float spawnRate = 0.1f;   // Initial spawn rate
     public float zombieSpeed = 0.2f; // Initial zombie speed
 
     [Header("Wave Settings")]
@@ -49,8 +58,24 @@ public class Spawner : MonoBehaviour
     public static event WaveEvent OnWaveStart;
     public static event WaveEvent OnWaveEnd;
 
+    // NEW: Expose these so they're set in Inspector
+    public string baseSceneName = "BaseScene";
+    public string stageSceneName = "Stage 2";
+
     private void Start()
     {
+        // NEW: If no PlayerPerformance assigned in Inspector, try finding it
+        if (playerPerformance == null)
+        {
+            playerPerformance = FindObjectOfType<PlayerPerformance>();
+        }
+
+        if (ScoreScreen != null)
+        {
+            ScoreScreen.SetActive(false); // Hide the Score Screen at the start
+        }
+
+        Time.timeScale = 1; // Ensure the game is running normally at start
         StartCoroutine(WaveSystem());
     }
 
@@ -83,6 +108,42 @@ public class Spawner : MonoBehaviour
         }
 
         Debug.Log("All waves completed!");
+        ShowScoreScreen(); // Display final score
+    }
+
+    private void ShowScoreScreen()
+    {
+        if (ScoreScreen != null)
+        {
+            ScoreScreen.SetActive(true); // Show the Score Screen
+        }
+
+        if (ScorePoints != null)
+        {
+            // NEW: Show PlayerPerformance score if available
+            if (playerPerformance != null)
+            {
+                ScorePoints.text = $"Score: {playerPerformance.GetScore()}";
+            }
+            else
+            {
+                // Fallback to spawner kill count if no PlayerPerformance reference
+                ScorePoints.text = $"Score: {totalKillCount}";
+            }
+        }
+
+        Time.timeScale = 0; // Pause the game
+    }
+
+    // UPDATED RESTART LOGIC
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        // Load BaseScene in Single mode (which unloads all current scenes)
+        SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
+
+        // Then load the chosen stage scene additively
+        SceneManager.LoadScene(stageSceneName, LoadSceneMode.Additive);
     }
 
     private IEnumerator SpawnZombies()
@@ -124,7 +185,6 @@ public class Spawner : MonoBehaviour
         Debug.Log($"Zombie killed! Total kills: {totalKillCount}");
     }
 
-    // Dynamic wave-specific calculations
     public int GetWaveKillCount()
     {
         return totalKillCount - waveStartKillCount;
@@ -174,7 +234,6 @@ public class Spawner : MonoBehaviour
 
     public int GetActiveSpawnerCount()
     {
-        // Return the number of spawn points instead of active zombies
         return spawnPoints.Count;
     }
 }

@@ -76,6 +76,12 @@ public class PlayerPerformance : MonoBehaviour
     {
         return playerHealth;
     }
+    
+    public int GetScore()
+{
+    return currentScore;
+}
+
 
     public float GetKillRate()
     {
