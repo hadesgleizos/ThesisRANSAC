@@ -59,8 +59,10 @@ public class Spawner : MonoBehaviour
     public static event WaveEvent OnWaveEnd;
 
     // NEW: Expose these so they're set in Inspector
-    public string baseSceneName = "BaseScene";
-    public string stageSceneName = "Stage 2";
+    [Header("Scene Names")]
+public string baseSceneName = "BaseScene";
+public string restartSceneName = "Stage 2";  // Used by RestartGame
+public string nextStageSceneName = "Stage 3"; // Used by NextStage
 
     private void Start()
     {
@@ -135,16 +137,19 @@ public class Spawner : MonoBehaviour
         Time.timeScale = 0; // Pause the game
     }
 
-    // UPDATED RESTART LOGIC
-    public void RestartGame()
-    {
-        Time.timeScale = 1;
-        // Load BaseScene in Single mode (which unloads all current scenes)
-        SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
+public void RestartGame()
+{
+    Time.timeScale = 1;
+    SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
+    SceneManager.LoadScene(restartSceneName, LoadSceneMode.Additive);
+}
 
-        // Then load the chosen stage scene additively
-        SceneManager.LoadScene(stageSceneName, LoadSceneMode.Additive);
-    }
+public void NextStage()
+{
+    Time.timeScale = 1;
+    SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
+    SceneManager.LoadScene(nextStageSceneName, LoadSceneMode.Additive);
+}
 
     private IEnumerator SpawnZombies()
     {
