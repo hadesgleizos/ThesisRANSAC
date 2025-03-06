@@ -2625,6 +2625,10 @@ PrefabInstance:
       propertyPath: isRendering
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 686298493924566768, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: fdb929c424c59124eb48c6e89b9ea652, type: 2}
     - target: {fileID: 1022706388933259357, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: uiManagerInstance
       value: 
@@ -2759,6 +2763,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7889298640303136199, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578281042414093468, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578281042414093468, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+      propertyPath: m_ShowToolkit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578281042414093468, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+      propertyPath: m_ShowCustomSorter
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
