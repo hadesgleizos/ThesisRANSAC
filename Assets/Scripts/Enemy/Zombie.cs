@@ -72,44 +72,42 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private IEnumerator AttackPlayer()
+private IEnumerator AttackPlayer()
+{
+    if (!agent || !agent.isOnNavMesh) yield break;
+
+    isAttacking = true;
+    canAttack = false; 
+    agent.isStopped = true;
+
+    animator.SetTrigger("Attack");
+    yield return new WaitForSeconds(0.5f);
+
+    if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
     {
-        if (!agent || !agent.isOnNavMesh) yield break;
-
-        isAttacking = true;
-        canAttack = false; // Prevent attack spam
-        agent.isStopped = true;
-
-        // Trigger attack animation
-        animator.SetTrigger("Attack");
-
-        // Wait for the animation to play before dealing damage
-        yield return new WaitForSeconds(0.5f);
-
-        // Check if the player is still in range before dealing damage
-        if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
+        PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
+        if (playerPerformance != null)
         {
-            // Deal damage to the player
-            PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
-            if (playerPerformance != null)
-            {
-                playerPerformance.TakeDamage(damage);
-                Debug.Log($"Zombie dealt {damage} damage to the player.");
-            }
-        }
+            playerPerformance.TakeDamage(damage, gameObject); // attacker reference passed here
 
-        // Wait for attack cooldown
-        yield return new WaitForSeconds(attackCooldown);
-
-        // Resume movement and reset attack state only if agent is still valid
-        if (agent && agent.isOnNavMesh && !isDead)
-        {
-            agent.isStopped = false;
+            // Call SetIndicator to show directional damage indicator
+            gameObject.SetIndicator();
+            
+            Debug.Log($"Zombie dealt {damage} damage to the player.");
         }
-        
-        canAttack = true;
-        isAttacking = false;
     }
+
+    yield return new WaitForSeconds(attackCooldown);
+
+    if (agent && agent.isOnNavMesh && !isDead)
+    {
+        agent.isStopped = false;
+    }
+
+    canAttack = true;
+    isAttacking = false;
+}
+
 
     public void TakeDamage(float damageAmount, CollisionType hitLocation)
     {

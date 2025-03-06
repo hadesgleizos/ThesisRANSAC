@@ -1,4 +1,5 @@
 using UnityEngine;
+using static bl_DamageCallback;   // Ensure the namespace matches package if necessary
 
 public class PlayerPerformance : MonoBehaviour
 {
@@ -31,29 +32,37 @@ public class PlayerPerformance : MonoBehaviour
         gameTime += Time.deltaTime;
     }
 
-    public void TakeDamage(float damage)
+public void TakeDamage(float damage, GameObject attacker)
+{
+    playerHealth = Mathf.Max(playerHealth - damage, 0);
+    Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
+
+    if (uiManager != null)
     {
-        playerHealth = Mathf.Max(playerHealth - damage, 0);
-        Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
-
-        // Update the health on the UI
-        if (uiManager != null)
-        {
-            uiManager.setHealth(((int)playerHealth).ToString());
-        }
-
-        // Check if the player is dead
-        if (playerHealth <= 0)
-        {
-            HandlePlayerDeath();
-        }
+        uiManager.setHealth(((int)playerHealth).ToString());
     }
 
-    private void HandlePlayerDeath()
+    // Create the bl_DamageInfo struct
+    bl_DamageInfo info = new bl_DamageInfo(damage);
+    info.Sender = attacker;
+
+    // Trigger Damage HUD event
+    bl_DamageDelegate.OnDamageEvent(info);
+
+    // Handle death condition
+    if (playerHealth <= 0)
     {
-        Debug.Log("Player is dead!");
-        enabled = false; // Stop Update() calls
+        HandlePlayerDeath();
     }
+}
+
+private void HandlePlayerDeath()
+{
+    Debug.Log("Player is dead!");
+    enabled = false;
+    bl_DamageDelegate.OnDie(); // Show Death HUD
+}
+
 
     public void ZombieKilled()
     {
