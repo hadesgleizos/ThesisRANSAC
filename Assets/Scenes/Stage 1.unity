@@ -2628,7 +2628,7 @@ PrefabInstance:
     - target: {fileID: 686298493924566768, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: sharedProfile
       value: 
-      objectReference: {fileID: 11400000, guid: fdb929c424c59124eb48c6e89b9ea652, type: 2}
+      objectReference: {fileID: 11400000, guid: 22472cda848566a498653a4757d4aa1c, type: 2}
     - target: {fileID: 1022706388933259357, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: uiManagerInstance
       value: 
