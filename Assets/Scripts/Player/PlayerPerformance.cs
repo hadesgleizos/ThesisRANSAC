@@ -101,9 +101,13 @@ public class PlayerPerformance : MonoBehaviour
         playerHealth = Mathf.Min(playerHealth + amount, 100f); // Assuming 100 is the max health
         Debug.Log($"Player healed by {amount}. Current health: {playerHealth}");
 
-        if (uiManager != null)
-        {
-            uiManager.setHealth(((int)playerHealth).ToString());
-        }
+        // Create the bl_DamageInfo struct for healing
+        bl_DamageInfo info = new bl_DamageInfo(0); // Use 0 for healing
+        info.Sender = gameObject; // Set the sender as this gameObject
+
+        // Trigger Damage HUD event to update the UI
+        bl_DamageDelegate.OnDamageEvent(info);
+        
+        // If at full health, trigger the OnDie event to reset the da
     }
 }

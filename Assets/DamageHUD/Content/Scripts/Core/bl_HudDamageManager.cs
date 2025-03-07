@@ -82,15 +82,33 @@ public class bl_HudDamageManager : MonoBehaviour {
     void OnDamage(bl_DamageInfo info)
     {
         //Calculate health
-        Health -= info.Damage;
-        //Calculate the diference in health for apply to the alpha.
+        if (info.Damage == 0) // This is a healing event
+        {
+            // Get the current health from PlayerPerformance
+            GameObject player = info.Sender;
+            PlayerPerformance playerPerf = player.GetComponent<PlayerPerformance>();
+            if (playerPerf != null)
+            {
+                Health = playerPerf.GetHealth();
+            }
+        }
+        else // This is a damage event
+        {
+            Health -= info.Damage;
+        }
+
+        //Calculate the difference in health for apply to the alpha
         Alpha = (MaxHealth - Health) / 100;
         //Ensure that alpha is never less than the minimum allowed
         Alpha = Mathf.Clamp(Alpha, MinAlpha, 1);
         //Update delay
         NextDelay = Time.time + DelayFade;
         if (AnimateHealthInfo) { HealthInfoControll(); }
-        if (useShake && ShakeObject != null) { StopAllCoroutines(); StartCoroutine(Shake()); }
+        if (useShake && ShakeObject != null && info.Damage > 0) 
+        { 
+            StopAllCoroutines(); 
+            StartCoroutine(Shake()); 
+        }
     }
 
     /// <summary>
@@ -162,7 +180,8 @@ public class bl_HudDamageManager : MonoBehaviour {
         }
         if(HealthText != null)
         {
-            HealthValue = (int)Mathf.Lerp(HealthValue, Health, 5 * Time.deltaTime);
+            // Remove lerp for health text to show accurate value immediately
+            HealthValue = (int)Health;
             HealthText.text = (Health > 0) ? HealthValue.ToString() : "Dead";
         }
     }
