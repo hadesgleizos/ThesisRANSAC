@@ -81,7 +81,6 @@ public class bl_HudDamageManager : MonoBehaviour {
     /// </summary>
     void OnDamage(bl_DamageInfo info)
     {
-        //Calculate health
         if (info.Damage == 0) // This is a healing event
         {
             // Get the current health from PlayerPerformance
@@ -90,24 +89,25 @@ public class bl_HudDamageManager : MonoBehaviour {
             if (playerPerf != null)
             {
                 Health = playerPerf.GetHealth();
+                // Don't update Alpha for healing
+                if (AnimateHealthInfo) { HealthInfoControll(); }
             }
         }
         else // This is a damage event
         {
             Health -= info.Damage;
-        }
-
-        //Calculate the difference in health for apply to the alpha
-        Alpha = (MaxHealth - Health) / 100;
-        //Ensure that alpha is never less than the minimum allowed
-        Alpha = Mathf.Clamp(Alpha, MinAlpha, 1);
-        //Update delay
-        NextDelay = Time.time + DelayFade;
-        if (AnimateHealthInfo) { HealthInfoControll(); }
-        if (useShake && ShakeObject != null && info.Damage > 0) 
-        { 
-            StopAllCoroutines(); 
-            StartCoroutine(Shake()); 
+            //Calculate the difference in health for apply to the alpha
+            Alpha = (MaxHealth - Health) / 100;
+            //Ensure that alpha is never less than the minimum allowed
+            Alpha = Mathf.Clamp(Alpha, MinAlpha, 1);
+            //Update delay
+            NextDelay = Time.time + DelayFade;
+            if (AnimateHealthInfo) { HealthInfoControll(); }
+            if (useShake && ShakeObject != null) 
+            { 
+                StopAllCoroutines(); 
+                StartCoroutine(Shake()); 
+            }
         }
     }
 
