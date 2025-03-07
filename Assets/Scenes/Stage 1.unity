@@ -1551,6 +1551,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1178035373614481792, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2975487037886452739, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: optionsMenu
       value: 
@@ -1688,10 +1692,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 266525076459217203, guid: d3156e38429914a14926e95e3fc2b476, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 453761104449941834, guid: d3156e38429914a14926e95e3fc2b476, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48.553368
@@ -1735,14 +1735,6 @@ PrefabInstance:
     - target: {fileID: 1631061220686308425, guid: d3156e38429914a14926e95e3fc2b476, type: 3}
       propertyPath: m_Name
       value: MedKit
-      objectReference: {fileID: 0}
-    - target: {fileID: 1631061220686308425, guid: d3156e38429914a14926e95e3fc2b476, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8332557740981617012, guid: d3156e38429914a14926e95e3fc2b476, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
