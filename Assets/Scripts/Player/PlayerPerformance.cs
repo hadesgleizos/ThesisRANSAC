@@ -32,37 +32,36 @@ public class PlayerPerformance : MonoBehaviour
         gameTime += Time.deltaTime;
     }
 
-public void TakeDamage(float damage, GameObject attacker)
-{
-    playerHealth = Mathf.Max(playerHealth - damage, 0);
-    Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
-
-    if (uiManager != null)
+    public void TakeDamage(float damage, GameObject attacker)
     {
-        uiManager.setHealth(((int)playerHealth).ToString());
+        playerHealth = Mathf.Max(playerHealth - damage, 0);
+        Debug.Log($"Player took {damage} damage. Remaining health: {playerHealth}");
+
+        if (uiManager != null)
+        {
+            uiManager.setHealth(((int)playerHealth).ToString());
+        }
+
+        // Create the bl_DamageInfo struct
+        bl_DamageInfo info = new bl_DamageInfo(damage);
+        info.Sender = attacker;
+
+        // Trigger Damage HUD event
+        bl_DamageDelegate.OnDamageEvent(info);
+
+        // Handle death condition
+        if (playerHealth <= 0)
+        {
+            HandlePlayerDeath();
+        }
     }
 
-    // Create the bl_DamageInfo struct
-    bl_DamageInfo info = new bl_DamageInfo(damage);
-    info.Sender = attacker;
-
-    // Trigger Damage HUD event
-    bl_DamageDelegate.OnDamageEvent(info);
-
-    // Handle death condition
-    if (playerHealth <= 0)
+    private void HandlePlayerDeath()
     {
-        HandlePlayerDeath();
+        Debug.Log("Player is dead!");
+        enabled = false;
+        bl_DamageDelegate.OnDie(); // Show Death HUD
     }
-}
-
-private void HandlePlayerDeath()
-{
-    Debug.Log("Player is dead!");
-    enabled = false;
-    bl_DamageDelegate.OnDie(); // Show Death HUD
-}
-
 
     public void ZombieKilled()
     {
@@ -87,14 +86,24 @@ private void HandlePlayerDeath()
     }
     
     public int GetScore()
-{
-    return currentScore;
-}
-
+    {
+        return currentScore;
+    }
 
     public float GetKillRate()
     {
         if (gameTime < 1f) return 0; // Avoid calculation for very small game times
         return (float)zombiesKilled / gameTime;
+    }
+
+    public void Heal(float amount)
+    {
+        playerHealth = Mathf.Min(playerHealth + amount, 100f); // Assuming 100 is the max health
+        Debug.Log($"Player healed by {amount}. Current health: {playerHealth}");
+
+        if (uiManager != null)
+        {
+            uiManager.setHealth(((int)playerHealth).ToString());
+        }
     }
 }
