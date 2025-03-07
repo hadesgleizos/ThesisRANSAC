@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 public class bl_HudDamageManager : MonoBehaviour {
 
     [Header("Settings")]
@@ -34,6 +36,10 @@ public class bl_HudDamageManager : MonoBehaviour {
     [SerializeField]private Text HealthText = null;
     [SerializeField]private GameObject DeathHUD;
     [SerializeField]private GameObject HealthInfo;
+
+    [Header("Scene Names")]
+    [SerializeField] private string baseSceneName = "BaseScene";
+    [SerializeField] private string restartSceneName = "Stage 2";
 
     private float Alpha = 0;
     private float Health = 100;
@@ -227,7 +233,9 @@ public class bl_HudDamageManager : MonoBehaviour {
     /// </summary>
     public void Restart()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
+        SceneManager.LoadScene(restartSceneName, LoadSceneMode.Additive);
     }
 
     public float BloodFadeSpeed 

@@ -1543,6 +1543,10 @@ PrefabInstance:
       propertyPath: ShakeObject
       value: 
       objectReference: {fileID: 4618940741766815071}
+    - target: {fileID: 419819670933540052, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: restartSceneName
+      value: Stage 1
+      objectReference: {fileID: 0}
     - target: {fileID: 454546787942364406, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_IsActive
       value: 0
