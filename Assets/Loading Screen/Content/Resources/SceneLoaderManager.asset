@@ -42,6 +42,46 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 2650407d6311724489f3256696e75bb0, type: 3}
     - {fileID: 21300000, guid: af238b260179c884b93aa3248768f90b, type: 3}
     - {fileID: 21300000, guid: d693da8ebc165674b9509bab6391e358, type: 3}
+  - SceneName: MainMenu
+    SceneAsset: {fileID: 102900000, guid: 383ea9474ffea224f8c8b782f590c998, type: 3}
+    DisplayName: MainMenu
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
+  - SceneName: BaseScene
+    SceneAsset: {fileID: 102900000, guid: d015ca33c05bfbe42a453b96c8858f1d, type: 3}
+    DisplayName: BaseScene
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
+  - SceneName: Stage 1
+    SceneAsset: {fileID: 102900000, guid: 9a4d80dfa5c6c4f4fb73f7747dff2352, type: 3}
+    DisplayName: Stage 1
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
+  - SceneName: Stage 2
+    SceneAsset: {fileID: 102900000, guid: 367927caabaa8b242a79dbce38df61d8, type: 3}
+    DisplayName: Stage 2
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
+  - SceneName: Example 5
+    SceneAsset: {fileID: 102900000, guid: c03bd6dfd58da3a478c7a308f23d21e1, type: 3}
+    DisplayName: Example 5
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
   tipsList:
   - Create beautiful loading screens for improved your game
   - Easy to use and implement
