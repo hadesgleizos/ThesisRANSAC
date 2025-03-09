@@ -53,7 +53,7 @@ MonoBehaviour:
   minSpawnRate: 0.5
   maxSpawnRate: 1
   minSpeed: 0.4
-  maxSpeed: 0.9
+  maxSpeed: 1.2
   bigDropFactor: 0.7
   smallUpFactor: 3
   lowHealthThreshold: 0.5
