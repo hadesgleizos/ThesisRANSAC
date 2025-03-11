@@ -4,76 +4,36 @@ using UnityEngine;
 
 public class ScreenModeSetting : MonoBehaviour
 {
-    [SerializeField] private TMPro.TMP_Dropdown ScreenModeDropDown; // Ensure this is assigned in Unity Inspector!
+    [SerializeField] private TMPro.TMP_Dropdown ScreenModeDropDown;    //check name!
     private Resolutions resolutions;
-
+    // Start is called before the first frame update
     void Start()
     {
         resolutions = FindObjectOfType<Resolutions>();
-
-        // Check for a previous bugged resolution state
-        if (PlayerPrefs.GetInt("BuggedScreenMode", 0) == 1)
-        {
-            Debug.LogWarning("Bugged screen mode detected! Resetting to safe default (1280x720, Windowed).");
-            PlayerPrefs.SetInt("ScreenMode", 2); // Default to Windowed
-            PlayerPrefs.SetInt("BuggedScreenMode", 0); // Clear the flag
-            PlayerPrefs.Save();
-            ResetToSafeScreenMode();
-        }
-
-        int val = PlayerPrefs.GetInt("ScreenMode", 2); // Default to Windowed mode
-        ScreenModeDropDown.value = val;
-        ScreenModeDropDown.RefreshShownValue();
+        int val = PlayerPrefs.GetInt("ScreenMode");    //check name!
+        ScreenModeDropDown.value = val;    //check name!
     }
 
-    public void SetScreenMode(int index)
+    public void SetScreenMode(int index)    //check name!
     {
-        PlayerPrefs.SetInt("ScreenMode", index);
-        PlayerPrefs.Save(); // Save the preference
-
-        try
+        PlayerPrefs.SetInt("ScreenMode", index);    //check name!
+        if (index == 0)
         {
-            if (index == 0) // Borderless Fullscreen
-            {
-                Debug.Log("Setting Borderless Fullscreen");
-                Screen.SetResolution(resolutions.resolution.width, resolutions.resolution.height, true);
-                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            }
-            else if (index == 1) // Borderless Windowed
-            {
-                Debug.Log("Setting Borderless Windowed");
-                Screen.SetResolution(resolutions.resolution.width, resolutions.resolution.height, true);
-                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            }
-            else if (index == 2) // Windowed Mode (Fixed)
-            {
-                Debug.Log("Setting Windowed Mode");
-                Screen.SetResolution(resolutions.resolution.width, resolutions.resolution.height, false);
-                Screen.fullScreenMode = FullScreenMode.Windowed;
-            }
-
-            Debug.Log($"New Screen Mode: {Screen.fullScreenMode}, Resolution: {Screen.width}x{Screen.height}");
-            PlayerPrefs.SetInt("BuggedScreenMode", 0); // Mark as valid
-            PlayerPrefs.Save();
+            // Fullscreen - Using FullScreenWindow for better stability
+            Screen.SetResolution(resolutions.resolution.width, resolutions.resolution.height, true);
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         }
-        catch (System.Exception e)
+        if (index == 1)
         {
-            Debug.LogError($"Screen mode change failed! {e.Message}");
-            PlayerPrefs.SetInt("BuggedScreenMode", 1); // Mark screen mode as bugged
-            PlayerPrefs.Save();
-            ResetToSafeScreenMode();
+            // Borderless Window
+            Screen.SetResolution(resolutions.resolution.width, resolutions.resolution.height, true);
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         }
-    }
-
-    private void ResetToSafeScreenMode()
-    {
-        Debug.LogWarning("Resetting to 1280x720 (Windowed) to avoid game crash.");
-
-        Screen.SetResolution(1280, 720, false);
-        Screen.fullScreenMode = FullScreenMode.Windowed;
-
-        PlayerPrefs.SetInt("ScreenMode", 2); // Ensure Windowed mode
-        PlayerPrefs.SetInt("BuggedScreenMode", 0);
-        PlayerPrefs.Save();
+        if (index == 2)
+        {
+            // Windowed
+            Screen.SetResolution(resolutions.resolution.width, resolutions.resolution.height, false);
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
     }
 }

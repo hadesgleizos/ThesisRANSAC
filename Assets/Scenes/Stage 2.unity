@@ -2883,6 +2883,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eae55d284208c374aaef9454e110cb6a, type: 3}
+--- !u!114 &1105367752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1966849687265213420, guid: eae55d284208c374aaef9454e110cb6a, type: 3}
+  m_PrefabInstance: {fileID: 1105367751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f7ed87a2a9bb048a40fc8ab14fb1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1105367753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1223065205661287882, guid: eae55d284208c374aaef9454e110cb6a, type: 3}
+  m_PrefabInstance: {fileID: 1105367751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7415cbf88a2491941a672617821e9bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1112787813
 GameObject:
   m_ObjectHideFlags: 0
@@ -5937,6 +5959,14 @@ PrefabInstance:
     - target: {fileID: 5665346313030636177, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1105367753}
+    - target: {fileID: 5665346313030636177, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetResolution
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665346313030636177, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Resolutions, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6538198899176098079, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5957,6 +5987,10 @@ PrefabInstance:
     - target: {fileID: 7651872409756626505, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1105367752}
+    - target: {fileID: 7651872409756626505, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetScreenMode
       objectReference: {fileID: 0}
     - target: {fileID: 8484403312000122158, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
