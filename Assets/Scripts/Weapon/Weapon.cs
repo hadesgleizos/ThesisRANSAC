@@ -113,28 +113,38 @@ public class Weapon : MonoBehaviour
         }
 
         // Fire (if we have ammo, not reloading, and readyToShoot)
-        if (readyToShoot && bulletsLeft > 0 && !isReloading)
+        if (readyToShoot && !isReloading)
         {
-            switch (currentWeaponStats.firingMode)
+            if (bulletsLeft > 0)
             {
-                case FiringMode.Single:
-                    if (Input.GetKeyDown(KeyCode.Mouse0)) FireWeapon();
-                    break;
+                switch (currentWeaponStats.firingMode)
+                {
+                    case FiringMode.Single:
+                        if (Input.GetKeyDown(KeyCode.Mouse0)) FireWeapon();
+                        break;
 
-                case FiringMode.Burst:
-                    if (Input.GetKeyDown(KeyCode.Mouse0)) StartCoroutine(FireBurst());
-                    break;
+                    case FiringMode.Burst:
+                        if (Input.GetKeyDown(KeyCode.Mouse0)) StartCoroutine(FireBurst());
+                        break;
 
-                case FiringMode.Auto:
-                    if (Input.GetKey(KeyCode.Mouse0)) FireWeapon();
-                    break;
+                    case FiringMode.Auto:
+                        if (Input.GetKey(KeyCode.Mouse0)) FireWeapon();
+                        break;
+                }
             }
-        }
-
-        // Play empty sound if out of ammo
-        if (bulletsLeft <= 0 && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            SoundManager.Instance.PlaySound(currentWeaponStats.emptyMagazineSound);
+            else if (Input.GetKeyDown(KeyCode.Mouse0) && totalAmmo > 0)
+            {
+                // Play empty magazine sound
+                SoundManager.Instance.PlaySound(currentWeaponStats.emptyMagazineSound);
+                
+                // Start reload after a small delay
+                StartCoroutine(DelayedReload(0.3f));
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                // Just play empty sound if no total ammo left
+                SoundManager.Instance.PlaySound(currentWeaponStats.emptyMagazineSound);
+            }
         }
     }
 
@@ -300,7 +310,14 @@ private void FireWeapon()
     Invoke(nameof(ResetShot), currentWeaponStats.shootingDelay);
 }
 
-
+private IEnumerator DelayedReload(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    if (!isReloading && totalAmmo > 0)  // Double-check conditions
+    {
+        Reload();
+    }
+}
 
     private IEnumerator FireBurst()
     {
