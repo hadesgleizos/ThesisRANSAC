@@ -22,8 +22,8 @@ MonoBehaviour:
   bulletVelocity: 1000
   bulletLifetime: 0.5
   reloadTime: 2.2
-  magazineSize: 999
-  totalAmmo: 999
+  magazineSize: 30
+  totalAmmo: 120
   firingMode: 2
   muzzleEffectPrefab: {fileID: 2952334647116243401, guid: 1b5b2d716d0dfaa46bd20a07a4347d72, type: 3}
   shootingSound: {fileID: 8300000, guid: 4a3be9f3b234180459d0829c6afdb870, type: 3}
