@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 891853151}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: nextStageSceneName
-      value: Stage 1
+      value: Stage 3
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: stageCompletePanel
@@ -5846,6 +5846,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4190662654108726999, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1523320620}
+    - target: {fileID: 4190662654108726999, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
     - target: {fileID: 4614410576676446679, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -5949,6 +5957,14 @@ PrefabInstance:
     - target: {fileID: 7651872409756626505, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484403312000122158, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1523320620}
+    - target: {fileID: 8484403312000122158, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextStage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
