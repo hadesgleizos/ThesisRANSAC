@@ -1199,6 +1199,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1010469863}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: waveDuration
       value: 60
       objectReference: {fileID: 0}
@@ -1293,7 +1297,11 @@ PrefabInstance:
       objectReference: {fileID: 937309548}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: maxSpeed
-      value: 1.2
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+      propertyPath: minSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: playerPerformance

@@ -2585,6 +2585,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1523320620}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+      propertyPath: maxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+      propertyPath: minSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: playerPerformance
       value: 
       objectReference: {fileID: 891853151}
