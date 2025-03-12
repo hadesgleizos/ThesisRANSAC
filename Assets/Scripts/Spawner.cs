@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     [Header("UI Elements")]
     public GameObject ScoreScreen;  // Reference to the Score Screen UI
     public TMP_Text ScorePoints;    // Reference to the Score text
+    public TMP_Text WaveText;      // Reference to display current wave
+    public TMP_Text TimerText;     // Reference to display timer
 
     // NEW: Reference to PlayerPerformance
     public PlayerPerformance playerPerformance;
@@ -64,6 +66,9 @@ public string baseSceneName = "BaseScene";
 public string restartSceneName = "Stage 2";  // Used by RestartGame
 public string nextStageSceneName = "Stage 3"; // Used by NextStage
 
+    private bool inCooldown = false; // Add this with other private variables
+    private float cooldownTimeRemaining = 0f; // Add this with other private variables
+
     private void Start()
     {
         // NEW: If no PlayerPerformance assigned in Inspector, try finding it
@@ -88,6 +93,13 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
             // Start new wave
             currentWave++;
             spawning = true;
+            inCooldown = false;
+            
+            // Update wave display
+            if (WaveText != null)
+            {
+                WaveText.text = $"Wave: {currentWave}/{totalWaves}";
+            }
 
             // Capture metrics at wave start
             waveStartKillCount = totalKillCount;
@@ -105,12 +117,18 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
             OnWaveEnd?.Invoke(currentWave);
             Debug.Log($"Wave {currentWave} ended!");
 
-            // Wait for cooldown before next wave
-            yield return new WaitForSeconds(cooldownDuration);
+            // Start cooldown period
+            if (currentWave < totalWaves) // Only show cooldown if not the last wave
+            {
+                inCooldown = true;
+                cooldownTimeRemaining = cooldownDuration;
+                yield return new WaitForSeconds(cooldownDuration);
+                inCooldown = false;
+            }
         }
 
         Debug.Log("All waves completed!");
-        ShowScoreScreen(); // Display final score
+        ShowScoreScreen();
     }
 
     private void ShowScoreScreen()
@@ -181,6 +199,31 @@ public void NextStage()
         if (spawning)
         {
             totalElapsedTime += Time.deltaTime;
+            
+            // Update timer display during wave
+            if (TimerText != null)
+            {
+                float timeRemaining = waveDuration - (totalElapsedTime - waveStartTime);
+                int minutes = Mathf.FloorToInt(timeRemaining / 60f);
+                int seconds = Mathf.FloorToInt(timeRemaining % 60f);
+                TimerText.text = $"{minutes:00}:{seconds:00}";
+            }
+        }
+        else if (inCooldown)
+        {
+            // Update cooldown timer
+            cooldownTimeRemaining -= Time.deltaTime;
+            if (TimerText != null)
+            {
+                int seconds = Mathf.CeilToInt(cooldownTimeRemaining);
+                TimerText.text = $"Get Ready in: {seconds}";
+            }
+            
+            // Update wave text to show next wave
+            if (WaveText != null)
+            {
+                WaveText.text = $"Preparing Wave {currentWave + 1}";
+            }
         }
     }
 
