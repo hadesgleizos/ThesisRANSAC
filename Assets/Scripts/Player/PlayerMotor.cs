@@ -46,8 +46,19 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
+        // Get the camera's forward and right vectors, but ignore Y component
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+        forward.y = 0;
+        right.y = 0;
+        forward.Normalize();
+        right.Normalize();
+
+        // Calculate movement direction relative to camera
+        Vector3 desiredMove = right * moveDirection.x + forward * moveDirection.z;
+
         // Apply movement
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        controller.Move(desiredMove * speed * Time.deltaTime);
 
         // Apply gravity
         playerVelocity.y += gravity * Time.deltaTime;
