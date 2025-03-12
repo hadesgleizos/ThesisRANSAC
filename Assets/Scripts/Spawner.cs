@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;  // Import TextMeshPro for UI
 using UnityEngine.SceneManagement;  // For restarting the game
+using System.Linq; // Import Linq for ToList()
 
 public class Spawner : MonoBehaviour
 {
@@ -117,11 +118,12 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
             OnWaveEnd?.Invoke(currentWave);
             Debug.Log($"Wave {currentWave} ended!");
 
-            // Start cooldown period
+            // Start cooldown period and despawn all zombies
             if (currentWave < totalWaves) // Only show cooldown if not the last wave
             {
                 inCooldown = true;
                 cooldownTimeRemaining = cooldownDuration;
+                DespawnAllZombies(); // Add this line to despawn zombies
                 yield return new WaitForSeconds(cooldownDuration);
                 inCooldown = false;
             }
@@ -283,5 +285,17 @@ public void NextStage()
     public int GetActiveSpawnerCount()
     {
         return spawnPoints.Count;
+    }
+
+    private void DespawnAllZombies()
+    {
+        foreach (GameObject zombie in activeZombies.ToList())
+        {
+            if (zombie != null)
+            {
+                Destroy(zombie);
+            }
+        }
+        activeZombies.Clear();
     }
 }
