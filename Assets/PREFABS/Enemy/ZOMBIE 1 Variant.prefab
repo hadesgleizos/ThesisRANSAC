@@ -689,16 +689,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58db196bbe8471d458923c6e8ed5d5ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepInterval: 0.5
-  footstepAudioSource: {fileID: 0}
-  defaultFootstepClip: {fileID: 0}
-  footstepVolume: 0.7
-  raycastOrigin: {fileID: 0}
-  raycastDistance: 10
   damage: 8
   attackRange: 2
   attackCooldown: 0.5
   health: 100
+  rotationSpeed: 10
+  acceleration: 8
+  stoppingDistance: 1.5
 --- !u!195 &9082330197037905796
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -708,7 +705,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6401112548132156531}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -718,7 +715,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.8
-  m_BaseOffset: 0
+  m_BaseOffset: 0.2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &2464596213232995248
@@ -730,8 +727,8 @@ Rigidbody:
   m_GameObject: {fileID: 6401112548132156531}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.8
+  m_AngularDrag: 0.2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -745,9 +742,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &6401230141955946413 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1713718691776696, guid: 46e3fad9d63edad4e95366d675950f78, type: 3}

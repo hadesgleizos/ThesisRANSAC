@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLook : MonoBehaviour
 {
     public Camera cam;
+    public Slider sensitivitySlider;  // Single slider for both sensitivities
     private float xRotation = 0f;
     public float xSensitivity = 30f;
     public float ySensitivity = 30f;
@@ -14,6 +16,21 @@ public class PlayerLook : MonoBehaviour
         // Lock and hide the cursor when the game starts
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Initialize sensitivity slider
+        if (sensitivitySlider != null)
+        {
+            sensitivitySlider.minValue = 1f;
+            sensitivitySlider.maxValue = 100f;
+            sensitivitySlider.value = xSensitivity; // Use initial sensitivity value
+            sensitivitySlider.onValueChanged.AddListener(UpdateSensitivity);
+        }
+    }
+
+    private void UpdateSensitivity(float value)
+    {
+        xSensitivity = value;
+        ySensitivity = value;
     }
 
     // Process the input to rotate the camera and player

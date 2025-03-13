@@ -18,6 +18,10 @@ public class PlayerMotor : MonoBehaviour
 
     private Vector2 movementInput; // Cache the movement input
 
+    public float groundedGravity = -2f;
+    public float gravityMultiplier = 2f;
+    public float maxFallSpeed = -20f;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -42,18 +46,37 @@ public class PlayerMotor : MonoBehaviour
 
     public void ProcessMove(Vector2 input)
     {
+        // Handle grounded state and gravity
+        if (isGrounded && playerVelocity.y < 0)
+        {
+            playerVelocity.y = groundedGravity;
+        }
+        else
+        {
+            // Apply stronger gravity when falling
+            float currentGravity = gravity * (playerVelocity.y < 0 ? gravityMultiplier : 1f);
+            playerVelocity.y += currentGravity * Time.deltaTime;
+            
+            // Clamp fall speed
+            playerVelocity.y = Mathf.Max(playerVelocity.y, maxFallSpeed);
+        }
+
+        // Handle horizontal movement
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-        // Apply movement
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+        forward.y = 0;
+        right.y = 0;
+        forward.Normalize();
+        right.Normalize();
 
-        // Apply gravity
-        playerVelocity.y += gravity * Time.deltaTime;
-        if (isGrounded && playerVelocity.y < 0)
-            playerVelocity.y = -2f;
-
+        Vector3 desiredMove = right * moveDirection.x + forward * moveDirection.z;
+        
+        // Apply movements separately to maintain better control
+        controller.Move(desiredMove * speed * Time.deltaTime);
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
@@ -66,7 +89,9 @@ public class PlayerMotor : MonoBehaviour
     {
         if (isGrounded)
         {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            // Reset the grounded state to prevent double jumps
+            isGrounded = false;
         }
     }
 

@@ -20,6 +20,11 @@ public class Zombie : MonoBehaviour
     private bool isAttacking = false;     // Flag to track if zombie is attacking
     public float health = 100f;
 
+    [Header("Movement Settings")]
+    public float rotationSpeed = 10f;
+    public float acceleration = 8f;
+    public float stoppingDistance = 1.5f;
+
     void Start()
     {
         // Get the NavMeshAgent component
@@ -40,7 +45,20 @@ public class Zombie : MonoBehaviour
         // Optional: Set an initial speed
         if (agent != null)
         {
-            agent.speed = 3.5f; // Example speed, adjust as needed
+            // Configure NavMeshAgent for smoother movement
+            agent.speed = 3.5f;
+            agent.angularSpeed = 120;
+            agent.acceleration = acceleration;
+            agent.stoppingDistance = stoppingDistance;
+            agent.radius = 0.5f;
+            agent.height = 2f;
+            agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+            agent.autoRepath = true;
+            
+            // Tune these values to prevent bouncing
+            agent.autoBraking = true;
+            agent.stoppingDistance = 0.5f;
+            
             Debug.Log($"Initial zombie speed set to: {agent.speed}"); // Debug log
         }
         playerPerformance = FindObjectOfType<PlayerPerformance>();
@@ -58,12 +76,26 @@ public class Zombie : MonoBehaviour
     {
         if (isDead || isAttacking) return; // If dead or attacking, don't move
 
-        if (player != null)
+        if (player != null && agent != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            // Always set the destination to the player's position for chasing
-            agent.SetDestination(player.position);
+            // Smoothly rotate towards the player
+            Vector3 direction = (player.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+
+            // Set destination only if distance is significant
+            if (distanceToPlayer > agent.stoppingDistance)
+            {
+                agent.SetDestination(player.position);
+            }
+
+            // Update animator if you have movement animations
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", agent.velocity.magnitude / agent.speed);
+            }
 
             if (distanceToPlayer <= attackRange && canAttack)
             {
@@ -189,6 +221,8 @@ private IEnumerator AttackPlayer()
         if (agent != null)
         {
             agent.speed = newSpeed;
+            // Adjust acceleration based on speed to maintain smooth movement
+            agent.acceleration = acceleration * (newSpeed / 3.5f);
             Debug.Log($"Zombie speed set to: {newSpeed}"); // Debug log
         }
     }
