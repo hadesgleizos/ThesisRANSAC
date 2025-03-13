@@ -4519,6 +4519,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Resolutions, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7145643417917422201, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145643417917422201, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7168808067813295696, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -295
@@ -4547,6 +4555,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 304166535}
+    - target: {fileID: 8451657588963403217, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451657588963403217, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8484403312000122158, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

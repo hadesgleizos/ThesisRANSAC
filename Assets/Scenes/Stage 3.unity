@@ -6195,6 +6195,22 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4269538521825047592, guid: e5b14721af8c55849b7401412c6fe79f, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269538521825047592, guid: e5b14721af8c55849b7401412c6fe79f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375351700096010809, guid: e5b14721af8c55849b7401412c6fe79f, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375351700096010809, guid: e5b14721af8c55849b7401412c6fe79f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5529115468795868109, guid: e5b14721af8c55849b7401412c6fe79f, type: 3}
       propertyPath: LocalPlayer
       value: 
