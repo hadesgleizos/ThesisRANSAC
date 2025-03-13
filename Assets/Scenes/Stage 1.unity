@@ -2253,6 +2253,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 111859521037871163, guid: 565af319516aecc49bbd8e123501a70e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745044971398774244, guid: 565af319516aecc49bbd8e123501a70e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.965
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745044971398774244, guid: 565af319516aecc49bbd8e123501a70e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.256
+      objectReference: {fileID: 0}
     - target: {fileID: 5251075170886561065, guid: 565af319516aecc49bbd8e123501a70e, type: 3}
       propertyPath: m_Name
       value: ItemSpawner
