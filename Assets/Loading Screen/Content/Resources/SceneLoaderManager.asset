@@ -82,6 +82,14 @@ MonoBehaviour:
     LoadingType: 0
     FakeLoadingTime: 2
     Backgrounds: []
+  - SceneName: Stage 3
+    SceneAsset: {fileID: 102900000, guid: 88992e3f8cb79c64ab37a3ee062b67b3, type: 3}
+    DisplayName: Stage 3
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
   tipsList:
   - Create beautiful loading screens for improved your game
   - Easy to use and implement
