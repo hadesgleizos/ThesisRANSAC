@@ -686,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 5281483552267475269}
     - target: {fileID: 3431268583521606227, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: m_SlopeLimit
-      value: 80
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: gravity
