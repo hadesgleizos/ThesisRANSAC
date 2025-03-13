@@ -17,12 +17,16 @@ public class PlayerLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        // Load saved sensitivity or use default value
+        xSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 30f);
+        ySensitivity = xSensitivity;
+
         // Initialize sensitivity slider
         if (sensitivitySlider != null)
         {
             sensitivitySlider.minValue = 1f;
             sensitivitySlider.maxValue = 100f;
-            sensitivitySlider.value = xSensitivity; // Use initial sensitivity value
+            sensitivitySlider.value = xSensitivity; // Use loaded sensitivity value
             sensitivitySlider.onValueChanged.AddListener(UpdateSensitivity);
         }
     }
@@ -31,6 +35,8 @@ public class PlayerLook : MonoBehaviour
     {
         xSensitivity = value;
         ySensitivity = value;
+        PlayerPrefs.SetFloat("MouseSensitivity", value);
+        PlayerPrefs.Save();
     }
 
     // Process the input to rotate the camera and player
