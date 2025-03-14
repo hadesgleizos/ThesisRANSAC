@@ -6,8 +6,10 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
 
-    // General Sounds
+    // Audio Sources
     public AudioSource generalAudioSource;
+    public AudioSource musicAudioSource;
+    public AudioSource ambienceAudioSource;
 
     // Weapon Sounds
     public AudioClip pistolShootingSound;
@@ -21,6 +23,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip grassFootstep;
     public AudioClip concreteFootstep;
     public AudioClip metalFootstep;
+
+    // Background Music
+    public AudioClip mainMenuMusic;
+    public AudioClip[] stageAmbientSounds;
 
     private void Awake()
     {
@@ -41,8 +47,6 @@ public class SoundManager : MonoBehaviour
             generalAudioSource.PlayOneShot(clip);
         }
     }
-
-    
 
     public void PlayFootstep(string groundType)
     {
@@ -69,6 +73,58 @@ public class SoundManager : MonoBehaviour
         if (clipToPlay != null)
         {
             PlaySound(clipToPlay);
+        }
+    }
+
+    public void PlayMainMenuMusic()
+    {
+        if (mainMenuMusic != null && musicAudioSource != null)
+        {
+            musicAudioSource.clip = mainMenuMusic;
+            musicAudioSource.loop = true;
+            musicAudioSource.Play();
+        }
+    }
+
+    public void PlayStageAmbience(int stageIndex)
+    {
+        if (stageAmbientSounds != null && stageIndex < stageAmbientSounds.Length && ambienceAudioSource != null)
+        {
+            ambienceAudioSource.clip = stageAmbientSounds[stageIndex];
+            ambienceAudioSource.loop = true;
+            ambienceAudioSource.Play();
+        }
+    }
+
+    public void StopMusic()
+    {
+        if (musicAudioSource != null)
+        {
+            musicAudioSource.Stop();
+        }
+    }
+
+    public void StopAmbience()
+    {
+        if (ambienceAudioSource != null)
+        {
+            ambienceAudioSource.Stop();
+        }
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        if (musicAudioSource != null)
+        {
+            musicAudioSource.volume = Mathf.Clamp01(volume);
+        }
+    }
+
+    public void SetAmbienceVolume(float volume)
+    {
+        if (ambienceAudioSource != null)
+        {
+            ambienceAudioSource.volume = Mathf.Clamp01(volume);
         }
     }
 }
