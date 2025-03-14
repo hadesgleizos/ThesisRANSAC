@@ -25,6 +25,13 @@ public class Zombie : MonoBehaviour
     public float acceleration = 8f;
     public float stoppingDistance = 1.5f;
 
+    [Header("Sound Settings")]
+    public float idleSoundInterval = 5f;
+    public float idleSoundVolume = 0.7f;
+    public float attackSoundVolume = 1f;
+    public float deathSoundVolume = 1f;
+    private float nextIdleSoundTime;
+
     void Start()
     {
         // Get the NavMeshAgent component
@@ -67,6 +74,8 @@ public class Zombie : MonoBehaviour
             Debug.LogWarning("PlayerPerformance not found in scene!");
         }
         
+        nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
+        StartCoroutine(PlayIdleSoundsRoutine());
 
         // Start coroutine to update speed regularly
         StartCoroutine(UpdateSpeedRoutine());
@@ -104,42 +113,63 @@ public class Zombie : MonoBehaviour
         }
     }
 
-private IEnumerator AttackPlayer()
-{
-    if (!agent || !agent.isOnNavMesh) yield break;
-
-    isAttacking = true;
-    canAttack = false; 
-    agent.isStopped = true;
-
-    animator.SetTrigger("Attack");
-    yield return new WaitForSeconds(0.5f);
-
-    if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
+    private IEnumerator PlayIdleSoundsRoutine()
     {
-        PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
-        if (playerPerformance != null)
+        while (!isDead)
         {
-            playerPerformance.TakeDamage(damage, gameObject); // attacker reference passed here
-
-            // Call SetIndicator to show directional damage indicator
-            gameObject.SetIndicator();
-            
-            Debug.Log($"Zombie dealt {damage} damage to the player.");
+            if (Time.time >= nextIdleSoundTime)
+            {
+                SoundManager.Instance.PlayRandomZombieSound(
+                    SoundManager.Instance.zombieIdleSounds, 
+                    idleSoundVolume
+                );
+                nextIdleSoundTime = Time.time + idleSoundInterval + Random.Range(-1f, 1f);
+            }
+            yield return new WaitForSeconds(1f);
         }
     }
 
-    yield return new WaitForSeconds(attackCooldown);
-
-    if (agent && agent.isOnNavMesh && !isDead)
+    private IEnumerator AttackPlayer()
     {
-        agent.isStopped = false;
+        if (!agent || !agent.isOnNavMesh) yield break;
+
+        isAttacking = true;
+        canAttack = false; 
+        agent.isStopped = true;
+
+        // Play attack sound at the start of attack animation
+        SoundManager.Instance.PlayRandomZombieSound(
+            SoundManager.Instance.zombieAttackSounds, 
+            attackSoundVolume
+        );
+
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.5f);
+
+        if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
+        {
+            PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
+            if (playerPerformance != null)
+            {
+                playerPerformance.TakeDamage(damage, gameObject); // attacker reference passed here
+
+                // Call SetIndicator to show directional damage indicator
+                gameObject.SetIndicator();
+                
+                Debug.Log($"Zombie dealt {damage} damage to the player.");
+            }
+        }
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        if (agent && agent.isOnNavMesh && !isDead)
+        {
+            agent.isStopped = false;
+        }
+
+        canAttack = true;
+        isAttacking = false;
     }
-
-    canAttack = true;
-    isAttacking = false;
-}
-
 
     public void TakeDamage(float damageAmount, CollisionType hitLocation)
     {
@@ -170,6 +200,12 @@ private IEnumerator AttackPlayer()
     private void Die()
     {
         isDead = true;
+
+        // Play death sound
+        SoundManager.Instance.PlayRandomZombieSound(
+            SoundManager.Instance.zombieDeathSounds, 
+            deathSoundVolume
+        );
 
         if (agent != null)
         {

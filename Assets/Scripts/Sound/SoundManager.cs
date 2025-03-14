@@ -28,6 +28,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip mainMenuMusic;
     public AudioClip[] stageAmbientSounds;
 
+    // Zombie Sounds
+    public AudioClip[] zombieIdleSounds;
+    public AudioClip[] zombieAttackSounds;
+    public AudioClip[] zombieDeathSounds;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -125,6 +130,15 @@ public class SoundManager : MonoBehaviour
         if (ambienceAudioSource != null)
         {
             ambienceAudioSource.volume = Mathf.Clamp01(volume);
+        }
+    }
+
+    public void PlayRandomZombieSound(AudioClip[] clips, float volumeMultiplier = 1f)
+    {
+        if (clips != null && clips.Length > 0 && generalAudioSource != null)
+        {
+            AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+            generalAudioSource.PlayOneShot(randomClip, volumeMultiplier);
         }
     }
 }
