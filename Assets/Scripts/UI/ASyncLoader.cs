@@ -37,6 +37,9 @@ public class ASyncLoader : MonoBehaviour
             loadingSlider.value = progressValue;
             yield return null;
         }
+
+                loadingSlider.value = 1f;
+        loadingScreen.SetActive(false);
     }
     public void LoadBaseThenStageBtn(string stageToLoad)
     {
