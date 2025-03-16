@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource generalAudioSource;
     public AudioSource musicAudioSource;
     public AudioSource ambienceAudioSource;
+    public AudioSource zombieAudioSource;  // Add this line
 
     // Weapon Sounds
     public AudioClip pistolShootingSound;
@@ -133,12 +134,22 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    // Modify the PlayRandomZombieSound method
     public void PlayRandomZombieSound(AudioClip[] clips, float volumeMultiplier = 1f)
     {
-        if (clips != null && clips.Length > 0 && generalAudioSource != null)
+        if (clips != null && clips.Length > 0 && zombieAudioSource != null)
         {
             AudioClip randomClip = clips[Random.Range(0, clips.Length)];
-            generalAudioSource.PlayOneShot(randomClip, volumeMultiplier);
+            zombieAudioSource.PlayOneShot(randomClip, volumeMultiplier);
+        }
+    }
+
+    // Add this new method
+    public void SetZombieVolume(float volume)
+    {
+        if (zombieAudioSource != null)
+        {
+            zombieAudioSource.volume = Mathf.Clamp01(volume);
         }
     }
 }

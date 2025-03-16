@@ -27,7 +27,7 @@ public class Zombie : MonoBehaviour
 
     [Header("Sound Settings")]
     public float idleSoundInterval = 5f;
-    public float idleSoundVolume = 0.7f;
+    public float idleSoundVolume = 1f;
     public float attackSoundVolume = 1f;
     public float deathSoundVolume = 1f;
     private float nextIdleSoundTime;
@@ -120,8 +120,7 @@ public class Zombie : MonoBehaviour
             if (Time.time >= nextIdleSoundTime)
             {
                 SoundManager.Instance.PlayRandomZombieSound(
-                    SoundManager.Instance.zombieIdleSounds, 
-                    idleSoundVolume
+                    SoundManager.Instance.zombieIdleSounds
                 );
                 nextIdleSoundTime = Time.time + idleSoundInterval + Random.Range(-1f, 1f);
             }
@@ -139,8 +138,7 @@ public class Zombie : MonoBehaviour
 
         // Play attack sound at the start of attack animation
         SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieAttackSounds, 
-            attackSoundVolume
+            SoundManager.Instance.zombieAttackSounds
         );
 
         animator.SetTrigger("Attack");
@@ -203,8 +201,7 @@ public class Zombie : MonoBehaviour
 
         // Play death sound
         SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieDeathSounds, 
-            deathSoundVolume
+            SoundManager.Instance.zombieDeathSounds
         );
 
         if (agent != null)
