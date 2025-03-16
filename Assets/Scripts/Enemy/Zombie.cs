@@ -32,6 +32,10 @@ public class Zombie : MonoBehaviour
     public float deathSoundVolume = 1f;
     private float nextIdleSoundTime;
 
+    [Header("Debug Visualization")]
+    public bool showAttackRange = true;
+    public Color attackRangeColor = Color.red;
+
     void Start()
     {
         // Get the NavMeshAgent component
@@ -136,28 +140,25 @@ public class Zombie : MonoBehaviour
         canAttack = false; 
         agent.isStopped = true;
 
-        // Play attack sound at the start of attack animation
-        SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieAttackSounds
-        );
-
-        animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.5f);
-
+        // Apply damage immediately if in range
         if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
         {
             PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
             if (playerPerformance != null)
             {
-                playerPerformance.TakeDamage(damage, gameObject); // attacker reference passed here
-
-                // Call SetIndicator to show directional damage indicator
+                playerPerformance.TakeDamage(damage, gameObject);
                 gameObject.SetIndicator();
-                
                 Debug.Log($"Zombie dealt {damage} damage to the player.");
             }
         }
 
+        // Play attack sound and animation
+        SoundManager.Instance.PlayRandomZombieSound(
+            SoundManager.Instance.zombieAttackSounds
+        );
+        animator.SetTrigger("Attack");
+
+        // Wait for attack animation
         yield return new WaitForSeconds(attackCooldown);
 
         if (agent && agent.isOnNavMesh && !isDead)
@@ -257,6 +258,45 @@ public class Zombie : MonoBehaviour
             // Adjust acceleration based on speed to maintain smooth movement
             agent.acceleration = acceleration * (newSpeed / 3.5f);
             Debug.Log($"Zombie speed set to: {newSpeed}"); // Debug log
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (showAttackRange)
+        {
+            Gizmos.color = attackRangeColor;
+            
+            // Draw a horizontal circle at zombie's position
+            Vector3 position = transform.position;
+            Vector3 forward = transform.forward;
+            
+            // Draw main circle
+            int segments = 32;
+            float angleStep = 360f / segments;
+            for (int i = 0; i < segments; i++)
+            {
+                float angle1 = i * angleStep;
+                float angle2 = (i + 1) * angleStep;
+                
+                Vector3 point1 = position + new Vector3(
+                    Mathf.Sin(angle1 * Mathf.Deg2Rad) * attackRange,
+                    0f,
+                    Mathf.Cos(angle1 * Mathf.Deg2Rad) * attackRange
+                );
+                
+                Vector3 point2 = position + new Vector3(
+                    Mathf.Sin(angle2 * Mathf.Deg2Rad) * attackRange,
+                    0f,
+                    Mathf.Cos(angle2 * Mathf.Deg2Rad) * attackRange
+                );
+                
+                Gizmos.DrawLine(point1, point2);
+            }
+            
+            // Draw forward direction indicator
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(position, forward * attackRange);
         }
     }
 }
