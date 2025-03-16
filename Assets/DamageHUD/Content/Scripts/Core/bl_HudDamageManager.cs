@@ -41,6 +41,12 @@ public class bl_HudDamageManager : MonoBehaviour {
     [SerializeField] private string baseSceneName = "BaseScene";
     [SerializeField] private string restartSceneName = "Stage 2";
 
+    [Header("Death")]
+    [SerializeField] private Animator deathHUDAnimator;
+    [SerializeField] private float deathFreezeDelay = 0.2f; // Add this field
+    private bool isDead = false;
+    private Coroutine freezeCoroutine;
+
     private float Alpha = 0;
     private float Health = 100;
     private float MaxHealth = 100;
@@ -124,8 +130,82 @@ public class bl_HudDamageManager : MonoBehaviour {
     /// </summary>
     void OnDie()
     {
-        //Active the death hud.
+        if (isDead) return;
+        isDead = true;
+
+        // Show death HUD before freezing
         DeathHUD.SetActive(true);
+
+        // Set up Death HUD animation to work with frozen time
+        if (deathHUDAnimator != null)
+        {
+            // Make sure the animator updates independently of time scale
+            deathHUDAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            
+            // Reset animator state
+            deathHUDAnimator.Rebind();
+            deathHUDAnimator.Update(0f);
+            
+            // Play the death animation
+            deathHUDAnimator.Play("DeathHUDAnimation", 0, 0f);
+        }
+
+        // Configure all UI elements in death HUD
+        foreach (var canvas in DeathHUD.GetComponentsInChildren<CanvasGroup>(true))
+        {
+            canvas.interactable = true;
+            canvas.blocksRaycasts = true;
+            canvas.alpha = 1f;
+        }
+
+        // Make sure all UI animators use unscaled time
+        foreach (var animator in DeathHUD.GetComponentsInChildren<Animator>(true))
+        {
+            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        }
+
+        // Disable player input
+        DisablePlayerInput();
+
+        // Start freeze coroutine with delay
+        if (freezeCoroutine != null)
+            StopCoroutine(freezeCoroutine);
+        freezeCoroutine = StartCoroutine(FreezeGameWithDelay());
+    }
+
+    private IEnumerator FreezeGameWithDelay()
+    {
+        // Wait for the specified delay
+        yield return new WaitForSeconds(deathFreezeDelay);
+        
+        // Freeze the game
+        Time.timeScale = 0f;
+    }
+
+    /// <summary>
+    /// Disables player input components when dead
+    /// </summary>
+    private void DisablePlayerInput()
+    {
+        // Find the player GameObject (assuming it has a "Player" tag)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            // Disable character controller if present
+            var characterController = player.GetComponent<CharacterController>();
+            if (characterController != null)
+                characterController.enabled = false;
+
+            // Disable rigidbody if present
+            var rigidbody = player.GetComponent<Rigidbody>();
+            if (rigidbody != null)
+                rigidbody.isKinematic = true;
+
+            // Disable any custom player input script
+            var playerInput = player.GetComponent<MonoBehaviour>();
+            if (playerInput != null)
+                playerInput.enabled = false;
+        }
     }
 
     /// <summary>
@@ -233,7 +313,8 @@ public class bl_HudDamageManager : MonoBehaviour {
     /// </summary>
     public void Restart()
     {
-        Time.timeScale = 1;
+        isDead = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
         SceneManager.LoadScene(restartSceneName, LoadSceneMode.Additive);
     }
