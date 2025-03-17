@@ -1371,7 +1371,7 @@ PrefabInstance:
     - target: {fileID: 1131965155360532745, guid: d5156de67fc124d46920fdfb4ec1d592, type: 3}
       propertyPath: ammoDisplay
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 714621303}
     - target: {fileID: 1783551389653685051, guid: d5156de67fc124d46920fdfb4ec1d592, type: 3}
       propertyPath: m_Name
       value: AmmoManager
@@ -1499,6 +1499,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 410629153053744964, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
   m_PrefabInstance: {fileID: 687400652}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &714621303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4614410576676446679, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+  m_PrefabInstance: {fileID: 219415144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &735629636
 PrefabInstance:
   m_ObjectHideFlags: 0
