@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8653187242283928636}
   m_Layer: 0
   m_Name: SoundManager
-  m_TagString: Untagged
+  m_TagString: Concrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generalAudioSource: {fileID: 1148183435102157072}
+  musicAudioSource: {fileID: 0}
+  ambienceAudioSource: {fileID: 0}
+  zombieAudioSource: {fileID: 0}
   pistolShootingSound: {fileID: 8300000, guid: 6094667f57385274696cad17a6648ecc, type: 3}
   rifleShootingSound: {fileID: 8300000, guid: 4a3be9f3b234180459d0829c6afdb870, type: 3}
   reloadSound: {fileID: 8300000, guid: c0f699cce67b1624099d0b2fbae9f808, type: 3}
@@ -59,8 +62,21 @@ MonoBehaviour:
   horrorImpactSound: {fileID: 8300000, guid: aee6cbeb28b6b884ca174d07bf661a8a, type: 3}
   dirtFootstep: {fileID: 8300000, guid: 51babde087887844192189586451a8c4, type: 3}
   grassFootstep: {fileID: 8300000, guid: cf0f3950f5c009246b186e56aec14040, type: 3}
-  concreteFootstep: {fileID: 0}
+  concreteFootstep: {fileID: 8300000, guid: c73661c07b818e14384535c342e57437, type: 3}
   metalFootstep: {fileID: 0}
+  mainMenuMusic: {fileID: 0}
+  stageAmbientSounds: []
+  zombieIdleSounds:
+  - {fileID: 8300000, guid: f85db8235bdc81245b48694e82a68767, type: 3}
+  - {fileID: 8300000, guid: e1133f43bc8820b44bb22072fc849ab3, type: 3}
+  - {fileID: 8300000, guid: 1976d2d5a8f74344aa3cd8b829c91031, type: 3}
+  zombieAttackSounds:
+  - {fileID: 8300000, guid: 7e0f1c0d99ad8da4daad3eb2a0b19fd9, type: 3}
+  - {fileID: 8300000, guid: 9cc5353d3594f0c48a4eb836fc23dd97, type: 3}
+  - {fileID: 8300000, guid: 47d6daaa17bd6fe42a4310e3d3b2fcbc, type: 3}
+  zombieDeathSounds:
+  - {fileID: 8300000, guid: d0c3b0bfaa0f8f64c889d093727bee35, type: 3}
+  - {fileID: 8300000, guid: 595f14f7426d04b48adb080409d3a156, type: 3}
 --- !u!82 &1148183435102157072
 AudioSource:
   m_ObjectHideFlags: 0
