@@ -6,8 +6,10 @@ public class PlayerPerformance : MonoBehaviour
     public float playerHealth = 100f;
     public int zombiesKilled = 0;
     public float gameTime = 0f;
-    public int pointsPerKill = 10; // Customizable points per kill
+    public int pointsPerKill = 10; // Points for regular zombie kills
+    public int pointsPerBossKill = 100; // Points for boss kills
     private int currentScore = 0; // Tracks the current score
+    private int bossesKilled = 0; // Track number of bosses killed
 
     private uiManager uiManager;
 
@@ -78,6 +80,26 @@ public class PlayerPerformance : MonoBehaviour
         Spawner.Instance?.IncrementKillCount();
 
         Debug.Log($"Zombies Killed: {zombiesKilled}, Current Score: {currentScore}");
+    }
+
+    // Add new method for boss kills
+    public void BossKilled()
+    {
+        bossesKilled++;
+        currentScore += pointsPerBossKill;
+
+        if (uiManager != null)
+        {
+            uiManager.setScore(currentScore.ToString());
+        }
+
+        Debug.Log($"Boss killed! +{pointsPerBossKill} points! Current Score: {currentScore}");
+    }
+
+    // Optional: Add method to get boss kill count
+    public int GetBossKillCount()
+    {
+        return bossesKilled;
     }
 
     public float GetHealth()

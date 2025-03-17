@@ -152,7 +152,6 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
                     yield return new WaitForSeconds(0.5f);
                 }
                 spawning = false;
-                ShowScoreScreen(); // Show score screen after boss is defeated
             }
 
             OnWaveEnd?.Invoke(currentWave);
@@ -381,7 +380,23 @@ public void NextStage()
             RemoveZombie(currentBoss);
             currentBoss = null;
             Debug.Log("Boss defeated!");
-            ShowScoreScreen(); // Show score screen immediately when boss is defeated
+            
+            // Disable timer text
+            if (TimerText != null)
+            {
+                //TimerText.text = "";  // Clear the text
+                // Or alternatively:
+                TimerText.gameObject.SetActive(false);  // Hide the timer completely
+            }
+            
+            // Add delay before showing score screen to match boss destroy delay
+            StartCoroutine(ShowScoreScreenDelayed(5f)); // 5f matches the boss destroy delay
         }
+    }
+
+    private IEnumerator ShowScoreScreenDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ShowScoreScreen();
     }
 }

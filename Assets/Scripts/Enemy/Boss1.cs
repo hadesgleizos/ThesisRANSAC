@@ -12,18 +12,20 @@ public class Boss1 : MonoBehaviour
     private PlayerPerformance playerPerformance;
     private float updateInterval = 1.0f;
     private Animator animator;
-    public float damage = 50f;            // Default boss damage (you can modify)
-    public float attackRange = 3f;        // Default boss attack range (you can modify)
-    public float attackCooldown = 3f;     // Default boss attack cooldown (you can modify)
     private bool canAttack = true;
     private bool isDead = false;
     private bool isAttacking = false;
-    public float health = 500f;           // Default boss health (you can modify)
+
+    [Header("Boss Stats")]
+    [SerializeField] private float health = 500f;
+    [SerializeField] private float damage = 50f;
+    [SerializeField] private float attackRange = 3f;
+    [SerializeField] private float attackCooldown = 3f;
 
     [Header("Movement Settings")]
-    public float rotationSpeed = 8f;
-    public float acceleration = 6f;
-    public float stoppingDistance = 2f;
+    public float rotationSpeed = 10f;
+    public float acceleration = 8f;
+    public float stoppingDistance = 1.5f;
     public float baseSpeed = 5f;          // Base movement speed for the boss
 
     [Header("Sound Settings")]
@@ -47,6 +49,10 @@ public class Boss1 : MonoBehaviour
             Debug.LogError("Animator component missing from boss!");
         }
         
+        // Set the same tag and layer as zombies
+        gameObject.tag = "Zombie";
+        gameObject.layer = LayerMask.NameToLayer("Zombie");
+        
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spawner = FindObjectOfType<Spawner>();
 
@@ -61,6 +67,7 @@ public class Boss1 : MonoBehaviour
             agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
             agent.autoRepath = true;
             agent.autoBraking = true;
+            agent.stoppingDistance = 0.5f;
             
             Debug.Log($"Initial boss speed set to: {agent.speed}");
         }
@@ -112,7 +119,8 @@ public class Boss1 : MonoBehaviour
             if (Time.time >= nextIdleSoundTime)
             {
                 SoundManager.Instance.PlayRandomBossSound(
-                    SoundManager.Instance.bossIdleSounds
+                    SoundManager.Instance.bossIdleSounds,
+                    idleSoundVolume
                 );
                 nextIdleSoundTime = Time.time + idleSoundInterval + Random.Range(-1f, 1f);
             }
@@ -140,7 +148,8 @@ public class Boss1 : MonoBehaviour
         }
 
         SoundManager.Instance.PlayRandomBossSound(
-            SoundManager.Instance.bossAttackSounds
+            SoundManager.Instance.bossAttackSounds,
+            attackSoundVolume
         );
         animator.SetTrigger("Attack");
 
@@ -185,17 +194,21 @@ public class Boss1 : MonoBehaviour
         switch (hitLocation)
         {
             case CollisionType.HEAD:
-                multiplier = 1.5f;    // Reduced headshot multiplier for boss
+                multiplier = 2f;  // Match zombie's headshot multiplier
                 break;
             case CollisionType.ARMS:
-                multiplier = 0.7f;    // Less damage reduction for limb shots
+                multiplier = 0.5f;  // Match zombie's limb multiplier
                 break;
             case CollisionType.BODY:
                 multiplier = 1f;
                 break;
         }
 
-        health -= damageAmount * multiplier;
+        float totalDamage = damageAmount * multiplier;
+        health -= totalDamage;
+
+        // Add debug logging
+        Debug.Log($"Boss hit! Location: {hitLocation}, Damage: {totalDamage}, Health remaining: {health}");
 
         if (health <= 0 && !isDead)
         {
@@ -208,7 +221,8 @@ public class Boss1 : MonoBehaviour
         isDead = true;
 
         SoundManager.Instance.PlayRandomBossSound(
-            SoundManager.Instance.bossDeathSounds
+            SoundManager.Instance.bossDeathSounds,
+            deathSoundVolume
         );
 
         if (agent != null)
@@ -232,6 +246,11 @@ public class Boss1 : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("Death");
+        }
+
+        if (playerPerformance != null)
+        {
+            playerPerformance.BossKilled(); // Add points for boss kill
         }
 
         // Notify spawner that boss is defeated

@@ -11,25 +11,32 @@ public class takeDamage : MonoBehaviour
         ARMS
     }
 
-    [SerializeField] private CollisionType bodyPart = CollisionType.BODY;  // Default to BODY, can be changed in Inspector
+    [SerializeField] private CollisionType bodyPart = CollisionType.BODY;
     private Zombie zombieController;
+    private Boss1 bossController;  // Add boss controller reference
 
     void Start()
     {
         zombieController = GetComponentInParent<Zombie>();
+        bossController = GetComponentInParent<Boss1>();  // Get boss component
     }
 
     public void HIT(float damage, CollisionType damageType)
     {
-        Debug.Log($"Hit on {gameObject.name} ({bodyPart}) with damage: {damage}"); // Debug log
+        Debug.Log($"Hit on {gameObject.name} ({bodyPart}) with damage: {damage}");
         
         if (zombieController != null)
         {
-            zombieController.TakeDamage(damage, bodyPart);  // Use this object's bodyPart type
+            zombieController.TakeDamage(damage, bodyPart);
+        }
+        else if (bossController != null)  // Check for boss component
+        {
+            bossController.TakeDamage(damage, bodyPart);
+            Debug.Log($"Boss hit registered! Damage: {damage}, Part: {bodyPart}");
         }
         else
         {
-            Debug.LogError($"Zombie controller not found on {gameObject.name}!");
+            Debug.LogError($"No damage controller found on {gameObject.name}!");
         }
     }
 }
