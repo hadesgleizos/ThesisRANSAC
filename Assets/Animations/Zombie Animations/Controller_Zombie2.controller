@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 522bb78a29cb9e147a718cd0944e333a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4044df76d8b65bb48bcd763c08d35883, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -68,9 +68,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 1.4638078
-  m_TransitionOffset: 0.048040587
-  m_ExitTime: 0.9032144
+  m_TransitionDuration: 0.22696888
+  m_TransitionOffset: 0.0029505277
+  m_ExitTime: 0.8456858
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -84,7 +84,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Chase
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6759619351563465093}
@@ -97,10 +97,10 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 168979ecd37f36e40ba99bad2a641469, type: 3}
+  m_Motion: {fileID: 7400000, guid: 4f30a8c1f0184844dbe613e24b31ac14, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: isAttacking
+  m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!1107 &-2062371508780062677
@@ -178,7 +178,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4542844f53eaa47458a87bf4ee41747c, type: 3}
+  m_Motion: {fileID: 7400000, guid: b6ec63ef45932fe4684a46db7f74f1c1, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
