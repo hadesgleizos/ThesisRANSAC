@@ -1,18 +1,278 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using static takeDamage;
 
 public class Boss1 : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private NavMeshAgent agent;
+    private Transform player;
+    private Spawner spawner;
+    private PlayerPerformance playerPerformance;
+    private float updateInterval = 1.0f;
+    private Animator animator;
+    public float damage = 50f;            // Default boss damage (you can modify)
+    public float attackRange = 3f;        // Default boss attack range (you can modify)
+    public float attackCooldown = 3f;     // Default boss attack cooldown (you can modify)
+    private bool canAttack = true;
+    private bool isDead = false;
+    private bool isAttacking = false;
+    public float health = 500f;           // Default boss health (you can modify)
+
+    [Header("Movement Settings")]
+    public float rotationSpeed = 8f;
+    public float acceleration = 6f;
+    public float stoppingDistance = 2f;
+    public float baseSpeed = 5f;          // Base movement speed for the boss
+
+    [Header("Sound Settings")]
+    public float idleSoundInterval = 8f;
+    public float idleSoundVolume = 1f;
+    public float attackSoundVolume = 1f;
+    public float deathSoundVolume = 1f;
+    private float nextIdleSoundTime;
+
+    [Header("Debug Visualization")]
+    public bool showAttackRange = true;
+    public Color attackRangeColor = Color.red;
+
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator component missing from boss!");
+        }
         
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        spawner = FindObjectOfType<Spawner>();
+
+        if (agent != null)
+        {
+            agent.speed = baseSpeed;
+            agent.angularSpeed = 120;
+            agent.acceleration = acceleration;
+            agent.stoppingDistance = stoppingDistance;
+            agent.radius = 1f;            // Larger radius for boss
+            agent.height = 3f;            // Taller height for boss
+            agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+            agent.autoRepath = true;
+            agent.autoBraking = true;
+            
+            Debug.Log($"Initial boss speed set to: {agent.speed}");
+        }
+
+        playerPerformance = FindObjectOfType<PlayerPerformance>();
+        if (playerPerformance == null)
+        {
+            Debug.LogWarning("PlayerPerformance not found in scene!");
+        }
+        
+        nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
+        StartCoroutine(PlayIdleSoundsRoutine());
+        StartCoroutine(UpdateSpeedRoutine());
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (isDead || isAttacking) return;
+
+        if (player != null && agent != null)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            Vector3 direction = (player.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+
+            if (distanceToPlayer > agent.stoppingDistance)
+            {
+                agent.SetDestination(player.position);
+            }
+
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", agent.velocity.magnitude / agent.speed);
+            }
+
+            if (distanceToPlayer <= attackRange && canAttack)
+            {
+                StartCoroutine(AttackPlayer());
+            }
+        }
+    }
+
+    private IEnumerator PlayIdleSoundsRoutine()
+    {
+        while (!isDead)
+        {
+            if (Time.time >= nextIdleSoundTime)
+            {
+                SoundManager.Instance.PlayRandomBossSound(
+                    SoundManager.Instance.bossIdleSounds
+                );
+                nextIdleSoundTime = Time.time + idleSoundInterval + Random.Range(-1f, 1f);
+            }
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private IEnumerator AttackPlayer()
+    {
+        if (!agent || !agent.isOnNavMesh) yield break;
+
+        isAttacking = true;
+        canAttack = false;
+        agent.isStopped = true;
+
+        if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
+        {
+            PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
+            if (playerPerformance != null)
+            {
+                playerPerformance.TakeDamage(damage, gameObject);
+                gameObject.SetIndicator();
+                Debug.Log($"Boss dealt {damage} damage to the player.");
+            }
+        }
+
+        SoundManager.Instance.PlayRandomBossSound(
+            SoundManager.Instance.bossAttackSounds
+        );
+        animator.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        if (agent && agent.isOnNavMesh && !isDead)
+        {
+            agent.isStopped = false;
+        }
+
+        canAttack = true;
+        isAttacking = false;
+    }
+
+    private IEnumerator UpdateSpeedRoutine()
+    {
+        while (true)
+        {
+            if (spawner != null)
+            {
+                SetSpeed(spawner.zombieSpeed);
+            }
+            yield return new WaitForSeconds(updateInterval);
+        }
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        if (agent != null)
+        {
+            agent.speed = newSpeed;
+            agent.acceleration = acceleration * (newSpeed / 3.5f);
+            Debug.Log($"Boss speed set to: {newSpeed}");
+        }
+    }
+
+    public void TakeDamage(float damageAmount, CollisionType hitLocation)
+    {
+        if (isDead) return;
+
+        float multiplier = 1f;
+        switch (hitLocation)
+        {
+            case CollisionType.HEAD:
+                multiplier = 1.5f;    // Reduced headshot multiplier for boss
+                break;
+            case CollisionType.ARMS:
+                multiplier = 0.7f;    // Less damage reduction for limb shots
+                break;
+            case CollisionType.BODY:
+                multiplier = 1f;
+                break;
+        }
+
+        health -= damageAmount * multiplier;
+
+        if (health <= 0 && !isDead)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        isDead = true;
+
+        SoundManager.Instance.PlayRandomBossSound(
+            SoundManager.Instance.bossDeathSounds
+        );
+
+        if (agent != null)
+        {
+            agent.isStopped = true;
+            agent.enabled = false;
+        }
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
+
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Death");
+        }
+
+        // Notify spawner that boss is defeated
+        Spawner.Instance.BossDefeated();
         
+        Destroy(gameObject, 5f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (showAttackRange)
+        {
+            Gizmos.color = attackRangeColor;
+            
+            Vector3 position = transform.position;
+            Vector3 forward = transform.forward;
+            
+            int segments = 32;
+            float angleStep = 360f / segments;
+            for (int i = 0; i < segments; i++)
+            {
+                float angle1 = i * angleStep;
+                float angle2 = (i + 1) * angleStep;
+                
+                Vector3 point1 = position + new Vector3(
+                    Mathf.Sin(angle1 * Mathf.Deg2Rad) * attackRange,
+                    0f,
+                    Mathf.Cos(angle1 * Mathf.Deg2Rad) * attackRange
+                );
+                
+                Vector3 point2 = position + new Vector3(
+                    Mathf.Sin(angle2 * Mathf.Deg2Rad) * attackRange,
+                    0f,
+                    Mathf.Cos(angle2 * Mathf.Deg2Rad) * attackRange
+                );
+                
+                Gizmos.DrawLine(point1, point2);
+            }
+            
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(position, forward * attackRange);
+        }
     }
 }

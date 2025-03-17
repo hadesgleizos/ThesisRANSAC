@@ -10,7 +10,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource generalAudioSource;
     public AudioSource musicAudioSource;
     public AudioSource ambienceAudioSource;
-    public AudioSource zombieAudioSource;  // Add this line
+    public AudioSource zombieAudioSource;
+    public AudioSource bossAudioSource;  // Add this line for boss sounds
 
     // Weapon Sounds
     public AudioClip pistolShootingSound;
@@ -33,6 +34,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] zombieIdleSounds;
     public AudioClip[] zombieAttackSounds;
     public AudioClip[] zombieDeathSounds;
+
+    // Boss Sounds
+    public AudioClip[] bossIdleSounds;
+    public AudioClip[] bossAttackSounds;
+    public AudioClip[] bossDeathSounds;
 
     private void Awake()
     {
@@ -150,6 +156,24 @@ public class SoundManager : MonoBehaviour
         if (zombieAudioSource != null)
         {
             zombieAudioSource.volume = Mathf.Clamp01(volume);
+        }
+    }
+
+    // Add this new method for boss sounds
+    public void PlayRandomBossSound(AudioClip[] clips, float volumeMultiplier = 1f)
+    {
+        if (clips != null && clips.Length > 0 && bossAudioSource != null)
+        {
+            AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+            bossAudioSource.PlayOneShot(randomClip, volumeMultiplier);
+        }
+    }
+
+    public void SetBossVolume(float volume)
+    {
+        if (bossAudioSource != null)
+        {
+            bossAudioSource.volume = Mathf.Clamp01(volume);
         }
     }
 }

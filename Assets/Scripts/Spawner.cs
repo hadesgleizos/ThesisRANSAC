@@ -50,6 +50,11 @@ public class Spawner : MonoBehaviour
     [Header("Spawn Points")]
     public List<GameObject> spawnPoints = new List<GameObject>(); // List of spawn points
 
+    [Header("Boss Settings")]
+    public GameObject bossPrefab;
+    public float bossSpawnDelay = 2f;
+    private GameObject currentBoss;
+
     private List<GameObject> activeZombies = new List<GameObject>(); // Track active zombies
     private int currentSpawnIndex = 0;       // Track which spawn point to use next
     private int currentWave = 0;             // Current wave index
@@ -98,46 +103,63 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
     {
         while (currentWave < totalWaves)
         {
-            // Start new wave
             currentWave++;
             spawning = true;
             inCooldown = false;
             
-            // Update wave display
             if (WaveText != null)
             {
                 WaveText.text = $"Wave: {currentWave}/{totalWaves}";
             }
 
-            // Capture metrics at wave start
             waveStartKillCount = totalKillCount;
             waveStartTime = totalElapsedTime;
 
             OnWaveStart?.Invoke(currentWave);
             Debug.Log($"Wave {currentWave} started!");
 
-            // Spawn zombies during wave duration
-            StartCoroutine(SpawnZombies());
-            yield return new WaitForSeconds(waveDuration);
-
-            // End current wave
-            spawning = false;
-            OnWaveEnd?.Invoke(currentWave);
-            Debug.Log($"Wave {currentWave} ended!");
-
-            // Start cooldown period and despawn all zombies
-            if (currentWave < totalWaves) // Only show cooldown if not the last wave
+            // Only spawn regular zombies if it's not the final wave
+            if (currentWave < totalWaves)
             {
+                StartCoroutine(SpawnZombies());
+                yield return new WaitForSeconds(waveDuration);
+                spawning = false;
+                
                 inCooldown = true;
                 cooldownTimeRemaining = cooldownDuration;
-                DespawnAllZombies(); // Add this line to despawn zombies
+                DespawnAllZombies();
                 yield return new WaitForSeconds(cooldownDuration);
                 inCooldown = false;
             }
+            // Final wave - spawn boss
+            else
+            {
+                if (WaveText != null)
+                {
+                    WaveText.text = "BOSS WAVE";
+                }
+                
+                yield return new WaitForSeconds(bossSpawnDelay);
+                SpawnBoss();
+                
+                // Wait until boss is defeated
+                while (currentBoss != null)
+                {
+                    if (TimerText != null)
+                    {
+                        TimerText.text = "Defeat the Boss!";
+                    }
+                    yield return new WaitForSeconds(0.5f);
+                }
+                spawning = false;
+                ShowScoreScreen(); // Show score screen after boss is defeated
+            }
+
+            OnWaveEnd?.Invoke(currentWave);
+            Debug.Log($"Wave {currentWave} ended!");
         }
 
         Debug.Log("All waves completed!");
-        ShowScoreScreen();
     }
 
     private void ShowScoreScreen()
@@ -229,10 +251,19 @@ public void NextStage()
             // Update timer display during wave
             if (TimerText != null)
             {
-                float timeRemaining = waveDuration - (totalElapsedTime - waveStartTime);
-                int minutes = Mathf.FloorToInt(timeRemaining / 60f);
-                int seconds = Mathf.FloorToInt(timeRemaining % 60f);
-                TimerText.text = $"{minutes:00}:{seconds:00}";
+                if (currentWave == totalWaves && currentBoss != null)
+                {
+                    // Show "Defeat the Boss!" text during boss fight
+                    TimerText.text = "Defeat the Boss!";
+                }
+                else
+                {
+                    // Show regular timer for normal waves
+                    float timeRemaining = waveDuration - (totalElapsedTime - waveStartTime);
+                    int minutes = Mathf.FloorToInt(timeRemaining / 60f);
+                    int seconds = Mathf.FloorToInt(timeRemaining % 60f);
+                    TimerText.text = $"{minutes:00}:{seconds:00}";
+                }
             }
         }
         else if (inCooldown)
@@ -315,11 +346,42 @@ public void NextStage()
     {
         foreach (GameObject zombie in activeZombies.ToList())
         {
-            if (zombie != null)
+            if (zombie != null && zombie != currentBoss)
             {
                 Destroy(zombie);
             }
         }
-        activeZombies.Clear();
+        activeZombies.RemoveAll(z => z != currentBoss);
+    }
+
+    private void SpawnBoss()
+    {
+        if (spawnPoints.Count > 0)
+        {
+            int randomSpawnIndex = Random.Range(0, spawnPoints.Count);
+            Vector3 spawnPosition = spawnPoints[randomSpawnIndex].transform.position;
+            currentBoss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
+            
+            Boss1 bossComponent = currentBoss.GetComponent<Boss1>();
+            if (bossComponent != null)
+            {
+                bossComponent.SetSpeed(zombieSpeed);
+            }
+            
+            activeZombies.Add(currentBoss); // Add boss to active enemies list
+            Debug.Log("Final Boss spawned!");
+        }
+    }
+
+    // Add method to handle boss defeat
+    public void BossDefeated()
+    {
+        if (currentBoss != null)
+        {
+            RemoveZombie(currentBoss);
+            currentBoss = null;
+            Debug.Log("Boss defeated!");
+            ShowScoreScreen(); // Show score screen immediately when boss is defeated
+        }
     }
 }
