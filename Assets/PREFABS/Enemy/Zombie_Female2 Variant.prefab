@@ -220,6 +220,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1456145000865774, guid: 8d862076c59fabf43b7ca2084f63226f, type: 3}
+      propertyPath: m_TagString
+      value: Zombie
+      objectReference: {fileID: 0}
     - target: {fileID: 1461315098207588, guid: 8d862076c59fabf43b7ca2084f63226f, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -454,6 +458,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4559408049434754, guid: 8d862076c59fabf43b7ca2084f63226f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95590792412952416, guid: 8d862076c59fabf43b7ca2084f63226f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1fb67c4599e73b34f8f7b5540b02f03c, type: 2}
+    - target: {fileID: 95590792412952416, guid: 8d862076c59fabf43b7ca2084f63226f, type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
