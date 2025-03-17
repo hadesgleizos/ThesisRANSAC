@@ -5,6 +5,13 @@ using TMPro;  // Import TextMeshPro for UI
 using UnityEngine.SceneManagement;  // For restarting the game
 using System.Linq; // Import Linq for ToList()
 
+[System.Serializable]
+public class ZombieType
+{
+    public GameObject zombiePrefab;
+    public string zombieName;  // For debugging/identification
+}
+
 public class Spawner : MonoBehaviour
 {
     public static Spawner Instance { get; private set; }
@@ -31,9 +38,9 @@ public class Spawner : MonoBehaviour
     }
 
     [Header("Zombie Settings")]
-    public GameObject zombiePrefab;
-    public float spawnRate = 0.1f;   // Initial spawn rate
-    public float zombieSpeed = 0.2f; // Initial zombie speed
+    public List<ZombieType> zombieTypes = new List<ZombieType>();  // Replace zombiePrefab
+    public float spawnRate = 0.1f;
+    public float zombieSpeed = 0.2f;
 
     [Header("Wave Settings")]
     public int totalWaves = 5;               // Total number of waves
@@ -171,20 +178,37 @@ public void NextStage()
     SceneManager.LoadScene(nextStageSceneName, LoadSceneMode.Additive);
 }
 
+    private GameObject GetRandomZombiePrefab()
+    {
+        if (zombieTypes.Count == 0)
+        {
+            Debug.LogError("No zombie types defined!");
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, zombieTypes.Count);
+        return zombieTypes[randomIndex].zombiePrefab;
+    }
+
     private IEnumerator SpawnZombies()
     {
         while (spawning)
         {
             if (spawnRate > 0 && spawnPoints.Count > 0)
             {
-                // Spawn zombie at the next spawn point
-                Vector3 spawnPosition = spawnPoints[currentSpawnIndex].transform.position;
-                GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
-                newZombie.GetComponent<Zombie>().SetSpeed(zombieSpeed);
-                activeZombies.Add(newZombie);
+                // Get random zombie type
+                GameObject zombiePrefab = GetRandomZombiePrefab();
+                if (zombiePrefab != null)
+                {
+                    // Spawn zombie at the next spawn point
+                    Vector3 spawnPosition = spawnPoints[currentSpawnIndex].transform.position;
+                    GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
+                    newZombie.GetComponent<Zombie>().SetSpeed(zombieSpeed);
+                    activeZombies.Add(newZombie);
 
-                // Cycle through spawn points
-                currentSpawnIndex = (currentSpawnIndex + 1) % spawnPoints.Count;
+                    // Cycle through spawn points
+                    currentSpawnIndex = (currentSpawnIndex + 1) % spawnPoints.Count;
+                }
 
                 yield return new WaitForSeconds(1.0f / spawnRate);
             }

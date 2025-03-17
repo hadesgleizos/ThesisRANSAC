@@ -1901,6 +1901,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1443518721}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 188717577}
@@ -1908,6 +1912,22 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1372620242}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[0].zombieName
+      value: Normal Zombies
+      objectReference: {fileID: 0}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[1].zombieName
+      value: Normal Zombies
+      objectReference: {fileID: 0}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[0].zombiePrefab
+      value: 
+      objectReference: {fileID: 2628473459058834688, guid: 9f33f5f833cc94c06a9887edcc4c6bed, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[1].zombiePrefab
+      value: 
+      objectReference: {fileID: 2153488194533384058, guid: 41403d588a01a4106b7d54dea13313f0, type: 3}
     - target: {fileID: 1180291157750065552, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.78555
