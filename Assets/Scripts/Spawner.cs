@@ -39,8 +39,10 @@ public class Spawner : MonoBehaviour
 
     [Header("Zombie Settings")]
     public List<ZombieType> zombieTypes = new List<ZombieType>();  // Replace zombiePrefab
+    public float baseZombieSpeed = 3.0f;     // Add this line - base speed
+    [SerializeField] private float currentZombieSpeed;  // Add this line - current speed from PSO
     public float spawnRate = 0.1f;
-    public float zombieSpeed = 0.2f;
+    public bool debugSpeedChanges = true;
 
     [Header("Wave Settings")]
     public int totalWaves = 5;               // Total number of waves
@@ -217,20 +219,25 @@ public void NextStage()
         {
             if (spawnRate > 0 && spawnPoints.Count > 0)
             {
-                // Get random zombie type
                 GameObject zombiePrefab = GetRandomZombiePrefab();
                 if (zombiePrefab != null)
                 {
-                    // Spawn zombie at the next spawn point
                     Vector3 spawnPosition = spawnPoints[currentSpawnIndex].transform.position;
                     GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
-                    newZombie.GetComponent<Zombie>().SetSpeed(zombieSpeed);
+                    
+                    var zombieComponent = newZombie.GetComponent<Zombie>();
+                    if (zombieComponent != null)
+                    {
+                        zombieComponent.SetSpeed(currentZombieSpeed); // Use current speed from PSO
+                        if (debugSpeedChanges)
+                        {
+                            Debug.Log($"[Spawner] New zombie spawned with speed: {currentZombieSpeed:F2}");
+                        }
+                    }
+                    
                     activeZombies.Add(newZombie);
-
-                    // Cycle through spawn points
                     currentSpawnIndex = (currentSpawnIndex + 1) % spawnPoints.Count;
                 }
-
                 yield return new WaitForSeconds(1.0f / spawnRate);
             }
             else
@@ -301,15 +308,32 @@ public void NextStage()
 
     public void SetAllZombieSpeeds(float newSpeed)
     {
-        zombieSpeed = newSpeed;
-        foreach (GameObject zombie in activeZombies)
+        float oldSpeed = currentZombieSpeed;
+        currentZombieSpeed = newSpeed;
+
+        var updatedZombies = 0;
+        foreach (GameObject zombie in activeZombies.ToList())
         {
             if (zombie != null)
             {
-                zombie.GetComponent<Zombie>().SetSpeed(newSpeed);
+                var zombieComponent = zombie.GetComponent<Zombie>();
+                if (zombieComponent != null)
+                {
+                    zombieComponent.SetSpeed(currentZombieSpeed);
+                    updatedZombies++;
+                }
             }
         }
-        Debug.Log($"All Zombie Speeds Updated to: {newSpeed}");
+
+        if (debugSpeedChanges)
+        {
+            Debug.Log($"[Spawner] Speed Change - Old: {oldSpeed:F2}, New: {currentZombieSpeed:F2}, Updated {updatedZombies} zombies");
+        }
+    }
+
+    public float GetCurrentZombieSpeed()
+    {
+        return currentZombieSpeed;
     }
 
     public void RemoveZombie(GameObject zombie)
@@ -329,11 +353,6 @@ public void NextStage()
     public float GetCurrentSpawnRate()
     {
         return spawnRate;
-    }
-
-    public float GetCurrentZombieSpeed()
-    {
-        return zombieSpeed;
     }
 
     public int GetActiveSpawnerCount()
@@ -364,7 +383,7 @@ public void NextStage()
             Boss1 bossComponent = currentBoss.GetComponent<Boss1>();
             if (bossComponent != null)
             {
-                bossComponent.SetSpeed(zombieSpeed);
+                bossComponent.SetSpeed(currentZombieSpeed);
             }
             
             activeZombies.Add(currentBoss); // Add boss to active enemies list
@@ -398,5 +417,10 @@ public void NextStage()
     {
         yield return new WaitForSeconds(delay);
         ShowScoreScreen();
+    }
+
+    public bool IsInCooldown()
+    {
+        return inCooldown;
     }
 }

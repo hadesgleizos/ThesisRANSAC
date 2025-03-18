@@ -1,9 +1,9 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics; // For Stopwatch
 using System; // For GC to measure memory usage
+using System.Linq; // For Average
 
 public class PSOManager : MonoBehaviour
 {
@@ -36,19 +36,39 @@ public class PSOManager : MonoBehaviour
     public float lowHealthThreshold = 0.5f;
     public float lowKillRateThreshold = 0.2f;
 
+    [Header("Performance Metrics")]
+    public bool enableMetrics = true;
+    private List<float> fitnessHistory = new List<float>();
+    private List<Vector2> parameterHistory = new List<Vector2>();
+
     private Stopwatch stopwatch = new Stopwatch();
     private float totalExecutionTime = 0f;
     private long totalMemoryUsage = 0;
     private int runCount = 0;
 
     private int previousKillCount = 0; // Track the player's previous kill count
-    private bool isWaveActive = true; // Tracks whether a wave is currently active
+    private bool isWaveActive = false; // Changed to false by default
+    private bool isPSOPaused = false;
+
+    [Header("Wave Info")]
+    private int currentWave = 0;
+    private int totalWaves;
 
     private void Start()
     {
         // Subscribe to wave events
         Spawner.OnWaveStart += OnWaveStart;
         Spawner.OnWaveEnd += OnWaveEnd;
+
+        // Get total waves from spawner
+        if (spawner != null)
+        {
+            totalWaves = spawner.totalWaves;
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("Spawner reference not set in PSOManager!");
+        }
 
         InitializeParticles();
         StartCoroutine(EvaluatePlayerPerformance());
@@ -64,13 +84,21 @@ public class PSOManager : MonoBehaviour
     private void OnWaveStart(int waveNumber)
     {
         isWaveActive = true;
-        UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} started.");
+        isPSOPaused = false;
+        currentWave = waveNumber;
+        UpdatePSOParameters();
+        UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} started. PSO calculations resumed.");
     }
 
     private void OnWaveEnd(int waveNumber)
     {
         isWaveActive = false;
-        UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} ended. Pausing performance evaluation.");
+        isPSOPaused = true;
+        UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} ended. PSO calculations paused.");
+        
+        // Reset evaluation timer to ensure fresh start on next wave
+        evaluationTimer = 0f;
+        previousKillCount = 0;
     }
 
     private void InitializeParticles()
@@ -104,7 +132,8 @@ public class PSOManager : MonoBehaviour
     {
         while (true)
         {
-            if (isWaveActive)
+            // Only evaluate if wave is active and PSO is not paused
+            if (isWaveActive && !isPSOPaused && !spawner.IsInCooldown())
             {
                 evaluationTimer += Time.deltaTime;
 
@@ -191,10 +220,12 @@ private void AdjustDifficulty(float killRate, float healthPercentage)
 
     private void UpdateParticles(float killRate, float healthPercentage)
     {
+        // Issue: No consideration of wave progress or current wave number
         Vector2 globalBestPos = GetGlobalBestPosition();
 
         foreach (Particle particle in particles)
         {
+            // Standard PSO velocity update
             particle.Velocity = inertiaWeight * particle.Velocity
                 + cognitiveWeight * UnityEngine.Random.Range(0f, 1f) * (particle.BestPosition - particle.Position)
                 + socialWeight * UnityEngine.Random.Range(0f, 1f) * (globalBestPos - particle.Position);
@@ -213,6 +244,8 @@ private void AdjustDifficulty(float killRate, float healthPercentage)
             {
                 particle.BestPosition = particle.Position;
             }
+
+            LogMetrics(currentFitness, particle.Position);
         }
     }
 
@@ -221,24 +254,35 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
     float spawnRate = particle.Position.x;
     float speed = particle.Position.y;
 
-    // Scale the ideal kill rate based on the current spawn rate
-    float idealKillRate = Mathf.Lerp(
-        0.1f, // Minimum ideal kill rate
-        0.8f, // Maximum ideal kill rate
-        (spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate)
-    );
+    // Get number of active spawners
+    int spawnerCount = spawner.GetActiveSpawnerCount();
+    
+    // Base kill rate per spawner (kills expected per second per spawner)
+    float baseKillRatePerSpawner = 0.3f; // Lowered from 0.05f for better balance
+    
+    // Calculate expected kill rate based on number of spawners and current parameters
+    float expectedKillRate = baseKillRatePerSpawner * spawnerCount * 
+                           (spawnRate / maxSpawnRate) * 
+                           (speed / maxSpeed);
 
-    float killRateDiff = Mathf.Abs(killRate - idealKillRate);
-    float healthFactor = 1f - healthPct;
-
-    // Fitness is inversely proportional to kill rate difference and health factor
-    float fitness = (1f - killRateDiff) * (1f + healthFactor);
-
-    // Penalize fitness if struggling
-    if (healthPct < lowHealthThreshold || killRate < lowKillRateThreshold)
+    // If no kills when zombies are available
+    if (killRate <= 0 && spawnRate > minSpawnRate)
     {
-        fitness *= 0.5f;
+        return 0.1f;
     }
+
+    // Calculate scores
+    float killRateScore = 1f - Mathf.Pow(Mathf.Abs(killRate - expectedKillRate), 2);
+    float healthScore = Mathf.Clamp01(healthPct);
+
+    // Final fitness calculation
+    float fitness = (killRateScore * 0.7f) + (healthScore * 0.3f);
+
+    UnityEngine.Debug.Log($"PSO Evaluation - Spawners: {spawnerCount}, " +
+                         $"Expected KillRate: {expectedKillRate:F2}, " +
+                         $"Actual KillRate: {killRate:F2}, " +
+                         $"SpawnRate: {spawnRate:F2}, Speed: {speed:F2}, " +
+                         $"Fitness: {fitness:F2}");
 
     return fitness;
 }
@@ -262,6 +306,52 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
             }
         }
         return bestPosition;
+    }
+
+    private void LogMetrics(float fitness, Vector2 parameters)
+    {
+        if (!enableMetrics) return;
+        
+        fitnessHistory.Add(fitness);
+        parameterHistory.Add(parameters);
+        
+        if (fitnessHistory.Count > 100)
+        {
+            float avgFitness = fitnessHistory.Average();
+            float parameterVariance = CalculateParameterVariance();
+            UnityEngine.Debug.Log($"PSO Metrics - Avg Fitness: {avgFitness:F3}, Parameter Variance: {parameterVariance:F3}");
+            fitnessHistory.Clear();
+            parameterHistory.Clear();
+        }
+    }
+
+    private void UpdatePSOParameters()
+    {
+        // Adapt weights based on wave progression
+        float progress = (float)currentWave / totalWaves;
+        
+        inertiaWeight = Mathf.Lerp(0.7f, 0.4f, progress);
+        cognitiveWeight = Mathf.Lerp(1.5f, 0.8f, progress);
+        socialWeight = Mathf.Lerp(0.8f, 1.5f, progress);
+    }
+
+    private float CalculateParameterVariance()
+    {
+        if (parameterHistory.Count == 0) return 0f;
+
+        Vector2 mean = Vector2.zero;
+        foreach (Vector2 param in parameterHistory)
+        {
+            mean += param;
+        }
+        mean /= parameterHistory.Count;
+
+        float variance = 0f;
+        foreach (Vector2 param in parameterHistory)
+        {
+            variance += (param - mean).sqrMagnitude;
+        }
+        return variance / parameterHistory.Count;
     }
 
     private class Particle

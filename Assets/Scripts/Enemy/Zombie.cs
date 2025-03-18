@@ -38,40 +38,34 @@ public class Zombie : MonoBehaviour
 
     void Start()
     {
-        // Get the NavMeshAgent component
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
+        
         if (animator == null)
         {
             Debug.LogError("Animator component missing from zombie!");
         }
         
-        // Find the player by tag (ensure the player has a "Player" tag)
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        spawner = FindObjectOfType<Spawner>();
 
-        // Find the Spawner in the scene
-        spawner = FindObjectOfType<Spawner>(); // Ensure the spawner is accessible
-
-        // Optional: Set an initial speed
-        if (agent != null)
+        if (agent != null && spawner != null)
         {
-            // Configure NavMeshAgent for smoother movement
-            agent.speed = 3.5f;
+            float currentSpeed = spawner.GetCurrentZombieSpeed();
+            SetSpeed(currentSpeed); // Use SetSpeed instead of directly setting agent.speed
+            
+            // Set other NavMeshAgent parameters
             agent.angularSpeed = 120;
-            agent.acceleration = acceleration;
             agent.stoppingDistance = stoppingDistance;
             agent.radius = 0.5f;
             agent.height = 2f;
             agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
             agent.autoRepath = true;
-            
-            // Tune these values to prevent bouncing
             agent.autoBraking = true;
-            agent.stoppingDistance = 0.5f;
             
-            Debug.Log($"Initial zombie speed set to: {agent.speed}"); // Debug log
+            Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
         }
+        
         playerPerformance = FindObjectOfType<PlayerPerformance>();
         if (playerPerformance == null)
         {
@@ -80,9 +74,6 @@ public class Zombie : MonoBehaviour
         
         nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
         StartCoroutine(PlayIdleSoundsRoutine());
-
-        // Start coroutine to update speed regularly
-        StartCoroutine(UpdateSpeedRoutine());
     }
 
     void Update()
@@ -242,28 +233,14 @@ public class Zombie : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
-    private IEnumerator UpdateSpeedRoutine()
-    {
-        while (true)
-        {
-            if (spawner != null)
-            {
-                // Update the speed based on the spawner's speed
-                SetSpeed(spawner.zombieSpeed); // Accessing the speed from the spawner
-            }
-            yield return new WaitForSeconds(updateInterval); // Wait for the next interval
-        }
-    }
-
     public void SetSpeed(float newSpeed)
     {
-        // Set the speed of the NavMeshAgent
         if (agent != null)
         {
+            float oldSpeed = agent.speed;
             agent.speed = newSpeed;
-            // Adjust acceleration based on speed to maintain smooth movement
             agent.acceleration = acceleration * (newSpeed / 3.5f);
-            Debug.Log($"Zombie speed set to: {newSpeed}"); // Debug log
+            Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
         }
     }
 

@@ -170,7 +170,9 @@ public class Boss1 : MonoBehaviour
         {
             if (spawner != null)
             {
-                SetSpeed(spawner.zombieSpeed);
+                // Change zombieSpeed to GetCurrentZombieSpeed()
+                SetSpeed(spawner.GetCurrentZombieSpeed());
+                Debug.Log($"[Boss] Updated speed to: {spawner.GetCurrentZombieSpeed():F2}");
             }
             yield return new WaitForSeconds(updateInterval);
         }
