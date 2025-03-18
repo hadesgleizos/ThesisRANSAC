@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 219415150}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: totalWaves
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: ScorePoints
@@ -152,11 +152,11 @@ PrefabInstance:
       objectReference: {fileID: 219415147}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: waveDuration
-      value: 120
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: cooldownDuration
-      value: 60
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: restartSceneName
@@ -1273,12 +1273,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: minSpeed
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: playerPerformance
       value: 
       objectReference: {fileID: 1101884138}
+    - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+      propertyPath: lowKillRateThreshold
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2220407571524243575, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.78555
