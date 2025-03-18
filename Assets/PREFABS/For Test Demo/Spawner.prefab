@@ -49,15 +49,21 @@ MonoBehaviour:
   WaveText: {fileID: 0}
   TimerText: {fileID: 0}
   playerPerformance: {fileID: 0}
-  zombiePrefab: {fileID: 6401112548132156531, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
+  zombieTypes:
+  - zombiePrefab: {fileID: 2628473459058834688, guid: 9f33f5f833cc94c06a9887edcc4c6bed, type: 3}
+    zombieName: Normal Zombies
+  - zombiePrefab: {fileID: 2153488194533384058, guid: 41403d588a01a4106b7d54dea13313f0, type: 3}
+    zombieName: Normal Zombies
   spawnRate: 1
   zombieSpeed: 1
   totalWaves: 2
-  waveDuration: 60
-  cooldownDuration: 60
+  waveDuration: 3
+  cooldownDuration: 5
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
+  bossPrefab: {fileID: 1168492907123828463, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
+  bossSpawnDelay: 0
   baseSceneName: BaseScene
   restartSceneName: Stage 1
   nextStageSceneName: Stage 2

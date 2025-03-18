@@ -246,15 +246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4507324378482544, guid: 6e6f4b3417a0abb45b1cce8fdf021eb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.64192
+      value: 48.45042
       objectReference: {fileID: 0}
     - target: {fileID: 4507324378482544, guid: 6e6f4b3417a0abb45b1cce8fdf021eb5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14545393
+      value: -0.030737877
       objectReference: {fileID: 0}
     - target: {fileID: 4507324378482544, guid: 6e6f4b3417a0abb45b1cce8fdf021eb5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -205.68631
+      value: -206.51836
       objectReference: {fileID: 0}
     - target: {fileID: 4507324378482544, guid: 6e6f4b3417a0abb45b1cce8fdf021eb5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -351,6 +351,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1366213018876462, guid: 6e6f4b3417a0abb45b1cce8fdf021eb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4750494494319945204}
+    - targetCorrespondingSourceObject: {fileID: 1366213018876462, guid: 6e6f4b3417a0abb45b1cce8fdf021eb5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5832952447268807413}
     - targetCorrespondingSourceObject: {fileID: 1756063383637088, guid: 6e6f4b3417a0abb45b1cce8fdf021eb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7592259039039417294}
@@ -782,7 +785,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.7, y: 0.5, z: 0.8}
-  m_Center: {x: -0.3, y: 0.3, z: 0}
+  m_Center: {x: -0.2, y: 0.3, z: 0}
 --- !u!114 &3717683990926452121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,10 +879,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ae1071c5f7b8946819d71f233a60d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 2000
   damage: 50
   attackRange: 3
-  attackCooldown: 3
+  attackCooldown: 1.5
   rotationSpeed: 8
   acceleration: 6
   stoppingDistance: 2
@@ -918,6 +921,19 @@ CapsuleCollider:
   m_Height: 0.2
   m_Direction: 1
   m_Center: {x: -0.1, y: 0, z: 0}
+--- !u!114 &5832952447268807413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168516292722599763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0aabe9beaa3b44ab62e4b95130ec66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 0
 --- !u!1 &1168619194294674465 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1258975139133788, guid: 6e6f4b3417a0abb45b1cce8fdf021eb5, type: 3}

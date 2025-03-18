@@ -17,7 +17,7 @@ public class Boss1 : MonoBehaviour
     private bool isAttacking = false;
 
     [Header("Boss Stats")]
-    [SerializeField] private float health = 500f;
+    [SerializeField] private float health = 100f;
     [SerializeField] private float damage = 50f;
     [SerializeField] private float attackRange = 3f;
     [SerializeField] private float attackCooldown = 3f;
