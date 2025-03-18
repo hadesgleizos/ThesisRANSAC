@@ -10,6 +10,7 @@ public class PlayerPerformance : MonoBehaviour
     public int pointsPerBossKill = 100; // Points for boss kills
     private int currentScore = 0; // Tracks the current score
     private int bossesKilled = 0; // Track number of bosses killed
+    private bool isWaveActive = false; // Add this to track wave state
 
     private uiManager uiManager;
 
@@ -27,11 +28,38 @@ public class PlayerPerformance : MonoBehaviour
         {
             uiManager.setHealth(((int)playerHealth).ToString());
         }
+
+        // Subscribe to wave events
+        Spawner.OnWaveStart += OnWaveStart;
+        Spawner.OnWaveEnd += OnWaveEnd;
+    }
+
+    void OnDestroy()
+    {
+        // Unsubscribe from events
+        Spawner.OnWaveStart -= OnWaveStart;
+        Spawner.OnWaveEnd -= OnWaveEnd;
+    }
+
+    private void OnWaveStart(int waveNumber)
+    {
+        isWaveActive = true;
+        Debug.Log($"Wave {waveNumber} started. Game time tracking resumed.");
+    }
+
+    private void OnWaveEnd(int waveNumber)
+    {
+        isWaveActive = false;
+        Debug.Log($"Wave {waveNumber} ended. Game time tracking paused.");
     }
 
     void Update()
     {
-        gameTime += Time.deltaTime;
+        // Only increment game time if wave is active
+        if (isWaveActive)
+        {
+            gameTime += Time.deltaTime;
+        }
     }
 
     public void TakeDamage(float damage, GameObject attacker)

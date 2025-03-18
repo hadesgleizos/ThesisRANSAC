@@ -190,6 +190,12 @@ public class Zombie : MonoBehaviour
 
         health -= damageAmount * multiplier;
 
+        // Trigger hit animation
+        if (animator != null)
+        {
+            animator.SetTrigger("OnHit");
+        }
+
         if (health <= 0 && !isDead)
         {
             Die();

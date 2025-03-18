@@ -207,6 +207,12 @@ public class Boss1 : MonoBehaviour
         float totalDamage = damageAmount * multiplier;
         health -= totalDamage;
 
+        // Trigger hit animation
+        if (animator != null)
+        {
+            animator.SetTrigger("OnHit");
+        }
+
         // Add debug logging
         Debug.Log($"Boss hit! Location: {hitLocation}, Damage: {totalDamage}, Health remaining: {health}");
 
