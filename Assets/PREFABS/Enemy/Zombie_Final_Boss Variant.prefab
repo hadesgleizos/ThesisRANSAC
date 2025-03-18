@@ -872,7 +872,7 @@ MonoBehaviour:
   damage: 80
   attackRange: 4
   attackCooldown: 2
-  health: 12000
+  health: 10000
   rotationSpeed: 10
   acceleration: 8
   stoppingDistance: 1.5
