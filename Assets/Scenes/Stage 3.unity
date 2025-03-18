@@ -1420,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 1976d2d5a8f74344aa3cd8b829c91031, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieDeathSounds.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: bossDeathSounds.Array.data[0]
@@ -1445,7 +1445,7 @@ PrefabInstance:
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieIdleSounds.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 1976d2d5a8f74344aa3cd8b829c91031, type: 3}
+      objectReference: {fileID: 8300000, guid: ebda9f99abfcac04c8004abe52959340, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieDeathSounds.Array.data[0]
       value: 
@@ -1453,7 +1453,11 @@ PrefabInstance:
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieDeathSounds.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 595f14f7426d04b48adb080409d3a156, type: 3}
+      objectReference: {fileID: 8300000, guid: 08b090f1c792c0d44a3bbd50bb5f8283, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: zombieDeathSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8beefcd5e57dc3549b6dba874d5f8917, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieAttackSounds.Array.data[0]
       value: 
@@ -1465,7 +1469,7 @@ PrefabInstance:
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieAttackSounds.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 47d6daaa17bd6fe42a4310e3d3b2fcbc, type: 3}
+      objectReference: {fileID: 8300000, guid: 646d5e8a87d4aab4ebb8df843fd09723, type: 3}
     - target: {fileID: 6812805797213233381, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5924037
