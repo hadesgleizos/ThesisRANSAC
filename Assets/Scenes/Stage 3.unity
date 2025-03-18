@@ -1415,13 +1415,25 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bossIdleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1976d2d5a8f74344aa3cd8b829c91031, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieDeathSounds.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bossDeathSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ee6fa8fddb250546a79ad9e7ebc14f7, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieAttackSounds.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bossAttackSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: bb1f5f0e111a9464e81dee9e81e10d83, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieIdleSounds.Array.data[0]
       value: 
