@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 1539173137}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: waveDuration
-      value: 90
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: bossSpawnDelay
