@@ -90,6 +90,22 @@ MonoBehaviour:
     LoadingType: 0
     FakeLoadingTime: 2
     Backgrounds: []
+  - SceneName: WakingUp
+    SceneAsset: {fileID: 102900000, guid: ab901aebc0fa4d84dbbbcbae1394cee4, type: 3}
+    DisplayName: WakingUp
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
+  - SceneName: Tutorial
+    SceneAsset: {fileID: 102900000, guid: 3109985e8761ccb45a0fd71e507cf40c, type: 3}
+    DisplayName: Tutorial
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
   tipsList:
   - Create beautiful loading screens for improved your game
   - Easy to use and implement

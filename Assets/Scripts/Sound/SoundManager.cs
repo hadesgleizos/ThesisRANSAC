@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio; // Add this line
 
 public class SoundManager : MonoBehaviour
 {
+    [SerializeField] private AudioMixer masterMixer; // Add this line
     public static SoundManager Instance { get; private set; }
 
     // Audio Sources
@@ -53,6 +55,22 @@ public class SoundManager : MonoBehaviour
         else
         {
             Instance = this;
+            SetupAudioSources();
+        }
+    }
+
+    private void SetupAudioSources()
+    {
+        // Get all AudioSource components on this GameObject
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        
+        // Set the output of each AudioSource to the master mixer
+        if (masterMixer != null)
+        {
+            foreach (AudioSource source in audioSources)
+            {
+                source.outputAudioMixerGroup = masterMixer.FindMatchingGroups("Master")[0];
+            }
         }
     }
 

@@ -79,7 +79,12 @@ public class Weapon : MonoBehaviour
     // --------------------------------------
     private void HandleInput()
     {
-        // Prevent input if arms are not active
+            // First check if game is paused
+        if (PauseMenu.IsGamePaused())
+        {
+            return; // Don't process any input while paused
+        }
+            // Prevent input if arms are not active
         if (!IsArmsActive())
         {
             return;
@@ -386,11 +391,10 @@ private void ResetShot()
     {
         isReloading = true;
 
-        // Play reload sound
+        // Play reload sound using SoundManager instead of direct AudioSource
         if (currentWeaponStats.reloadSound != null)
         {
-            reloadAudioSource.clip = currentWeaponStats.reloadSound;
-            reloadAudioSource.Play();
+            SoundManager.Instance.PlaySound(currentWeaponStats.reloadSound);
         }
 
         // Trigger reload animation

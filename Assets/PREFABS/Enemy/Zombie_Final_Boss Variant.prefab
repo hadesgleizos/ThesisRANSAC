@@ -894,12 +894,12 @@ MonoBehaviour:
   health: 10000
   damage: 80
   attackRange: 5
-  attackCooldown: 3
+  attackCooldown: 2
   rotationSpeed: 10
   acceleration: 8
   stoppingDistance: 1.5
   baseSpeed: 3.5
-  minSpeed: 3
+  minSpeed: 4
   maxSpeed: 5
   speedAdjustmentRate: 0.2
   idleSoundInterval: 8
