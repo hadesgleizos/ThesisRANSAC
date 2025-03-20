@@ -1515,6 +1515,10 @@ PrefabInstance:
     - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
       propertyPath: _camera
       value: 
+      objectReference: {fileID: 1912219531}
+    - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
+      propertyPath: _layerOverrides.Array.data[0].distance
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 4030102978042334197, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
       propertyPath: m_Name
