@@ -732,6 +732,8 @@ MonoBehaviour:
   HealthInfo: {fileID: 4354728955095777756}
   baseSceneName: BaseScene
   restartSceneName: Stage 1
+  deathHUDAnimator: {fileID: 0}
+  deathFreezeDelay: 0.2
 --- !u!114 &4879683674971290753
 MonoBehaviour:
   m_ObjectHideFlags: 0
