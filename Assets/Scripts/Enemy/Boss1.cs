@@ -27,6 +27,9 @@ public class Boss1 : MonoBehaviour
     public float acceleration = 8f;
     public float stoppingDistance = 1.5f;
     public float baseSpeed = 5f;          // Base movement speed for the boss
+    public float minSpeed = 3f;           // Minimum speed when player is struggling
+    public float maxSpeed = 7f;           // Maximum speed when player is doing well
+    [SerializeField] private float speedAdjustmentRate = 0.2f;  // How quickly speed adjusts
 
     [Header("Sound Settings")]
     public float idleSoundInterval = 8f;
@@ -54,7 +57,6 @@ public class Boss1 : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Zombie");
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        spawner = FindObjectOfType<Spawner>();
 
         if (agent != null)
         {
@@ -168,11 +170,20 @@ public class Boss1 : MonoBehaviour
     {
         while (true)
         {
-            if (spawner != null)
+            if (playerPerformance != null)
             {
-                // Change zombieSpeed to GetCurrentZombieSpeed()
-                SetSpeed(spawner.GetCurrentZombieSpeed());
-                Debug.Log($"[Boss] Updated speed to: {spawner.GetCurrentZombieSpeed():F2}");
+                // Get player's health and convert it to percentage
+                float healthPercentage = playerPerformance.GetHealth() / 100f;
+                
+                // Calculate target speed based on player's health (higher health = faster boss)
+                float targetSpeed = Mathf.Lerp(minSpeed, maxSpeed, healthPercentage);
+                
+                // Smoothly adjust current speed
+                float currentSpeed = agent.speed;
+                float newSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedAdjustmentRate);
+                
+                SetSpeed(newSpeed);
+                Debug.Log($"[Boss] Updated speed to: {newSpeed:F2} based on player health: {healthPercentage:P0}");
             }
             yield return new WaitForSeconds(updateInterval);
         }

@@ -314,10 +314,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1397897947513670, guid: 602e2bafea94085478f3eb9b58f4f7b6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8318297527490203624}
+      addedObject: {fileID: 3114376450709407569}
     - targetCorrespondingSourceObject: {fileID: 1397897947513670, guid: 602e2bafea94085478f3eb9b58f4f7b6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3114376450709407569}
+      addedObject: {fileID: -3918237982648993425}
     - targetCorrespondingSourceObject: {fileID: 1487644721208744, guid: 602e2bafea94085478f3eb9b58f4f7b6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3527928964176999613}
@@ -857,31 +857,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1397897947513670, guid: 602e2bafea94085478f3eb9b58f4f7b6, type: 3}
   m_PrefabInstance: {fileID: 4645351839700015009}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8318297527490203624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644176053053347047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58db196bbe8471d458923c6e8ed5d5ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 80
-  attackRange: 4
-  attackCooldown: 2
-  health: 10000
-  rotationSpeed: 10
-  acceleration: 8
-  stoppingDistance: 1.5
-  idleSoundInterval: 5
-  idleSoundVolume: 1
-  attackSoundVolume: 1
-  deathSoundVolume: 1
-  showAttackRange: 1
-  attackRangeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!195 &3114376450709407569
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -904,6 +879,35 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-3918237982648993425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644176053053347047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ae1071c5f7b8946819d71f233a60d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10000
+  damage: 80
+  attackRange: 5
+  attackCooldown: 3
+  rotationSpeed: 10
+  acceleration: 8
+  stoppingDistance: 1.5
+  baseSpeed: 3.5
+  minSpeed: 3
+  maxSpeed: 5
+  speedAdjustmentRate: 0.2
+  idleSoundInterval: 8
+  idleSoundVolume: 1
+  attackSoundVolume: 1
+  deathSoundVolume: 1
+  showAttackRange: 1
+  attackRangeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4644252381000786319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1169940482012718, guid: 602e2bafea94085478f3eb9b58f4f7b6, type: 3}

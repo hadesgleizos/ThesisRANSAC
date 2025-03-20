@@ -565,7 +565,10 @@ MonoBehaviour:
   rotationSpeed: 10
   acceleration: 8
   stoppingDistance: 1.5
-  baseSpeed: 5
+  baseSpeed: 4
+  minSpeed: 3.5
+  maxSpeed: 5
+  speedAdjustmentRate: 0.2
   idleSoundInterval: 8
   idleSoundVolume: 1
   attackSoundVolume: 1

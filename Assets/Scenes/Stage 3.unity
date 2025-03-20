@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 4644176053053347047, guid: a76e7547032c0644aa0a5eda4dd24fbc, type: 3}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: totalWaves
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: ScorePoints
@@ -1805,6 +1805,10 @@ PrefabInstance:
       propertyPath: ShakeObject
       value: 
       objectReference: {fileID: 1912219532}
+    - target: {fileID: 5804995495805798036, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
+      propertyPath: restartSceneName
+      value: Stage 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7651872409756626505, guid: c33d111de2a8a89498c1b44615d93429, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
