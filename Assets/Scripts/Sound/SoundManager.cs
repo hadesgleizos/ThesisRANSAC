@@ -40,6 +40,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] bossAttackSounds;
     public AudioClip[] bossDeathSounds;
 
+    // Add this with other audio clips
+    [Header("Boss Music")]
+    public AudioClip bossMusic;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -174,6 +178,17 @@ public class SoundManager : MonoBehaviour
         if (bossAudioSource != null)
         {
             bossAudioSource.volume = Mathf.Clamp01(volume);
+        }
+    }
+
+    public void PlayBossMusic()
+    {
+        if (bossMusic != null && musicAudioSource != null)
+        {
+            StopMusic(); // Stop current music
+            musicAudioSource.clip = bossMusic;
+            musicAudioSource.loop = true;
+            musicAudioSource.Play();
         }
     }
 }

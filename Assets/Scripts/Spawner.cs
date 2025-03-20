@@ -376,6 +376,9 @@ public void NextStage()
     {
         if (spawnPoints.Count > 0)
         {
+            // Play boss music when boss spawns
+            SoundManager.Instance.PlayBossMusic();
+            
             int randomSpawnIndex = Random.Range(0, spawnPoints.Count);
             Vector3 spawnPosition = spawnPoints[randomSpawnIndex].transform.position;
             currentBoss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
@@ -386,7 +389,7 @@ public void NextStage()
                 bossComponent.SetSpeed(currentZombieSpeed);
             }
             
-            activeZombies.Add(currentBoss); // Add boss to active enemies list
+            activeZombies.Add(currentBoss);
             Debug.Log("Final Boss spawned!");
         }
     }
