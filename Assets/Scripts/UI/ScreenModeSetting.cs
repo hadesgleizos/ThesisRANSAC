@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class ScreenModeSetting : MonoBehaviour
 {
+    private static ScreenModeSetting instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [SerializeField] private TMPro.TMP_Dropdown ScreenModeDropDown;    //check name!
     private Resolutions resolutions;
     // Start is called before the first frame update

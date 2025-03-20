@@ -6,6 +6,22 @@ using UnityEngine;
 
 public class Resolutions : MonoBehaviour
 {
+    private static Resolutions instance;
+
+    private void Awake()
+    {
+        // Singleton pattern to ensure only one instance exists
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [SerializeField] private TMPro.TMP_Dropdown resolutionDropDown;
     
     private Resolution[] resolutions;
@@ -121,32 +137,54 @@ public class Resolutions : MonoBehaviour
 
         while (retryCount < MAX_RETRIES)
         {
+            bool success = true;
+            
+            // First set the resolution
             try
             {
-                // Apply new resolution based on screen mode
-                switch (PlayerPrefs.GetInt("ScreenMode", 0))
-                {
-                    case 0: // Fullscreen
-                    case 1: // Borderless Window
-                        Screen.SetResolution(targetResolution.width, targetResolution.height, true);
-                        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-                        break;
-                    case 2: // Windowed
-                        Screen.SetResolution(targetResolution.width, targetResolution.height, false);
-                        Screen.fullScreenMode = FullScreenMode.Windowed;
-                        break;
-                }
+                Screen.SetResolution(targetResolution.width, targetResolution.height, Screen.fullScreen);
             }
             catch (System.Exception e)
             {
                 Debug.LogError($"Error changing resolution (Attempt {retryCount + 1}/{MAX_RETRIES}): {e.Message}");
-                retryCount++;
+                success = false;
+            }
+
+            if (success)
+            {
+                yield return new WaitForSecondsRealtime(0.1f);
+
+                // Then set the screen mode
+                int screenMode = PlayerPrefs.GetInt("ScreenMode", 0);
+                try
+                {
+                    switch (screenMode)
+                    {
+                        case 0: // Fullscreen
+                            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+                            break;
+                        case 1: // Borderless Window
+                            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                            break;
+                        case 2: // Windowed
+                            Screen.fullScreenMode = FullScreenMode.Windowed;
+                            break;
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError($"Error changing screen mode (Attempt {retryCount + 1}/{MAX_RETRIES}): {e.Message}");
+                    success = false;
+                }
             }
 
             yield return new WaitForSecondsRealtime(0.5f);
 
-            // Verify the resolution change
-            if (Screen.width == targetResolution.width && Screen.height == targetResolution.height)
+            // Verify both resolution and screen mode
+            if (success && 
+                Screen.width == targetResolution.width && 
+                Screen.height == targetResolution.height &&
+                IsCorrectScreenMode(PlayerPrefs.GetInt("ScreenMode", 0)))
             {
                 yield break; // Success!
             }
@@ -168,5 +206,16 @@ public class Resolutions : MonoBehaviour
             resolutionDropDown.value = currentResolutionIndex;
             resolutionDropDown.RefreshShownValue();
         }
+    }
+
+    private bool IsCorrectScreenMode(int expectedMode)
+    {
+        return expectedMode switch
+        {
+            0 => Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen,
+            1 => Screen.fullScreenMode == FullScreenMode.FullScreenWindow,
+            2 => Screen.fullScreenMode == FullScreenMode.Windowed,
+            _ => false
+        };
     }
 }
