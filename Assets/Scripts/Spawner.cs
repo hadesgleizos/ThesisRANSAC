@@ -376,8 +376,16 @@ public void NextStage()
     {
         if (spawnPoints.Count > 0)
         {
-            // Play boss music when boss spawns
-            SoundManager.Instance.PlayBossMusic();
+            // Check if SoundManager instance exists before playing music
+            if (SoundManager.Instance != null)
+            {
+                Debug.Log("Playing boss music...");
+                SoundManager.Instance.PlayBossMusic();
+            }
+            else
+            {
+                Debug.LogWarning("SoundManager.Instance is null! Cannot play boss music.");
+            }
             
             int randomSpawnIndex = Random.Range(0, spawnPoints.Count);
             Vector3 spawnPosition = spawnPoints[randomSpawnIndex].transform.position;
@@ -403,16 +411,20 @@ public void NextStage()
             currentBoss = null;
             Debug.Log("Boss defeated!");
             
+            // Stop the boss music
+            if (SoundManager.Instance != null)
+            {
+                Debug.Log("Stopping boss music...");
+                SoundManager.Instance.StopMusic();
+            }
+            
             // Disable timer text
             if (TimerText != null)
             {
-                //TimerText.text = "";  // Clear the text
-                // Or alternatively:
-                TimerText.gameObject.SetActive(false);  // Hide the timer completely
+                TimerText.gameObject.SetActive(false);
             }
             
-            // Add delay before showing score screen to match boss destroy delay
-            StartCoroutine(ShowScoreScreenDelayed(5f)); // 5f matches the boss destroy delay
+            StartCoroutine(ShowScoreScreenDelayed(5f));
         }
     }
 

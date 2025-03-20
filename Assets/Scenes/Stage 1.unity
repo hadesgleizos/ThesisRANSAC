@@ -402,9 +402,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bossMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 60abeb61250fa4ccf871561c378d6f9f, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: bossAudioSource
       value: 
       objectReference: {fileID: 135869202}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: musicAudioSource
+      value: 
+      objectReference: {fileID: 539726829}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieAudioSource
       value: 
@@ -524,11 +532,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 50e5e4dd49391ca4299a30059de4f785, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.789
+  m_audioClip: {fileID: 8300000, guid: 60abeb61250fa4ccf871561c378d6f9f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.685
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
