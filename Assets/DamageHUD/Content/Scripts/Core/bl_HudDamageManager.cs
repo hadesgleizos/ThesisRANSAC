@@ -128,7 +128,7 @@ public class bl_HudDamageManager : MonoBehaviour {
     /// send the event when the player die.
     /// see the example bl_DamageCallbak as reference of usage.
     /// </summary>
-    void OnDie()
+    private void OnDie()
     {
         if (isDead) return;
         isDead = true;
@@ -136,19 +136,37 @@ public class bl_HudDamageManager : MonoBehaviour {
         // Show death HUD before freezing
         DeathHUD.SetActive(true);
 
+        // Disable pause menu functionality first
+        if (PauseMenu.Instance != null)
+        {
+            PauseMenu.Instance.enabled = false;
+        }
+
+        // Keep cursor hidden during death
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        // Pause all audio sources just like pause menu
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource source in allAudioSources)
+        {
+            if (source.isPlaying)
+            {
+                source.Pause();
+            }
+        }
+
         // Set up Death HUD animation to work with frozen time
         if (deathHUDAnimator != null)
         {
-            // Make sure the animator updates independently of time scale
             deathHUDAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
-            
-            // Reset animator state
             deathHUDAnimator.Rebind();
             deathHUDAnimator.Update(0f);
-            
-            // Play the death animation
             deathHUDAnimator.Play("DeathHUDAnimation", 0, 0f);
         }
+
+        // Disable pause menu functionality
+        PauseMenu.Instance.enabled = false;
 
         // Configure all UI elements in death HUD
         foreach (var canvas in DeathHUD.GetComponentsInChildren<CanvasGroup>(true))
@@ -158,16 +176,8 @@ public class bl_HudDamageManager : MonoBehaviour {
             canvas.alpha = 1f;
         }
 
-        // Make sure all UI animators use unscaled time
-        foreach (var animator in DeathHUD.GetComponentsInChildren<Animator>(true))
-        {
-            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        }
-
-        // Disable player input
         DisablePlayerInput();
 
-        // Start freeze coroutine with delay
         if (freezeCoroutine != null)
             StopCoroutine(freezeCoroutine);
         freezeCoroutine = StartCoroutine(FreezeGameWithDelay());
@@ -313,8 +323,25 @@ public class bl_HudDamageManager : MonoBehaviour {
     /// </summary>
     public void Restart()
     {
-        isDead = false;
+        // Set timescale first to prevent any unwanted updates
         Time.timeScale = 1f;
+
+        // Stop all audio sources instead of unpausing them
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource source in allAudioSources)
+        {
+            source.Stop();
+        }
+
+        isDead = false;
+
+        // Re-enable pause menu before restarting
+        if (PauseMenu.Instance != null)
+        {
+            PauseMenu.Instance.enabled = true;
+        }
+
+        // Load scenes
         SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
         SceneManager.LoadScene(restartSceneName, LoadSceneMode.Additive);
     }

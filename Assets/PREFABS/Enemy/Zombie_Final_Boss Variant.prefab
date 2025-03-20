@@ -899,7 +899,7 @@ MonoBehaviour:
   acceleration: 8
   stoppingDistance: 1.5
   baseSpeed: 3.5
-  minSpeed: 4
+  minSpeed: 3.7
   maxSpeed: 5
   speedAdjustmentRate: 0.2
   idleSoundInterval: 8

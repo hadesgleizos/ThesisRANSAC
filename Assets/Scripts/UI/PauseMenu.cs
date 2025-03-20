@@ -30,26 +30,35 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         // Cache all audio sources in the scene
         allAudioSources = FindObjectsOfType<AudioSource>();
+        // Hide cursor at start
+        SetCursorState(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            if(isPaused){
+        // Don't process escape key if component is disabled
+        if (!enabled) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
                 ResumeGame();
             }
-            else{
+            else
+            {
                 PauseGame();
             }
-
         }
     }
 
-    public void PauseGame(){
+    public void PauseGame()
+    {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        SetCursorState(true);
         
         // Pause all audio sources
         foreach (AudioSource source in allAudioSources)
@@ -61,10 +70,12 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void ResumeGame(){
+    public void ResumeGame()
+    {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        SetCursorState(false);
 
         // Resume all paused audio sources
         foreach (AudioSource source in allAudioSources)
@@ -73,14 +84,15 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void GoToMainMenu(){
+    public void GoToMainMenu()
+    {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         isPaused = false;
-
     }
 
-    public void QuitGame(){
+    public void QuitGame()
+    {
         Application.Quit();
     }
 
@@ -92,5 +104,11 @@ public class PauseMenu : MonoBehaviour
     private void RefreshAudioSources()
     {
         allAudioSources = FindObjectsOfType<AudioSource>();
+    }
+
+    private void SetCursorState(bool visible)
+    {
+        Cursor.visible = visible;
+        Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }
