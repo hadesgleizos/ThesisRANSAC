@@ -368,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 4644176053053347047, guid: a76e7547032c0644aa0a5eda4dd24fbc, type: 3}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: totalWaves
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: ScorePoints
@@ -404,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.size
-      value: 2
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: spawnPoints.Array.data[0]
@@ -444,11 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 1850142963}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[0].zombieName
-      value: Normal Zombies
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[1].zombieName
-      value: Normal Zombies
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[0].zombiePrefab
@@ -457,7 +457,43 @@ PrefabInstance:
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[1].zombiePrefab
       value: 
+      objectReference: {fileID: 5710803323149949879, guid: 17421655f98314d06b3864be61784af3, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[2].zombiePrefab
+      value: 
+      objectReference: {fileID: 2153488194533384058, guid: 41403d588a01a4106b7d54dea13313f0, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[3].zombiePrefab
+      value: 
+      objectReference: {fileID: 2432828507951726510, guid: 8bd4e2367456c614a8604d182b2a5ed1, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[4].zombiePrefab
+      value: 
+      objectReference: {fileID: 8519554400244896963, guid: 90ac079730ae983489e941b70d5a8ad4, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[5].zombiePrefab
+      value: 
       objectReference: {fileID: 2628473459058834688, guid: 9f33f5f833cc94c06a9887edcc4c6bed, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[6].zombiePrefab
+      value: 
+      objectReference: {fileID: 6575359880263052870, guid: 9d72ca37313256a4a8a192d5a386e164, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[7].zombiePrefab
+      value: 
+      objectReference: {fileID: 4628993430025218582, guid: ea2bf40d43a075d4e9179b771d304087, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[8].zombiePrefab
+      value: 
+      objectReference: {fileID: 3533202648325467596, guid: fe97443a7e47f834ebed714375aa67e6, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[9].zombiePrefab
+      value: 
+      objectReference: {fileID: 8561689680511719702, guid: 63aee8bacd48a004b81f5e2d67c3408a, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[10].zombiePrefab
+      value: 
+      objectReference: {fileID: 8398836672444025200, guid: 7eff5b23bd99ff64db82d9e14a74b8a1, type: 3}
     - target: {fileID: 1180291157750065552, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.78555
