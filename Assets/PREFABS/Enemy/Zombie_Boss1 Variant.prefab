@@ -880,7 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2000
-  damage: 30
+  damage: 20
   attackRange: 5
   attackCooldown: 1.5
   rotationSpeed: 8

@@ -892,7 +892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10000
-  damage: 80
+  damage: 40
   attackRange: 5
   attackCooldown: 2
   rotationSpeed: 10
