@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4724623081429542}
   - component: {fileID: 33027397119794746}
   - component: {fileID: 23126287481241374}
+  - component: {fileID: 64358190123957710}
   m_Layer: 0
   m_Name: SM_Prop_Barricade_09
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485236411166318}
   m_Mesh: {fileID: 4300000, guid: 654d4c48078593e4885cb477fd37c086, type: 3}
+--- !u!64 &64358190123957710
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485236411166318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43761522943290274, guid: 67a27b1d08d5e824880e7dd0058ecf7f, type: 2}

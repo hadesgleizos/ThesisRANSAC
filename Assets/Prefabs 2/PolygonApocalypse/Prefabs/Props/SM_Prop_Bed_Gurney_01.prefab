@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4207754566289670}
   - component: {fileID: 33723843005800610}
   - component: {fileID: 23350296692298866}
+  - component: {fileID: 64909501578513180}
   m_Layer: 0
   m_Name: SM_Prop_Bed_Gurney_01
   m_TagString: Untagged
@@ -360,3 +361,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1306869375838644}
   m_Mesh: {fileID: 4300002, guid: 0124820875a7b544d8f5e7ccd56f9d14, type: 3}
+--- !u!64 &64909501578513180
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724283039470302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43331855711600244, guid: 8744e86ebde2a2a4a9086d41845ba3fd, type: 2}

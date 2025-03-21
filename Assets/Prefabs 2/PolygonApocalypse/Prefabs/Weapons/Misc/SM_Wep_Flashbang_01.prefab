@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4129026921019100}
   - component: {fileID: 33358707898736794}
   - component: {fileID: 23318088337210974}
+  - component: {fileID: 64808236832310980}
   m_Layer: 0
   m_Name: SM_Wep_Flashbang_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585535012590032}
   m_Mesh: {fileID: 4300002, guid: 34629ac29638c9645afd7cc702dac80c, type: 3}
+--- !u!64 &64808236832310980
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514270269525414}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43442139035927580, guid: 30bd7b563df298a458df6f439f068be0, type: 2}

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4500680798422750}
   - component: {fileID: 33387464819982790}
   - component: {fileID: 23818785112327260}
+  - component: {fileID: 64263163433243176}
   m_Layer: 0
   m_Name: SM_Prop_Luggage_Retro_Open_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008388699282262}
   m_Mesh: {fileID: 4300002, guid: 1fcde001c5d7dbf4aae4f993c90836de, type: 3}
+--- !u!64 &64263163433243176
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283339109596406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43264628745844764, guid: 0e352b46c0de84d42a7d09af9f827204, type: 2}

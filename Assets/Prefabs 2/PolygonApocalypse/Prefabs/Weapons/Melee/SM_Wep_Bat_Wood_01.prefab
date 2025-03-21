@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4779526885788282}
   - component: {fileID: 33047241736220020}
   - component: {fileID: 23626723880294208}
+  - component: {fileID: 64236732320939636}
   m_Layer: 0
   m_Name: SM_Wep_Bat_Wood_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230774735970100}
   m_Mesh: {fileID: 4300002, guid: 3af61cfeddf135f499b68564046540f3, type: 3}
+--- !u!64 &64236732320939636
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145237178023060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43489627685033080, guid: e6e879dd49b5e1649b4a4f7346f91331, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4153114125708994}
   - component: {fileID: 33932815029325048}
   - component: {fileID: 23477279636064334}
+  - component: {fileID: 64859022341869488}
   m_Layer: 0
   m_Name: SM_Env_Bunker_Entrance_01
   m_TagString: Untagged
@@ -79,4 +80,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1757510037709598}
+  m_Mesh: {fileID: 4300000, guid: d9d13110ef2ff63419c8be616d4b9342, type: 3}
+--- !u!64 &64859022341869488
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757510037709598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: d9d13110ef2ff63419c8be616d4b9342, type: 3}

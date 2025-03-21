@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4270431553781090}
   - component: {fileID: 33991416664412724}
   - component: {fileID: 23495464236697016}
+  - component: {fileID: 64616612377031966}
   m_Layer: 0
   m_Name: SM_Prop_Anvil_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1711481061838662}
   m_Mesh: {fileID: 4300000, guid: c9a02abd8bb3ea04291eb8b0dd763942, type: 3}
+--- !u!64 &64616612377031966
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711481061838662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43040969007698838, guid: e083ee697cea46442bbdd5284a79baea, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4948897006441240}
   - component: {fileID: 33884069052638492}
   - component: {fileID: 23196929366068234}
+  - component: {fileID: 64987480547389404}
   m_Layer: 0
   m_Name: SM_Prop_Grill_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1973639171627302}
   m_Mesh: {fileID: 4300000, guid: 2b6ff4e31a7ca8a498762bf30cfd09d0, type: 3}
+--- !u!64 &64987480547389404
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973639171627302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43958658196357732, guid: f8c50ef0741cd0144902048d88a1640f, type: 2}

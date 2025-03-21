@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4745538596951802}
   - component: {fileID: 33246896849908506}
   - component: {fileID: 23323021427837628}
+  - component: {fileID: 64037884503204122}
   m_Layer: 0
   m_Name: SM_Prop_Crate_Large_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811598040269564}
   m_Mesh: {fileID: 4300000, guid: 9ef28feb579e1794aa31bbc33c545fdc, type: 3}
+--- !u!64 &64037884503204122
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811598040269564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43064406330798826, guid: aa7dfa96989b9484491d128482db7852, type: 2}

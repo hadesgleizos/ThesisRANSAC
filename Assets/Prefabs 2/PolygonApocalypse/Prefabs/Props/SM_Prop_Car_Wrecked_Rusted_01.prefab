@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4531441962555420}
   - component: {fileID: 33498923016380488}
   - component: {fileID: 23301162639600394}
+  - component: {fileID: 64501259712236282}
+  - component: {fileID: 64568331870398638}
   m_Layer: 0
   m_Name: SM_Prop_Car_Wrecked_Rusted_01
   m_TagString: Untagged
@@ -150,3 +152,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243194821767460}
   m_Mesh: {fileID: 4300000, guid: 7be47036d6f2907439b46d412b445bf6, type: 3}
+--- !u!64 &64501259712236282
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243194821767460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43776050263091268, guid: 38a48390b80af0b418006d6137eb924f, type: 2}
+--- !u!64 &64568331870398638
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243194821767460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43491489378204964, guid: 38a48390b80af0b418006d6137eb924f, type: 2}

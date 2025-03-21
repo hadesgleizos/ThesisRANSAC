@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4193608914024766}
   - component: {fileID: 33091409532278160}
   - component: {fileID: 23939402432166346}
+  - component: {fileID: 64232983910487504}
   m_Layer: 0
   m_Name: SM_Env_StormCanal_Divider_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637226361248130}
   m_Mesh: {fileID: 4300000, guid: 6c68e6161de437042bb1ac80a785e2fe, type: 3}
+--- !u!64 &64232983910487504
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637226361248130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43018649294717496, guid: c45fadfbb7a251f4abb86870f5b4e4fb, type: 2}

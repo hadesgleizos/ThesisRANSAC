@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4335771242981698}
   - component: {fileID: 33087928329600762}
   - component: {fileID: 23659683215367926}
+  - component: {fileID: 64753446703173594}
   m_Layer: 0
   m_Name: SM_Prop_Cafe_Sign_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468675463249794}
   m_Mesh: {fileID: 4300002, guid: c0184375170ea174d88a48cce8f168e1, type: 3}
+--- !u!64 &64753446703173594
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1004685209758518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43508280884127382, guid: d0be812db94b0a048ad0b09acc879c79, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4536586723246332}
   - component: {fileID: 33384138179183928}
   - component: {fileID: 23095021198091434}
+  - component: {fileID: 64591842233913490}
   m_Layer: 0
   m_Name: SM_Prop_Brick_Half_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435715068705156}
   m_Mesh: {fileID: 4300000, guid: dac64862df325c44694baa06fb8c1b09, type: 3}
+--- !u!64 &64591842233913490
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435715068705156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43797038187115596, guid: cef8e356bf4197942b2649152ea5ecb3, type: 2}

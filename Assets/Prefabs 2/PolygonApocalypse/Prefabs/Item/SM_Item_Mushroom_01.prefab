@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4359574691656128}
   - component: {fileID: 33966808301065138}
   - component: {fileID: 23263377926468368}
+  - component: {fileID: 64522204418987310}
   m_Layer: 0
   m_Name: SM_Item_Mushroom_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340215396104624}
   m_Mesh: {fileID: 4300000, guid: bf71e40db99269e468673be5dad25316, type: 3}
+--- !u!64 &64522204418987310
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340215396104624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43086570859013400, guid: 2539746c1cb408b40b80f517edd263db, type: 2}

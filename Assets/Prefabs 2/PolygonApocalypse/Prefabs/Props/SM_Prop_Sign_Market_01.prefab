@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4455757986067174}
   - component: {fileID: 33576898647664670}
   - component: {fileID: 23746625527519026}
+  - component: {fileID: 64705358762051978}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Market_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834648996303214}
   m_Mesh: {fileID: 4300000, guid: dc3b4ff53824ad342ade7311417b525f, type: 3}
+--- !u!64 &64705358762051978
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834648996303214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43009913741376782, guid: 6b68ef9cb871de641be06e4d9955433d, type: 2}

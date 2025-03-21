@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4273033674526246}
   - component: {fileID: 33591895891311898}
   - component: {fileID: 23465478662949912}
+  - component: {fileID: 64852187925091134}
   m_Layer: 0
   m_Name: SM_Prop_Crashed_Ship_01
   m_TagString: Untagged
@@ -34,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491326031566224}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491326031566224}
   m_Mesh: {fileID: 4300000, guid: 5adbf14938944784a8ffe54693675c76, type: 3}
+--- !u!64 &64852187925091134
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1491326031566224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: e76a82f0a8ecc364dbe2e6b0a385f9b3, type: 3}

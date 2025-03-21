@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4958810083594284}
   - component: {fileID: 33281623494290542}
   - component: {fileID: 23594272325893950}
+  - component: {fileID: 64606220280426800}
   m_Layer: 0
   m_Name: SM_Prop_Brick_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1516918017430844}
   m_Mesh: {fileID: 4300000, guid: afd557042136b5249935891ae65c5be4, type: 3}
+--- !u!64 &64606220280426800
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516918017430844}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43342775575808058, guid: c6cc245361c737e47b430dd54a7ebcfc, type: 2}

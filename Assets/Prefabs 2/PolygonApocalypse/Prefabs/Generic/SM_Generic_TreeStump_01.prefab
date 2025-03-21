@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4069452576420636}
   - component: {fileID: 33777256259447136}
   - component: {fileID: 23779797212162548}
+  - component: {fileID: 64584995991129590}
   m_Layer: 0
   m_Name: SM_Generic_TreeStump_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1139796795624570}
   m_Mesh: {fileID: 4300000, guid: 93d226fc0ef5c4240b43f655230a5848, type: 3}
+--- !u!64 &64584995991129590
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1139796795624570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43987840211039712, guid: 7605a167be89d504c9e7fd38ae24a7ea, type: 2}

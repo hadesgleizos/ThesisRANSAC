@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4417666369983190}
   - component: {fileID: 33375559861207100}
   - component: {fileID: 23246024564255848}
+  - component: {fileID: 64374175449884252}
   m_Layer: 0
   m_Name: SM_Prop_Slatbox_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319994847803884}
   m_Mesh: {fileID: 4300000, guid: 3040b8811a3231c459d9ffe97e9a987d, type: 3}
+--- !u!64 &64374175449884252
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319994847803884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43264908467055056, guid: bc92825dcb805fb4f8dbd96aeed1bfc8, type: 2}

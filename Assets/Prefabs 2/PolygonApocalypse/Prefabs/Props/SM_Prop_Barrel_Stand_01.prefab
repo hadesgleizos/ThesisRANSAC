@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4711491554117610}
   - component: {fileID: 33460273354911414}
   - component: {fileID: 23719349039440428}
+  - component: {fileID: 64676698623834740}
   m_Layer: 0
   m_Name: SM_Prop_Barrel_Stand_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1615626789330156}
   m_Mesh: {fileID: 4300000, guid: 441ca4edb52359146808a85d7234f47d, type: 3}
+--- !u!64 &64676698623834740
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615626789330156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43514229369528798, guid: a50c2cd9efa30374a929a9c278495af1, type: 2}

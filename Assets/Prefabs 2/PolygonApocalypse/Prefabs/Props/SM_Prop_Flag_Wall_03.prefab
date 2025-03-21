@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4003026355786314}
   - component: {fileID: 33276320062651438}
   - component: {fileID: 23316265176307696}
+  - component: {fileID: 64292541132993066}
   m_Layer: 0
   m_Name: SM_Prop_Flag_Wall_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277101185321378}
   m_Mesh: {fileID: 4300000, guid: a0b79134544360f48873f72ffc33619a, type: 3}
+--- !u!64 &64292541132993066
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1277101185321378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43486508154802902, guid: 1cb573b0a2198d54391a875040f6a94f, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4974888019827918}
   - component: {fileID: 33563713115701996}
   - component: {fileID: 23698137335561476}
+  - component: {fileID: 64808447596419242}
   m_Layer: 0
   m_Name: SM_Prop_Propane_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1524708790358150}
   m_Mesh: {fileID: 4300000, guid: 2a4fd3f31d474394cbb0cd3ab0e8fc10, type: 3}
+--- !u!64 &64808447596419242
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524708790358150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43207259280096274, guid: 6f02864971729294ebf29f5ee5b6df95, type: 2}

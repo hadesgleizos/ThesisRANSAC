@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4487286538005516}
   - component: {fileID: 33265166102183026}
   - component: {fileID: 23323847234211418}
+  - component: {fileID: 64570163521100404}
   m_Layer: 0
   m_Name: SM_Prop_DeadBody_Hanging_Female_01
   m_TagString: Untagged
@@ -85,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0a96fc22949f5d844a5b0bd9a89c09d1, type: 2}
+  - {fileID: 2100000, guid: fb119965ca92c404da5456d496233810, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1799252141239248}
   m_Mesh: {fileID: 4300000, guid: cd1b08a974a7bc841ad97823d6326917, type: 3}
+--- !u!64 &64570163521100404
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799252141239248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43593267679282762, guid: 46dd3149cba54754c838153b08842f74, type: 2}

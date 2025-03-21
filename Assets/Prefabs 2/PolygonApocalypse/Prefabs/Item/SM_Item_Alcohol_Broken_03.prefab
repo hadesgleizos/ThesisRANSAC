@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4543754385760238}
   - component: {fileID: 33029912642411750}
   - component: {fileID: 23240598507193418}
+  - component: {fileID: 64740330337107444}
   m_Layer: 0
   m_Name: SM_Item_Alcohol_Broken_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406573134572020}
   m_Mesh: {fileID: 4300000, guid: 8eb21b904bd1ee544874d0ef64166427, type: 3}
+--- !u!64 &64740330337107444
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406573134572020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43284195757068058, guid: 47d26d0038f0f3f4cb2625bfedb4f8fe, type: 2}

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4565258942007852}
   - component: {fileID: 33199004188697480}
   - component: {fileID: 23017358487269268}
+  - component: {fileID: 65295764203772284}
   m_Layer: 0
   m_Name: SM_Bld_HeliPad_01
   m_TagString: Untagged
@@ -150,3 +151,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1283559253981332}
   m_Mesh: {fileID: 4300002, guid: c65fb5dddd721be4c9c62d1baa308eb8, type: 3}
+--- !u!65 &65295764203772284
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452384647747702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 1.4430411, z: 9}
+  m_Center: {x: 0, y: 0.72152054, z: 0}

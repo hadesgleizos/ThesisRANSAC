@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4985738123290796}
   - component: {fileID: 33357673808362536}
   - component: {fileID: 23734360750509960}
+  - component: {fileID: 64281545916544614}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Wall_Curved_End_Metal_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069990958248902}
   m_Mesh: {fileID: 4300000, guid: c17406e8519934845b792eae17f7ff7e, type: 3}
+--- !u!64 &64281545916544614
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1069990958248902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43176017372389068, guid: e1e08cda5af5a464a9a8e43ef6a3727c, type: 2}

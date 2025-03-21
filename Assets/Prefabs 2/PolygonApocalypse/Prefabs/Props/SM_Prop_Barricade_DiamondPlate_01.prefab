@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4309661385283112}
   - component: {fileID: 33481773747902144}
   - component: {fileID: 23339530828454246}
+  - component: {fileID: 64630022915373510}
   m_Layer: 0
   m_Name: SM_Prop_Barricade_DiamondPlate_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196561496898302}
   m_Mesh: {fileID: 4300000, guid: 812db08efb47a7940b21bd71548b049f, type: 3}
+--- !u!64 &64630022915373510
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1196561496898302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43859966666707566, guid: c38b611f6c342904a9f988a491497d12, type: 2}

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4851108100561930}
   - component: {fileID: 33072342037771094}
   - component: {fileID: 23731725709692138}
+  - component: {fileID: 64277640477977180}
   m_Layer: 0
   m_Name: SM_Bld_Crane_Slide_01
   m_TagString: Untagged
@@ -55,6 +56,7 @@ GameObject:
   - component: {fileID: 4127402587219868}
   - component: {fileID: 33553979770038348}
   - component: {fileID: 23219447984215272}
+  - component: {fileID: 64998824870825800}
   m_Layer: 0
   m_Name: SM_Bld_Crane_Top_01
   m_TagString: Untagged
@@ -89,6 +91,7 @@ GameObject:
   - component: {fileID: 4110489542365032}
   - component: {fileID: 33011368544676000}
   - component: {fileID: 23265984192610714}
+  - component: {fileID: 64652228195583374}
   m_Layer: 0
   m_Name: SM_Bld_Crane_01
   m_TagString: Untagged
@@ -360,3 +363,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319101910009952}
   m_Mesh: {fileID: 4300006, guid: 02b3de0283968264ab4bf88e5363e131, type: 3}
+--- !u!64 &64277640477977180
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136123009686610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43960609522048022, guid: 3c8c7b91456e91049ae78f1d5ea83ee5, type: 2}
+--- !u!64 &64652228195583374
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679216403606064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 09be5f257fa9c1747bb7d593aac746ff, type: 3}
+--- !u!64 &64998824870825800
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1311272036499076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 25a6c984cdd47b24e8c3eba57c7c9586, type: 3}

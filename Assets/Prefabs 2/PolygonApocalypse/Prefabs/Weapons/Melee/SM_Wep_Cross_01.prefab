@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4912234710111558}
   - component: {fileID: 33730633442139624}
   - component: {fileID: 23960245027098016}
+  - component: {fileID: 64417691322759150}
   m_Layer: 0
   m_Name: SM_Wep_Cross_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1392198405331312}
   m_Mesh: {fileID: 4300000, guid: 0dd72bc0b9cd7a04591f7984e296cbd2, type: 3}
+--- !u!64 &64417691322759150
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392198405331312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43191622230245892, guid: 2768eecb75c5aae419b56dbcd75f28ec, type: 2}

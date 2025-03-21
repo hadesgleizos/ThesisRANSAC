@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4940561150268878}
   - component: {fileID: 33445759241646546}
   - component: {fileID: 23444434549069042}
+  - component: {fileID: 64021142826364870}
   m_Layer: 0
   m_Name: SM_Prop_Wall_Brick_Pillar_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952596653620626}
   m_Mesh: {fileID: 4300000, guid: 417514f29ed463f47bb6d86219106c0b, type: 3}
+--- !u!64 &64021142826364870
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952596653620626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43177220050077496, guid: d8d1af02113d15e4a9628b84e0845b77, type: 2}

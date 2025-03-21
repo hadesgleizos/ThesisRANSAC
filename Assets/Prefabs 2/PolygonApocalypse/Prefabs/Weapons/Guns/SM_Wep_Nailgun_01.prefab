@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4092682414206956}
   - component: {fileID: 33687880787197216}
   - component: {fileID: 23321498899570126}
+  - component: {fileID: 64588679116565244}
   m_Layer: 0
   m_Name: SM_Wep_Nailgun_01
   m_TagString: Untagged
@@ -290,3 +291,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976984469360624}
   m_Mesh: {fileID: 4300000, guid: 213854a9b3002344fb9c4d274997e955, type: 3}
+--- !u!64 &64588679116565244
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976984469360624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43052128205099176, guid: b5ad13334ff386f4a85fdcd87bdfcb8b, type: 2}

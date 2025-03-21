@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4598329277832642}
   - component: {fileID: 33434887326003088}
   - component: {fileID: 23246558893067224}
+  - component: {fileID: 64827828123926596}
   m_Layer: 0
   m_Name: SM_Bld_Diner_Stool_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994969904107534}
   m_Mesh: {fileID: 4300000, guid: 048c948b48d562e4aa65a5b2619fba29, type: 3}
+--- !u!64 &64827828123926596
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994969904107534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43491978687281002, guid: 3f47e30650ce5eb4ba35cd42495dc819, type: 2}

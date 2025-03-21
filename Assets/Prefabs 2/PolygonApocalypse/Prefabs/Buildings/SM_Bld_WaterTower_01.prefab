@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4456555683212058}
   - component: {fileID: 33673532127983576}
   - component: {fileID: 23210784042459330}
+  - component: {fileID: 64721732021214118}
   m_Layer: 0
   m_Name: SM_Bld_WaterTower_01
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1813299192308252}
   m_Mesh: {fileID: 4300000, guid: 479d47a72aab66c4aa800971d8302841, type: 3}
+--- !u!64 &64721732021214118
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1813299192308252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: be642d225ef96174580cf5a7426a57d6, type: 3}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4607934449371484}
   - component: {fileID: 33065961754370556}
   - component: {fileID: 23325573725876408}
+  - component: {fileID: 64496322011149242}
   m_Layer: 0
   m_Name: SM_Prop_Bandit_Skull_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582532293609712}
   m_Mesh: {fileID: 4300000, guid: 2ad2cb4fa348d6840925eb92c46aa85d, type: 3}
+--- !u!64 &64496322011149242
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582532293609712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43482386382639902, guid: 82539b4f24d2a144b92326f3c22d047e, type: 2}

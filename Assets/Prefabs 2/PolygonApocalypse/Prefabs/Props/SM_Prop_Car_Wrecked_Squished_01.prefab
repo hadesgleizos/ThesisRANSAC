@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4770452329553874}
   - component: {fileID: 33679656296233994}
   - component: {fileID: 23934064763163108}
+  - component: {fileID: 64150393391308758}
+  - component: {fileID: 64028606257076084}
   m_Layer: 0
   m_Name: SM_Prop_Car_Wrecked_Squished_01
   m_TagString: Untagged
@@ -80,3 +82,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323047027928602}
   m_Mesh: {fileID: 4300000, guid: 8abbd3476b124fe4da2d6a820a22a5ae, type: 3}
+--- !u!64 &64028606257076084
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323047027928602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43061573983504370, guid: 197b4cddbf788d949a028e4e2dfd72cf, type: 2}
+--- !u!64 &64150393391308758
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323047027928602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43438647354710304, guid: 197b4cddbf788d949a028e4e2dfd72cf, type: 2}

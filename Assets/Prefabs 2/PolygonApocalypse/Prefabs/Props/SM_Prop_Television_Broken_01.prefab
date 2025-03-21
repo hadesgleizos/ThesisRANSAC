@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4633699903140002}
   - component: {fileID: 33697121997825934}
   - component: {fileID: 23697627524600406}
+  - component: {fileID: 64049546725278406}
   m_Layer: 0
   m_Name: SM_Prop_Television_Broken_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447697939266614}
   m_Mesh: {fileID: 4300000, guid: f52178e0b0355ba44acf170926c8aea2, type: 3}
+--- !u!64 &64049546725278406
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447697939266614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43843191739502348, guid: 2badec24df001c24ead6e9ed93196e3f, type: 2}

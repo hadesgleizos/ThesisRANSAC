@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4258797749707760}
   - component: {fileID: 33847016000443242}
   - component: {fileID: 23385620912305826}
+  - component: {fileID: 65599992132177050}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Floor_Container_x2_01
   m_TagString: Untagged
@@ -80,3 +81,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1824999309672662}
   m_Mesh: {fileID: 4300000, guid: 5954683456d406a44abdf55e73d7147a, type: 3}
+--- !u!65 &65599992132177050
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1824999309672662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 0.26646483, z: 2.5}
+  m_Center: {x: -2.5, y: 0.13323241, z: 1.25}

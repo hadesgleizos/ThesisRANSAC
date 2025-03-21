@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4218978442294352}
   - component: {fileID: 33072143099545368}
   - component: {fileID: 23684556058710404}
+  - component: {fileID: 64097683398845684}
   m_Layer: 0
   m_Name: SM_Prop_GasCan_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1544143072547004}
   m_Mesh: {fileID: 4300000, guid: 7c28d164a49104d459484cb40d70b53f, type: 3}
+--- !u!64 &64097683398845684
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1544143072547004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43389410765315290, guid: 5e0f0565fb93de74fa18a5c2e4bb06ab, type: 2}

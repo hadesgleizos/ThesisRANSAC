@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4802486535304662}
   - component: {fileID: 33735253889556964}
   - component: {fileID: 23540504641452000}
+  - component: {fileID: 64707399919304166}
   m_Layer: 0
   m_Name: SM_Prop_Outdoor_Table_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1999675713022318}
   m_Mesh: {fileID: 4300000, guid: b32f47e180e9e9445a5cfaf396f6a30d, type: 3}
+--- !u!64 &64707399919304166
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1999675713022318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43717124747739690, guid: 687637f061ded9c4aa0c9e856f6d901a, type: 2}

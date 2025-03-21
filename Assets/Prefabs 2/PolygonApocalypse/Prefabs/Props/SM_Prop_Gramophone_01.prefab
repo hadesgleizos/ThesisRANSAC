@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4838410821454576}
   - component: {fileID: 33887260594183912}
   - component: {fileID: 23024494945420434}
+  - component: {fileID: 64435308499802098}
   m_Layer: 0
   m_Name: SM_Prop_Gramophone_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1019674663441226}
   m_Mesh: {fileID: 4300000, guid: 75f571be9dbba4c4ebf9eb7b38f65eea, type: 3}
+--- !u!64 &64435308499802098
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019674663441226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43850817856314192, guid: 8f851a258cbc0b445a2c5d487b082f34, type: 2}

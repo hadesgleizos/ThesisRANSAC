@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4060965277327784}
   - component: {fileID: 33894434145941740}
   - component: {fileID: 23077198229787280}
+  - component: {fileID: 64270761266632802}
+  - component: {fileID: 64399010039590384}
   m_Layer: 0
   m_Name: SM_Bld_Diner_Sign
   m_TagString: Untagged
@@ -80,3 +82,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357899626041044}
   m_Mesh: {fileID: 4300000, guid: d3b9d3a971ac53d479588250e07f4475, type: 3}
+--- !u!64 &64270761266632802
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357899626041044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43359666086309994, guid: 44cfaf858ee5e194c9a03288fc32bd00, type: 2}
+--- !u!64 &64399010039590384
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357899626041044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43025020307952844, guid: 44cfaf858ee5e194c9a03288fc32bd00, type: 2}

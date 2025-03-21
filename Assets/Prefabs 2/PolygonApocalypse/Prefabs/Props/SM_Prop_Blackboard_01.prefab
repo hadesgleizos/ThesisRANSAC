@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4141048744153656}
   - component: {fileID: 33853760879337124}
   - component: {fileID: 23328774602535744}
+  - component: {fileID: 64945675946193176}
   m_Layer: 0
   m_Name: SM_Prop_Blackboard_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483296264772644}
   m_Mesh: {fileID: 4300000, guid: a7118a8ef34863d44afb5d74df4f37c0, type: 3}
+--- !u!64 &64945675946193176
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483296264772644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43580726469879810, guid: 523b90b22a9f17f4b8d21c4da6fbbf35, type: 2}

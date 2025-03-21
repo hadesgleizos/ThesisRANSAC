@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4918178961340304}
   - component: {fileID: 33959163721416312}
   - component: {fileID: 23372628863222386}
+  - component: {fileID: 64340167706620574}
   m_Layer: 0
   m_Name: SM_Prop_Cupboard_Broken_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1476844830292528}
   m_Mesh: {fileID: 4300000, guid: 67a7f997e3a291f469034a29cf0c6930, type: 3}
+--- !u!64 &64340167706620574
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476844830292528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43165538906574370, guid: 3c886b13ce460be4bb33d3257cdbbd89, type: 2}

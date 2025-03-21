@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4039586570894810}
   - component: {fileID: 33925359684688958}
   - component: {fileID: 23476206214147152}
+  - component: {fileID: 64323825317212548}
   m_Layer: 0
   m_Name: SM_Wep_Grenade_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1029064837195810}
   m_Mesh: {fileID: 4300000, guid: bf220e4e67d4b4e46a5d9564c0ee0e6b, type: 3}
+--- !u!64 &64323825317212548
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029064837195810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43016375835710604, guid: 5868c6fc38e075a4b8675edbd8a7e33b, type: 2}

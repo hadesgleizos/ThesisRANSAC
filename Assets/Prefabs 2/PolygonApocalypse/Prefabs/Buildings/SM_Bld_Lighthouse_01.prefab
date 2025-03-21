@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4372470100543816}
   - component: {fileID: 33547089796033152}
   - component: {fileID: 23227934263587886}
+  - component: {fileID: 64537967209165422}
   m_Layer: 0
   m_Name: SM_Bld_Lighthouse_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510587126887058}
   m_Mesh: {fileID: 4300000, guid: 25d73cfce46213847a32954f56eea397, type: 3}
+--- !u!64 &64537967209165422
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510587126887058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 5ab97555db234684f94a4f2e88e890e1, type: 3}

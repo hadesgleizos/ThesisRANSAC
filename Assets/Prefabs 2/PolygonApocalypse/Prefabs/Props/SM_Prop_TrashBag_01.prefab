@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4727417395257562}
   - component: {fileID: 33979154947602162}
   - component: {fileID: 23208121233110466}
+  - component: {fileID: 64046719880887750}
   m_Layer: 0
   m_Name: SM_Prop_TrashBag_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667549893534606}
   m_Mesh: {fileID: 4300000, guid: f8ac9a3275193094387da94e296721e5, type: 3}
+--- !u!64 &64046719880887750
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1667549893534606}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43968255944324422, guid: 2e2539d19ee92e741945ab3d6b617a54, type: 2}

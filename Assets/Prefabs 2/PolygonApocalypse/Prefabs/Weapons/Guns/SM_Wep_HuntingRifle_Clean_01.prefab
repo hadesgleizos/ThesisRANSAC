@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4207305543073516}
   - component: {fileID: 33070997758550968}
   - component: {fileID: 23230514362325894}
+  - component: {fileID: 64904634067792218}
   m_Layer: 0
   m_Name: SM_Wep_HuntingRifle_Clean_01
   m_TagString: Untagged
@@ -290,3 +291,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111307167116862}
   m_Mesh: {fileID: 4300006, guid: 2cc7b8ab74a2dfe4db5e2b8abe10cd6b, type: 3}
+--- !u!64 &64904634067792218
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1311854592980844}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43965102396634486, guid: 02800331fa8dde54b8fa02a5a26dea30, type: 2}

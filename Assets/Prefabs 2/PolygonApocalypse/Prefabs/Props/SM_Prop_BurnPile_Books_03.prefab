@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4332773288977076}
   - component: {fileID: 33950730582906500}
   - component: {fileID: 23015818238089502}
+  - component: {fileID: 64819075804245028}
   m_Layer: 0
   m_Name: SM_Prop_BurnPile_Books_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053004552009070}
   m_Mesh: {fileID: 4300000, guid: c7d68c32692440949a1f94d9ff5cb1a9, type: 3}
+--- !u!64 &64819075804245028
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053004552009070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43191615580220820, guid: 786e37d11f5792747a33c16995fa5462, type: 2}

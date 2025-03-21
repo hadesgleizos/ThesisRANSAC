@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4873653052408692}
   - component: {fileID: 33504012864290738}
   - component: {fileID: 23067097432527224}
+  - component: {fileID: 64063333171641356}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Military_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413086725326956}
   m_Mesh: {fileID: 4300000, guid: 5a290d6ce4c10cc458e7c69242419e19, type: 3}
+--- !u!64 &64063333171641356
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413086725326956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43124729348652610, guid: f9f1b61f800d3c9418d89db2bbfeab21, type: 2}

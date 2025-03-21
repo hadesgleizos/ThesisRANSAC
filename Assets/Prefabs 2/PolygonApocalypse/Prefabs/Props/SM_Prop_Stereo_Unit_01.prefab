@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4918072034483650}
   - component: {fileID: 33683658964295218}
   - component: {fileID: 23613075870505138}
+  - component: {fileID: 64439362053446314}
   m_Layer: 0
   m_Name: SM_Prop_Stereo_Unit_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1181151685280860}
   m_Mesh: {fileID: 4300000, guid: 607482efee480ab4d8c11c68cbcc068a, type: 3}
+--- !u!64 &64439362053446314
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181151685280860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43960483091724650, guid: 8a8dff1e34857b84b9ea5faa2737adae, type: 2}

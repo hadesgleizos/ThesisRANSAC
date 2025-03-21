@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4606243540219670}
   - component: {fileID: 33945362211451914}
   - component: {fileID: 23598987595148324}
+  - component: {fileID: 64939315803817622}
   m_Layer: 0
   m_Name: SM_Item_Can_04
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994145810504924}
   m_Mesh: {fileID: 4300000, guid: d804bb3d65069d244b64353a65630a7e, type: 3}
+--- !u!64 &64939315803817622
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994145810504924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43521310440524228, guid: 492a5e9345129944c91e18a56e8b9318, type: 2}

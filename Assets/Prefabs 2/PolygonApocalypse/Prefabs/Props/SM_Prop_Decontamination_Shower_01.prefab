@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4672914158545214}
   - component: {fileID: 33683859621103796}
   - component: {fileID: 23749675326806686}
+  - component: {fileID: 64063055807496398}
   m_Layer: 0
   m_Name: SM_Prop_Decontamination_Shower_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1741468029491418}
   m_Mesh: {fileID: 4300000, guid: d1215962ffe4aa24a930d4e32c5fd63b, type: 3}
+--- !u!64 &64063055807496398
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1741468029491418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43776626516444550, guid: 0e0284023df8a4e4a8380d306bba3a3c, type: 2}

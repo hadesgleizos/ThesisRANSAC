@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4852306850297254}
   - component: {fileID: 33910409253710806}
   - component: {fileID: 23062970999637102}
+  - component: {fileID: 65846662864796304}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Wall_Slab_x2_01
   m_TagString: Untagged
@@ -80,3 +81,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033440947639692}
   m_Mesh: {fileID: 4300000, guid: 77eaf1e7aebfcb245bedabd15997fbba, type: 3}
+--- !u!65 &65846662864796304
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033440947639692}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 3.005998, z: 0.25}
+  m_Center: {x: -2.5, y: 1.502999, z: 0}

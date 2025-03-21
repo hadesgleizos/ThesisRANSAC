@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4469315549892272}
   - component: {fileID: 33091621953762506}
   - component: {fileID: 23840294689828448}
+  - component: {fileID: 64652966348942166}
   m_Layer: 0
   m_Name: SM_Bld_Diner_Booth_Seat_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470997129014118}
   m_Mesh: {fileID: 4300000, guid: 5c1fec9092e7c7b4991f2ea6c9a4f7b4, type: 3}
+--- !u!64 &64652966348942166
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470997129014118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43496786923212462, guid: c59d610a6d5ca9647bb0a681dec774be, type: 2}

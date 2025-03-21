@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4626928688417078}
   - component: {fileID: 33011209993696818}
   - component: {fileID: 23811062491490664}
+  - component: {fileID: 64858868023786772}
   m_Layer: 0
   m_Name: SM_Prop_Fence_White_Straight_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178547907921442}
   m_Mesh: {fileID: 4300000, guid: 3efa37ef6bf3e114a9f7a1f2ec5260cb, type: 3}
+--- !u!64 &64858868023786772
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178547907921442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43419302543794922, guid: da41746f679144d49918a08d4ebe8295, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4849352947257904}
   - component: {fileID: 33620612416697328}
   - component: {fileID: 23606238261411010}
+  - component: {fileID: 64283937187476146}
   m_Layer: 0
   m_Name: SM_Prop_Umbrella_Closed_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1789064996345838}
   m_Mesh: {fileID: 4300000, guid: 5f9f25b7215f33a4cbf5e153df329dc8, type: 3}
+--- !u!64 &64283937187476146
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1789064996345838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43784395862456676, guid: 52307ea224674be4b8b2e915798449c8, type: 2}

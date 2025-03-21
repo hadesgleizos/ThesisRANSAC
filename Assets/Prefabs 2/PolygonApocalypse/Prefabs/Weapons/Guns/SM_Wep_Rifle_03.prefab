@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4252037922489668}
   - component: {fileID: 33972794391129074}
   - component: {fileID: 23650251740315828}
+  - component: {fileID: 64441073127169268}
   m_Layer: 0
   m_Name: SM_Wep_Rifle_03
   m_TagString: Untagged
@@ -290,3 +291,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1652972229580220}
   m_Mesh: {fileID: 4300000, guid: f4c011f00e1ff8d41a8e83614f3893c0, type: 3}
+--- !u!64 &64441073127169268
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1652972229580220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43073495438852794, guid: 01d8a21a6fee7c2499cc0b9ea7bfb250, type: 2}

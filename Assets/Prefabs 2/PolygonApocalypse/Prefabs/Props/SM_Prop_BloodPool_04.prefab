@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4972320902449404}
   - component: {fileID: 33564742316536342}
   - component: {fileID: 23384412036926250}
+  - component: {fileID: 64531833445014692}
   m_Layer: 0
   m_Name: SM_Prop_BloodPool_04
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578357403053620}
   m_Mesh: {fileID: 4300000, guid: a3581cd360b0acf4ba7daed96242aa7f, type: 3}
+--- !u!64 &64531833445014692
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578357403053620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43327488966072674, guid: 2afbce67e9052934599cf4319583fc1b, type: 2}

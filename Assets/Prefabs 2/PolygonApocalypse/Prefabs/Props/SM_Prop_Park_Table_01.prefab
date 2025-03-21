@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4899078416107194}
   - component: {fileID: 33067796257089724}
   - component: {fileID: 23099179502678062}
+  - component: {fileID: 64263421273453872}
   m_Layer: 0
   m_Name: SM_Prop_Park_Table_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1746047795310816}
   m_Mesh: {fileID: 4300000, guid: 4194314d032d49547be90c46d54d3166, type: 3}
+--- !u!64 &64263421273453872
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746047795310816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43863367363949316, guid: db7ef67a6e22d524a949d8ec662e9bcc, type: 2}

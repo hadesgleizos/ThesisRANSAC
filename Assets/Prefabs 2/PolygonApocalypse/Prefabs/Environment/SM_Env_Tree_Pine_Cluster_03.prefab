@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4065460495777384}
   - component: {fileID: 33691916296252458}
   - component: {fileID: 23679877745412308}
+  - component: {fileID: 64904296213475076}
   m_Layer: 0
   m_Name: SM_Env_Tree_Pine_Cluster_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660336654926538}
   m_Mesh: {fileID: 4300000, guid: 7ae2ed96bd2d1da4aa227c02ef36eb8f, type: 3}
+--- !u!64 &64904296213475076
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660336654926538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 7988a364fd7b1e344881a39efd821024, type: 3}

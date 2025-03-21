@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4590524799273912}
   - component: {fileID: 33675094029703422}
   - component: {fileID: 23565911400148012}
+  - component: {fileID: 64353880228602132}
+  - component: {fileID: 64370393524598704}
   m_Layer: 0
   m_Name: SM_Prop_Car_Wrecked_Stack_02
   m_TagString: Untagged
@@ -82,3 +84,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994907758055656}
   m_Mesh: {fileID: 4300000, guid: b20dca5b85a93df499b9ffef7570f4de, type: 3}
+--- !u!64 &64353880228602132
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994907758055656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43839861565239572, guid: 40c59eb7ae3341d40b05d51831a0becd, type: 2}
+--- !u!64 &64370393524598704
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994907758055656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43198127274713572, guid: 40c59eb7ae3341d40b05d51831a0becd, type: 2}

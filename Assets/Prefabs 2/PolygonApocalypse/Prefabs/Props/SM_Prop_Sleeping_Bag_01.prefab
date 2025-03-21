@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4399295959850610}
   - component: {fileID: 33158478834724616}
   - component: {fileID: 23306855880937336}
+  - component: {fileID: 64293231500153316}
   m_Layer: 0
   m_Name: SM_Prop_Sleeping_Bag_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1304215742492940}
   m_Mesh: {fileID: 4300000, guid: 8e450cd503a2a3a42b47d88850d056a2, type: 3}
+--- !u!64 &64293231500153316
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304215742492940}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43712623079627552, guid: f17d8cfb6055e454080f822e727639b5, type: 2}

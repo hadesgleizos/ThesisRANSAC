@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4045177226843652}
   - component: {fileID: 33083755263872226}
   - component: {fileID: 23272635238736920}
+  - component: {fileID: 64608722341286376}
   m_Layer: 0
   m_Name: SM_Prop_Sink_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1841539120140994}
   m_Mesh: {fileID: 4300000, guid: f06b30db1cee2324aab623bd53acb4a5, type: 3}
+--- !u!64 &64608722341286376
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841539120140994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43326598818386514, guid: ca34bfcf3de492d4584eff52ab10eaa2, type: 2}

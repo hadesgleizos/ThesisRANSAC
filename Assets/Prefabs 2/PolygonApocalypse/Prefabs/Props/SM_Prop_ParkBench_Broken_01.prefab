@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4265111745899488}
   - component: {fileID: 33885602095691292}
   - component: {fileID: 23496169200402820}
+  - component: {fileID: 64905269667142058}
   m_Layer: 0
   m_Name: SM_Prop_ParkBench_Broken_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1899919133668748}
   m_Mesh: {fileID: 4300000, guid: d0c61951883b4a34499d5f01755068ab, type: 3}
+--- !u!64 &64905269667142058
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899919133668748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43723694193016280, guid: c637a0b1cf8f0cf4a96bc01d0cd7a445, type: 2}

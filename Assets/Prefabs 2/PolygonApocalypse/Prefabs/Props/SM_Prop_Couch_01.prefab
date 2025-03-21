@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4855973111843236}
   - component: {fileID: 33889855830887364}
   - component: {fileID: 23720015419819372}
+  - component: {fileID: 64955720104503330}
+  - component: {fileID: 64954066787859862}
+  - component: {fileID: 64920137424374900}
   m_Layer: 0
   m_Name: SM_Prop_Couch_01
   m_TagString: Untagged
@@ -80,3 +83,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484965352408356}
   m_Mesh: {fileID: 4300000, guid: 0b0bcd1b7a0892b4a8ddf36f81dc48c1, type: 3}
+--- !u!64 &64920137424374900
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484965352408356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43667555256165526, guid: 8222f0af5e07ea04c8eb5fad77b1f991, type: 2}
+--- !u!64 &64954066787859862
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484965352408356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43906969789927820, guid: 8222f0af5e07ea04c8eb5fad77b1f991, type: 2}
+--- !u!64 &64955720104503330
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484965352408356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43591141916382330, guid: 8222f0af5e07ea04c8eb5fad77b1f991, type: 2}

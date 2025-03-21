@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4451312460517618}
   - component: {fileID: 33797191745654408}
   - component: {fileID: 23483163008717098}
+  - component: {fileID: 64370553026868940}
   m_Layer: 0
   m_Name: SM_Prop_Wheelbarrow_Damaged_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446105489464506}
   m_Mesh: {fileID: 4300000, guid: d98a494e390ebf645b533360aec61383, type: 3}
+--- !u!64 &64370553026868940
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1446105489464506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43126304976262224, guid: 28c8d32b1f098104f81c79b8936daede, type: 2}

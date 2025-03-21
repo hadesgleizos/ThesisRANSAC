@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4497209659953156}
   - component: {fileID: 33421821925235704}
   - component: {fileID: 23268510662059838}
+  - component: {fileID: 64971921441077096}
   m_Layer: 0
   m_Name: SM_Prop_Bunker_Light_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654431576985278}
   m_Mesh: {fileID: 4300000, guid: 5ae7b3c446f08fc47ba81903f3a2bb71, type: 3}
+--- !u!64 &64971921441077096
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654431576985278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43184420946766194, guid: fce3472a9a208924596fca9cf156783d, type: 2}

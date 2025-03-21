@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4719253435583830}
   - component: {fileID: 33306136355450144}
   - component: {fileID: 23402031456872168}
+  - component: {fileID: 64783401389610080}
   m_Layer: 0
   m_Name: SM_Item_Duffle_Bag_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1326644470446332}
   m_Mesh: {fileID: 4300000, guid: ed379bf167061464188cfa29764ac774, type: 3}
+--- !u!64 &64783401389610080
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1326644470446332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43638015312470480, guid: dd6515b0df5889d4f9e930f5adce2733, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4947673887603438}
   - component: {fileID: 33076728324868570}
   - component: {fileID: 23439470118623454}
+  - component: {fileID: 64959691898847564}
   m_Layer: 0
   m_Name: SM_Item_Meat_Cooked_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849607239603550}
   m_Mesh: {fileID: 4300000, guid: 1d6173841ed38094a9faf83566afe867, type: 3}
+--- !u!64 &64959691898847564
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849607239603550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43066059120703060, guid: bba4174367b882f4fb47f6ffd94fbb45, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4426584064689528}
   - component: {fileID: 33119623820155592}
   - component: {fileID: 23795733181031564}
+  - component: {fileID: 64208430656545738}
   m_Layer: 0
   m_Name: SM_Prop_Sign_MissingPapers_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062879852269242}
   m_Mesh: {fileID: 4300000, guid: d4c4d9a37446be14bbbd06e21b308da1, type: 3}
+--- !u!64 &64208430656545738
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062879852269242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43387116633281864, guid: 9a322969433caf649a22fd1654e73568, type: 2}

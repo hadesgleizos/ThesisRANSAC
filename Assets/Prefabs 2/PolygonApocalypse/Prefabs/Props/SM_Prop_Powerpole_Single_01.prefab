@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4301640360056646}
   - component: {fileID: 33854268662127290}
   - component: {fileID: 23464113444970068}
+  - component: {fileID: 64516373274602556}
   m_Layer: 0
   m_Name: SM_Prop_Powerpole_Single_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1007931602397796}
   m_Mesh: {fileID: 4300000, guid: 5425c4d816ed3ea488ed1c1d88c14a79, type: 3}
+--- !u!64 &64516373274602556
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007931602397796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43615116271469774, guid: f0b7cb072005f844cab562c972fa19f2, type: 2}

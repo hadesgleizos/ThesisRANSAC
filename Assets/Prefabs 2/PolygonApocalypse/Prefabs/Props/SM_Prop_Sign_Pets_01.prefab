@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4480831394764916}
   - component: {fileID: 33806334889150164}
   - component: {fileID: 23417599645333396}
+  - component: {fileID: 64826534622466330}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Pets_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674657066952204}
   m_Mesh: {fileID: 4300000, guid: cc65db23b8bc93c46ac9f13d161f5f4b, type: 3}
+--- !u!64 &64826534622466330
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674657066952204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43076388018806312, guid: cb345613d76ffbd40be4055b418a7042, type: 2}

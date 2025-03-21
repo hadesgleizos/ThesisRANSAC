@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4393660360706054}
   - component: {fileID: 33905877335304188}
   - component: {fileID: 23434727167728664}
+  - component: {fileID: 64878228111464394}
   m_Layer: 0
   m_Name: SM_Prop_BloodSplat_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435870659997696}
   m_Mesh: {fileID: 4300000, guid: 1c547e21b1aaad84d8d655eea47cb9d8, type: 3}
+--- !u!64 &64878228111464394
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435870659997696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43060139230944874, guid: ee555d6f16ffe2b4c93cf85e02eb1808, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4080951850286504}
   - component: {fileID: 33237978170318056}
   - component: {fileID: 23566813991345160}
+  - component: {fileID: 64474499842400052}
   m_Layer: 0
   m_Name: SM_Env_StormCanal_Bridge_Square_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374783363780730}
   m_Mesh: {fileID: 4300000, guid: 3bf36f0aa47f63343ad2758076bcdc88, type: 3}
+--- !u!64 &64474499842400052
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374783363780730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43945631021818096, guid: c406bac3672a43543ab8a9ce5fe81db5, type: 2}

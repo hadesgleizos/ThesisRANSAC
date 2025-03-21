@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4857064585944682}
   - component: {fileID: 33615396373320560}
   - component: {fileID: 23217513453051668}
+  - component: {fileID: 64503251395275910}
   m_Layer: 0
   m_Name: SM_Wep_Plank_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1589933292683632}
   m_Mesh: {fileID: 4300000, guid: 9a3ec6bc365035242990db339767502d, type: 3}
+--- !u!64 &64503251395275910
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589933292683632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43980453548607408, guid: e3878778ef56eec43af9b60aff148575, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4133472010801284}
   - component: {fileID: 33762570082174490}
   - component: {fileID: 23512071076763518}
+  - component: {fileID: 64207508221443936}
   m_Layer: 0
   m_Name: SM_Prop_Rubble_Concrete_04
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1023996119461980}
   m_Mesh: {fileID: 4300000, guid: 0c237c701b0283a41be568afcaa31d9f, type: 3}
+--- !u!64 &64207508221443936
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1023996119461980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43239742201783088, guid: 97a38e9027d819c42bfed035eacf4211, type: 2}

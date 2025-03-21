@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4962443654933980}
   - component: {fileID: 33349588884626048}
   - component: {fileID: 23040012015841724}
+  - component: {fileID: 64869445098050680}
   m_Layer: 0
   m_Name: SM_Prop_Chair_Plastic_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403698110509472}
   m_Mesh: {fileID: 4300000, guid: b47b56551e8696340bea893e2a19439d, type: 3}
+--- !u!64 &64869445098050680
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403698110509472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43064314717842140, guid: b195efe98dd3b7044bbad5ed50ed1dab, type: 2}

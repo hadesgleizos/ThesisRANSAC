@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4599895895834478}
   - component: {fileID: 33973862959608808}
   - component: {fileID: 23192061181621388}
+  - component: {fileID: 64143214511632462}
   m_Layer: 0
   m_Name: SM_Prop_Drill_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820899447007590}
   m_Mesh: {fileID: 4300000, guid: f9677267e97d79f40b4c8b4aafbd15c9, type: 3}
+--- !u!64 &64143214511632462
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820899447007590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43902243602583306, guid: e7a95df610909a243b270daca9ce4be1, type: 2}

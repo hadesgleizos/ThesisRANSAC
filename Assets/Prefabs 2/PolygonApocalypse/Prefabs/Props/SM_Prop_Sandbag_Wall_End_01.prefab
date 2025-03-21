@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4671150017671738}
   - component: {fileID: 33215806137261182}
   - component: {fileID: 23253463090720712}
+  - component: {fileID: 64220806348849972}
   m_Layer: 0
   m_Name: SM_Prop_Sandbag_Wall_End_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1089002216601084}
   m_Mesh: {fileID: 4300000, guid: d67f3c51c0fca76468a00ee22b3f08ce, type: 3}
+--- !u!64 &64220806348849972
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089002216601084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43194470845506208, guid: 4a5aba1add41c074ea66571e7158f781, type: 2}

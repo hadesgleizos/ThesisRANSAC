@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4905183909850146}
   - component: {fileID: 33777007910974546}
   - component: {fileID: 23154749316608896}
+  - component: {fileID: 64520041835782326}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Repairs_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909255900584804}
   m_Mesh: {fileID: 4300000, guid: 5016a99f954f2534092c21cac496bdb2, type: 3}
+--- !u!64 &64520041835782326
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909255900584804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43476004724944064, guid: 5061d870c0d95dc4d873f3345a67b1fe, type: 2}

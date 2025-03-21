@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4065285280012346}
   - component: {fileID: 33600768096300140}
   - component: {fileID: 23989498887796950}
+  - component: {fileID: 64314505539956760}
   m_Layer: 0
   m_Name: SM_Prop_Wall_Wire_Pillar_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378862953801840}
   m_Mesh: {fileID: 4300000, guid: caef011fb76d4be4da8fe97eb19941ab, type: 3}
+--- !u!64 &64314505539956760
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378862953801840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43728427231640010, guid: 8a236f5562068f24996c114c59917a30, type: 2}

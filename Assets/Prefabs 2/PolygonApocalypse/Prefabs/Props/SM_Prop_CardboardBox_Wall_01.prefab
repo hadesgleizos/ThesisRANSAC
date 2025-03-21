@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4683068916055158}
   - component: {fileID: 33743590850342916}
   - component: {fileID: 23435983667435114}
+  - component: {fileID: 64250608004807922}
   m_Layer: 0
   m_Name: SM_Prop_CardboardBox_Wall_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1882058776763666}
   m_Mesh: {fileID: 4300000, guid: c6ae551f113117849887ad1645cd8e5c, type: 3}
+--- !u!64 &64250608004807922
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882058776763666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43629567122717796, guid: ecded985c1254bc479f863426f24220a, type: 2}

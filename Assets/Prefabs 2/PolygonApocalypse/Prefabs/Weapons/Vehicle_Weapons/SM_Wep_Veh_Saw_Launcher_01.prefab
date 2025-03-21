@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4399672965759260}
   - component: {fileID: 33312568250380312}
   - component: {fileID: 23122600828625198}
+  - component: {fileID: 64048818840278972}
   m_Layer: 0
   m_Name: SM_Wep_Veh_Saw_Launcher_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1416433799646726}
   m_Mesh: {fileID: 4300000, guid: f6dda7995e54b6a43ad8b017b1411b88, type: 3}
+--- !u!64 &64048818840278972
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1416433799646726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43697894358729398, guid: fad306690b0c6f14f9f12d91d1d0be31, type: 2}

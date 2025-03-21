@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4516935693348122}
   - component: {fileID: 33835304171627678}
   - component: {fileID: 23970544204501686}
+  - component: {fileID: 64072530764978976}
   m_Layer: 0
   m_Name: SM_Item_Wirecutter_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1913851771705754}
   m_Mesh: {fileID: 4300000, guid: 3192630b675cd814e8901c2ea0b4b76e, type: 3}
+--- !u!64 &64072530764978976
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913851771705754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43094366509477134, guid: 38a230ea501d3214ebd712d58eca9f14, type: 2}

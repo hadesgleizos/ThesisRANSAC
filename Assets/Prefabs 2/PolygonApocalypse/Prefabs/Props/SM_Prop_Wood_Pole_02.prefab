@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4379175091403282}
   - component: {fileID: 33517648072582276}
   - component: {fileID: 23541630920138038}
+  - component: {fileID: 64256758771459004}
   m_Layer: 0
   m_Name: SM_Prop_Wood_Pole_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510909801252292}
   m_Mesh: {fileID: 4300000, guid: f936f56016f74ad478be764b22201318, type: 3}
+--- !u!64 &64256758771459004
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510909801252292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43829117028378640, guid: 7efbdbd1d14e8f744877a28f8a814582, type: 2}

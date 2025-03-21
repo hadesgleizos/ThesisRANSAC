@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4273916230292552}
   - component: {fileID: 33584343865799180}
   - component: {fileID: 23937234531479066}
+  - component: {fileID: 64684691790368716}
   m_Layer: 0
   m_Name: SM_Prop_Car_Ornament_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925122347558762}
   m_Mesh: {fileID: 4300000, guid: 5610917df4f76d94fbc8ef6895e04b4a, type: 3}
+--- !u!64 &64684691790368716
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925122347558762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43606786348993232, guid: efa8d80222a399346a376c613642297e, type: 2}

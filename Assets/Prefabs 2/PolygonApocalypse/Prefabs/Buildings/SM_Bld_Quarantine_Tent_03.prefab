@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4841085558372220}
   - component: {fileID: 33130236708039168}
   - component: {fileID: 23696985932192456}
+  - component: {fileID: 64946804200485420}
   m_Layer: 0
   m_Name: SM_Bld_Quarantine_Tent_03
   m_TagString: Untagged
@@ -34,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1619852603381938}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1619852603381938}
   m_Mesh: {fileID: 4300000, guid: 5b2a365045214de4aa64d2c00dd74800, type: 3}
+--- !u!64 &64946804200485420
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619852603381938}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 43a88cfc9d5d8fa46b972005a230e764, type: 3}

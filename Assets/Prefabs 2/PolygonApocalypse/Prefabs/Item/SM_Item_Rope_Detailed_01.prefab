@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4952458332604758}
   - component: {fileID: 33642716439900256}
   - component: {fileID: 23651079067661548}
+  - component: {fileID: 64572138333226254}
   m_Layer: 0
   m_Name: SM_Item_Rope_Detailed_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585323693196822}
   m_Mesh: {fileID: 4300000, guid: 1f6c510091f32794c845c58938470441, type: 3}
+--- !u!64 &64572138333226254
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1585323693196822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43521589636338660, guid: 89e2d045329e3d54dab28d85a2d43800, type: 2}

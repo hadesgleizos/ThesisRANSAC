@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4147347798865902}
   - component: {fileID: 33276027340130736}
   - component: {fileID: 23035979676719514}
+  - component: {fileID: 64072747991373426}
   m_Layer: 0
   m_Name: SM_Prop_TrashPile_Wall_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1278102246229196}
   m_Mesh: {fileID: 4300000, guid: 4c99c05585a0f174992e161149e9c905, type: 3}
+--- !u!64 &64072747991373426
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278102246229196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43526621953130838, guid: 6deeb1aaed0b7d0488e9d5c32223cbaa, type: 2}

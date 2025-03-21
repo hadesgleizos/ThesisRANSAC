@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4169909537817774}
   - component: {fileID: 33266258426330688}
   - component: {fileID: 23295840319052320}
+  - component: {fileID: 64288508460975348}
   m_Layer: 0
   m_Name: SM_Bld_Junk_Shelter_03
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664299470054112}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664299470054112}
   m_Mesh: {fileID: 4300000, guid: 704fe8395a913654b9c28adbb9e0ac19, type: 3}
+--- !u!64 &64288508460975348
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1664299470054112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 951ac991c4136844fbb7c6410ddbcb39, type: 3}

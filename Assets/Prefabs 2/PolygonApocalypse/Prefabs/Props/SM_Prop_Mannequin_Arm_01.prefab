@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4171884410464802}
   - component: {fileID: 33900801031243050}
   - component: {fileID: 23903636545483662}
+  - component: {fileID: 64937985656598744}
   m_Layer: 0
   m_Name: SM_Prop_Mannequin_Arm_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1936994025165484}
   m_Mesh: {fileID: 4300000, guid: 18c1e34532f3f76429f83aad1805ebdc, type: 3}
+--- !u!64 &64937985656598744
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1936994025165484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43290382005092890, guid: e00d4842deac5f747a985a043fd2b958, type: 2}

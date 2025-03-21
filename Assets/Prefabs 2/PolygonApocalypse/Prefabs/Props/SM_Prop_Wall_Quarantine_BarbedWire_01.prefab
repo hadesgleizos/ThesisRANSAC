@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4001743114599254}
   - component: {fileID: 33156191257895736}
   - component: {fileID: 23710975482818150}
+  - component: {fileID: 64530779273290764}
   m_Layer: 0
   m_Name: SM_Prop_Wall_Quarantine_BarbedWire_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542699592039972}
   m_Mesh: {fileID: 4300000, guid: 2dd64ca473030f042b6725285a854283, type: 3}
+--- !u!64 &64530779273290764
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542699592039972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43386721771171694, guid: 8d01d12378ba8b64b826a874162a4ab1, type: 2}

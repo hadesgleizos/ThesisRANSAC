@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4530032544511804}
   - component: {fileID: 33882176823680356}
   - component: {fileID: 23416200941461910}
+  - component: {fileID: 64352473835966960}
   m_Layer: 0
   m_Name: SM_Prop_TrafficLight_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298692706659142}
   m_Mesh: {fileID: 4300000, guid: f0738ab761b493543bbed869d65f8588, type: 3}
+--- !u!64 &64352473835966960
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1298692706659142}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43864178498858312, guid: d3bd00630f2b4914294e31a11c2a5bec, type: 2}

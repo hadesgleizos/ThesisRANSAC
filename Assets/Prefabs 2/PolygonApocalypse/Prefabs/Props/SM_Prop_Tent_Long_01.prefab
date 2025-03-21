@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4656215960880400}
   - component: {fileID: 33554557157152712}
   - component: {fileID: 23071688384821980}
+  - component: {fileID: 64677501852512436}
   m_Layer: 0
   m_Name: SM_Prop_Tent_Long_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1634334837478312}
   m_Mesh: {fileID: 4300000, guid: 4ebc44516c1721e49b3fcbb1939bef02, type: 3}
+--- !u!64 &64677501852512436
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634334837478312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43524920614721966, guid: 0e2f9588ca53e8946a30fccde86e7c10, type: 2}

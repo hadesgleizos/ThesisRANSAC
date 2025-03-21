@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4235476425384332}
   - component: {fileID: 33334333068222940}
   - component: {fileID: 23041179445220048}
+  - component: {fileID: 64955241071978268}
   m_Layer: 0
   m_Name: SM_Prop_Car_Bear_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1703604417403470}
   m_Mesh: {fileID: 4300000, guid: a6a7461f20f371c4f803c06045385d41, type: 3}
+--- !u!64 &64955241071978268
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1703604417403470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43538631515436134, guid: 9109559f873eda744a9999568d823f9a, type: 2}

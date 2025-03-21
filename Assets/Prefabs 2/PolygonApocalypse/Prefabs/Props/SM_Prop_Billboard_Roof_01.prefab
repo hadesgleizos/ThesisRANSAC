@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4910975664582304}
   - component: {fileID: 33283659539677022}
   - component: {fileID: 23842533187027956}
+  - component: {fileID: 64272237244615134}
   m_Layer: 0
   m_Name: SM_Prop_Billboard_Roof_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044046960248474}
   m_Mesh: {fileID: 4300002, guid: b27d607763b826448ac23dc60524405f, type: 3}
+--- !u!64 &64272237244615134
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829722803932182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43228588231084342, guid: adf977ea84f027942a8338d069ed7d98, type: 2}

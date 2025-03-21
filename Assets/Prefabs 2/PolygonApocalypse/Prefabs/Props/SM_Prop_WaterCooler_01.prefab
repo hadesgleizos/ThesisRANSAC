@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4926791980319692}
   - component: {fileID: 33959514548099910}
   - component: {fileID: 23943048305149256}
+  - component: {fileID: 64090190470492474}
   m_Layer: 0
   m_Name: SM_Prop_WaterCooler_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1846814293509382}
   m_Mesh: {fileID: 4300000, guid: ab18f6774d93d464fbce2ed1c4d5d479, type: 3}
+--- !u!64 &64090190470492474
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846814293509382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43804672714450696, guid: d87bc5a9cafdf304a85d2bdb077562ab, type: 2}

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4703964574023776}
   - component: {fileID: 33688689266606212}
   - component: {fileID: 23586649963676370}
+  - component: {fileID: 64859943895358988}
   m_Layer: 0
   m_Name: SM_Bld_Apartment_01
   m_TagString: Untagged
@@ -64,7 +65,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484891345853528}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484891345853528}
   m_Mesh: {fileID: 4300000, guid: a1044246125b40a41960e22db276fea2, type: 3}
+--- !u!64 &64859943895358988
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484891345853528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: e01288ab4820dde40b962f9e7c1a0806, type: 3}

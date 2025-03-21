@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4654697877029416}
   - component: {fileID: 33873845058057648}
   - component: {fileID: 23184682849478632}
+  - component: {fileID: 64957969222005162}
   m_Layer: 0
   m_Name: SM_Prop_Bunker_RoofWire_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1222075272659946}
   m_Mesh: {fileID: 4300000, guid: b0b006a97d65ea045a4a8f654b480836, type: 3}
+--- !u!64 &64957969222005162
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1222075272659946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43101657984070646, guid: 8c77315c4444d1046afdbd342a40c683, type: 2}

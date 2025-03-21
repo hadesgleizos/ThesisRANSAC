@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4886472175652310}
   - component: {fileID: 33223357770707242}
   - component: {fileID: 23606361487857712}
+  - component: {fileID: 64097026460819158}
   m_Layer: 0
   m_Name: SM_Wep_Molotov_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1118737024808968}
   m_Mesh: {fileID: 4300000, guid: 6a541434e9ad737439d05ed676369b27, type: 3}
+--- !u!64 &64097026460819158
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118737024808968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43733394622941804, guid: 8be04aa14d879914981e4ff906c92b2a, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4563566191142162}
   - component: {fileID: 33057325188518068}
   - component: {fileID: 23201386649653852}
+  - component: {fileID: 64641179799376862}
   m_Layer: 0
   m_Name: SM_Prop_ShootingRange_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1278057997903672}
   m_Mesh: {fileID: 4300000, guid: f9447a796e185c24089939f2025e8882, type: 3}
+--- !u!64 &64641179799376862
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278057997903672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43662233090042902, guid: 7bfcb589dc4b4814fac66f8c0b28f4c6, type: 2}

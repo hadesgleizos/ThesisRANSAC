@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4030152023934090}
   - component: {fileID: 33657117374059854}
   - component: {fileID: 23778299661925818}
+  - component: {fileID: 64454348312690184}
   m_Layer: 0
   m_Name: SM_Env_Beach_Staight_01
   m_TagString: Untagged
@@ -79,4 +80,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499493055471818}
+  m_Mesh: {fileID: 4300000, guid: f8c635dccc0ad9c4a95cc6e677b44a07, type: 3}
+--- !u!64 &64454348312690184
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1499493055471818}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: f8c635dccc0ad9c4a95cc6e677b44a07, type: 3}

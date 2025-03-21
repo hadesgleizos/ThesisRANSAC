@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4056655621951198}
   - component: {fileID: 33097351758667904}
   - component: {fileID: 23325013029981696}
+  - component: {fileID: 64940330492172338}
   m_Layer: 0
   m_Name: SM_Prop_WashingMachine_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1858124153750812}
   m_Mesh: {fileID: 4300002, guid: 9facb16f268d5f94192cd5f22a2421bd, type: 3}
+--- !u!64 &64940330492172338
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353354168045924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43579952547346452, guid: 6b8932e244dc09f4aa94fd733186d138, type: 2}

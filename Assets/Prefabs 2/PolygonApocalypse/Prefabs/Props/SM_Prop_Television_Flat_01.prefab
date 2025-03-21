@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4552069167393312}
   - component: {fileID: 33873946273550408}
   - component: {fileID: 23645382325437342}
+  - component: {fileID: 64441193321157358}
   m_Layer: 0
   m_Name: SM_Prop_Television_Flat_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964391107067192}
   m_Mesh: {fileID: 4300000, guid: 8acb7f730510b16418111bc8d3ed850b, type: 3}
+--- !u!64 &64441193321157358
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964391107067192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43792013728220368, guid: f2272a9c10694ed4ea2b3a0a2bfb209c, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4510790482950354}
   - component: {fileID: 33541150934556560}
   - component: {fileID: 23130616694124142}
+  - component: {fileID: 64361355565238052}
   m_Layer: 0
   m_Name: SM_Prop_Chair_Soft_Damaged_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148614443864156}
   m_Mesh: {fileID: 4300000, guid: 0d63051257cb0e84a840009d4c188729, type: 3}
+--- !u!64 &64361355565238052
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148614443864156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43593515418975464, guid: e31c80a05d2698940abadda32a7fdabf, type: 2}

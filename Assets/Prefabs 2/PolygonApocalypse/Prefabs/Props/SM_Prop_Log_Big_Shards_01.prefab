@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4991405241405276}
   - component: {fileID: 33513556065367498}
   - component: {fileID: 23597171066770682}
+  - component: {fileID: 64820850582667062}
   m_Layer: 0
   m_Name: SM_Prop_Log_Big_Shards_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370437658762898}
   m_Mesh: {fileID: 4300000, guid: 40e907d3829226f42937dd8c2673d7a8, type: 3}
+--- !u!64 &64820850582667062
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370437658762898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43520171533335584, guid: 9b67bcea14db3044bbc22a799947a7fa, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4243477044567274}
   - component: {fileID: 33238300515877664}
   - component: {fileID: 23043583933331636}
+  - component: {fileID: 64355567072927968}
   m_Layer: 0
   m_Name: SM_Env_Dirt_Slope_Bump_01
   m_TagString: Untagged
@@ -79,4 +80,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908190072421696}
+  m_Mesh: {fileID: 4300000, guid: 1886e42922c36044595be16504591704, type: 3}
+--- !u!64 &64355567072927968
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908190072421696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1886e42922c36044595be16504591704, type: 3}

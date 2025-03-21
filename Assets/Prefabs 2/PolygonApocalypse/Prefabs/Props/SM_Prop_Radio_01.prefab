@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4729942170743862}
   - component: {fileID: 33539443184809752}
   - component: {fileID: 23741105391605126}
+  - component: {fileID: 64187864679123488}
   m_Layer: 0
   m_Name: SM_Prop_Radio_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252592623594548}
   m_Mesh: {fileID: 4300000, guid: 74ac2bc1648d900499d19c6e27f27f42, type: 3}
+--- !u!64 &64187864679123488
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1252592623594548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43906014331525682, guid: 04da0eee98fa68c408047168640bc1f8, type: 2}

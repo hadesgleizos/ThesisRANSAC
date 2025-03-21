@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4220423280973938}
   - component: {fileID: 33274149835864766}
   - component: {fileID: 23690499719755118}
+  - component: {fileID: 64374554054820492}
   m_Layer: 0
   m_Name: SM_Prop_ShopFridge_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485412060050874}
   m_Mesh: {fileID: 4300002, guid: f3c4d960b434e4a42b5e9b577020bb33, type: 3}
+--- !u!64 &64374554054820492
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1291397166752976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43577553574235856, guid: 760c9691dfd6f774e9cb8596265265e1, type: 2}

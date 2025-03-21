@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4214336839048944}
   - component: {fileID: 33923329076902948}
   - component: {fileID: 23260530964690428}
+  - component: {fileID: 64801943999187970}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Hunting_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333098586605686}
   m_Mesh: {fileID: 4300000, guid: 6dd9f05d76733f64fb08d88d31fb3cb8, type: 3}
+--- !u!64 &64801943999187970
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333098586605686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43284272803245376, guid: 0e6693c75c1218146ae7f32846aedee0, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4426569481841778}
   - component: {fileID: 33352950625041376}
   - component: {fileID: 23950739685890986}
+  - component: {fileID: 64750909998867306}
   m_Layer: 0
   m_Name: SM_Wep_Melee_Machete_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526694429186876}
   m_Mesh: {fileID: 4300002, guid: 6d25dac3512af8a4a8b4daacafbdd8f9, type: 3}
+--- !u!64 &64750909998867306
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1167932600818802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43389720927683834, guid: 9f594bcf7d5267e49a36a6379ec0ddd3, type: 2}

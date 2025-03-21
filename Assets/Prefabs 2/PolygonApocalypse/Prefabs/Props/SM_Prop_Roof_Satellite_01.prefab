@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4691652283588580}
   - component: {fileID: 33017122094820890}
   - component: {fileID: 23587826881939104}
+  - component: {fileID: 64019700170970972}
   m_Layer: 0
   m_Name: SM_Prop_Roof_Satellite_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1567188124255638}
   m_Mesh: {fileID: 4300000, guid: 829e688e2842e114aae7d6fbd9bfbe55, type: 3}
+--- !u!64 &64019700170970972
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1567188124255638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43423117701031378, guid: d8f4850924b465a4181770d665d1d38c, type: 2}

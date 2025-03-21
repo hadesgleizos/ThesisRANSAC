@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4814353624428160}
   - component: {fileID: 33643568215194802}
   - component: {fileID: 23297058132453602}
+  - component: {fileID: 64064258624637274}
   m_Layer: 0
   m_Name: SM_Bld_HighRise_Medium_01_Base_01
   m_TagString: Untagged
@@ -221,3 +222,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885066744751514}
   m_Mesh: {fileID: 4300004, guid: e19123443651f634abc1d0e93fcd9f26, type: 3}
+--- !u!64 &64064258624637274
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067120093303164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 9f243a9c4bd063b47af72db36c04e373, type: 3}

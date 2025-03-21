@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4762324268051808}
   - component: {fileID: 33234306662766814}
   - component: {fileID: 23541334280381088}
+  - component: {fileID: 64421879869947336}
   m_Layer: 0
   m_Name: SM_Prop_Laundry_WasherTop_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1937372293484488}
   m_Mesh: {fileID: 4300000, guid: a330be33042806b43924c68049276f03, type: 3}
+--- !u!64 &64421879869947336
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937372293484488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43139178558699402, guid: c332c8687d10785478ea3ced7743be0c, type: 2}

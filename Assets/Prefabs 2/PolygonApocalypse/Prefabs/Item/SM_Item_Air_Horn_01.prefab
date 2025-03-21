@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4526338019315796}
   - component: {fileID: 33628038562167956}
   - component: {fileID: 23011241587833584}
+  - component: {fileID: 64534271293374570}
   m_Layer: 0
   m_Name: SM_Item_Air_Horn_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1749693068551828}
   m_Mesh: {fileID: 4300000, guid: 033cdcc2027fcf043a60e7fdba3dd75a, type: 3}
+--- !u!64 &64534271293374570
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749693068551828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43736247319071942, guid: e96d6d0a7148774459b3b736cb4df7fa, type: 2}

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4903353639713366}
   - component: {fileID: 33294689093195746}
   - component: {fileID: 23076526554004022}
+  - component: {fileID: 64839721568041752}
   m_Layer: 0
   m_Name: SM_Prop_ShoppingCart_01
   m_TagString: Untagged
@@ -501,3 +502,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001504976602786}
   m_Mesh: {fileID: 4300006, guid: 48eaae40fdcb9bd42a5a62b408884a14, type: 3}
+--- !u!64 &64839721568041752
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596417884367404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43297289724275842, guid: ddc2480c02c6702499d757059676ab39, type: 2}

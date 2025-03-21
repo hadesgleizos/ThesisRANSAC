@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4869578166836086}
   - component: {fileID: 33637260189830178}
   - component: {fileID: 23822990008150310}
+  - component: {fileID: 64775728906006234}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Radioactive_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1043658245369036}
   m_Mesh: {fileID: 4300000, guid: 81ddc01d07abf5142b1659082e826b16, type: 3}
+--- !u!64 &64775728906006234
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043658245369036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43274901606381584, guid: 945ff0206b03c3547b147a8818fe58b8, type: 2}

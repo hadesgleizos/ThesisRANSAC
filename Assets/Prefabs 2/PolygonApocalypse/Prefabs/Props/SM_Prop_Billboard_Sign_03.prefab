@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4141183036084664}
   - component: {fileID: 33440854956848234}
   - component: {fileID: 23832222254858072}
+  - component: {fileID: 65167393789980768}
   m_Layer: 0
   m_Name: SM_Prop_Billboard_Sign_03
   m_TagString: Untagged
@@ -80,3 +81,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054029663645970}
   m_Mesh: {fileID: 4300000, guid: 4719288324788364e8e2bf9d12763378, type: 3}
+--- !u!65 &65167393789980768
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054029663645970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.192703, y: 2.027727, z: 0.08407715}
+  m_Center: {x: 0, y: 0, z: -0.0000012200326}

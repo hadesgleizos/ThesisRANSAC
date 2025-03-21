@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4682791150949070}
   - component: {fileID: 33392821561423910}
   - component: {fileID: 23098434317281962}
+  - component: {fileID: 64781354427340588}
   m_Layer: 0
   m_Name: SM_Prop_Hydrant_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024666379822224}
   m_Mesh: {fileID: 4300000, guid: 4b59460c1c4c73244841c87820a523a6, type: 3}
+--- !u!64 &64781354427340588
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024666379822224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43058141311242194, guid: 509337bd11ba13e4cae31d69298adfcc, type: 2}

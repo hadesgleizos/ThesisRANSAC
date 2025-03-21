@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4318878452688410}
   - component: {fileID: 33569476797997216}
   - component: {fileID: 23915277858330662}
+  - component: {fileID: 64626167191268852}
   m_Layer: 0
   m_Name: SM_Bld_AutoRepair_01
   m_TagString: Untagged
@@ -361,3 +362,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1138675350965082}
   m_Mesh: {fileID: 4300006, guid: 6d9d40e4d0a2f4f43a91b68900f2cf3a, type: 3}
+--- !u!64 &64626167191268852
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189608471415440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: b72e44d007c50764b8ae5a82b5fd73d9, type: 3}

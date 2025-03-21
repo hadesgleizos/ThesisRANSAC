@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4247231613600064}
   - component: {fileID: 33447752792497540}
   - component: {fileID: 23966721010240980}
+  - component: {fileID: 64175728028779570}
   m_Layer: 0
   m_Name: SM_Prop_Bullet_Casing_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939986041679050}
   m_Mesh: {fileID: 4300000, guid: 1f501c7cd6882a440b237b548bdd3cff, type: 3}
+--- !u!64 &64175728028779570
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939986041679050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43072962206422604, guid: 433593d34d99d994ea8c37a1fd5be0ca, type: 2}

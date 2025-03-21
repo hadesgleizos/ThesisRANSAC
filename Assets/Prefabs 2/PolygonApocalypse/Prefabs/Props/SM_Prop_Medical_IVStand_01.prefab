@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4153125000906064}
   - component: {fileID: 33698692624808940}
   - component: {fileID: 23070353145696826}
+  - component: {fileID: 64707931714969830}
   m_Layer: 0
   m_Name: SM_Prop_Medical_IVStand_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1606718518660492}
   m_Mesh: {fileID: 4300000, guid: 09c655725806d5245b16169b3d1b82b1, type: 3}
+--- !u!64 &64707931714969830
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606718518660492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43332279094989056, guid: ee1c22db27b849b408fef4a61a14ad56, type: 2}

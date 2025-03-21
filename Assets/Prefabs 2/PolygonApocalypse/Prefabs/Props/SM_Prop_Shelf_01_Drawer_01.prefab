@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4584281455485810}
   - component: {fileID: 33695959274984732}
   - component: {fileID: 23679593997662102}
+  - component: {fileID: 64981079920351596}
   m_Layer: 0
   m_Name: SM_Prop_Shelf_01_Drawer_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170035845339734}
   m_Mesh: {fileID: 4300000, guid: 69ede335020eab145b5e81c530f9e560, type: 3}
+--- !u!64 &64981079920351596
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170035845339734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43278254390211358, guid: 32dc29be8722f9543acac5745f38922c, type: 2}

@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4059757492605490}
   - component: {fileID: 33884630506170260}
   - component: {fileID: 23077544424191496}
+  - component: {fileID: 64236809388291038}
+  - component: {fileID: 64931649118195674}
   m_Layer: 0
   m_Name: SM_Prop_Road_Barrier_01
   m_TagString: Untagged
@@ -38,6 +40,7 @@ GameObject:
   - component: {fileID: 4512461479137922}
   - component: {fileID: 33373098387113322}
   - component: {fileID: 23769478158385338}
+  - component: {fileID: 64903458437602410}
   m_Layer: 0
   m_Name: SM_Prop_Road_Barrier_Arm_01
   m_TagString: Untagged
@@ -150,3 +153,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368765525914770}
   m_Mesh: {fileID: 4300000, guid: 5074fa725c348c64391c2b7ab4df841a, type: 3}
+--- !u!64 &64236809388291038
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368765525914770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43965595460392434, guid: f05ffe8ee57a06943b5284da22e56c16, type: 2}
+--- !u!64 &64903458437602410
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1607818332305228}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43561643250840830, guid: f2593f3746ddb624aac340e824ea2174, type: 2}
+--- !u!64 &64931649118195674
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368765525914770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43271642363412630, guid: f05ffe8ee57a06943b5284da22e56c16, type: 2}

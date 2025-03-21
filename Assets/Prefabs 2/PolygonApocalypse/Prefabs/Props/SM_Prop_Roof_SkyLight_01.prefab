@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4304350036596336}
   - component: {fileID: 33331941617859930}
   - component: {fileID: 23246924429530696}
+  - component: {fileID: 64316154412308838}
   m_Layer: 0
   m_Name: SM_Prop_Roof_SkyLight_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020474331996890}
   m_Mesh: {fileID: 4300000, guid: 94b0016dad221b844981447840df4301, type: 3}
+--- !u!64 &64316154412308838
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020474331996890}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43434299708331004, guid: c4b10200617fa4c43aa7b3f6f0423e59, type: 2}

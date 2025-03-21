@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4075144995950904}
   - component: {fileID: 33197710305005334}
   - component: {fileID: 23061233136993102}
+  - component: {fileID: 64743844423949952}
   m_Layer: 0
   m_Name: SM_Prop_Medical_Container_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323060760616270}
   m_Mesh: {fileID: 4300002, guid: c153ec093a09c6e48ab4fe1887847053, type: 3}
+--- !u!64 &64743844423949952
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1835224929256552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43106546312151936, guid: e8c73b86ef068644f96278144aaa6d50, type: 2}

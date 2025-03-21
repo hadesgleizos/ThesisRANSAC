@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4191508900226974}
   - component: {fileID: 33055973428943574}
   - component: {fileID: 23599418262057778}
+  - component: {fileID: 64152511159275910}
   m_Layer: 0
   m_Name: SM_Wep_CrossBow_01
   m_TagString: Untagged
@@ -640,3 +641,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1993503396198438}
   m_Mesh: {fileID: 4300002, guid: 25a4cef076d99994598c66d9f306f3fa, type: 3}
+--- !u!64 &64152511159275910
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884461504653410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43506081350493978, guid: 168d52091f6c1c54ab1376eb0e985c1d, type: 2}

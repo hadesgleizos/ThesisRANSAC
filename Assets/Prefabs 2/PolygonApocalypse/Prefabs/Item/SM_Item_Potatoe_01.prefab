@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4553076371169974}
   - component: {fileID: 33811640461612502}
   - component: {fileID: 23553327936737032}
+  - component: {fileID: 64526978320930588}
   m_Layer: 0
   m_Name: SM_Item_Potatoe_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172290251159674}
   m_Mesh: {fileID: 4300000, guid: bbd8c44cacd99ed4d861a211d428aa87, type: 3}
+--- !u!64 &64526978320930588
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172290251159674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43608881261627050, guid: 96161d6d46969c0419225c2b798e2a3b, type: 2}

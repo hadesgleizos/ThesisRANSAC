@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4479185808805008}
   - component: {fileID: 33247917896980588}
   - component: {fileID: 23674066447789596}
+  - component: {fileID: 64507166773300184}
   m_Layer: 0
   m_Name: SM_Prop_Bathtub_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1425984937311468}
   m_Mesh: {fileID: 4300000, guid: 911f5c60e44145d4789d6d41031bc27e, type: 3}
+--- !u!64 &64507166773300184
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1425984937311468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43297246975360868, guid: ce2974a0e1bd7bd4eb4f02ee18fab251, type: 2}

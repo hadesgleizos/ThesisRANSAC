@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4536402927294124}
   - component: {fileID: 33634972141377454}
   - component: {fileID: 23010626738414624}
+  - component: {fileID: 64097452683609148}
   m_Layer: 0
   m_Name: SM_Item_Frypan_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054167787498168}
   m_Mesh: {fileID: 4300000, guid: 22eb1b04500c39244ad9354d0b9746ff, type: 3}
+--- !u!64 &64097452683609148
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054167787498168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43639649241312118, guid: 5829a2092c1224b47871f04d13141393, type: 2}

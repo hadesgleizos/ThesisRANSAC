@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4799867261355040}
   - component: {fileID: 33967906419798460}
   - component: {fileID: 23838471070920298}
+  - component: {fileID: 64927126386976648}
   m_Layer: 0
   m_Name: SM_Prop_Playground_Roundabout_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202131330003342}
   m_Mesh: {fileID: 4300000, guid: 631accb7e58a58a43a65662263944433, type: 3}
+--- !u!64 &64927126386976648
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202131330003342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43079763218216390, guid: 16397b23b0b5b5b4b90e88900c365df5, type: 2}

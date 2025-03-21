@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4191534504156038}
   - component: {fileID: 33078801712606282}
   - component: {fileID: 23678854417392230}
+  - component: {fileID: 64231520667146900}
   m_Layer: 0
   m_Name: SM_Prop_CarBattery_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1193007188554742}
   m_Mesh: {fileID: 4300000, guid: c2043619480ca2b428b5b32012dd857d, type: 3}
+--- !u!64 &64231520667146900
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193007188554742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43793201443627104, guid: 95190a39dfd7c254ab7ba76b3a138d2e, type: 2}

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4242825725015892}
   - component: {fileID: 33305335615096782}
   - component: {fileID: 23756805053762078}
+  - component: {fileID: 64694601831684352}
   m_Layer: 0
   m_Name: SM_Prop_RopeClimb_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1389678500505810}
   m_Mesh: {fileID: 4300002, guid: f4a717c45d4328347a7abe7a63a6b580, type: 3}
+--- !u!64 &64694601831684352
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1631484916424472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43078064797413630, guid: d0b5070e1bdb80942865b65d88d2bfa2, type: 2}

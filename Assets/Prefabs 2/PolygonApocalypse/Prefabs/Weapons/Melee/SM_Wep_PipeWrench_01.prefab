@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4305830194332248}
   - component: {fileID: 33719800422405106}
   - component: {fileID: 23874614387203066}
+  - component: {fileID: 64196585803954100}
   m_Layer: 0
   m_Name: SM_Wep_PipeWrench_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458207331373352}
   m_Mesh: {fileID: 4300000, guid: 979553be2c88c4a41b6a75b50549e9ac, type: 3}
+--- !u!64 &64196585803954100
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458207331373352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43072190513704512, guid: 049eadf4fa61cad4693fa001ef156b7f, type: 2}

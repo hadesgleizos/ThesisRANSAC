@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4477146143422438}
   - component: {fileID: 33480746941587254}
   - component: {fileID: 23835719165809802}
+  - component: {fileID: 64338232167837080}
   m_Layer: 0
   m_Name: SM_Prop_Iron_Sheet_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740159825050108}
   m_Mesh: {fileID: 4300000, guid: 4b9b665738deda44f9bf6b4279a3a950, type: 3}
+--- !u!64 &64338232167837080
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1740159825050108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43473899567306212, guid: a4f047b0a36ec7b4789210f98919b076, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4341983616540102}
   - component: {fileID: 33361933211421766}
   - component: {fileID: 23251720603615792}
+  - component: {fileID: 64769120546042952}
   m_Layer: 0
   m_Name: SM_Prop_Mannequin_Male_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805284522319228}
   m_Mesh: {fileID: 4300000, guid: cdf08f1156d23c548b31cef4a9114ee1, type: 3}
+--- !u!64 &64769120546042952
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805284522319228}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43659254140506008, guid: 509a80cff1325ad45a0f3c3dc0a31b1e, type: 2}

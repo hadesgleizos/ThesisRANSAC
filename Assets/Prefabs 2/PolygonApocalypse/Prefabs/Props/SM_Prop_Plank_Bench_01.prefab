@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4780994544949668}
   - component: {fileID: 33396725622824146}
   - component: {fileID: 23494827404457410}
+  - component: {fileID: 64415885613829502}
   m_Layer: 0
   m_Name: SM_Prop_Plank_Bench_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1136943304698554}
   m_Mesh: {fileID: 4300000, guid: a878bf42984fcda40a958afee323da14, type: 3}
+--- !u!64 &64415885613829502
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136943304698554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43186897786192298, guid: f2c3adce6c8ba0f41b9cae9f3c6e3ecf, type: 2}

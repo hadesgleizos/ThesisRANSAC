@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4273031220237424}
   - component: {fileID: 33793037142750178}
   - component: {fileID: 23976457894537956}
+  - component: {fileID: 64391651385405674}
   m_Layer: 0
   m_Name: SM_Prop_Barrel_Water_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617334352007710}
   m_Mesh: {fileID: 4300000, guid: bc01c2618d1876d41b2e28a09e091760, type: 3}
+--- !u!64 &64391651385405674
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617334352007710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43410852592644676, guid: 89c36a6f9742f3c4eabf249fa0912b61, type: 2}

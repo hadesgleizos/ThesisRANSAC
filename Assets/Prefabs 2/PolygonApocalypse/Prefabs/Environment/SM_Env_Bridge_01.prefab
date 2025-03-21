@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4491499458926918}
   - component: {fileID: 33169563237089302}
   - component: {fileID: 23723637549813134}
+  - component: {fileID: 64039122312810222}
   m_Layer: 0
   m_Name: SM_Env_Bridge_01
   m_TagString: Untagged
@@ -151,3 +152,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481738648487796}
   m_Mesh: {fileID: 4300002, guid: 510a101a28c94e247bedb5b78ef1ff6f, type: 3}
+--- !u!64 &64039122312810222
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482490997305950}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: d00896a7c8806c84180da08be6454dea, type: 3}

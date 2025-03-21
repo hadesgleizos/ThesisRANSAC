@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4941241484587874}
   - component: {fileID: 33211779289121730}
   - component: {fileID: 23213378312684346}
+  - component: {fileID: 64109859826236354}
   m_Layer: 0
   m_Name: SM_Bld_RadioTower_Top_01
   m_TagString: Untagged
@@ -38,6 +39,8 @@ GameObject:
   - component: {fileID: 4858871306050458}
   - component: {fileID: 33109383435896330}
   - component: {fileID: 23272797129555118}
+  - component: {fileID: 64574565654518492}
+  - component: {fileID: 64751497829683324}
   m_Layer: 0
   m_Name: SM_Bld_RadioTower_01
   m_TagString: Untagged
@@ -150,3 +153,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510700811602746}
   m_Mesh: {fileID: 4300002, guid: 388fa689d8233fc46a771f543e80643e, type: 3}
+--- !u!64 &64109859826236354
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510700811602746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43046869293539494, guid: b723c76c3a843334585fa6f8424bff19, type: 2}
+--- !u!64 &64574565654518492
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986437825360374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43236147479950552, guid: e1f7e4eeed4016243914cde8cf8a3504, type: 2}
+--- !u!64 &64751497829683324
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986437825360374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43741643080746118, guid: e1f7e4eeed4016243914cde8cf8a3504, type: 2}

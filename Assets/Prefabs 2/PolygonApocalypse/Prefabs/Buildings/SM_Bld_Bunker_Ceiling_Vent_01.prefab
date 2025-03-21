@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4437338220551014}
   - component: {fileID: 33123852095124596}
   - component: {fileID: 23127972775732862}
+  - component: {fileID: 65747437613366802}
+  - component: {fileID: 64064449187461710}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Ceiling_Vent_01
   m_TagString: Untagged
@@ -80,3 +82,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578195324831376}
   m_Mesh: {fileID: 4300000, guid: 9c2d952b613c45941a5f0f7dad49839d, type: 3}
+--- !u!64 &64064449187461710
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578195324831376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43297351170565270, guid: eec258ac448296b419d08ac192c38544, type: 2}
+--- !u!65 &65747437613366802
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578195324831376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1.3939322, z: 2.5}
+  m_Center: {x: -2.5, y: 0.4469661, z: 1.25}

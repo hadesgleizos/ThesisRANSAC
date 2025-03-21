@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4409124971966926}
   - component: {fileID: 33243000419136416}
   - component: {fileID: 23003662358657624}
+  - component: {fileID: 64596341867576224}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Emergency_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1432535554050472}
   m_Mesh: {fileID: 4300000, guid: b4b4f7c780a5c274bb304d77e2e517f6, type: 3}
+--- !u!64 &64596341867576224
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1432535554050472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43317965088535496, guid: 76341604ce869d84cbf084c1cc2ddf74, type: 2}

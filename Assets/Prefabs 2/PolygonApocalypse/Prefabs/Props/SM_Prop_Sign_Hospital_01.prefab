@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4879838354586696}
   - component: {fileID: 33894848304344348}
   - component: {fileID: 23464502365632612}
+  - component: {fileID: 64733366962841042}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Hospital_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698720742550416}
   m_Mesh: {fileID: 4300000, guid: bae02c56f06f23447a76f218ad13b46f, type: 3}
+--- !u!64 &64733366962841042
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698720742550416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43510806756212534, guid: 9b6a68a3fdfe51a4e87e0cd0baaf0f67, type: 2}

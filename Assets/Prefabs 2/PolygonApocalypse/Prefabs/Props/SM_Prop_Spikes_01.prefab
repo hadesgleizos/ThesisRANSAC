@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4407919488577962}
   - component: {fileID: 33984974525467152}
   - component: {fileID: 23993271429457046}
+  - component: {fileID: 64302449168642748}
   m_Layer: 0
   m_Name: SM_Prop_Spikes_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1154852105088646}
   m_Mesh: {fileID: 4300000, guid: 2631f5717f165154db7f24641ca9cbf8, type: 3}
+--- !u!64 &64302449168642748
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1154852105088646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43138770881853542, guid: 33441c5a63599ca4c91d812d948de38f, type: 2}

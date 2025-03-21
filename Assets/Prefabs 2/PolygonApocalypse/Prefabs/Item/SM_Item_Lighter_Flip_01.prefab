@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4142434720414288}
   - component: {fileID: 33887793118341908}
   - component: {fileID: 23224769426434378}
+  - component: {fileID: 64631580176875658}
   m_Layer: 0
   m_Name: SM_Item_Lighter_Flip_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925410267325686}
   m_Mesh: {fileID: 4300000, guid: d6a3d468bb5c81741a7864d04cc79c3d, type: 3}
+--- !u!64 &64631580176875658
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925410267325686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43092344836943754, guid: fda496d9765e66a41b158103953fea2e, type: 2}

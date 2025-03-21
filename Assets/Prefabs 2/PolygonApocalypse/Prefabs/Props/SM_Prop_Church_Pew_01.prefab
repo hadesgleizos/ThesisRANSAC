@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4824511032001976}
   - component: {fileID: 33648821853309736}
   - component: {fileID: 23471283460207336}
+  - component: {fileID: 64421319340658364}
   m_Layer: 0
   m_Name: SM_Prop_Church_Pew_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750558311744464}
   m_Mesh: {fileID: 4300000, guid: 86546d86033d5474faec6a37b853b8c5, type: 3}
+--- !u!64 &64421319340658364
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750558311744464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43925543890934384, guid: b1bf77f0a60a03d4a9ad3f732248f457, type: 2}

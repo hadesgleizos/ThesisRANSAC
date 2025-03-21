@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4783843702499642}
   - component: {fileID: 33905602350830688}
   - component: {fileID: 23432765963074264}
+  - component: {fileID: 65943891246050076}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Ceiling_Wood_01
   m_TagString: Untagged
@@ -80,3 +81,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382624500995510}
   m_Mesh: {fileID: 4300000, guid: 4387e7722a44de746b252a87dcc16cfb, type: 3}
+--- !u!65 &65943891246050076
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1382624500995510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4999998, y: 0.24999997, z: 2.5000024}
+  m_Center: {x: -1.2499951, y: -0.12500007, z: 1.2500012}

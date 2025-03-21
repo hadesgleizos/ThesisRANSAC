@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4316714062464194}
   - component: {fileID: 33814090688104434}
   - component: {fileID: 23241982240892868}
+  - component: {fileID: 64729320920856254}
   m_Layer: 0
   m_Name: SM_DeadBody_Female_13
   m_TagString: Untagged
@@ -54,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 09c76973314790040b9ef284977d7e81, type: 2}
+  - {fileID: 2100000, guid: 5bb68a94905ffc0418608fc7e572ea42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325026981990450}
   m_Mesh: {fileID: 4300000, guid: 73def05bdb8534c4bb30ba3e257e3a5f, type: 3}
+--- !u!64 &64729320920856254
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325026981990450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43669289132705206, guid: 9280d01f85174674e9530922255f8e8a, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4738789865732298}
   - component: {fileID: 33907596817468228}
   - component: {fileID: 23837400113750674}
+  - component: {fileID: 64521327245230302}
   m_Layer: 0
   m_Name: SM_Prop_Car_Wrecked_Wheel_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448393425937996}
   m_Mesh: {fileID: 4300000, guid: 52d8fec89bd511546b7e2c185b3f409c, type: 3}
+--- !u!64 &64521327245230302
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448393425937996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43829529229104948, guid: c4d2b8204c788d2478d6f5ea0e3448f5, type: 2}

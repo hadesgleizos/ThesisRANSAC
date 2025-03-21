@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4291692549461112}
   - component: {fileID: 33528060171242990}
   - component: {fileID: 23262293109279576}
+  - component: {fileID: 64413711968048476}
+  - component: {fileID: 64248544879838058}
   m_Layer: 0
   m_Name: SM_Prop_Shelter_01
   m_TagString: Untagged
@@ -80,3 +82,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1113307697075266}
   m_Mesh: {fileID: 4300000, guid: 19c268ea1f4b3fe4a9cb34a455439a64, type: 3}
+--- !u!64 &64248544879838058
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113307697075266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43664572875151218, guid: b4abdf98a41dd3c418c06a294174255c, type: 2}
+--- !u!64 &64413711968048476
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113307697075266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43681136824968554, guid: b4abdf98a41dd3c418c06a294174255c, type: 2}

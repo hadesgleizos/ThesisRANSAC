@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4413805067176468}
   - component: {fileID: 33362367320076974}
   - component: {fileID: 23249090770746764}
+  - component: {fileID: 64005591870721712}
   m_Layer: 0
   m_Name: SM_Prop_SpikeWall_04
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1769262400381586}
   m_Mesh: {fileID: 4300000, guid: 380070250cf3c014ea42ea6794062587, type: 3}
+--- !u!64 &64005591870721712
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1769262400381586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43374363354452972, guid: e925a42be5ec0d1419bfe9d4fcc130ca, type: 2}

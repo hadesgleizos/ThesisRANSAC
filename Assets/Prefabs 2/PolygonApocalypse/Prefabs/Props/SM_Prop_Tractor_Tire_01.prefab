@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4968697523852110}
   - component: {fileID: 33544356020529690}
   - component: {fileID: 23132906658248894}
+  - component: {fileID: 64819249763281790}
   m_Layer: 0
   m_Name: SM_Prop_Tractor_Tire_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1384164536512116}
   m_Mesh: {fileID: 4300000, guid: fabf88877368ab8418727773e38f5b99, type: 3}
+--- !u!64 &64819249763281790
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384164536512116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43475420053625126, guid: 0fb4be89e23477d4eb64f6f4d8a26f8d, type: 2}

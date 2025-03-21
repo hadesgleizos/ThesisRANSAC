@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4619542235748198}
   - component: {fileID: 33511053290485856}
   - component: {fileID: 23981389347518112}
+  - component: {fileID: 64078176869222858}
   m_Layer: 0
   m_Name: SM_Prop_Powerpole_Broken_04
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1246555543414706}
   m_Mesh: {fileID: 4300000, guid: fdc84eb927b04df4f804c8f5196079b8, type: 3}
+--- !u!64 &64078176869222858
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246555543414706}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43333148752547030, guid: b317f652b6e29e24fa6f644269ca753e, type: 2}

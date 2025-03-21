@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4679600167409242}
   - component: {fileID: 33698954728758798}
   - component: {fileID: 23329517097608152}
+  - component: {fileID: 64889746322108434}
   m_Layer: 0
   m_Name: SM_Prop_WheelChair_01
   m_TagString: Untagged
@@ -360,3 +361,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082780760421232}
   m_Mesh: {fileID: 4300000, guid: ea3e697611cbc4c49920c9243ccd6c9c, type: 3}
+--- !u!64 &64889746322108434
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082780760421232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43916547798944574, guid: 5681999badb871e4180940fea04b58e1, type: 2}

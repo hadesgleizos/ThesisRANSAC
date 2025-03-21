@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4443806456524942}
   - component: {fileID: 33414143141593694}
   - component: {fileID: 23320383736939458}
+  - component: {fileID: 64994518216970284}
   m_Layer: 0
   m_Name: SM_Prop_Bedframe_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1762450614453468}
   m_Mesh: {fileID: 4300000, guid: 34e1f8d901285cc47b97d416cde6c996, type: 3}
+--- !u!64 &64994518216970284
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762450614453468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43810019165542244, guid: 8dd93f9b84ef267458ce83d165bc2f30, type: 2}

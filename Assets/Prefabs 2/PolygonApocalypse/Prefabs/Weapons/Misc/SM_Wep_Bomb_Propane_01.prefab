@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4349112848991874}
   - component: {fileID: 33248495635285804}
   - component: {fileID: 23787132060460010}
+  - component: {fileID: 64669303258346644}
   m_Layer: 0
   m_Name: SM_Wep_Bomb_Propane_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1815751844614860}
   m_Mesh: {fileID: 4300000, guid: a9c89c2a267b48c4a8a67d343c1d70c5, type: 3}
+--- !u!64 &64669303258346644
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1815751844614860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43791454763821592, guid: 37a2a178e3f4b1747a185bb9778a03f8, type: 2}

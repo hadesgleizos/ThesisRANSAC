@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4239141226350128}
   - component: {fileID: 33920342216153674}
   - component: {fileID: 23546186384972284}
+  - component: {fileID: 64986008787305434}
   m_Layer: 0
   m_Name: SM_Wep_Bat_Metal_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1123592119813206}
   m_Mesh: {fileID: 4300000, guid: 48361e24e8cd74841ab844114020c18a, type: 3}
+--- !u!64 &64986008787305434
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123592119813206}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43377689120583444, guid: 8dd41509f8308c34cb1d020fc8dd2b37, type: 2}

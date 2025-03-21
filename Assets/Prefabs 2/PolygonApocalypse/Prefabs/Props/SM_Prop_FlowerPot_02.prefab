@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4619935034345722}
   - component: {fileID: 33081660588158856}
   - component: {fileID: 23675914785671996}
+  - component: {fileID: 64631866888501828}
   m_Layer: 0
   m_Name: SM_Prop_FlowerPot_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082968531951720}
   m_Mesh: {fileID: 4300000, guid: 29868982e5f727949be64274d1b262d2, type: 3}
+--- !u!64 &64631866888501828
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082968531951720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43118208701909970, guid: 66c581ef104eb6f4392ba185877c8ef2, type: 2}

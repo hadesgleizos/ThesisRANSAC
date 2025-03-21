@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4725377657241470}
   - component: {fileID: 33737766421367434}
   - component: {fileID: 23148262611981612}
+  - component: {fileID: 64000478853029240}
   m_Layer: 0
   m_Name: SM_Prop_Sign_NotSafe_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1281063017109974}
   m_Mesh: {fileID: 4300000, guid: 9d54a95f7f91a5f4bbc37a8748d191fb, type: 3}
+--- !u!64 &64000478853029240
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281063017109974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43343106026053692, guid: 8966d0175e0339b499db68526c75d374, type: 2}

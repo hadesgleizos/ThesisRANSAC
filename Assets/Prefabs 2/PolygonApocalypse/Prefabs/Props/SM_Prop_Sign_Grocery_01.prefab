@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4580127346658266}
   - component: {fileID: 33110826378233716}
   - component: {fileID: 23821766979615670}
+  - component: {fileID: 64305392793458610}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Grocery_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1150083532216784}
   m_Mesh: {fileID: 4300000, guid: 03ddfb85d663588489d255ac07dbf4e2, type: 3}
+--- !u!64 &64305392793458610
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1150083532216784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43709781932278406, guid: 723547ae1ca511f4f84bfc8cc4837c3e, type: 2}

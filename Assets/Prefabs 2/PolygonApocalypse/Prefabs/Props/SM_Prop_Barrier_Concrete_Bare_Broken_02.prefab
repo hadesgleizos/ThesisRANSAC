@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4315687622723850}
   - component: {fileID: 33162942894706310}
   - component: {fileID: 23289611277345710}
+  - component: {fileID: 64354850845392626}
   m_Layer: 0
   m_Name: SM_Prop_Barrier_Concrete_Bare_Broken_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1931029983741182}
   m_Mesh: {fileID: 4300000, guid: 2ecc92d3bb801a44dbeda51770933eab, type: 3}
+--- !u!64 &64354850845392626
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1931029983741182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43718255389097090, guid: 8f45175eb8124854abc992575c6a1ad9, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4319304693585524}
   - component: {fileID: 33186055023661740}
   - component: {fileID: 23620416270672344}
+  - component: {fileID: 64383940713278984}
   m_Layer: 0
   m_Name: SM_Prop_MetalSpikes_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1949640222255934}
   m_Mesh: {fileID: 4300000, guid: c06a0ed6ed5dacf4ba24c96ad0b8d184, type: 3}
+--- !u!64 &64383940713278984
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949640222255934}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43086259628357598, guid: e531b5a0dc487214589653fbadd4bb4b, type: 2}

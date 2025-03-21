@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4535699128914078}
   - component: {fileID: 33048017917679514}
   - component: {fileID: 23048002663001808}
+  - component: {fileID: 64106717675399260}
   m_Layer: 0
   m_Name: SM_Prop_Tire_Pile_04
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1917943757906870}
   m_Mesh: {fileID: 4300000, guid: 17f886ab75c74e74193226257a49077b, type: 3}
+--- !u!64 &64106717675399260
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1917943757906870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43119243632750114, guid: f1383506f6abea3499c7a3a6013833a2, type: 2}

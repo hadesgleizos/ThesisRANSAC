@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4954631955699176}
   - component: {fileID: 33771292875839562}
   - component: {fileID: 23150289683486596}
+  - component: {fileID: 64629980660674052}
   m_Layer: 0
   m_Name: SM_Wep_SpearGun_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904344463030114}
   m_Mesh: {fileID: 4300000, guid: b70e651dc3484b84fb641072f36d5ae0, type: 3}
+--- !u!64 &64629980660674052
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1904344463030114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43355006473856918, guid: c55ddc686a932e040bfa03cab76232de, type: 2}

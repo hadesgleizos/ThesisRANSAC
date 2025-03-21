@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4540727062475918}
   - component: {fileID: 33934146838627552}
   - component: {fileID: 23897183512438038}
+  - component: {fileID: 64452793888313324}
   m_Layer: 0
   m_Name: SM_Prop_Light_Industrial_Ceiling_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702094317585904}
   m_Mesh: {fileID: 4300000, guid: 4ee95bd4f7708c640ae6ac1fd458da33, type: 3}
+--- !u!64 &64452793888313324
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702094317585904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43496452645818260, guid: 8706f477d67724942b90d77eab0adb54, type: 2}

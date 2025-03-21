@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4967626912851068}
   - component: {fileID: 33415757376075910}
   - component: {fileID: 23004408781582004}
+  - component: {fileID: 64027357354229956}
   m_Layer: 0
   m_Name: SM_Bld_Diner_Door_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1010241705895866}
   m_Mesh: {fileID: 4300000, guid: f482959fc87e47f42bb888ef9c8d6fa6, type: 3}
+--- !u!64 &64027357354229956
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010241705895866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43917570995502610, guid: 84d1726d312ab6048b9bd190696a6dd9, type: 2}

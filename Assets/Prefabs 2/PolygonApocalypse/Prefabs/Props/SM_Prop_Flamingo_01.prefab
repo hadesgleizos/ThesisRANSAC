@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4098636370579100}
   - component: {fileID: 33443071297748082}
   - component: {fileID: 23623251179389348}
+  - component: {fileID: 64092144640538430}
   m_Layer: 0
   m_Name: SM_Prop_Flamingo_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367829943548754}
   m_Mesh: {fileID: 4300000, guid: 5d0b03f38ccec714e84ecd43cb9ec6f6, type: 3}
+--- !u!64 &64092144640538430
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367829943548754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43019904814042130, guid: 92e18f1a1375368469f91f4a5b7fbff8, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4371814646553810}
   - component: {fileID: 33185827879257092}
   - component: {fileID: 23215668395883016}
+  - component: {fileID: 64323001287147772}
   m_Layer: 0
   m_Name: SM_Prop_Mannequin_Head_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1160197525125980}
   m_Mesh: {fileID: 4300000, guid: 667c4ec547b9ca04b8656f82f7f0d0e7, type: 3}
+--- !u!64 &64323001287147772
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160197525125980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43014828906992272, guid: 779f58b419401e244abae42769ec0031, type: 2}

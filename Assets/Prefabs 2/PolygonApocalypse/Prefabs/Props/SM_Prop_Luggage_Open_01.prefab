@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4972126367259316}
   - component: {fileID: 33452210238357180}
   - component: {fileID: 23658454189201946}
+  - component: {fileID: 64920474051020010}
   m_Layer: 0
   m_Name: SM_Prop_Luggage_Open_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1729354746954410}
   m_Mesh: {fileID: 4300000, guid: 7dcf5b75df88ffe498970563bca5aecc, type: 3}
+--- !u!64 &64920474051020010
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729354746954410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43395430593971976, guid: 965afd99e1955294c9f42c97c16b3371, type: 2}

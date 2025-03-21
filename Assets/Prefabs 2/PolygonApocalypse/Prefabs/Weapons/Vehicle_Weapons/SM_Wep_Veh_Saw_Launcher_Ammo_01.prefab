@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4596739909054966}
   - component: {fileID: 33890444128239540}
   - component: {fileID: 23941951452018580}
+  - component: {fileID: 64427064431161252}
   m_Layer: 0
   m_Name: SM_Wep_Veh_Saw_Launcher_Ammo_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976874687991484}
   m_Mesh: {fileID: 4300000, guid: 60be68e99e674ce41a9150c079f29bbb, type: 3}
+--- !u!64 &64427064431161252
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976874687991484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43037218572175208, guid: 42acdf8c10ec72042a0e74303ab55ba5, type: 2}

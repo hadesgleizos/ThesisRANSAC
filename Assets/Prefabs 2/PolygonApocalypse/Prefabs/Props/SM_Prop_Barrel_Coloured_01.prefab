@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4725017451689806}
   - component: {fileID: 33874076144635476}
   - component: {fileID: 23543394274423450}
+  - component: {fileID: 64477778259071620}
   m_Layer: 0
   m_Name: SM_Prop_Barrel_Coloured_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649920933936872}
   m_Mesh: {fileID: 4300000, guid: cde9a6787b7e18140ad09a98a880a0a2, type: 3}
+--- !u!64 &64477778259071620
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649920933936872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43394080359713378, guid: 443d6d9cdac54c54b94aec8c35fd6dd6, type: 2}

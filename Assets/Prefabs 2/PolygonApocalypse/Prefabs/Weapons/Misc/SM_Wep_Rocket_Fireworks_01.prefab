@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4595804501893810}
   - component: {fileID: 33096844524193408}
   - component: {fileID: 23612198330657544}
+  - component: {fileID: 64871647133041154}
   m_Layer: 0
   m_Name: SM_Wep_Rocket_Fireworks_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187299136256524}
   m_Mesh: {fileID: 4300000, guid: 9a8d625a21f2c424aab971e82775992c, type: 3}
+--- !u!64 &64871647133041154
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1187299136256524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43328953516286794, guid: 595531ee1ef65d94b9726f2edbdfcc70, type: 2}

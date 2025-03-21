@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4878723573058038}
   - component: {fileID: 33812322034531280}
   - component: {fileID: 23258059270206270}
+  - component: {fileID: 64105870541820226}
+  - component: {fileID: 64770783373915966}
   m_Layer: 0
   m_Name: SM_Prop_Car_Wrecked_Bus_01
   m_TagString: Untagged
@@ -151,3 +153,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1369839499385476}
   m_Mesh: {fileID: 4300000, guid: f370f5cc05c90b646a38d4fefa227203, type: 3}
+--- !u!64 &64105870541820226
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369839499385476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43116549767826722, guid: cc4e389f7a6784445b279041744acddf, type: 2}
+--- !u!64 &64770783373915966
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369839499385476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43809978488059144, guid: cc4e389f7a6784445b279041744acddf, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4795537432680194}
   - component: {fileID: 33657615553688222}
   - component: {fileID: 23794505455888038}
+  - component: {fileID: 64209107376142500}
   m_Layer: 0
   m_Name: SM_Item_Craft_Knife_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1312856516239564}
   m_Mesh: {fileID: 4300000, guid: d381a8870b9adbd4aabe9c0410204595, type: 3}
+--- !u!64 &64209107376142500
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1312856516239564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43514586940730946, guid: 125a1bd3e47542a428a017fcd8c06de0, type: 2}

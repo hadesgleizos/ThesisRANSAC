@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4066131270179648}
   - component: {fileID: 33986935175165724}
   - component: {fileID: 23916811371100682}
+  - component: {fileID: 64147894695550086}
   m_Layer: 0
   m_Name: SM_Wep_Melee_HuntingKnife_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458518773578602}
   m_Mesh: {fileID: 4300000, guid: 094ac4763401cdc4fba8e70c0a1c4189, type: 3}
+--- !u!64 &64147894695550086
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458518773578602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43856028016176034, guid: 4ea66b82d8fd9dc46a012a2503947b1f, type: 2}

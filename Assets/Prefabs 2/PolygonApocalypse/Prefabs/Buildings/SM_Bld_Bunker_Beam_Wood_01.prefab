@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4154281307368632}
   - component: {fileID: 33017072665885914}
   - component: {fileID: 23603802803633190}
+  - component: {fileID: 64205427902651346}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Beam_Wood_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1268542720045910}
   m_Mesh: {fileID: 4300000, guid: 261c96ab992ca3c4ba2449aecac4fc7f, type: 3}
+--- !u!64 &64205427902651346
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268542720045910}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43663515897037464, guid: 7b313a23dc4e4e74aad9603e3181907e, type: 2}

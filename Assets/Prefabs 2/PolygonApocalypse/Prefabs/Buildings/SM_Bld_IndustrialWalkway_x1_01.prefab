@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4424673054155916}
   - component: {fileID: 33221193301864650}
   - component: {fileID: 23798684442635392}
+  - component: {fileID: 65329537513554070}
   m_Layer: 0
   m_Name: SM_Bld_IndustrialWalkway_x1_01
   m_TagString: Untagged
@@ -81,3 +82,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592331196151268}
   m_Mesh: {fileID: 4300000, guid: 7142a122e441c0646824714109d2ca2f, type: 3}
+--- !u!65 &65329537513554070
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592331196151268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.145791, y: 0.28516784, z: 2.5114417}
+  m_Center: {x: 0, y: 0, z: -0.0000006556511}

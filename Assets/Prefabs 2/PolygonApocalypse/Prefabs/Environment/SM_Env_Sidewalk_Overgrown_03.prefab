@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4455335483893720}
   - component: {fileID: 33539020533162098}
   - component: {fileID: 23034224825320030}
+  - component: {fileID: 64328582353947874}
   m_Layer: 0
   m_Name: SM_Env_Sidewalk_Overgrown_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763845939496634}
   m_Mesh: {fileID: 4300000, guid: 6727639539979d04fae2745e7cd07954, type: 3}
+--- !u!64 &64328582353947874
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763845939496634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43749300820844934, guid: 0de5418b958332d4a9a68b16ac7f22cb, type: 2}

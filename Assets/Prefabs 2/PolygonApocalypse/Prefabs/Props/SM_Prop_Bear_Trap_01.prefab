@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4098196309342178}
   - component: {fileID: 33178053537451970}
   - component: {fileID: 23461655443978976}
+  - component: {fileID: 64531580407407858}
   m_Layer: 0
   m_Name: SM_Prop_Bear_Trap_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1806183723809966}
   m_Mesh: {fileID: 4300004, guid: 9db04e9dd80e3854f9a4e35175fd89be, type: 3}
+--- !u!64 &64531580407407858
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1754962658015278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43235482050232906, guid: e84ada216fdb6ac43aad5e468aa80cd4, type: 2}

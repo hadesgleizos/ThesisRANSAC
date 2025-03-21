@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4455555402674030}
   - component: {fileID: 33388672613934996}
   - component: {fileID: 23128035635300244}
+  - component: {fileID: 64924778638581000}
   m_Layer: 0
   m_Name: SM_Prop_Chair_Soft_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995316789632838}
   m_Mesh: {fileID: 4300000, guid: b33ea05dba364a04cb3e219c9129b790, type: 3}
+--- !u!64 &64924778638581000
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995316789632838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43009233918470576, guid: ae8a949bfeb90734e86aea0f57803487, type: 2}

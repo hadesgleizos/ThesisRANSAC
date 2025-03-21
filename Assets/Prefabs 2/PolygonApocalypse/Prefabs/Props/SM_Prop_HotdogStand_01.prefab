@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4561622522228242}
   - component: {fileID: 33016230236899456}
   - component: {fileID: 23281488173473258}
+  - component: {fileID: 64238052497339200}
   m_Layer: 0
   m_Name: SM_Prop_HotdogStand_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550485268008942}
   m_Mesh: {fileID: 4300000, guid: 38e1d6c5f09d0f74bb65287ab7f00576, type: 3}
+--- !u!64 &64238052497339200
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550485268008942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43075713431630724, guid: c80b751b35c2abd4393085e943cb98c8, type: 2}

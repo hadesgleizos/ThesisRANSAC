@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4962732862809444}
   - component: {fileID: 33537624747485502}
   - component: {fileID: 23329426233343882}
+  - component: {fileID: 64419153222618340}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Ladder_Rust_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027780731411400}
   m_Mesh: {fileID: 4300000, guid: 6fc9b2982b6766c448458068911ae991, type: 3}
+--- !u!64 &64419153222618340
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027780731411400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: e1cd834eae3f1a243834f91a53a38dfc, type: 3}

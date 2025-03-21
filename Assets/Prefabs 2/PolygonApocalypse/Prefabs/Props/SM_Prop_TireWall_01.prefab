@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4915188233204594}
   - component: {fileID: 33828139516113582}
   - component: {fileID: 23856743677638010}
+  - component: {fileID: 64858266960222644}
   m_Layer: 0
   m_Name: SM_Prop_TireWall_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355854396387798}
   m_Mesh: {fileID: 4300000, guid: 83fca5751b8c666419f45dadab5595f1, type: 3}
+--- !u!64 &64858266960222644
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355854396387798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43653462790745216, guid: 5405bf9b97a45f947bb338a5853d4cc8, type: 2}

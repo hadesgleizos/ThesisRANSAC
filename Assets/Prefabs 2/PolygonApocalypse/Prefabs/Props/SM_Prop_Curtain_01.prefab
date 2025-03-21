@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4482640193447610}
   - component: {fileID: 33527525770207396}
   - component: {fileID: 23250226101317218}
+  - component: {fileID: 64290102193265538}
   m_Layer: 0
   m_Name: SM_Prop_Curtain_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1056820984508630}
   m_Mesh: {fileID: 4300000, guid: e9cbccf7894adfb4889412e8b26bab5a, type: 3}
+--- !u!64 &64290102193265538
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056820984508630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43053299132237684, guid: e991b339408af9144bc18a01efeec145, type: 2}

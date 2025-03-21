@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4533858532687834}
   - component: {fileID: 33884765542943076}
   - component: {fileID: 23334556945038616}
+  - component: {fileID: 64680724576927876}
+  - component: {fileID: 64299529919994220}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Beam_Curved_Wood_01
   m_TagString: Untagged
@@ -34,7 +36,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272302753162966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -80,3 +82,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272302753162966}
   m_Mesh: {fileID: 4300000, guid: 9532d25c17911a64bb523059c34b06f7, type: 3}
+--- !u!64 &64299529919994220
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272302753162966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43535593223612984, guid: e920c63b2ed1c314fbb77464a32249ae, type: 2}
+--- !u!64 &64680724576927876
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272302753162966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43526746386190084, guid: e920c63b2ed1c314fbb77464a32249ae, type: 2}

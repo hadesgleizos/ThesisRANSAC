@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4951785076708890}
   - component: {fileID: 33861931134603840}
   - component: {fileID: 23574692851769062}
+  - component: {fileID: 64361529400203336}
   m_Layer: 0
   m_Name: SM_Wep_Veh_Rocket_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159687296305022}
   m_Mesh: {fileID: 4300000, guid: fe84d8d8592183d4d836c3548354b0ff, type: 3}
+--- !u!64 &64361529400203336
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159687296305022}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43474794924254650, guid: f7c3691a5c3f6ab4cbe1af033d8f9295, type: 2}

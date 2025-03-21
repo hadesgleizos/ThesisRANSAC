@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4832403136837382}
   - component: {fileID: 33651221696482050}
   - component: {fileID: 23328056111933498}
+  - component: {fileID: 64597868977205066}
   m_Layer: 0
   m_Name: SM_Prop_Manhole_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1779409706046442}
   m_Mesh: {fileID: 4300000, guid: 2fa565371d802a34aa02571d549d583e, type: 3}
+--- !u!64 &64597868977205066
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779409706046442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43724969984501898, guid: 2992dc7fe4f54264a8b0683e320e36b2, type: 2}

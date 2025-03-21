@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4927900740800758}
   - component: {fileID: 33987717225666368}
   - component: {fileID: 23953034156846862}
+  - component: {fileID: 64821011177361298}
   m_Layer: 0
   m_Name: SM_Item_Book_Open_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1345328649443024}
   m_Mesh: {fileID: 4300000, guid: e906f88093f7bb640839d31752a6face, type: 3}
+--- !u!64 &64821011177361298
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345328649443024}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43934364157995022, guid: 45b9921592f4eac4e8cbbd0c10a705cf, type: 2}

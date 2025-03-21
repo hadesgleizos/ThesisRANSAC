@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4623919069823908}
   - component: {fileID: 33199000551882628}
   - component: {fileID: 23812554459462614}
+  - component: {fileID: 64895871837891980}
   m_Layer: 0
   m_Name: SM_Prop_Toilet_Pneumatic_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1407583506260222}
   m_Mesh: {fileID: 4300002, guid: 2f6b0029402052249aa3774bbcacde75, type: 3}
+--- !u!64 &64895871837891980
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182908559538474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43220455438035544, guid: ff6c220ad0be9864583dc26342088d97, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4089558235802470}
   - component: {fileID: 33907533733607194}
   - component: {fileID: 23478806880712104}
+  - component: {fileID: 64930879402532472}
   m_Layer: 0
   m_Name: SM_Prop_DiningTable_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574373323952738}
   m_Mesh: {fileID: 4300000, guid: 19b2b7eadb081bc48af58996ccc175a9, type: 3}
+--- !u!64 &64930879402532472
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1574373323952738}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43839889329240746, guid: daffd72c80f7f0b40863629ad6471bb8, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4461839258737880}
   - component: {fileID: 33629849909615030}
   - component: {fileID: 23496675551728762}
+  - component: {fileID: 64757822512871576}
   m_Layer: 0
   m_Name: SM_Prop_RubbishBin_03
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1486588358974588}
   m_Mesh: {fileID: 4300002, guid: 1671b55fe4efa0e4980c3511412c16d9, type: 3}
+--- !u!64 &64757822512871576
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458748755654478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43911181239995022, guid: a086adb86297af148abb932a8c1e4fae, type: 2}

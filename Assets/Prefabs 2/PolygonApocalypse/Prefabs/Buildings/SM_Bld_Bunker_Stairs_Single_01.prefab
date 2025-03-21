@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4657503216441766}
   - component: {fileID: 33529521953961406}
   - component: {fileID: 23948722937259278}
+  - component: {fileID: 64590981789463806}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Stairs_Single_01
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4789305291221026}
   - component: {fileID: 33667910441337132}
   - component: {fileID: 23943308896799692}
+  - component: {fileID: 64549623693371520}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Stairs_Single_Wall_02
   m_TagString: Untagged
@@ -55,6 +57,7 @@ GameObject:
   - component: {fileID: 4352549133009692}
   - component: {fileID: 33371185176061724}
   - component: {fileID: 23677001553156456}
+  - component: {fileID: 64220254864157696}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Stairs_Single_Wall_01
   m_TagString: Untagged
@@ -81,7 +84,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166030679592542}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -220,3 +223,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270990903457222}
   m_Mesh: {fileID: 4300004, guid: 98c0ad2fc3eb55e44902e907b001dc41, type: 3}
+--- !u!64 &64220254864157696
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483554684142176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43986850284274914, guid: 76a455a943fdcd4419e68849346254fa, type: 2}
+--- !u!64 &64549623693371520
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270990903457222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43643624000569614, guid: 94552a4a3b1e4c443901186d7f8937ae, type: 2}
+--- !u!64 &64590981789463806
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166030679592542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 1c91e7924b02eb44daedbb409f2dbe9e, type: 3}

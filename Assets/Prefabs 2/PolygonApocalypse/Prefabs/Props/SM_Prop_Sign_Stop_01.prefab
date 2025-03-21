@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4414347660094320}
   - component: {fileID: 33982281698477818}
   - component: {fileID: 23701813266748794}
+  - component: {fileID: 64431310394354938}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Stop_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033860218315092}
   m_Mesh: {fileID: 4300000, guid: b0831c58df5cd4145b2c8d1d1685cac8, type: 3}
+--- !u!64 &64431310394354938
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033860218315092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43499730754401322, guid: 338ff342cd025ba41a746547c88d7db0, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4748517488880240}
   - component: {fileID: 33583130983625972}
   - component: {fileID: 23181058895106544}
+  - component: {fileID: 64830299016741792}
   m_Layer: 0
   m_Name: SM_Prop_Pipe_Large_01_Tarp
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768650049528280}
   m_Mesh: {fileID: 4300000, guid: 01d715abb334ad24b869deaf567149d7, type: 3}
+--- !u!64 &64830299016741792
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768650049528280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43798945347153386, guid: c908d6d20fc30ed44b428bfd9e9b1422, type: 2}

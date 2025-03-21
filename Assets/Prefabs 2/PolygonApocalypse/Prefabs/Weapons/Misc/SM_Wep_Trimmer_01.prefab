@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4100180352736512}
   - component: {fileID: 33736206646747066}
   - component: {fileID: 23266049312242756}
+  - component: {fileID: 64218791675189882}
   m_Layer: 0
   m_Name: SM_Wep_Trimmer_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172279417112006}
   m_Mesh: {fileID: 4300000, guid: 2157efe598a5ee04b97b13c58cbecd16, type: 3}
+--- !u!64 &64218791675189882
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172279417112006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43723247573031600, guid: 157a9d292b0b41b45ba6ffce00865e5c, type: 2}

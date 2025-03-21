@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4092883750157980}
   - component: {fileID: 33137646662357042}
   - component: {fileID: 23556795209926314}
+  - component: {fileID: 64618016502215320}
   m_Layer: 0
   m_Name: SM_Item_Ammo_45_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200214826615850}
   m_Mesh: {fileID: 4300000, guid: 5aee78045f3d4dc40960b466189976f2, type: 3}
+--- !u!64 &64618016502215320
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200214826615850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43368802027719006, guid: 3dc686ecfc2cdda4b9222ce739447f90, type: 2}

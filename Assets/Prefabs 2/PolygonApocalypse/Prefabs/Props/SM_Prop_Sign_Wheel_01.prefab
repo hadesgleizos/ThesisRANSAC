@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4239142107516414}
   - component: {fileID: 33905703943713532}
   - component: {fileID: 23765197396875758}
+  - component: {fileID: 64374377854472158}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Wheel_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1371490142069974}
   m_Mesh: {fileID: 4300000, guid: b78a3d68000dd33419d4b391d157fed2, type: 3}
+--- !u!64 &64374377854472158
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371490142069974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43597128448668738, guid: 5f94f763b1dd08e4b9b0fcd367004b41, type: 2}

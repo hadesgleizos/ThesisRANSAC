@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4439117946351816}
   - component: {fileID: 33881108682925376}
   - component: {fileID: 23197542942942362}
+  - component: {fileID: 64580689070845904}
   m_Layer: 0
   m_Name: SM_Prop_Wall_Junk_Car_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148935423681642}
   m_Mesh: {fileID: 4300000, guid: a5fa981cbaa623e4a88ba7d2cf4fda6b, type: 3}
+--- !u!64 &64580689070845904
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148935423681642}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43695646051158328, guid: c8c0b36626e2c84419516158d3b9a36b, type: 2}

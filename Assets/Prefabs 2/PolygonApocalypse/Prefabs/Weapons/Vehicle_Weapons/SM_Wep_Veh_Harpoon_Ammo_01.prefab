@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4178298189945386}
   - component: {fileID: 33090623965673684}
   - component: {fileID: 23548889948466346}
+  - component: {fileID: 64643179588995202}
   m_Layer: 0
   m_Name: SM_Wep_Veh_Harpoon_Ammo_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533712721844614}
   m_Mesh: {fileID: 4300000, guid: 8769e7766b4804747a4b60e66ab81031, type: 3}
+--- !u!64 &64643179588995202
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533712721844614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43517973431635482, guid: cc036ec36592d1b4bb4f365e8fa89630, type: 2}

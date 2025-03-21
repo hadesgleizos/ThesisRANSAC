@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4922156601041196}
   - component: {fileID: 33414062380666224}
   - component: {fileID: 23161846845768602}
+  - component: {fileID: 64173575242071490}
   m_Layer: 0
   m_Name: SM_Prop_DiamondPlate_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1866304302390938}
   m_Mesh: {fileID: 4300000, guid: 18f3b79a60fb47e49bcbb5c630a738da, type: 3}
+--- !u!64 &64173575242071490
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1866304302390938}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43749543766756064, guid: 6937b830b5833ca498ba14169e6200f2, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4391230447223142}
   - component: {fileID: 33661374567666872}
   - component: {fileID: 23484575119198560}
+  - component: {fileID: 64676659826465884}
   m_Layer: 0
   m_Name: SM_Prop_Shower_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1957963249714092}
   m_Mesh: {fileID: 4300002, guid: c6343cd665e160f47b563363060f6dfb, type: 3}
+--- !u!64 &64676659826465884
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707824195376740}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43321072500969926, guid: 352228dc4998dd04c88dbee2c37a5cd9, type: 2}

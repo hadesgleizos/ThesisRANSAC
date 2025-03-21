@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4735623534810018}
   - component: {fileID: 33855666463842262}
   - component: {fileID: 23466550653056764}
+  - component: {fileID: 64744412718752986}
   m_Layer: 0
   m_Name: SM_Env_StormCanal_Straight_Dipped_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1086410097867442}
   m_Mesh: {fileID: 4300000, guid: 86e0f784e5a63f7448d9080c63f05887, type: 3}
+--- !u!64 &64744412718752986
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086410097867442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43883774850950290, guid: 95ed8f00667fc484c872d4a4812ea022, type: 2}

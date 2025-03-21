@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4891024998397418}
   - component: {fileID: 33378470161243464}
   - component: {fileID: 23637661984565294}
+  - component: {fileID: 64446424748496132}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Shop_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1889461258110282}
   m_Mesh: {fileID: 4300000, guid: cc20ee7e497099f4198862da1f06cb1d, type: 3}
+--- !u!64 &64446424748496132
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889461258110282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43517359847904054, guid: 68b5fc4ab3f3f8b448c0ba471a70b8c2, type: 2}

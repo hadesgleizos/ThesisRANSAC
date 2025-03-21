@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4915570640236042}
   - component: {fileID: 33406852733262076}
   - component: {fileID: 23358950292278088}
+  - component: {fileID: 64170098788908338}
   m_Layer: 0
   m_Name: SM_Prop_Briefcase_Flaregun_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596004722246440}
   m_Mesh: {fileID: 4300002, guid: c03802c801e19c04cb611cc1dec8be03, type: 3}
+--- !u!64 &64170098788908338
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878577991734708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43506809532407628, guid: 09ae5c5cf67fc9448bb8f7b790ec341b, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4249507762010470}
   - component: {fileID: 33516598526675988}
   - component: {fileID: 23950899307014892}
+  - component: {fileID: 64831033037147432}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Diner_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364118899146430}
   m_Mesh: {fileID: 4300000, guid: 0de3db1b29016e6498262938df673390, type: 3}
+--- !u!64 &64831033037147432
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364118899146430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43332084431852854, guid: 363c33ae591fe31458a1d59a23ad3c4c, type: 2}

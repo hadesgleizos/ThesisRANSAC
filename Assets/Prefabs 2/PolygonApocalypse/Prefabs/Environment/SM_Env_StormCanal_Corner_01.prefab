@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4635016340217706}
   - component: {fileID: 33812572425709410}
   - component: {fileID: 23599330786776988}
+  - component: {fileID: 64763168827601198}
   m_Layer: 0
   m_Name: SM_Env_StormCanal_Corner_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848949906581048}
   m_Mesh: {fileID: 4300000, guid: 8ffe6a7b705aca94fa59ef0d63e0f22a, type: 3}
+--- !u!64 &64763168827601198
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848949906581048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43625178476856462, guid: 73e63c7d500df2a42b36316ca701bf99, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4728766282405128}
   - component: {fileID: 33948740882798448}
   - component: {fileID: 23615813147211886}
+  - component: {fileID: 64555226718816910}
   m_Layer: 0
   m_Name: SM_Prop_Roadblock_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680846125167178}
   m_Mesh: {fileID: 4300000, guid: 3159d5e3867174a47b8619ac708e56f8, type: 3}
+--- !u!64 &64555226718816910
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680846125167178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43706783345196156, guid: d6cda9f9de9568c4290d03936be2d98a, type: 2}

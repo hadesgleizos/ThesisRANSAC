@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4043465891374248}
   - component: {fileID: 33262592396746916}
   - component: {fileID: 23872302946968756}
+  - component: {fileID: 64707831085381344}
   m_Layer: 0
   m_Name: SM_Bld_Sunshade_Round_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012521968979594}
   m_Mesh: {fileID: 4300000, guid: 5228c3901ca3ed849813b6eaa113079f, type: 3}
+--- !u!64 &64707831085381344
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012521968979594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43571590177571418, guid: 12fa133ada745b845b277743b5450a1b, type: 2}

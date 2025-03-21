@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4530787292165528}
   - component: {fileID: 33663327661803972}
   - component: {fileID: 23916638267197332}
+  - component: {fileID: 64492069162009184}
   m_Layer: 0
   m_Name: SM_Wep_Crutch_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031729302790486}
   m_Mesh: {fileID: 4300000, guid: eb46839f4c7d3cb4bb83b362b1f61948, type: 3}
+--- !u!64 &64492069162009184
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1031729302790486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43379330726102470, guid: db2969ba6e058c340965b22c753e8211, type: 2}

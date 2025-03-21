@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33287952770234426}
   - component: {fileID: 23935260949339240}
   - component: {fileID: 95740730484326404}
+  - component: {fileID: 64727921590618428}
   m_Layer: 0
   m_Name: SM_Prop_Ammo_Box_Open_01
   m_TagString: Untagged
@@ -151,6 +152,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153305888528632}
   m_Mesh: {fileID: 4300002, guid: 7ed7d73625ebc084987f7993d0f9e1a1, type: 3}
+--- !u!64 &64727921590618428
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272480267893180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43217579353184496, guid: 83f2bf61ab1720e449d2c9c482a0795e, type: 2}
 --- !u!95 &95740730484326404
 Animator:
   serializedVersion: 3

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4968873998365028}
   - component: {fileID: 33073806832609006}
   - component: {fileID: 23425278521069838}
+  - component: {fileID: 64399929843098346}
   m_Layer: 0
   m_Name: SM_Item_Alcohol_06
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1023369000891532}
   m_Mesh: {fileID: 4300000, guid: 2d59582b36fb37945859a294ce1cff29, type: 3}
+--- !u!64 &64399929843098346
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1023369000891532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43811457885057306, guid: 683c5671043ada54f98a0ce802ffd772, type: 2}

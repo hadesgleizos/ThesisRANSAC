@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4878301781655884}
   - component: {fileID: 33797339149485788}
   - component: {fileID: 23287783328909832}
+  - component: {fileID: 64710147775159726}
   m_Layer: 0
   m_Name: SM_Wep_SubMGun_03
   m_TagString: Untagged
@@ -360,3 +361,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1051043256414930}
   m_Mesh: {fileID: 4300002, guid: a7117b2f63bfdbb47bb52ca93abd9d5f, type: 3}
+--- !u!64 &64710147775159726
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328033259041762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43637906626562156, guid: 2a16a835c7062f0478e3827a8f00f339, type: 2}

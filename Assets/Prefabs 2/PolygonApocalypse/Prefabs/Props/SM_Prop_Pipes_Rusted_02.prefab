@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4036943344853806}
   - component: {fileID: 33867310958385184}
   - component: {fileID: 23427988807730596}
+  - component: {fileID: 64912968726111846}
   m_Layer: 0
   m_Name: SM_Prop_Pipes_Rusted_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1973086496478806}
   m_Mesh: {fileID: 4300000, guid: 0c5527dc92e531e42825d05594a7907d, type: 3}
+--- !u!64 &64912968726111846
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973086496478806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43899049756371636, guid: 4ddfeaa099812934d8a4fd293cf392dc, type: 2}

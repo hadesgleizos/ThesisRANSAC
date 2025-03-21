@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4841752736085910}
   - component: {fileID: 33923506385601390}
   - component: {fileID: 23612724682489680}
+  - component: {fileID: 64004203818110588}
   m_Layer: 0
   m_Name: SM_Generic_Tree_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1150495099919806}
   m_Mesh: {fileID: 4300000, guid: cc0582d3a25b61d4b93e10837d6e283f, type: 3}
+--- !u!64 &64004203818110588
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1150495099919806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43338257464804908, guid: f67d04dbd93fc2a47aa878cc08c7fc99, type: 2}

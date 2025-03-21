@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4740320581834762}
   - component: {fileID: 33559641617874236}
   - component: {fileID: 23439751960823040}
+  - component: {fileID: 64984477332530876}
   m_Layer: 0
   m_Name: SM_Prop_Vents_Straight_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216996505918306}
   m_Mesh: {fileID: 4300000, guid: 36fe423bae6dddc4491e031e10b5fe2c, type: 3}
+--- !u!64 &64984477332530876
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216996505918306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43302939909687618, guid: 290a1d9fe702fe645ae437cc8230ab3b, type: 2}

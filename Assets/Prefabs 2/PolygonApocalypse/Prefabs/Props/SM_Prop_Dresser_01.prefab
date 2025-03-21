@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4733060447538210}
   - component: {fileID: 33684228756956184}
   - component: {fileID: 23838751724463488}
+  - component: {fileID: 64152702051684242}
   m_Layer: 0
   m_Name: SM_Prop_Dresser_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1038834509236388}
   m_Mesh: {fileID: 4300000, guid: 21ae17af752e09048b05412c47a626ba, type: 3}
+--- !u!64 &64152702051684242
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038834509236388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43065108496247998, guid: f575b94b807b8a146aedfbfd47b99179, type: 2}

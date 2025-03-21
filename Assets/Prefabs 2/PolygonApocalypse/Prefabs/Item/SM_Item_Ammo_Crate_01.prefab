@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4593014914094346}
   - component: {fileID: 33974908984347522}
   - component: {fileID: 23380077479791602}
+  - component: {fileID: 64400198587150192}
   m_Layer: 0
   m_Name: SM_Item_Ammo_Crate_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706339067681582}
   m_Mesh: {fileID: 4300000, guid: 0bd6732adc086934982f17e3cd3924de, type: 3}
+--- !u!64 &64400198587150192
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706339067681582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43885680045399904, guid: 68bed2fa1c7398d42916f57bf6ff17bb, type: 2}

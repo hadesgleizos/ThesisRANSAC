@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4328504116082316}
   - component: {fileID: 33690697652915004}
   - component: {fileID: 23170091794961972}
+  - component: {fileID: 64747905956886830}
   m_Layer: 0
   m_Name: SM_Prop_Skull_Silver_02
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357492492471360}
   m_Mesh: {fileID: 4300000, guid: 0c99f10df4ffc044386b3c6fef4c71c2, type: 3}
+--- !u!64 &64747905956886830
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357492492471360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43483198623639810, guid: a37f5d9989c0fa14f959cb736cc38557, type: 2}

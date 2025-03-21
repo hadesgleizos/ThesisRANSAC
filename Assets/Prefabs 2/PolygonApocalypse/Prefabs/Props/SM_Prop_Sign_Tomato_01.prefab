@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4629429503027406}
   - component: {fileID: 33526130402756662}
   - component: {fileID: 23309567409978254}
+  - component: {fileID: 64787206437410334}
   m_Layer: 0
   m_Name: SM_Prop_Sign_Tomato_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1284294949257036}
   m_Mesh: {fileID: 4300000, guid: dcd28bca53d8f2d458cd07f4d2599df7, type: 3}
+--- !u!64 &64787206437410334
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284294949257036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43346956463015190, guid: f30502ebf38d6444dadfd938f2ebe07b, type: 2}

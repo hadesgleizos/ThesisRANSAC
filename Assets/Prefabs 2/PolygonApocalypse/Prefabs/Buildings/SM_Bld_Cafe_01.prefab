@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4313014702055196}
   - component: {fileID: 33114185724284244}
   - component: {fileID: 23066927348910956}
+  - component: {fileID: 64361259258442638}
   m_Layer: 0
   m_Name: SM_Bld_Cafe_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534361701798564}
   m_Mesh: {fileID: 4300002, guid: a151a8af00857cd4b8a15d4ef6ddd7c0, type: 3}
+--- !u!64 &64361259258442638
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320579335083028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 157ed39cfee9929478e22f41bbd4c1ef, type: 3}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4923829886935644}
   - component: {fileID: 33671635287987980}
   - component: {fileID: 23643383803654096}
+  - component: {fileID: 64080914478796606}
   m_Layer: 0
   m_Name: SM_Prop_Gaspump_Burnt_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728136573611908}
   m_Mesh: {fileID: 4300000, guid: b43e783db1ec8d14789a0b433b1e3ae9, type: 3}
+--- !u!64 &64080914478796606
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1728136573611908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43932462627926788, guid: 324a28da618df904fb2ca3b561be45bc, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4169295823307758}
   - component: {fileID: 33873488317132366}
   - component: {fileID: 23460970426849210}
+  - component: {fileID: 64336475686984062}
   m_Layer: 0
   m_Name: SM_Wep_FlameThrower_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542385142591230}
   m_Mesh: {fileID: 4300002, guid: c60c430e4a17d854197a94e555745aea, type: 3}
+--- !u!64 &64336475686984062
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172656402973578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43485721525496506, guid: 93353edfb96837c4ebd293ff4698a150, type: 2}

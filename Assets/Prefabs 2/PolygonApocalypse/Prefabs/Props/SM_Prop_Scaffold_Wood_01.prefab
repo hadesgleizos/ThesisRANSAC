@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4955883090555954}
   - component: {fileID: 33929531082497986}
   - component: {fileID: 23137920224924172}
+  - component: {fileID: 64946783938429012}
   m_Layer: 0
   m_Name: SM_Prop_Scaffold_Wood_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698197608113298}
   m_Mesh: {fileID: 4300000, guid: 6f2cdb65c58ce1d4b85f3499b6b19efc, type: 3}
+--- !u!64 &64946783938429012
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698197608113298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43076909189088540, guid: 080d38cc568ec0e4eb534b10062cc697, type: 2}

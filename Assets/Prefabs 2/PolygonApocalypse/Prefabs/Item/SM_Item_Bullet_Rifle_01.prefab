@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4058111068161934}
   - component: {fileID: 33453398344409056}
   - component: {fileID: 23117931083665318}
+  - component: {fileID: 64428970310469952}
   m_Layer: 0
   m_Name: SM_Item_Bullet_Rifle_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551417492572840}
   m_Mesh: {fileID: 4300000, guid: 6bf61c9b243a9064cb28d1d1188e0eff, type: 3}
+--- !u!64 &64428970310469952
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1551417492572840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43441270186024438, guid: d189e2c4417569c48aeca7ab4dc0e7cb, type: 2}

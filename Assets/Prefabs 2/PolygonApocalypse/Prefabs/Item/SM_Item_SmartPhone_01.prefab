@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4721596445248216}
   - component: {fileID: 33781410917249538}
   - component: {fileID: 23837598357442208}
+  - component: {fileID: 64877223094801996}
   m_Layer: 0
   m_Name: SM_Item_SmartPhone_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523162694156800}
   m_Mesh: {fileID: 4300000, guid: be7f9e661cb73174795f0d5119e80f56, type: 3}
+--- !u!64 &64877223094801996
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523162694156800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43655702663482182, guid: 2c38429fc992cfd45b9cf0678674d4e3, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4224162404519362}
   - component: {fileID: 33999068660567496}
   - component: {fileID: 23981953702053136}
+  - component: {fileID: 65146060035581082}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Wood_Floor_Raised_01
   m_TagString: Untagged
@@ -80,3 +81,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1621858013589576}
   m_Mesh: {fileID: 4300000, guid: 5e75d35d7363ebf47af0f8002f40f0a9, type: 3}
+--- !u!65 &65146060035581082
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621858013589576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5000048, y: 0.28063583, z: 2.5000024}
+  m_Center: {x: -1.2499976, y: 0.14031792, z: 1.2500012}

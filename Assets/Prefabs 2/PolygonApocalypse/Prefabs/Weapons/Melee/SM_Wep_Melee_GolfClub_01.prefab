@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4991158627932100}
   - component: {fileID: 33878994652290688}
   - component: {fileID: 23459569971010350}
+  - component: {fileID: 64850273836386274}
   m_Layer: 0
   m_Name: SM_Wep_Melee_GolfClub_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482512395150420}
   m_Mesh: {fileID: 4300002, guid: 0bef91f4478f2624bada3293424963a6, type: 3}
+--- !u!64 &64850273836386274
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033218996785696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43568278343712176, guid: 48cd1cef050701341bcc36612995150c, type: 2}

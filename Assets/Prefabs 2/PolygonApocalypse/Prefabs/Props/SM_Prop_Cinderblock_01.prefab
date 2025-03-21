@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4539144707135204}
   - component: {fileID: 33837655498289936}
   - component: {fileID: 23172726427991896}
+  - component: {fileID: 64876588714722900}
   m_Layer: 0
   m_Name: SM_Prop_Cinderblock_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466574748293544}
   m_Mesh: {fileID: 4300000, guid: f983cee0f1544fa40a22cd5215635248, type: 3}
+--- !u!64 &64876588714722900
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466574748293544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43116191067874354, guid: 368861e7ebd7d27418d682a3170b8c99, type: 2}

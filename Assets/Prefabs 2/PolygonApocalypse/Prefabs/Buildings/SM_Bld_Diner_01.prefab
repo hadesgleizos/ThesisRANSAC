@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4705000569198484}
   - component: {fileID: 33287932807828580}
   - component: {fileID: 23950991984154110}
+  - component: {fileID: 64114269214073210}
   m_Layer: 0
   m_Name: SM_Bld_Diner_01
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4811863242464612}
   - component: {fileID: 33420783522316768}
   - component: {fileID: 23578050527981152}
+  - component: {fileID: 64890779107572888}
   m_Layer: 0
   m_Name: SM_Bld_Diner_Interior_01
   m_TagString: Untagged
@@ -81,8 +83,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611046470452428}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4345203851587546}
@@ -220,3 +222,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1806440392434304}
   m_Mesh: {fileID: 4300004, guid: f88226b9b21f6e5439e2955a6b8d8a41, type: 3}
+--- !u!64 &64114269214073210
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611046470452428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: c97ec1801f766e741aacac2413e7d412, type: 3}
+--- !u!64 &64890779107572888
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759231548712978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 15eafe6699e893548b268d65c90c8c3f, type: 3}

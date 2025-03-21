@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4074481712625756}
   - component: {fileID: 33112603188952870}
   - component: {fileID: 23885607711838722}
+  - component: {fileID: 64848535363786406}
   m_Layer: 0
   m_Name: SM_Prop_Bunker_WallWires_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977691541163916}
   m_Mesh: {fileID: 4300000, guid: 8f92c390021f4204b9494a620b854d77, type: 3}
+--- !u!64 &64848535363786406
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977691541163916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43273559308079178, guid: c5c49c6445fc5a24ebe106b4819627b8, type: 2}

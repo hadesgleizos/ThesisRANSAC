@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4560509306627632}
   - component: {fileID: 33800645707813556}
   - component: {fileID: 23190749499234548}
+  - component: {fileID: 64502463664887652}
   m_Layer: 0
   m_Name: SM_Wep_Hammer_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238499803652380}
   m_Mesh: {fileID: 4300000, guid: 0e3eac6834efcde4e9b57d1714588038, type: 3}
+--- !u!64 &64502463664887652
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238499803652380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43305562913653708, guid: c236deea5175ba144b4a54dd21141551, type: 2}

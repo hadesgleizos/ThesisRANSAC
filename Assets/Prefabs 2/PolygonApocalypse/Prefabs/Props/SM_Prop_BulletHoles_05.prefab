@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4918491146346294}
   - component: {fileID: 33212168509827294}
   - component: {fileID: 23946392396651264}
+  - component: {fileID: 64114442444073234}
   m_Layer: 0
   m_Name: SM_Prop_BulletHoles_05
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542065673364360}
   m_Mesh: {fileID: 4300000, guid: f3eb122c56887aa4ea91fd9902e51a07, type: 3}
+--- !u!64 &64114442444073234
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542065673364360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43061837973232440, guid: 6134cdc8cb083ad4c9d37c612abe8219, type: 2}

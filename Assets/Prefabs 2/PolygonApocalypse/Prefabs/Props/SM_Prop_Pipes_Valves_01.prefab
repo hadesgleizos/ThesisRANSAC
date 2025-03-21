@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4485973646958388}
   - component: {fileID: 33425698748885302}
   - component: {fileID: 23622529821086268}
+  - component: {fileID: 64896876771905202}
   m_Layer: 0
   m_Name: SM_Prop_Pipes_Valves_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090187093199570}
   m_Mesh: {fileID: 4300000, guid: 2f2df29f88e0190458ed950aef9cf683, type: 3}
+--- !u!64 &64896876771905202
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090187093199570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43600538789329504, guid: 6b3eb14d643e20d429259691bbe83279, type: 2}

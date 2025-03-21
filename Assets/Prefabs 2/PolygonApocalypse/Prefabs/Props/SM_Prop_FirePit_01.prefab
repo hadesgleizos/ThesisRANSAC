@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33113732745599806}
   - component: {fileID: 23945254969340090}
   - component: {fileID: 95104648418811738}
+  - component: {fileID: 64399321833428714}
   m_Layer: 0
   m_Name: SM_Prop_FirePit_01
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649974113805406}
   m_Mesh: {fileID: 4300000, guid: 4b5304e4d89b32d479c5afaf531115c2, type: 3}
+--- !u!64 &64399321833428714
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649974113805406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43066709150458152, guid: 60e326e109f66f24d8922ba0721ad763, type: 2}
 --- !u!95 &95104648418811738
 Animator:
   serializedVersion: 3

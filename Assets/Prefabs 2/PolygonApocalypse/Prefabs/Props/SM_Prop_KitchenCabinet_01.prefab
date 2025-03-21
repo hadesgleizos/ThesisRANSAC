@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4066223359585048}
   - component: {fileID: 33309203592406312}
   - component: {fileID: 23566337431920580}
+  - component: {fileID: 64205146592566896}
   m_Layer: 0
   m_Name: SM_Prop_KitchenCabinet_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1786486560679048}
   m_Mesh: {fileID: 4300004, guid: bd5eb5bffcdb96247b357c94bde1e3e4, type: 3}
+--- !u!64 &64205146592566896
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994170127571244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43975527608792658, guid: 6de10256a28629f489332279b72a445e, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4818363395500748}
   - component: {fileID: 33024550739862944}
   - component: {fileID: 23898529642099156}
+  - component: {fileID: 64880163526249180}
   m_Layer: 0
   m_Name: SM_Item_Ammo_Paper_Open_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382125126459772}
   m_Mesh: {fileID: 4300000, guid: 33aad10cd288f5c4f91ee6483e50e370, type: 3}
+--- !u!64 &64880163526249180
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1382125126459772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43623006976060072, guid: 54dc3a03756cf294bb2030e09bc823dd, type: 2}

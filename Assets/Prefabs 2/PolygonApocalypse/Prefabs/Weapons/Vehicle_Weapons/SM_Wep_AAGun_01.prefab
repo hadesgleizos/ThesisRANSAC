@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4539646175811632}
   - component: {fileID: 33170898316928162}
   - component: {fileID: 23526776836889250}
+  - component: {fileID: 65072438155250794}
   m_Layer: 0
   m_Name: SM_Wep_AAGun_Body_01
   m_TagString: Untagged
@@ -55,6 +56,7 @@ GameObject:
   - component: {fileID: 4567244561358264}
   - component: {fileID: 33095661579754918}
   - component: {fileID: 23683674015290722}
+  - component: {fileID: 64304268248605396}
   m_Layer: 0
   m_Name: SM_Wep_AAGun_01
   m_TagString: Untagged
@@ -500,3 +502,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1704796078389558}
   m_Mesh: {fileID: 4300010, guid: e0f77c55d23bfba45a716e163098d918, type: 3}
+--- !u!64 &64304268248605396
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638244575166490}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43761660768607592, guid: 88b2f80d34eb3f541ab5db40d7a7bcb2, type: 2}
+--- !u!65 &65072438155250794
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022314822814324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.67709464, y: 0.2305733, z: 1.7659311}
+  m_Center: {x: -0.00759688, y: 0.029538572, z: 0.24181938}

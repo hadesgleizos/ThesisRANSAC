@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4117907576646320}
   - component: {fileID: 33757001030085190}
   - component: {fileID: 23211893942350456}
+  - component: {fileID: 64389972787358410}
   m_Layer: 0
   m_Name: SM_Bld_Military_Tent_Damaged_03
   m_TagString: Untagged
@@ -34,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1409213864165422}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1409213864165422}
   m_Mesh: {fileID: 4300000, guid: 398962a4cf01252429bfcd415f8a2a4a, type: 3}
+--- !u!64 &64389972787358410
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1409213864165422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 0893825e7fbe3c249a8f3bac25393c13, type: 3}

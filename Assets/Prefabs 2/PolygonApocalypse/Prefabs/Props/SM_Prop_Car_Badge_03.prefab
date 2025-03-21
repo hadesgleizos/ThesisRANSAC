@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4153690310266044}
   - component: {fileID: 33832649887678640}
   - component: {fileID: 23520768032962438}
+  - component: {fileID: 64729018641860690}
   m_Layer: 0
   m_Name: SM_Prop_Car_Badge_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072420641511914}
   m_Mesh: {fileID: 4300000, guid: bf69784f4d9142d4b9c2c4df400bf9e2, type: 3}
+--- !u!64 &64729018641860690
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1072420641511914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43352328316777152, guid: 18f418f7c84b84f4b87441b09b74c682, type: 2}

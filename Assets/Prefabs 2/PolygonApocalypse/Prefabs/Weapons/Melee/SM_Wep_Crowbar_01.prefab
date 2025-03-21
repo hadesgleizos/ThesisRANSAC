@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4784256032301396}
   - component: {fileID: 33412251369996326}
   - component: {fileID: 23277087625503958}
+  - component: {fileID: 64414071304367804}
   m_Layer: 0
   m_Name: SM_Wep_Crowbar_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750927141268108}
   m_Mesh: {fileID: 4300000, guid: 2047875a40d94ed4eb241d51cf1bdf5f, type: 3}
+--- !u!64 &64414071304367804
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750927141268108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43176678152369430, guid: 4f1235fa98501384d8b2142ebae9a7ee, type: 2}

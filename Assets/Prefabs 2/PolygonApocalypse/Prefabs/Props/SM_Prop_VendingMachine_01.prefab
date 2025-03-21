@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4748680812614366}
   - component: {fileID: 33276930815418968}
   - component: {fileID: 23196841406297520}
+  - component: {fileID: 64399487061141656}
   m_Layer: 0
   m_Name: SM_Prop_VendingMachine_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943517841819872}
   m_Mesh: {fileID: 4300000, guid: 6791b52d72306a14d867149aadd6f7d0, type: 3}
+--- !u!64 &64399487061141656
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943517841819872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43419805379638980, guid: 4911369eea5a70b43b0f952ad89cfa62, type: 2}

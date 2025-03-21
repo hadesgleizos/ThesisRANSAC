@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4069478267061336}
   - component: {fileID: 33558392260798236}
   - component: {fileID: 23263230687673270}
+  - component: {fileID: 64350879669490756}
   m_Layer: 0
   m_Name: SM_Item_Drink_Whistle_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352667455901096}
   m_Mesh: {fileID: 4300000, guid: abdb9cf603f35914fb4a3fac4994b5ee, type: 3}
+--- !u!64 &64350879669490756
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352667455901096}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43737918334391504, guid: 2249a6b106711d947a27a8ee76f7067b, type: 2}

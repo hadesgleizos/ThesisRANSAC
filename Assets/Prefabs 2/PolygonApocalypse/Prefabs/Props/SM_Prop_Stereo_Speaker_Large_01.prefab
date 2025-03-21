@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4999693597400226}
   - component: {fileID: 33499247887190658}
   - component: {fileID: 23235770018210498}
+  - component: {fileID: 64712798169607112}
   m_Layer: 0
   m_Name: SM_Prop_Stereo_Speaker_Large_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1393030331068654}
   m_Mesh: {fileID: 4300000, guid: 20ce2a9f18b0e564ea2fd484a89b7f9f, type: 3}
+--- !u!64 &64712798169607112
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393030331068654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43121086420143542, guid: 0d3ac4e5e43892c4684e755f27ea7835, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4576666391488078}
   - component: {fileID: 33661044183799162}
   - component: {fileID: 23276642198284758}
+  - component: {fileID: 64193393727028052}
   m_Layer: 0
   m_Name: SM_Bld_Motel_Sign_03
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031214814321838}
   m_Mesh: {fileID: 4300000, guid: ccc05ed96428f6446a08519c0334389b, type: 3}
+--- !u!64 &64193393727028052
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1031214814321838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43249848813748524, guid: c24a79d39b2474e4bb2cf5f2d2155cb5, type: 2}

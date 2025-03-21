@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4234678332766698}
   - component: {fileID: 33966656175264490}
   - component: {fileID: 23956045546403146}
+  - component: {fileID: 64641705590300078}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Entrance_01
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1978029279529622}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1978029279529622}
   m_Mesh: {fileID: 4300000, guid: c3d56f6cf8445f54eb90a1051a76a4d3, type: 3}
+--- !u!64 &64641705590300078
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978029279529622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 3c91ce285d2a199409431cb07da46286, type: 3}

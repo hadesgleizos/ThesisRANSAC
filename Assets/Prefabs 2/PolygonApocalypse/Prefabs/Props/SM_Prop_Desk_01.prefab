@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4484716049534560}
   - component: {fileID: 33997533399412228}
   - component: {fileID: 23370266225023018}
+  - component: {fileID: 64749025966787002}
   m_Layer: 0
   m_Name: SM_Prop_Desk_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236893364415800}
   m_Mesh: {fileID: 4300000, guid: fa193d4d44ece0644b25658fad82b836, type: 3}
+--- !u!64 &64749025966787002
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236893364415800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43219081819003628, guid: f8f67d331ac8e4044a0654b4e3628b18, type: 2}

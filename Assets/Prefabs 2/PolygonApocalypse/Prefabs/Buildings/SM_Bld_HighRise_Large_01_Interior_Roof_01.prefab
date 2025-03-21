@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4262111604472050}
   - component: {fileID: 33025051819416570}
   - component: {fileID: 23929741611009450}
+  - component: {fileID: 64616040936172992}
   m_Layer: 0
   m_Name: SM_Bld_HighRise_Large_01_Interior_Roof_01
   m_TagString: Untagged
@@ -64,8 +65,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1451795003083502}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4109245992353634}
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1898510780379820}
   m_Mesh: {fileID: 4300002, guid: 131cca44e4b61644eb022b5aa7d69f69, type: 3}
+--- !u!64 &64616040936172992
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451795003083502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 9d2a9998c28fb1f4e91f060918c01bb1, type: 3}

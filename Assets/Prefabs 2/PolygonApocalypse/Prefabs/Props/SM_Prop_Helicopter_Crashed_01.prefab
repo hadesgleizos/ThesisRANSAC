@@ -38,6 +38,9 @@ GameObject:
   - component: {fileID: 4527199298250504}
   - component: {fileID: 33038321624453916}
   - component: {fileID: 23350868427227562}
+  - component: {fileID: 64488966281104270}
+  - component: {fileID: 64644749088977662}
+  - component: {fileID: 64645518769978444}
   m_Layer: 0
   m_Name: SM_Prop_Helicopter_Crashed_01
   m_TagString: Untagged
@@ -150,3 +153,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403133774851898}
   m_Mesh: {fileID: 4300002, guid: 17253d4b844d9b14cbf28c63ab019d09, type: 3}
+--- !u!64 &64488966281104270
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925596745066438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43578325058064650, guid: f87c7d6d0886e264fae3d7df1a7e9b3a, type: 2}
+--- !u!64 &64644749088977662
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925596745066438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43935506341624050, guid: f87c7d6d0886e264fae3d7df1a7e9b3a, type: 2}
+--- !u!64 &64645518769978444
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925596745066438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43172397088347446, guid: f87c7d6d0886e264fae3d7df1a7e9b3a, type: 2}

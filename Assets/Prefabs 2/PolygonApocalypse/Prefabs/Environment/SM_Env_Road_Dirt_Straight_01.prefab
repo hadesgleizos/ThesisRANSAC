@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4198878845537914}
   - component: {fileID: 33172464556784752}
   - component: {fileID: 23172760600310264}
-  - component: {fileID: 95803903955314712}
+  - component: {fileID: 64037521991213290}
   m_Layer: 0
   m_Name: SM_Env_Road_Dirt_Straight_01
   m_TagString: Untagged
@@ -35,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549825329564326}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,20 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549825329564326}
   m_Mesh: {fileID: 4300000, guid: 2c683f4b3f2cf734bb5b14b85b9742e2, type: 3}
---- !u!95 &95803903955314712
-Animator:
-  serializedVersion: 3
+--- !u!64 &64037521991213290
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549825329564326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 2c683f4b3f2cf734bb5b14b85b9742e2, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 2c683f4b3f2cf734bb5b14b85b9742e2, type: 3}

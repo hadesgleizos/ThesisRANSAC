@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4651026209933144}
   - component: {fileID: 33509662091159602}
   - component: {fileID: 23027807265826228}
+  - component: {fileID: 64508593304072544}
   m_Layer: 0
   m_Name: SM_Wep_SniperRifle_Pneumatic_01
   m_TagString: Untagged
@@ -360,3 +361,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1747036149383652}
   m_Mesh: {fileID: 4300008, guid: ad50b882bd40e5e43b6c54d4bd376e84, type: 3}
+--- !u!64 &64508593304072544
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1382996655360698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43653132895788152, guid: 8f972e8a0e9fd2b47a7cd70bea4a10e7, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4330684416138322}
   - component: {fileID: 33757036846454826}
   - component: {fileID: 23446746738286838}
+  - component: {fileID: 64411595631574150}
   m_Layer: 0
   m_Name: SM_Wep_Katana_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1104172259794306}
   m_Mesh: {fileID: 4300000, guid: d7c996b3a490a6348bd7a4ef95c8cf36, type: 3}
+--- !u!64 &64411595631574150
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104172259794306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43205049922437988, guid: ef1920af6f2870546be9cf7080c97e39, type: 2}

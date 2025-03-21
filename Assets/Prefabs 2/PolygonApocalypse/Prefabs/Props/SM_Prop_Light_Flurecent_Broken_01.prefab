@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4342367143032636}
   - component: {fileID: 33728725214839678}
   - component: {fileID: 23080477859830890}
+  - component: {fileID: 64339511979728964}
   m_Layer: 0
   m_Name: SM_Prop_Light_Flurecent_Broken_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1198514131370672}
   m_Mesh: {fileID: 4300000, guid: 4dfd6d7814c3e834a8e488357fa02436, type: 3}
+--- !u!64 &64339511979728964
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198514131370672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43010899967906562, guid: 9ff1591b122916d4ca6075fd659fd2c3, type: 2}

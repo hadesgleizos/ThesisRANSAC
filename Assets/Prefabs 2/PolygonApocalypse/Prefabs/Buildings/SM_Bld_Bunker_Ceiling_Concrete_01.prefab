@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4474041616254550}
   - component: {fileID: 33415513941482860}
   - component: {fileID: 23011647645064026}
+  - component: {fileID: 65151697122003090}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Ceiling_Concrete_01
   m_TagString: Untagged
@@ -80,3 +81,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784291577708030}
   m_Mesh: {fileID: 4300000, guid: 7a453f81f1e565543ba41a1e6cca0721, type: 3}
+--- !u!65 &65151697122003090
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784291577708030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 0.25, z: 2.5}
+  m_Center: {x: -1.25, y: -0.125, z: 1.25}

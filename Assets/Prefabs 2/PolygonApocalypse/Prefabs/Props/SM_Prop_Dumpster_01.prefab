@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4937488354381138}
   - component: {fileID: 33227160811843480}
   - component: {fileID: 23676817123758940}
+  - component: {fileID: 64122579764672020}
   m_Layer: 0
   m_Name: SM_Prop_Dumpster_01
   m_TagString: Untagged
@@ -150,3 +151,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225609851273180}
   m_Mesh: {fileID: 4300002, guid: 6f40e8bf0d0145f4193e5fbd9c57490b, type: 3}
+--- !u!64 &64122579764672020
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1856484033027460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43884752263042772, guid: 073492a6595f61f45813c0f1b416beb3, type: 2}

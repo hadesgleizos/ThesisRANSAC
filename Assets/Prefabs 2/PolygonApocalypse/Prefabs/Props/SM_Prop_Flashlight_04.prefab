@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4702253801761002}
   - component: {fileID: 33948763420836688}
   - component: {fileID: 23471825954847706}
+  - component: {fileID: 64620988277423808}
   m_Layer: 0
   m_Name: SM_Prop_Flashlight_04
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245392932827506}
   m_Mesh: {fileID: 4300000, guid: b04874d93d5fe5542b8c84151b88a8e9, type: 3}
+--- !u!64 &64620988277423808
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1245392932827506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43957700330544280, guid: 21513ea503672c84895ad58c38ab2aa7, type: 2}

@@ -55,6 +55,8 @@ GameObject:
   - component: {fileID: 4699901770792514}
   - component: {fileID: 33237448250816480}
   - component: {fileID: 23280070867569008}
+  - component: {fileID: 64147623446129386}
+  - component: {fileID: 64801305698160152}
   m_Layer: 0
   m_Name: SM_Prop_Playground_Swing_01
   m_TagString: Untagged
@@ -220,3 +222,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313838748491332}
   m_Mesh: {fileID: 4300002, guid: b847a1cbf7d8eff4eb4cea5e0caccfb4, type: 3}
+--- !u!64 &64147623446129386
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524117553408968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43311190350841230, guid: 8ffc5bbfb705fa74c918886cc5327a98, type: 2}
+--- !u!64 &64801305698160152
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524117553408968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43403793134668350, guid: 8ffc5bbfb705fa74c918886cc5327a98, type: 2}

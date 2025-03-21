@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4995201615279364}
   - component: {fileID: 33887725330395426}
   - component: {fileID: 23805821894276074}
+  - component: {fileID: 64089298403544580}
   m_Layer: 0
   m_Name: SM_DeadBody_Male_05
   m_TagString: Untagged
@@ -54,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 09c76973314790040b9ef284977d7e81, type: 2}
+  - {fileID: 2100000, guid: 5bb68a94905ffc0418608fc7e572ea42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221975276480778}
   m_Mesh: {fileID: 4300000, guid: cfa7b26102542cb408a8b365b450ee7f, type: 3}
+--- !u!64 &64089298403544580
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221975276480778}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43411934023164330, guid: 9fe247cc04faae54a925c8de9f6e8a55, type: 2}

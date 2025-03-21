@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4211704106622520}
   - component: {fileID: 33861055508737234}
   - component: {fileID: 23647925160477330}
+  - component: {fileID: 64542093537766248}
   m_Layer: 0
   m_Name: SM_Prop_Roof_SolarPanel_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750498465593844}
   m_Mesh: {fileID: 4300000, guid: 32f3ba49b8a54e04ebd56fbb5f5d0097, type: 3}
+--- !u!64 &64542093537766248
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750498465593844}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43110503442681122, guid: 1b7f397c19735474a812b0f27334e7ed, type: 2}

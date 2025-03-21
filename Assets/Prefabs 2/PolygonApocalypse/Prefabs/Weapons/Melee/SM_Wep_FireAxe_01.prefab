@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4662666681414096}
   - component: {fileID: 33103862822420496}
   - component: {fileID: 23903879881072134}
+  - component: {fileID: 64168773351437742}
   m_Layer: 0
   m_Name: SM_Wep_FireAxe_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400711587830432}
   m_Mesh: {fileID: 4300000, guid: 81b5bd9bb854c674fb9ed9598003a2cd, type: 3}
+--- !u!64 &64168773351437742
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400711587830432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43789120932073678, guid: d0397d388b190f94fbf96e178b4f495f, type: 2}

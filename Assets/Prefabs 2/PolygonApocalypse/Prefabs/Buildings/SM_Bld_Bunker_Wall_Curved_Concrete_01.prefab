@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4055618813443562}
   - component: {fileID: 33040627471206508}
   - component: {fileID: 23991430792595468}
+  - component: {fileID: 64681565682611506}
+  - component: {fileID: 64384616735277198}
+  - component: {fileID: 64907558727560266}
   m_Layer: 0
   m_Name: SM_Bld_Bunker_Wall_Curved_Concrete_01
   m_TagString: Untagged
@@ -34,7 +37,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195279129604396}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -80,3 +83,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195279129604396}
   m_Mesh: {fileID: 4300000, guid: 96db0076a2a24e64592348cb6b3af4b6, type: 3}
+--- !u!64 &64384616735277198
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195279129604396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43993144004415904, guid: 2c4788876a04df3449de6c2199aae551, type: 2}
+--- !u!64 &64681565682611506
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195279129604396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43238123723396302, guid: 2c4788876a04df3449de6c2199aae551, type: 2}
+--- !u!64 &64907558727560266
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195279129604396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43234340154982996, guid: 2c4788876a04df3449de6c2199aae551, type: 2}

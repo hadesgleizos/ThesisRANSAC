@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4307107030327822}
   - component: {fileID: 33675999731073618}
   - component: {fileID: 23730446121411918}
+  - component: {fileID: 64443136369065368}
   m_Layer: 0
   m_Name: SM_Env_StormCanal_Floor_05
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1730773287992332}
   m_Mesh: {fileID: 4300000, guid: 32d11e87452d363408a94eccaf40e95a, type: 3}
+--- !u!64 &64443136369065368
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730773287992332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43496296173796414, guid: 6f1d7ad3b4770184dba54198942c73b5, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4067488104392500}
   - component: {fileID: 33706172091495220}
   - component: {fileID: 23502993662347832}
+  - component: {fileID: 64516567789387086}
   m_Layer: 0
   m_Name: SM_Prop_Aircon_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1851764392012808}
   m_Mesh: {fileID: 4300000, guid: 9534ed902f44c264a9ce13447eac76f4, type: 3}
+--- !u!64 &64516567789387086
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851764392012808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43256688197405610, guid: 1673ad20fbe3cfa4891f439e071f90c8, type: 2}

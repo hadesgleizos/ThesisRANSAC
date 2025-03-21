@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4079544663536384}
   - component: {fileID: 33504255831160008}
   - component: {fileID: 23625687310277022}
+  - component: {fileID: 64887318628738686}
   m_Layer: 0
   m_Name: SM_Prop_Bunker_WallPipe_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1128026644818430}
   m_Mesh: {fileID: 4300000, guid: ca25c251d395c9b4aaf7fc83bd171877, type: 3}
+--- !u!64 &64887318628738686
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128026644818430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43115856467711304, guid: 13e4984d3cf67a14da3e3ac0635f5acb, type: 2}

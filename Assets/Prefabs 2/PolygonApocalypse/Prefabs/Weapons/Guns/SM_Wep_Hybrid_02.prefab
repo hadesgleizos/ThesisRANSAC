@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4084357505810786}
   - component: {fileID: 33805445502202022}
   - component: {fileID: 23214807364148294}
+  - component: {fileID: 64766187166294130}
   m_Layer: 0
   m_Name: SM_Wep_Hybrid_02
   m_TagString: Untagged
@@ -290,3 +291,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216028739883728}
   m_Mesh: {fileID: 4300000, guid: e436f1c05d7495f4ba683b39f364552e, type: 3}
+--- !u!64 &64766187166294130
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216028739883728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43413469207735720, guid: dc988bd3250f5924ab3ebf7d9b9b68e3, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4839582919116642}
   - component: {fileID: 33339843892267362}
   - component: {fileID: 23765500947101926}
+  - component: {fileID: 64128509602166988}
   m_Layer: 0
   m_Name: SM_Prop_Vents_Corner_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1392112506743996}
   m_Mesh: {fileID: 4300000, guid: 9725ad9bf687ace49a5d3356c77455f2, type: 3}
+--- !u!64 &64128509602166988
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392112506743996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43684648618061728, guid: 3c52d4d632aa6e640b9ae63feedf8561, type: 2}

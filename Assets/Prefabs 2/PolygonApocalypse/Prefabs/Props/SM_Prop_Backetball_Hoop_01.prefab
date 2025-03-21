@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4854218598104220}
   - component: {fileID: 33949664989571136}
   - component: {fileID: 23089386308964286}
+  - component: {fileID: 64362094093643544}
+  - component: {fileID: 64290961703877494}
   m_Layer: 0
   m_Name: SM_Prop_Backetball_Hoop_01
   m_TagString: Untagged
@@ -80,3 +82,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1755830695047632}
   m_Mesh: {fileID: 4300000, guid: a5fe89c207b821549b0686bfc0a9f84f, type: 3}
+--- !u!64 &64290961703877494
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755830695047632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43513421751039530, guid: 44ce5941ded314b409b7c60bc0a7aa1a, type: 2}
+--- !u!64 &64362094093643544
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755830695047632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43007920686922360, guid: 44ce5941ded314b409b7c60bc0a7aa1a, type: 2}

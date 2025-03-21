@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4738860966873490}
   - component: {fileID: 33768543066231034}
   - component: {fileID: 23906803430232804}
+  - component: {fileID: 64375396076649060}
   m_Layer: 0
   m_Name: SM_Prop_Study_Lamp_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1802597560460616}
   m_Mesh: {fileID: 4300000, guid: 44b1d7c2ed4c78545ba1066c5da7ae75, type: 3}
+--- !u!64 &64375396076649060
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802597560460616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43959289064578030, guid: b2a7fb00229c6ce42be5801fdbbeb189, type: 2}

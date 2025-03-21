@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4266173885732312}
   - component: {fileID: 33004077366885414}
   - component: {fileID: 23584391292746374}
+  - component: {fileID: 64260620233553298}
   m_Layer: 0
   m_Name: SM_Bld_Church_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1186436166676116}
   m_Mesh: {fileID: 4300000, guid: 3c766ad528d34ab4288de411368e1576, type: 3}
+--- !u!64 &64260620233553298
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186436166676116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: b3387fe1ac309fd41b2cf91be524c2c0, type: 3}

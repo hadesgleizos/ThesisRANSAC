@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33531299360879146}
   - component: {fileID: 23209629059822404}
   - component: {fileID: 95808703987079526}
+  - component: {fileID: 64686945356403252}
   m_Layer: 0
   m_Name: SM_Prop_LightPole_Arm_01
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616533898862270}
   m_Mesh: {fileID: 4300000, guid: 0679dc10dc312804cb063f1920f3c35a, type: 3}
+--- !u!64 &64686945356403252
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616533898862270}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43657622690306188, guid: 15a3b9190e3ef9d4b9aa4754c126411c, type: 2}
 --- !u!95 &95808703987079526
 Animator:
   serializedVersion: 3

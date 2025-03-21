@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4696068088075752}
   - component: {fileID: 33391570611544814}
   - component: {fileID: 23515093303918458}
+  - component: {fileID: 65692327880510388}
   m_Layer: 0
   m_Name: SM_Bld_Industrial_Small_01_Door_01
   m_TagString: Untagged
@@ -55,6 +56,7 @@ GameObject:
   - component: {fileID: 4586328746769222}
   - component: {fileID: 33238523982148334}
   - component: {fileID: 23118881517435952}
+  - component: {fileID: 64645561135417806}
   m_Layer: 0
   m_Name: SM_Bld_Industrial_Small_01
   m_TagString: Untagged
@@ -221,3 +223,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712729009940492}
   m_Mesh: {fileID: 4300006, guid: 4066a690cddc3c3418ead7b784b41be2, type: 3}
+--- !u!64 &64645561135417806
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818683565446304}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 0c8bba8416a1ce244a6c4a92825f3ed8, type: 3}
+--- !u!65 &65692327880510388
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530615266943594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0252978, y: 2.2243478, z: 0.23995605}
+  m_Center: {x: -0.5126428, y: 1.1121739, z: 0.0053223856}

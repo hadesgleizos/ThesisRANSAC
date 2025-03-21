@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4579576397550642}
   - component: {fileID: 33893723093038062}
   - component: {fileID: 23936371116652476}
+  - component: {fileID: 64094202111403934}
   m_Layer: 0
   m_Name: SM_Wep_Shotgun_01
   m_TagString: Untagged
@@ -220,3 +221,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743544927988702}
   m_Mesh: {fileID: 4300002, guid: ad15d5757c1683c4da672faef6581fd1, type: 3}
+--- !u!64 &64094202111403934
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1105646471333690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43679021968982762, guid: 0f8e8d4e0ed94ae47848c51ebde83cd2, type: 2}

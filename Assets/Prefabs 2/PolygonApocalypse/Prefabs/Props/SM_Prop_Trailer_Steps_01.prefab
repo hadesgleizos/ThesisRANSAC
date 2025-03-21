@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4721569621430696}
   - component: {fileID: 33553313442813058}
   - component: {fileID: 23384812773447178}
+  - component: {fileID: 64276267904699656}
   m_Layer: 0
   m_Name: SM_Prop_Trailer_Steps_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952118272984496}
   m_Mesh: {fileID: 4300000, guid: 80240fbbac93cfc44bbd958700b0aaf7, type: 3}
+--- !u!64 &64276267904699656
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952118272984496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43948330757862186, guid: 17a27d250dcd79543883d612f4c0af51, type: 2}

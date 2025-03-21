@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4922478306671664}
   - component: {fileID: 33240755419152172}
   - component: {fileID: 23586444481582760}
+  - component: {fileID: 64124549496359602}
   m_Layer: 0
   m_Name: SM_Item_Rice_01
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509787329376532}
   m_Mesh: {fileID: 4300000, guid: 14b500fc9eea4184995e84f1c887e48d, type: 3}
+--- !u!64 &64124549496359602
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509787329376532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 43339782715134402, guid: f5b36cb16f6dd2b42a2a78597e110061, type: 2}
