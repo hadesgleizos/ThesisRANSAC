@@ -893,7 +893,7 @@ MonoBehaviour:
   health: 100
   rotationSpeed: 10
   acceleration: 8
-  stoppingDistance: 1.8
+  stoppingDistance: 1.65
   idleSoundInterval: 5
   idleSoundVolume: 0.7
   attackSoundVolume: 1
