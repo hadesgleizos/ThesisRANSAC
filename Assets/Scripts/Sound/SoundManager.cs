@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource ambienceAudioSource;
     public AudioSource zombieAudioSource;
     public AudioSource bossAudioSource;  // Add this line for boss sounds
+    public AudioSource spitterAudioSource; // Add this line for spitter sounds
 
     // Weapon Sounds
     public AudioClip pistolShootingSound;
@@ -45,6 +46,12 @@ public class SoundManager : MonoBehaviour
     // Add this with other audio clips
     [Header("Boss Music")]
     public AudioClip bossMusic;
+
+    // Add these with other sound arrays
+    [Header("Spitter Sounds")]
+    public AudioClip[] spitterIdleSounds;
+    public AudioClip[] spitterAttackSounds;
+    public AudioClip[] spitterDeathSounds;
 
     private void Awake()
     {
@@ -207,6 +214,24 @@ public class SoundManager : MonoBehaviour
             musicAudioSource.clip = bossMusic;
             musicAudioSource.loop = true;
             musicAudioSource.Play();
+        }
+    }
+
+    // Add this new method for spitter sounds
+    public void PlayRandomSpitterSound(AudioClip[] clips, float volumeMultiplier = 1f)
+    {
+        if (clips != null && clips.Length > 0 && spitterAudioSource != null)
+        {
+            AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+            spitterAudioSource.PlayOneShot(randomClip, volumeMultiplier);
+        }
+    }
+
+    public void SetSpitterVolume(float volume)
+    {
+        if (spitterAudioSource != null)
+        {
+            spitterAudioSource.volume = Mathf.Clamp01(volume);
         }
     }
 }
