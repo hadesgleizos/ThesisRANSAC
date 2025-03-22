@@ -119,8 +119,10 @@ public class Spitter : MonoBehaviour
         {
             if (Time.time >= nextIdleSoundTime)
             {
-                SoundManager.Instance.PlayRandomZombieSound(
-                    SoundManager.Instance.zombieIdleSounds
+                // Use spitter-specific idle sounds instead of zombie sounds
+                SoundManager.Instance.PlayRandomSpitterSound(
+                    SoundManager.Instance.spitterIdleSounds,
+                    idleSoundVolume
                 );
                 nextIdleSoundTime = Time.time + idleSoundInterval + Random.Range(-1f, 1f);
             }
@@ -136,9 +138,10 @@ public class Spitter : MonoBehaviour
         canAttack = false; 
         agent.isStopped = true;
 
-        // Play attack sound and animation
-        SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieAttackSounds
+        // Play spitter-specific attack sound instead of zombie sound
+        SoundManager.Instance.PlayRandomSpitterSound(
+            SoundManager.Instance.spitterAttackSounds,
+            attackSoundVolume
         );
         animator.SetTrigger("Attack");
         
@@ -233,9 +236,10 @@ public class Spitter : MonoBehaviour
         
         isDead = true;
 
-        // Play death sound
-        SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieDeathSounds
+        // Play spitter-specific death sound instead of zombie sound
+        SoundManager.Instance.PlayRandomSpitterSound(
+            SoundManager.Instance.spitterDeathSounds,
+            deathSoundVolume
         );
         Debug.Log($"Spitter {gameObject.GetInstanceID()} death sound played");
 
