@@ -35,6 +35,8 @@ public class Jograt : MonoBehaviour
     [Header("Debug Visualization")]
     public bool showAttackRange = true;
     public Color attackRangeColor = Color.red;
+    public bool showLeapRange = true;           // Toggle for leap range visualization
+    public Color leapRangeColor = Color.yellow;  // Color for leap range
 
     [Header("Leap Settings")]
     public float leapRange = 8f;             // Max distance to trigger leap
@@ -301,40 +303,60 @@ public class Jograt : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // Draw attack range
         if (showAttackRange)
         {
-            Gizmos.color = attackRangeColor;
+            DrawRangeCircle(attackRange, attackRangeColor);
+        }
+        
+        // Draw leap range
+        if (showLeapRange)
+        {
+            DrawRangeCircle(leapRange, leapRangeColor, true);
+        }
+    }
+
+    // Helper method to draw a range circle
+    private void DrawRangeCircle(float radius, Color color, bool isDashed = false)
+    {
+        Gizmos.color = color;
+        
+        // Draw a horizontal circle at zombie's position
+        Vector3 position = transform.position;
+        Vector3 forward = transform.forward;
+        
+        // Draw main circle
+        int segments = isDashed ? 64 : 32;  // More segments for leap range
+        float angleStep = 360f / segments;
+        
+        for (int i = 0; i < segments; i++)
+        {
+            // For dashed lines, only draw every other segment
+            if (isDashed && i % 2 == 0) continue;
             
-            // Draw a horizontal circle at zombie's position
-            Vector3 position = transform.position;
-            Vector3 forward = transform.forward;
+            float angle1 = i * angleStep;
+            float angle2 = (i + 1) * angleStep;
             
-            // Draw main circle
-            int segments = 32;
-            float angleStep = 360f / segments;
-            for (int i = 0; i < segments; i++)
-            {
-                float angle1 = i * angleStep;
-                float angle2 = (i + 1) * angleStep;
-                
-                Vector3 point1 = position + new Vector3(
-                    Mathf.Sin(angle1 * Mathf.Deg2Rad) * attackRange,
-                    0f,
-                    Mathf.Cos(angle1 * Mathf.Deg2Rad) * attackRange
-                );
-                
-                Vector3 point2 = position + new Vector3(
-                    Mathf.Sin(angle2 * Mathf.Deg2Rad) * attackRange,
-                    0f,
-                    Mathf.Cos(angle2 * Mathf.Deg2Rad) * attackRange
-                );
-                
-                Gizmos.DrawLine(point1, point2);
-            }
+            Vector3 point1 = position + new Vector3(
+                Mathf.Sin(angle1 * Mathf.Deg2Rad) * radius,
+                0.05f,  // Slight y-offset to prevent z-fighting with attack range
+                Mathf.Cos(angle1 * Mathf.Deg2Rad) * radius
+            );
             
-            // Draw forward direction indicator
+            Vector3 point2 = position + new Vector3(
+                Mathf.Sin(angle2 * Mathf.Deg2Rad) * radius,
+                0.05f,
+                Mathf.Cos(angle2 * Mathf.Deg2Rad) * radius
+            );
+            
+            Gizmos.DrawLine(point1, point2);
+        }
+        
+        // Draw direction indicator for attack range only
+        if (!isDashed)
+        {
             Gizmos.color = Color.blue;
-            Gizmos.DrawRay(position, forward * attackRange);
+            Gizmos.DrawRay(position, forward * radius);
         }
     }
 
@@ -376,10 +398,29 @@ public class Jograt : MonoBehaviour
             attackSoundVolume * 1.2f
         );
 
-        // Play leap animation
+        // IMPROVED ANIMATION HANDLING
         if (animator != null)
         {
+            // First force Speed to zero
+            animator.SetFloat("Speed", 0f);
+            
+            // Wait a frame to ensure Speed is applied 
+            yield return null;
+            
+            // Clear any other triggers that might interfere
+            animator.ResetTrigger("Attack");
+            
+            // Set the Leap trigger
             animator.SetTrigger("Leap");
+            
+            Debug.Log("Leap animation trigger set");
+            
+            // Wait to ensure animation starts
+            yield return new WaitForSeconds(0.1f);
+            
+            // Debug animation state
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            Debug.Log($"Animation state after setting Leap: {stateInfo.shortNameHash}, normalizedTime: {stateInfo.normalizedTime}");
         }
 
         // Calculate leap trajectory without using Rigidbody
@@ -406,12 +447,21 @@ public class Jograt : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float normalizedTime = elapsedTime / leapDuration; // 0 to 1
             
-            // Create a parabolic path using sine for height
-            float height = Mathf.Sin(normalizedTime * Mathf.PI) * leapHeight;
+            // Modified height calculation for faster fall
+            float heightPercentage;
+            if (normalizedTime < 0.4f) {
+                // First 40% of the jump uses the first half of sine curve for rise
+                heightPercentage = Mathf.Sin(normalizedTime * Mathf.PI / 0.8f) * leapHeight;
+            } else {
+                // Remaining 60% falls with increasing speed (quadratic fall)
+                float fallProgress = (normalizedTime - 0.4f) / 0.6f; // 0 to 1 for the falling portion
+                // For an even faster fall, use cubic falloff
+                heightPercentage = leapHeight * (1 - fallProgress * fallProgress * fallProgress);
+            }
             
             // Calculate the current position along the path
             Vector3 newPosition = Vector3.Lerp(startPosition, targetPosition, normalizedTime);
-            newPosition.y = startPosition.y + height; // Add height based on parabola
+            newPosition.y = startPosition.y + heightPercentage; // Add height based on modified curve
             
             // Move the jograt
             transform.position = newPosition;

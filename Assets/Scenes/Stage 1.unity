@@ -2359,7 +2359,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6401112548132156531, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
       propertyPath: m_Name
-      value: ZOMBIE 1 Variant
+      value: Jograt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401112548132156531, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6403032846799451841, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4596
+      objectReference: {fileID: 0}
+    - target: {fileID: 6403032846799451841, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4596
+      objectReference: {fileID: 0}
+    - target: {fileID: 6403032846799451841, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4596
       objectReference: {fileID: 0}
     - target: {fileID: 6403032846799451841, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2367,7 +2383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6403032846799451841, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.036818504
+      value: 0.115
       objectReference: {fileID: 0}
     - target: {fileID: 6403032846799451841, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2401,6 +2417,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6429755272339812693, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300072, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
     - target: {fileID: 6451401902809385875, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2448,11 +2468,13 @@ MonoBehaviour:
   deathSoundVolume: 1
   showAttackRange: 1
   attackRangeColor: {r: 1, g: 0, b: 0, a: 1}
-  leapRange: 5
+  showLeapRange: 1
+  leapRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  leapRange: 90
   leapCooldown: 5
   leapDamage: 15
-  leapForce: 20
-  leapHeight: 3.5
+  leapForce: 90
+  leapHeight: 1.5
 --- !u!1001 &2112077610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2870,7 +2892,7 @@ PrefabInstance:
       objectReference: {fileID: 6401112548132156531, guid: ac42f3c2c63145b48a9650538525ce51, type: 3}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[10].spawnChance
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[1].zombiePrefab
