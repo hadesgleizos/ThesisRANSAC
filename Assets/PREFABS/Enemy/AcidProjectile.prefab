@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6729b320ba249f348af354e315bc06fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 8
   splashRadius: 3
-  acidPoolPrefab: {fileID: 3653914368956983459, guid: e02a459d6571b044190a436e33008401, type: 3}
+  acidPoolPrefab: {fileID: 5906982706875160728, guid: d55b221fd0cc67141a5590f511b280a0, type: 3}
   damageableLayers:
     serializedVersion: 2
     m_Bits: 1

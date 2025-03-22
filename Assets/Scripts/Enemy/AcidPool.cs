@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class AcidPool : MonoBehaviour
 {
-    [Header("Expansion Settings")]
-    [SerializeField] private float maxScale = 3f;
+    [Header("Settings")]
     [SerializeField] private float expansionDuration = 1f;
     [SerializeField] private float lifeDuration = 5f;
-    [SerializeField] private ParticleSystem acidParticles; // Add this line
+
+    [Header("Particle Settings")]
+    [SerializeField] private ParticleSystem acidParticles;
 
     [Header("Damage Settings")]
     [SerializeField] private float damagePerSecond = 10f;
     [SerializeField] private float damageTickRate = 0.5f;
-    [SerializeField] private float radius = 1.5f;
     [SerializeField] private LayerMask damageableLayers;
 
-    private float currentScale = 0f;
     private float expansionStartTime;
     private float nextDamageTime;
     private GameObject sender;
+    private Dictionary<GameObject, float> lastDamageTime;
 
     public void SetSender(GameObject spitter)
     {
@@ -28,9 +28,26 @@ public class AcidPool : MonoBehaviour
 
     private void Start()
     {
+        lastDamageTime = new Dictionary<GameObject, float>();
         expansionStartTime = Time.time;
-        transform.localScale = Vector3.zero;
         nextDamageTime = Time.time;
+        
+        // Set up particle system for collision
+        var collision = acidParticles.collision;
+        collision.enabled = true;
+        collision.sendCollisionMessages = true;
+        collision.collidesWith = damageableLayers;
+
+        // Set initial particle system shape scale to final size for damage calculation
+        var shape = acidParticles.shape;
+        shape.scale = Vector3.one; // Set to full size immediately for damage area
+        
+        // Create a separate MaterialPropertyBlock for visual scaling
+        var renderer = acidParticles.GetComponent<ParticleSystemRenderer>();
+        MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+        renderer.GetPropertyBlock(propBlock);
+        propBlock.SetVector("_Scale", Vector3.zero); // Start visual scale at zero
+        renderer.SetPropertyBlock(propBlock);
 
         // Ignore collisions with enemy layer
         Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
@@ -41,18 +58,18 @@ public class AcidPool : MonoBehaviour
 
     private void Update()
     {
-        // Handle expansion
+        // Handle only visual expansion
         float expansionProgress = (Time.time - expansionStartTime) / expansionDuration;
-        currentScale = Mathf.Lerp(0, maxScale, expansionProgress);
-        
-        // Update both transform and particle system scale
-        transform.localScale = new Vector3(currentScale, 0.1f, currentScale);
-        
-        // Update particle system size to match the hitbox
+        expansionProgress = Mathf.Clamp01(expansionProgress);
+
+        // Update only the visual scale
         if (acidParticles != null)
         {
-            var main = acidParticles.main;
-            main.startSize = radius * currentScale * 2f; // Multiply by 2 since radius is half the total size
+            var renderer = acidParticles.GetComponent<ParticleSystemRenderer>();
+            MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(propBlock);
+            propBlock.SetVector("_Scale", Vector3.Lerp(Vector3.zero, Vector3.one, expansionProgress));
+            renderer.SetPropertyBlock(propBlock);
         }
 
         // Handle damage ticks
@@ -65,11 +82,12 @@ public class AcidPool : MonoBehaviour
 
     private void DealDamage()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius * currentScale, damageableLayers);
+        // Use particle system's shape size for damage radius
+        float damageRadius = acidParticles.shape.scale.x / 2f;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, damageRadius, damageableLayers);
         
         foreach (var hitCollider in hitColliders)
         {
-            // Try to get PlayerPerformance from the hit object or its hierarchy
             PlayerPerformance playerPerformance = hitCollider.GetComponent<PlayerPerformance>();
             if (playerPerformance == null)
             {
@@ -88,10 +106,35 @@ public class AcidPool : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        PlayerPerformance playerPerformance = other.GetComponent<PlayerPerformance>();
+        if (playerPerformance == null)
+        {
+            playerPerformance = other.GetComponentInChildren<PlayerPerformance>();
+        }
+        if (playerPerformance == null)
+        {
+            playerPerformance = other.GetComponentInParent<PlayerPerformance>();
+        }
+
+        if (playerPerformance != null)
+        {
+            // Check if enough time has passed since last damage
+            if (!lastDamageTime.ContainsKey(other) || 
+                Time.time - lastDamageTime[other] >= damageTickRate)
+            {
+                float tickDamage = damagePerSecond * damageTickRate;
+                playerPerformance.TakeDamage(tickDamage, sender);
+                lastDamageTime[other] = Time.time;
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
         // Visualize the damage radius
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius * currentScale);
+        Gizmos.DrawWireSphere(transform.position, acidParticles.shape.scale.x / 2f);
     }
 }

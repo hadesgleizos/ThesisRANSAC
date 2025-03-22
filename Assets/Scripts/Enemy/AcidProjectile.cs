@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AcidProjectile : MonoBehaviour
@@ -11,7 +13,7 @@ public class AcidProjectile : MonoBehaviour
     private void Start()
     {
         // Ignore collisions with enemy layer
-        Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
+        Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Zombie"), true);
     }
 
     public void SetSender(GameObject spitter)
@@ -22,30 +24,24 @@ public class AcidProjectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Don't spawn acid pool if hitting an enemy
-        if (!collision.gameObject.CompareTag("Enemy"))
+        if (!collision.gameObject.CompareTag("Zombie"))
         {
-            // Check if the collision surface has one of the valid tags
-            if (collision.gameObject.CompareTag("Dirt") || 
-                collision.gameObject.CompareTag("Metal") || 
-                collision.gameObject.CompareTag("Wood") || 
-                collision.gameObject.CompareTag("Grass") || 
-                collision.gameObject.CompareTag("Concrete"))
+            if (acidPoolPrefab != null)
             {
-                if (acidPoolPrefab != null)
-                {
-                    // Spawn slightly above the hit point to prevent clipping
-                    Vector3 spawnPos = collision.contacts[0].point + Vector3.up * 0.1f;
-                    GameObject acidPool = Instantiate(acidPoolPrefab, spawnPos, Quaternion.identity);
-                    
-                    // Keep acid pool flat regardless of surface normal
-                    acidPool.transform.rotation = Quaternion.identity;
-                    Debug.Log($"Spawned acid pool at position: {spawnPos} on {collision.gameObject.tag} surface");
+                // Spawn slightly above the hit point to prevent clipping
+                Vector3 spawnPos = collision.contacts[0].point + Vector3.up * 0.1f;
+                GameObject acidPool = Instantiate(acidPoolPrefab, spawnPos, Quaternion.identity);
 
-                    var poolScript = acidPool.GetComponent<AcidPool>();
-                    if (poolScript != null)
-                    {
-                        poolScript.SetSender(sender);
-                    }
+                // Set the transform values to ensure the acid pool lays flat
+                acidPool.transform.rotation = Quaternion.Euler(-90f, 0f, 0f); // Match the rotation from the screenshot
+                acidPool.transform.localScale = new Vector3(1f, 1f, 1f); // Ensure the scale is correct
+                Debug.Log($"Spawned acid pool at position: {spawnPos} with rotation and scale set");
+
+                // Keep acid pool flat regardless of surface normal
+                var poolScript = acidPool.GetComponent<AcidPool>();
+                if (poolScript != null)
+                {
+                    poolScript.SetSender(sender);
                 }
             }
 
