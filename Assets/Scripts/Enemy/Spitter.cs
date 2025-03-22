@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using static takeDamage;
 
-public class Spitter: MonoBehaviour
+public class Spitter : MonoBehaviour
 {
     private NavMeshAgent agent; // Reference to the NavMeshAgent
     private Transform player; // Reference to the player's transform
@@ -37,11 +37,9 @@ public class Spitter: MonoBehaviour
     public Color attackRangeColor = Color.red;
 
     [Header("Projectile Settings")]
-    public GameObject acidProjectilePrefab;
-    public float projectileSpeed = 15f;
-    public float spitHeight = 1.5f;    // Height from where projectile spawns
-    public float minAttackRange = 5f;  // Minimum range to start attacking
-    public float maxAttackRange = 15f; // Maximum range for attacks
+    public GameObject acidProjectilePrefab;     // Reference to your existing AcidProjectile prefab
+    public Transform projectileSpawnPoint;      // Empty GameObject to position where acid comes from
+    public float projectileSpeed = 15f;         // Speed of the projectile
 
     void Start()
     {
@@ -138,26 +136,48 @@ public class Spitter: MonoBehaviour
         canAttack = false; 
         agent.isStopped = true;
 
-        // Apply damage immediately if in range
-        if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
-        {
-            PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
-            if (playerPerformance != null)
-            {
-                playerPerformance.TakeDamage(damage, gameObject);
-                gameObject.SetIndicator();
-                Debug.Log($"Zombie dealt {damage} damage to the player.");
-            }
-        }
-
         // Play attack sound and animation
         SoundManager.Instance.PlayRandomZombieSound(
             SoundManager.Instance.zombieAttackSounds
         );
         animator.SetTrigger("Attack");
+        
+        // Wait a moment before spawning projectile (time it with animation)
+        yield return new WaitForSeconds(0.5f);
+        
+        // Shoot acid projectile
+        if (!isDead && acidProjectilePrefab != null && projectileSpawnPoint != null)
+        {
+            // Calculate direction to player with slight upward arc
+            Vector3 targetPosition = player.position;
+            Vector3 direction = (targetPosition - projectileSpawnPoint.position).normalized;
+            
+            // Instantiate the acid projectile
+            GameObject projectile = Instantiate(
+                acidProjectilePrefab, 
+                projectileSpawnPoint.position, 
+                Quaternion.LookRotation(direction)
+            );
+            
+            // Add force to the projectile
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = direction * projectileSpeed;
+            }
+            
+            // Set the spitter as the sender for damage tracking
+            AcidProjectile acidProjectile = projectile.GetComponent<AcidProjectile>();
+            if (acidProjectile != null)
+            {
+                acidProjectile.SetSender(gameObject);
+            }
+            
+            Debug.Log($"Spitter shot acid projectile at player");
+        }
 
-        // Wait for attack animation
-        yield return new WaitForSeconds(attackCooldown);
+        // Wait for attack cooldown
+        yield return new WaitForSeconds(attackCooldown - 0.5f); // Adjusted for the initial wait
 
         if (agent && agent.isOnNavMesh && !isDead)
         {
@@ -170,7 +190,11 @@ public class Spitter: MonoBehaviour
 
     public void TakeDamage(float damageAmount, CollisionType hitLocation)
     {
-        if (isDead) return;
+        if (isDead)
+        {
+            Debug.Log($"Spitter {gameObject.GetInstanceID()} ignored damage because already dead");
+            return;
+        }
 
         float multiplier = 1f;
         switch (hitLocation)
@@ -186,7 +210,9 @@ public class Spitter: MonoBehaviour
                 break;
         }
 
-        health -= damageAmount * multiplier;
+        float actualDamage = damageAmount * multiplier;
+        health -= actualDamage;
+        Debug.Log($"Spitter {gameObject.GetInstanceID()} took {actualDamage} damage ({damageAmount} x {multiplier}) to {hitLocation}. Health now: {health}");
 
         // Trigger hit animation
         if (animator != null)
@@ -196,32 +222,47 @@ public class Spitter: MonoBehaviour
 
         if (health <= 0 && !isDead)
         {
+            Debug.Log($"Spitter {gameObject.GetInstanceID()} health reached {health}, calling Die()");
             Die();
         }
     }
 
     private void Die()
     {
+        Debug.Log($"Spitter {gameObject.GetInstanceID()} Die() method called. Health: {health}");
+        
         isDead = true;
 
         // Play death sound
         SoundManager.Instance.PlayRandomZombieSound(
             SoundManager.Instance.zombieDeathSounds
         );
+        Debug.Log($"Spitter {gameObject.GetInstanceID()} death sound played");
 
         if (agent != null)
         {
             agent.isStopped = true;
             agent.enabled = false;
+            Debug.Log($"Spitter {gameObject.GetInstanceID()} NavMeshAgent disabled");
+        }
+        else
+        {
+            Debug.LogWarning($"Spitter {gameObject.GetInstanceID()} NavMeshAgent was null in Die()");
         }
 
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.isKinematic = true;
+            Debug.Log($"Spitter {gameObject.GetInstanceID()} Rigidbody set to kinematic");
+        }
+        else
+        {
+            Debug.LogWarning($"Spitter {gameObject.GetInstanceID()} has no Rigidbody component");
         }
 
         Collider[] colliders = GetComponentsInChildren<Collider>();
+        Debug.Log($"Spitter {gameObject.GetInstanceID()} disabling {colliders.Length} colliders");
         foreach (Collider collider in colliders)
         {
             collider.enabled = false;
@@ -230,13 +271,24 @@ public class Spitter: MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("Death");
+            Debug.Log($"Spitter {gameObject.GetInstanceID()} Death animation triggered");
+        }
+        else
+        {
+            Debug.LogWarning($"Spitter {gameObject.GetInstanceID()} animator was null in Die()");
         }
 
         if (playerPerformance != null)
         {
             playerPerformance.ZombieKilled(); // Already correctly updating kills
+            Debug.Log($"Spitter {gameObject.GetInstanceID()} added to kill count");
+        }
+        else
+        {
+            Debug.LogWarning($"Spitter {gameObject.GetInstanceID()} playerPerformance was null in Die()");
         }
 
+        Debug.Log($"Spitter {gameObject.GetInstanceID()} scheduled for destruction in 3 seconds");
         Destroy(gameObject, 3f);
     }
 
