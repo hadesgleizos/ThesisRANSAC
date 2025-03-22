@@ -311,23 +311,32 @@ public void NextStage()
         float oldSpeed = currentZombieSpeed;
         currentZombieSpeed = newSpeed;
 
-        var updatedZombies = 0;
+        var updatedEnemies = 0;
         foreach (GameObject zombie in activeZombies.ToList())
         {
             if (zombie != null)
             {
+                // Check for regular Zombie
                 var zombieComponent = zombie.GetComponent<Zombie>();
                 if (zombieComponent != null)
                 {
                     zombieComponent.SetSpeed(currentZombieSpeed);
-                    updatedZombies++;
+                    updatedEnemies++;
+                }
+                
+                // Check for Spitter
+                var spitterComponent = zombie.GetComponent<Spitter>();
+                if (spitterComponent != null)
+                {
+                    spitterComponent.SetSpeed(currentZombieSpeed * 0.9f); // Keep them slightly slower
+                    updatedEnemies++;
                 }
             }
         }
 
         if (debugSpeedChanges)
         {
-            Debug.Log($"[Spawner] Speed Change - Old: {oldSpeed:F2}, New: {currentZombieSpeed:F2}, Updated {updatedZombies} zombies");
+            Debug.Log($"[Spawner] Speed Change - Old: {oldSpeed:F2}, New: {currentZombieSpeed:F2}, Updated {updatedEnemies} enemies");
         }
     }
 

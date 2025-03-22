@@ -56,7 +56,7 @@ public class Spitter : MonoBehaviour
         if (agent != null && spawner != null)
         {
             float currentSpeed = spawner.GetCurrentZombieSpeed();
-            SetSpeed(currentSpeed); // Slightly slower than regular zombies
+            SetSpeed(currentSpeed); // Use exact same speed as zombies, without modification
             
             // Set other NavMeshAgent parameters
             agent.angularSpeed = 120;

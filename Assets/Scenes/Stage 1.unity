@@ -583,6 +583,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 135869192}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: spitterAudioSource
+      value: 
+      objectReference: {fileID: 539726836}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: ambienceAudioSource
       value: 
       objectReference: {fileID: 1541466717}
@@ -603,6 +607,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 0a1757f8a9bf1cf4fa707a7897000d55, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: spitterIdleSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieDeathSounds.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -610,6 +618,10 @@ PrefabInstance:
       propertyPath: bossDeathSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 6754bf97d405c2e4ca1c274b8354b9e9, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: spitterDeathSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: stageAmbientSounds.Array.size
       value: 1
@@ -619,15 +631,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 45401d654c029684ca05db213285af3c, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: spitterAttackSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieIdleSounds.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: ebda9f99abfcac04c8004abe52959340, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: spitterIdleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 646d5e8a87d4aab4ebb8df843fd09723, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieDeathSounds.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 08b090f1c792c0d44a3bbd50bb5f8283, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: zombieDeathSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8beefcd5e57dc3549b6dba874d5f8917, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: spitterDeathSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 8beefcd5e57dc3549b6dba874d5f8917, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
@@ -638,6 +662,10 @@ PrefabInstance:
       propertyPath: zombieAttackSounds.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 646d5e8a87d4aab4ebb8df843fd09723, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: spitterAttackSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d616cd8cf895f64bba17bca2ee10420, type: 3}
     - target: {fileID: 6812805797213233381, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5924037
@@ -791,6 +819,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &539726836 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1148183435102157072, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+  m_PrefabInstance: {fileID: 539726827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &553971299
 GameObject:
   m_ObjectHideFlags: 0
