@@ -135,45 +135,28 @@ public class Spitter: MonoBehaviour
         if (!agent || !agent.isOnNavMesh) yield break;
 
         isAttacking = true;
-        canAttack = false;
+        canAttack = false; 
         agent.isStopped = true;
 
-        // Face the player
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(directionToPlayer);
-
-        // Play attack animation
-        animator.SetTrigger("Attack");
-
-        // Wait for animation to reach spawn point (adjust time based on animation)
-        yield return new WaitForSeconds(0.5f);
-
-        // Spawn and shoot projectile
-        if (!isDead && player != null)
+        // Apply damage immediately if in range
+        if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
         {
-            // Calculate spawn position
-            Vector3 spawnPosition = transform.position + Vector3.up * spitHeight + transform.forward * 0.5f;
-            
-            // Calculate direction with slight upward arc
-            Vector3 targetPosition = player.position + Vector3.up;
-            Vector3 direction = (targetPosition - spawnPosition).normalized;
-            
-            // Spawn projectile
-            GameObject projectile = Instantiate(acidProjectilePrefab, spawnPosition, Quaternion.LookRotation(direction));
-            Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-            
-            if (projectileRb != null)
+            PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
+            if (playerPerformance != null)
             {
-                projectileRb.velocity = direction * projectileSpeed;
+                playerPerformance.TakeDamage(damage, gameObject);
+                gameObject.SetIndicator();
+                Debug.Log($"Zombie dealt {damage} damage to the player.");
             }
-
-            // Play spit sound
-            SoundManager.Instance.PlayRandomZombieSound(
-                SoundManager.Instance.zombieAttackSounds
-            );
         }
 
-        // Wait for attack cooldown
+        // Play attack sound and animation
+        SoundManager.Instance.PlayRandomZombieSound(
+            SoundManager.Instance.zombieAttackSounds
+        );
+        animator.SetTrigger("Attack");
+
+        // Wait for attack animation
         yield return new WaitForSeconds(attackCooldown);
 
         if (agent && agent.isOnNavMesh && !isDead)
