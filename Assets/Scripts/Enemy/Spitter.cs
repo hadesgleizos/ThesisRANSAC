@@ -12,7 +12,7 @@ public class Spitter : MonoBehaviour
     private PlayerPerformance playerPerformance;
     private float updateInterval = 1.0f; // How often to update speed in seconds
     private Animator animator;
-    public float damage = 20f;            // Damage dealt to player
+    // Removed damage field since it's not used (AcidProjectile has its own damage)
     public float attackRange = 2f;        // Range at which zombie can attack
     public float attackCooldown = 2f;     // Time between attacks
     private bool canAttack = true;
