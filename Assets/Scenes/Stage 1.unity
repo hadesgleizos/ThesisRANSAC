@@ -2219,7 +2219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2003333916
 Transform:
   m_ObjectHideFlags: 0
@@ -2629,7 +2629,7 @@ PrefabInstance:
       objectReference: {fileID: 1372620242}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[0].zombieName
-      value: 
+      value: Spitter
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[1].zombieName
@@ -2638,7 +2638,7 @@ PrefabInstance:
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[0].zombiePrefab
       value: 
-      objectReference: {fileID: 2377054696444688563, guid: 5e1c2151bc4dc1b4589807cc8465da2b, type: 3}
+      objectReference: {fileID: 7808546380406113579, guid: c447691bdabec314eaaeceaaf31c03a2, type: 3}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[1].zombiePrefab
       value: 

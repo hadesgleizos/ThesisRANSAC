@@ -39,6 +39,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4454606024925755275, guid: 17421655f98314d06b3864be61784af3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300098, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
+    - target: {fileID: 4454606024925755275, guid: 17421655f98314d06b3864be61784af3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5500f1cfa7eb3514f9f9790b183ea98c, type: 2}
     - target: {fileID: 5710803323149949879, guid: 17421655f98314d06b3864be61784af3, type: 3}
       propertyPath: m_Name
       value: Zombie_Spitter Variant
@@ -129,7 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fcc5935b994b94ca621bb7bfcf2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
   attackRange: 9
   attackCooldown: 2
   health: 100
