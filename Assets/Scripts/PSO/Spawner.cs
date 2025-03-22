@@ -219,26 +219,34 @@ public void NextStage()
         {
             if (spawnRate > 0 && spawnPoints.Count > 0)
             {
-                GameObject zombiePrefab = GetRandomZombiePrefab();
-                if (zombiePrefab != null)
+                // Generate a random value to determine if we spawn this frame
+                if (Random.value < spawnRate * Time.deltaTime)
                 {
-                    Vector3 spawnPosition = spawnPoints[currentSpawnIndex].transform.position;
-                    GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
-                    
-                    var zombieComponent = newZombie.GetComponent<Zombie>();
-                    if (zombieComponent != null)
+                    GameObject zombiePrefab = GetRandomZombiePrefab();
+                    if (zombiePrefab != null)
                     {
-                        zombieComponent.SetSpeed(currentZombieSpeed); // Use current speed from PSO
-                        if (debugSpeedChanges)
+                        // Randomly select one of the available spawn points
+                        int randomSpawnIndex = Random.Range(0, spawnPoints.Count);
+                        Vector3 spawnPosition = spawnPoints[randomSpawnIndex].transform.position;
+                        
+                        GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
+                        
+                        var zombieComponent = newZombie.GetComponent<Zombie>();
+                        if (zombieComponent != null)
                         {
-                            Debug.Log($"[Spawner] New zombie spawned with speed: {currentZombieSpeed:F2}");
+                            zombieComponent.SetSpeed(currentZombieSpeed); // Use current speed from PSO
+                            if (debugSpeedChanges)
+                            {
+                                Debug.Log($"[Spawner] New zombie spawned with speed: {currentZombieSpeed:F2}");
+                            }
                         }
+                        
+                        activeZombies.Add(newZombie);
                     }
-                    
-                    activeZombies.Add(newZombie);
-                    currentSpawnIndex = (currentSpawnIndex + 1) % spawnPoints.Count;
                 }
-                yield return new WaitForSeconds(1.0f / spawnRate);
+                
+                // Wait a short time before checking again
+                yield return null;
             }
             else
             {
