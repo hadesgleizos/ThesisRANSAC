@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 9
-  attackCooldown: 2
-  health: 100
+  attackCooldown: 3
+  health: 200
   rotationSpeed: 10
   acceleration: 8
   stoppingDistance: 1.5

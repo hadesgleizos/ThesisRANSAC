@@ -10,6 +10,8 @@ public class ZombieType
 {
     public GameObject zombiePrefab;
     public string zombieName;  // For debugging/identification
+    [Range(0, 100)]
+    public float spawnChance = 10;  // Default 10% spawn chance
 }
 
 public class Spawner : MonoBehaviour
@@ -209,8 +211,36 @@ public void NextStage()
             return null;
         }
 
-        int randomIndex = Random.Range(0, zombieTypes.Count);
-        return zombieTypes[randomIndex].zombiePrefab;
+        // Calculate the sum of all spawn chances
+        float totalChance = 0;
+        foreach (var zombieType in zombieTypes)
+        {
+            totalChance += zombieType.spawnChance;
+        }
+
+        // If all chances are 0, use equal probability
+        if (totalChance <= 0)
+        {
+            int randomIndex = Random.Range(0, zombieTypes.Count);
+            return zombieTypes[randomIndex].zombiePrefab;
+        }
+
+        // Get a random value between 0 and the total chance
+        float randomValue = Random.Range(0, totalChance);
+        
+        // Find which zombie type this random value corresponds to
+        float currentSum = 0;
+        foreach (var zombieType in zombieTypes)
+        {
+            currentSum += zombieType.spawnChance;
+            if (randomValue <= currentSum)
+            {
+                return zombieType.zombiePrefab;
+            }
+        }
+
+        // Fallback (should never happen unless there's a calculation error)
+        return zombieTypes[0].zombiePrefab;
     }
 
     private IEnumerator SpawnZombies()
