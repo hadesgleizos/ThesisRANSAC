@@ -87,6 +87,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expansionDuration: 3
   lifeDuration: 5
+  fallSpeed: 5
+  groundTags:
+  - Dirt
+  - Metal
+  - Grass
+  - Wood
+  - Concrete
   acidParticles: {fileID: 5997146954190191620}
   damagePerSecond: 3
   damageTickRate: 0.5

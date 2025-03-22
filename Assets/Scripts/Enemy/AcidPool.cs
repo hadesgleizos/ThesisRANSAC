@@ -7,6 +7,8 @@ public class AcidPool : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float expansionDuration = 1f;
     [SerializeField] private float lifeDuration = 5f;
+    [SerializeField] private float fallSpeed = 5f; // Speed at which acid falls
+    [SerializeField] private string[] groundTags = { "Floor", "Ground", "Terrain" }; // Tags the acid will stick to
 
     [Header("Particle Settings")]
     [SerializeField] private ParticleSystem acidParticles;
@@ -20,6 +22,8 @@ public class AcidPool : MonoBehaviour
     private float nextDamageTime;
     private GameObject sender;
     private Dictionary<GameObject, float> lastDamageTime;
+    private bool hasLanded = false;
+    private Vector3 targetPosition;
 
     public void SetSender(GameObject spitter)
     {
@@ -31,6 +35,7 @@ public class AcidPool : MonoBehaviour
         lastDamageTime = new Dictionary<GameObject, float>();
         expansionStartTime = Time.time;
         nextDamageTime = Time.time;
+        targetPosition = transform.position;
         
         // Set up particle system for collision
         var collision = acidParticles.collision;
@@ -52,12 +57,61 @@ public class AcidPool : MonoBehaviour
         // Ignore collisions with enemy layer
         Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
 
+        // Start checking for ground
+        StartCoroutine(CheckForGround());
+
         // Destroy after lifetime
         Destroy(gameObject, lifeDuration);
     }
 
+    private IEnumerator CheckForGround()
+    {
+        while (!hasLanded)
+        {
+            // Cast a ray downward to find ground
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 10f))
+            {
+                // Check if the hit object has one of the ground tags
+                bool isGround = false;
+                foreach (string tag in groundTags)
+                {
+                    if (hit.collider.CompareTag(tag))
+                    {
+                        isGround = true;
+                        break;
+                    }
+                }
+
+                // If it's ground, stick to it
+                if (isGround)
+                {
+                    Debug.Log($"Acid pool landed on {hit.collider.gameObject.name} with tag {hit.collider.tag}");
+                    targetPosition = hit.point + (Vector3.up * 0.3f); // Adjusted to 0.1f to prevent clipping
+                    hasLanded = true;
+
+                    // Set the correct orientation
+                    transform.rotation = Quaternion.Euler(-90f, 0f, 0f); // Match the transform stats from the screenshot
+                }
+            }
+
+            yield return null;
+        }
+    }
+
     private void Update()
     {
+        // Move the acid pool down if it hasn't landed
+        if (!hasLanded)
+        {
+            transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+        }
+        else if (Vector3.Distance(transform.position, targetPosition) > 0.01f)
+        {
+            // Smoothly move to the ground target position
+            transform.position = Vector3.Lerp(transform.position, targetPosition, 5f * Time.deltaTime);
+        }
+
         // Handle only visual expansion
         float expansionProgress = (Time.time - expansionStartTime) / expansionDuration;
         expansionProgress = Mathf.Clamp01(expansionProgress);
