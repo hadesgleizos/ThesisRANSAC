@@ -358,7 +358,7 @@ Transform:
   m_GameObject: {fileID: 188717577}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.69, y: -3.01, z: -6.91}
+  m_LocalPosition: {x: -11.69, y: -2.867, z: -6.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1173,6 +1173,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!20 &698401525 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4618940740531202320, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+  m_PrefabInstance: {fileID: 698401512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &799138061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,6 +1209,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1344051114}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &822198517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 15533100674511484, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+  m_PrefabInstance: {fileID: 698401512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21655addeb8b2274db0b89e4ecf7c28e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &859433795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1498,7 @@ Transform:
   m_GameObject: {fileID: 1372620242}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.94, y: -3.01, z: 21.71}
+  m_LocalPosition: {x: 8.94, y: -2.828, z: 21.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2294,7 +2310,7 @@ Transform:
   m_GameObject: {fileID: 2064944220}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.695549, y: -3.01, z: -20.61}
+  m_LocalPosition: {x: -17.695549, y: -2.885, z: -20.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2614,7 +2630,7 @@ PrefabInstance:
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: playerPerformance
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 822198517}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.size
       value: 1
@@ -2633,7 +2649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[1].zombieName
-      value: 
+      value: Spitter
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[0].zombiePrefab
@@ -2771,7 +2787,7 @@ PrefabInstance:
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: playerPerformance
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 822198517}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: lowKillRateThreshold
       value: 0.2
@@ -3266,7 +3282,7 @@ PrefabInstance:
     - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
       propertyPath: _camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 698401525}
     - target: {fileID: 4030102978042334197, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
       propertyPath: m_Name
       value: PerLayerDistance
