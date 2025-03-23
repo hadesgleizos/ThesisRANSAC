@@ -142,9 +142,9 @@ public class bl_HudDamageManager : MonoBehaviour {
             PauseMenu.Instance.enabled = false;
         }
 
-        // Keep cursor hidden during death
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        // Show cursor during death (changed from hiding it)
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         // Pause all audio sources just like pause menu
         AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
@@ -164,9 +164,6 @@ public class bl_HudDamageManager : MonoBehaviour {
             deathHUDAnimator.Update(0f);
             deathHUDAnimator.Play("DeathHUDAnimation", 0, 0f);
         }
-
-        // Disable pause menu functionality
-        PauseMenu.Instance.enabled = false;
 
         // Configure all UI elements in death HUD
         foreach (var canvas in DeathHUD.GetComponentsInChildren<CanvasGroup>(true))

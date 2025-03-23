@@ -24,6 +24,16 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -110,5 +120,25 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.visible = visible;
         Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Reset pause state when a new scene loads
+        isPaused = false;
+        Time.timeScale = 1f;
+        
+        // Re-cache audio sources as they will be different in the new scene
+        RefreshAudioSources();
+        
+        // Show cursor in main menu, hide in gameplay scenes
+        if (scene.name == "MainMenu")
+        {
+            SetCursorState(true); // Show cursor in main menu
+        }
+        else
+        {
+            SetCursorState(false); // Hide cursor in gameplay scenes
+        }
     }
 }
