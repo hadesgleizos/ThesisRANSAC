@@ -14,13 +14,15 @@ public class takeDamage : MonoBehaviour
     [SerializeField] private CollisionType bodyPart = CollisionType.BODY;
     private Zombie zombieController;
     private Boss1 bossController;
-    private Spitter spitterController; // Add Spitter reference
+    private Spitter spitterController;
+    private Jograt jogratController; // Add Jograt reference
 
     void Start()
     {
         zombieController = GetComponentInParent<Zombie>();
         bossController = GetComponentInParent<Boss1>();
-        spitterController = GetComponentInParent<Spitter>(); // Get Spitter component
+        spitterController = GetComponentInParent<Spitter>();
+        jogratController = GetComponentInParent<Jograt>(); // Get Jograt component
     }
 
     public void HIT(float damage, CollisionType damageType)
@@ -36,10 +38,15 @@ public class takeDamage : MonoBehaviour
             bossController.TakeDamage(damage, bodyPart);
             Debug.Log($"Boss hit registered! Damage: {damage}, Part: {bodyPart}");
         }
-        else if (spitterController != null) // Add check for Spitter
+        else if (spitterController != null)
         {
             spitterController.TakeDamage(damage, bodyPart);
             Debug.Log($"Spitter hit registered! Damage: {damage}, Part: {bodyPart}");
+        }
+        else if (jogratController != null) // Add check for Jograt
+        {
+            jogratController.TakeDamage(damage, bodyPart);
+            Debug.Log($"Jograt hit registered! Damage: {damage}, Part: {bodyPart}");
         }
         else
         {

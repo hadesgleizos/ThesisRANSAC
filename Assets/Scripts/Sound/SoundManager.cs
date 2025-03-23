@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource zombieAudioSource;
     public AudioSource bossAudioSource;  // Add this line for boss sounds
     public AudioSource spitterAudioSource; // Add this line for spitter sounds
+    public AudioSource jogratAudioSource; // NEW: Add dedicated audio source for Jograt
 
     // Weapon Sounds
     public AudioClip pistolShootingSound;
@@ -52,6 +53,12 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] spitterIdleSounds;
     public AudioClip[] spitterAttackSounds;
     public AudioClip[] spitterDeathSounds;
+
+    [Header("Jograt Sounds")]
+    public AudioClip[] jogratIdleSounds;    // NEW: Idle growls, snorts
+    public AudioClip[] jogratAttackSounds;  // NEW: Attack sounds
+    public AudioClip[] jogratLeapSounds;    // NEW: Special leap sounds
+    public AudioClip[] jogratDeathSounds;   // NEW: Death sounds
 
     private void Awake()
     {
@@ -232,6 +239,29 @@ public class SoundManager : MonoBehaviour
         if (spitterAudioSource != null)
         {
             spitterAudioSource.volume = Mathf.Clamp01(volume);
+        }
+    }
+
+    // Add this new method for Jograt sounds
+    public void PlayRandomJogratSound(AudioClip[] clips, float volumeMultiplier = 1f)
+    {
+        if (clips != null && clips.Length > 0 && jogratAudioSource != null)
+        {
+            AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+            jogratAudioSource.PlayOneShot(randomClip, volumeMultiplier);
+        }
+        else if (clips != null && clips.Length > 0) // Fallback to zombie audio source if Jograt source isn't set up
+        {
+            AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+            zombieAudioSource.PlayOneShot(randomClip, volumeMultiplier);
+        }
+    }
+    
+    public void SetJogratVolume(float volume)
+    {
+        if (jogratAudioSource != null)
+        {
+            jogratAudioSource.volume = Mathf.Clamp01(volume);
         }
     }
 }

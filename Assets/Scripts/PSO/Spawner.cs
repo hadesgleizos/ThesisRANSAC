@@ -369,6 +369,14 @@ public void NextStage()
                     spitterComponent.SetSpeed(currentZombieSpeed * 0.9f); // Keep them slightly slower
                     updatedEnemies++;
                 }
+                
+                // NEW: Check for Jograt
+                var jogratComponent = zombie.GetComponent<Jograt>();
+                if (jogratComponent != null)
+                {
+                    jogratComponent.SetSpeed(currentZombieSpeed);
+                    updatedEnemies++;
+                }
             }
         }
 

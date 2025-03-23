@@ -19,6 +19,7 @@ public class Jograt : MonoBehaviour
     private bool isDead = false;
     private bool isAttacking = false;     // Flag to track if zombie is attacking
     public float health = 100f;
+    private Rigidbody rb; // Add this to your class variables
 
     [Header("Movement Settings")]
     public float rotationSpeed = 10f;
@@ -37,20 +38,42 @@ public class Jograt : MonoBehaviour
     public Color attackRangeColor = Color.red;
     public bool showLeapRange = true;           // Toggle for leap range visualization
     public Color leapRangeColor = Color.yellow;  // Color for leap range
+    public bool showMinLeapRange = true;         // NEW: Toggle for minimum leap range
+    public Color minLeapRangeColor = Color.cyan; // NEW: Color for minimum leap range
 
     [Header("Leap Settings")]
     public float leapRange = 8f;             // Max distance to trigger leap
+    public float leapMinRange = 4f;          // NEW: Minimum distance to consider leaping
     public float leapCooldown = 5f;          // Time between leaps
     public float leapDamage = 30f;           // Damage dealt on successful leap
-    public float leapForce = 12f;            // Force of the leap
+    public float leapForce = 90f;            // Force of the leap
     public float leapHeight = 3f;            // Height of the leap
+    public float leapDuration = 0.9f;        // Duration of leap
     private bool canLeap = true;             // Flag for leap cooldown
     private bool isLeaping = false;          // Flag for when currently leaping
 
+    [Header("Leap Particle Effects")]
+    public GameObject leapTrailEffect;      // Assign in inspector - particle effect for trail
+    public GameObject leapImpactEffect;     // Assign in inspector - particle effect for impact
+    private ParticleSystem activeTrailEffect;  // Reference to the currently active trail effect
+
     void Start()
     {
+        // Get existing components
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        
+        // COMPLETELY REMOVE any existing Rigidbody at start
+        Rigidbody existingRb = GetComponent<Rigidbody>();
+        if (existingRb != null)
+        {
+            Destroy(existingRb);
+        }
+        
+        // DON'T create Rigidbody at start - we'll create it only when needed
+        rb = null;
+        
+        // Rest of your Start() method...
         
         if (animator == null)
         {
@@ -87,12 +110,26 @@ public class Jograt : MonoBehaviour
         StartCoroutine(PlayIdleSoundsRoutine());
     }
 
-    // Update method with improved leap decision making
+    // Update method with improved leap decision making including minimum range
     void Update()
     {
         if (isDead) return; // If dead, don't do anything
         
         if (isLeaping || isAttacking) return; // If currently leaping or attacking, skip update
+        
+        // Safety check - if we're not leaping but somehow still have an active Rigidbody, destroy it
+        if (!isLeaping && rb != null)
+        {
+            Destroy(rb);
+            rb = null;
+            
+            // Make sure NavMeshAgent is enabled
+            if (agent != null && !agent.enabled)
+            {
+                agent.enabled = true;
+                agent.isStopped = false;
+            }
+        }
         
         if (player != null && agent != null)
         {
@@ -112,11 +149,14 @@ public class Jograt : MonoBehaviour
                 // Normal attack when close
                 StartCoroutine(AttackPlayer());
             }
-            // Only leap when player is DEFINITELY out of attack range but within leap range
-            else if (distanceToPlayer > attackRange + 0.5f && distanceToPlayer <= leapRange && canLeap && !isLeaping)
+            // Only leap when player is outside attack range but within leap range 
+            // AND farther than the minimum leap range (to avoid unnecessary short leaps)
+            else if (distanceToPlayer > attackRange + 0.5f && 
+                    distanceToPlayer >= leapMinRange && 
+                    distanceToPlayer <= leapRange && 
+                    canLeap && !isLeaping)
             {
-                // Add a buffer zone of 0.5 units to be extra safe
-                // Use leap to close distance when player is further away
+                // Use leap to close distance when player is significantly farther away
                 isLeaping = true;
                 StartCoroutine(LeapAtPlayer());
             }
@@ -140,9 +180,23 @@ public class Jograt : MonoBehaviour
         {
             if (Time.time >= nextIdleSoundTime)
             {
-                SoundManager.Instance.PlayRandomZombieSound(
-                    SoundManager.Instance.zombieIdleSounds
-                );
+                // Use Jograt-specific sounds, with zombie sounds as fallback
+                if (SoundManager.Instance.jogratIdleSounds != null && 
+                    SoundManager.Instance.jogratIdleSounds.Length > 0)
+                {
+                    SoundManager.Instance.PlayRandomJogratSound(
+                        SoundManager.Instance.jogratIdleSounds,
+                        idleSoundVolume
+                    );
+                }
+                else
+                {
+                    SoundManager.Instance.PlayRandomZombieSound(
+                        SoundManager.Instance.zombieIdleSounds,
+                        idleSoundVolume
+                    );
+                }
+                
                 nextIdleSoundTime = Time.time + idleSoundInterval + Random.Range(-1f, 1f);
             }
             yield return new WaitForSeconds(1f);
@@ -176,10 +230,22 @@ public class Jograt : MonoBehaviour
             }
         }
 
-        // Play attack sound and animation
-        SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieAttackSounds
-        );
+        // Play attack sound using Jograt-specific sounds
+        if (SoundManager.Instance.jogratAttackSounds != null && 
+            SoundManager.Instance.jogratAttackSounds.Length > 0)
+        {
+            SoundManager.Instance.PlayRandomJogratSound(
+                SoundManager.Instance.jogratAttackSounds,
+                attackSoundVolume
+            );
+        }
+        else
+        {
+            SoundManager.Instance.PlayRandomZombieSound(
+                SoundManager.Instance.zombieAttackSounds,
+                attackSoundVolume
+            );
+        }
 
         // Make sure Speed is zero during attack to prevent blending issues
         if (animator != null)
@@ -254,10 +320,22 @@ public class Jograt : MonoBehaviour
     {
         isDead = true;
 
-        // Play death sound
-        SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieDeathSounds
-        );
+        // Play death sound using Jograt-specific sounds
+        if (SoundManager.Instance.jogratDeathSounds != null && 
+            SoundManager.Instance.jogratDeathSounds.Length > 0)
+        {
+            SoundManager.Instance.PlayRandomJogratSound(
+                SoundManager.Instance.jogratDeathSounds,
+                deathSoundVolume
+            );
+        }
+        else
+        {
+            SoundManager.Instance.PlayRandomZombieSound(
+                SoundManager.Instance.zombieDeathSounds,
+                deathSoundVolume
+            );
+        }
 
         if (agent != null)
         {
@@ -265,10 +343,11 @@ public class Jograt : MonoBehaviour
             agent.enabled = false;
         }
 
-        Rigidbody rb = GetComponent<Rigidbody>();
+        // Safely destroy Rigidbody if it exists
         if (rb != null)
         {
-            rb.isKinematic = true;
+            Destroy(rb);
+            rb = null;
         }
 
         Collider[] colliders = GetComponentsInChildren<Collider>();
@@ -309,7 +388,13 @@ public class Jograt : MonoBehaviour
             DrawRangeCircle(attackRange, attackRangeColor);
         }
         
-        // Draw leap range
+        // Draw minimum leap range
+        if (showMinLeapRange)
+        {
+            DrawRangeCircle(leapMinRange, minLeapRangeColor, true);
+        }
+        
+        // Draw maximum leap range
         if (showLeapRange)
         {
             DrawRangeCircle(leapRange, leapRangeColor, true);
@@ -360,163 +445,210 @@ public class Jograt : MonoBehaviour
         }
     }
 
-    // Modify the start of the LeapAtPlayer method
+    // Use this simplified leap method with Rigidbody
     private IEnumerator LeapAtPlayer()
     {
         if (!agent || !agent.isOnNavMesh) 
         {
-            isLeaping = false; // Reset flag if we can't leap
+            isLeaping = false;
             yield break;
         }
         
-        // CRITICAL: Double-check the player distance one more time
-        // to ensure we really should be leaping
+        // Double check distance
         float currentDistanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (currentDistanceToPlayer <= attackRange + 0.5f)
         {
-            Debug.Log("Leap canceled because player is now within attack range");
+            Debug.Log("Leap canceled - player within attack range");
             isLeaping = false;
             canLeap = true;
-            yield break; // Exit without leaping
+            yield break;
         }
 
+        // Set flags
         canLeap = false;
-        isAttacking = true; // Prevent normal attacks during leap
+        isLeaping = true;
+        isAttacking = true;
 
-        Debug.Log($"Jograt is leaping at the player! Distance: {currentDistanceToPlayer}");
-
-        // Disable NavMeshAgent during the leap
+        // Disable NavMeshAgent
         if (agent)
         {
             agent.isStopped = true;
             agent.enabled = false;
         }
 
-        // Play leap sound
-        SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieAttackSounds,
-            attackSoundVolume * 1.2f
-        );
+        // Play leap sound - special for Jograt
+        if (SoundManager.Instance.jogratLeapSounds != null && 
+            SoundManager.Instance.jogratLeapSounds.Length > 0)
+        {
+            SoundManager.Instance.PlayRandomJogratSound(
+                SoundManager.Instance.jogratLeapSounds,
+                attackSoundVolume * 1.3f  // Slightly louder for the leap
+            );
+        }
+        else
+        {
+            SoundManager.Instance.PlayRandomZombieSound(
+                SoundManager.Instance.zombieAttackSounds,
+                attackSoundVolume * 1.2f
+            );
+        }
 
-        // IMPROVED ANIMATION HANDLING
+        // Setup animation
         if (animator != null)
         {
-            // First force Speed to zero
             animator.SetFloat("Speed", 0f);
-            
-            // Wait a frame to ensure Speed is applied 
             yield return null;
-            
-            // Clear any other triggers that might interfere
             animator.ResetTrigger("Attack");
-            
-            // Set the Leap trigger
             animator.SetTrigger("Leap");
-            
-            Debug.Log("Leap animation trigger set");
-            
-            // Wait to ensure animation starts
-            yield return new WaitForSeconds(0.1f);
-            
-            // Debug animation state
-            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-            Debug.Log($"Animation state after setting Leap: {stateInfo.shortNameHash}, normalizedTime: {stateInfo.normalizedTime}");
         }
 
-        // Calculate leap trajectory without using Rigidbody
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = player.position;
-        Vector3 directionToPlayer = (targetPosition - startPosition).normalized;
+        // Calculate leap direction
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
         
-        // Calculate the landing position (slightly beyond the player to create momentum)
-        float leapDistance = Vector3.Distance(startPosition, targetPosition);
-        if (leapDistance > 3f) // Don't overshoot if very close
+        // CREATE Rigidbody only when we need to leap
+        if (rb == null)
         {
-            targetPosition = player.position + directionToPlayer * 1.5f; // Land slightly past the player
+            rb = gameObject.AddComponent<Rigidbody>();
+            rb.interpolation = RigidbodyInterpolation.Interpolate;
+            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            rb.mass = 80;
+            rb.drag = 0;
+            rb.angularDrag = 10;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
         
-        float leapDuration = 1.8f; // Time to complete the leap
-        float elapsedTime = 0f;
+        // Activate physics for the leap
+        rb.isKinematic = false;
+        rb.useGravity = true;
         
-        // Track if we've hit the player
+        // Set up collisions
+        SetupZombieCollisionIgnore();
+        
+        // Apply the leap force - using a balanced formula
+        float horizontalForce = leapForce;
+        float verticalForce = Mathf.Sqrt(2 * Physics.gravity.magnitude * leapHeight);
+        Vector3 leapVelocity = directionToPlayer * horizontalForce + Vector3.up * verticalForce;
+        
+        // Apply velocity directly - no AddForce which can be affected by mass
+        rb.velocity = leapVelocity;
+        
+        // Create leap trail effect
+        if (leapTrailEffect != null)
+        {
+            GameObject trailObj = Instantiate(leapTrailEffect, transform.position, Quaternion.identity);
+            activeTrailEffect = trailObj.GetComponent<ParticleSystem>();
+            
+            // Parent the trail to the Jograt
+            trailObj.transform.SetParent(transform);
+            
+            // Position it slightly behind to create a better trail visual
+            trailObj.transform.localPosition = new Vector3(0, 0.5f, -0.5f);
+        }
+        
+        // Main leap physics loop - wait until we're grounded again
         bool hasHitPlayer = false;
-
-        // Start our manual leap loop
-        while (elapsedTime < leapDuration)
+        float leapTime = 0f;
+        float maxLeapTime = 2.0f; // Safety timeout
+        
+        while (leapTime < maxLeapTime)
         {
-            elapsedTime += Time.deltaTime;
-            float normalizedTime = elapsedTime / leapDuration; // 0 to 1
+            leapTime += Time.deltaTime;
             
-            // Modified height calculation for faster fall
-            float heightPercentage;
-            if (normalizedTime < 0.4f) {
-                // First 40% of the jump uses the first half of sine curve for rise
-                heightPercentage = Mathf.Sin(normalizedTime * Mathf.PI / 0.8f) * leapHeight;
-            } else {
-                // Remaining 60% falls with increasing speed (quadratic fall)
-                float fallProgress = (normalizedTime - 0.4f) / 0.6f; // 0 to 1 for the falling portion
-                // For an even faster fall, use cubic falloff
-                heightPercentage = leapHeight * (1 - fallProgress * fallProgress * fallProgress);
-            }
-            
-            // Calculate the current position along the path
-            Vector3 newPosition = Vector3.Lerp(startPosition, targetPosition, normalizedTime);
-            newPosition.y = startPosition.y + heightPercentage; // Add height based on modified curve
-            
-            // Move the jograt
-            transform.position = newPosition;
-            
-            // Rotate towards direction of travel
-            transform.rotation = Quaternion.LookRotation(directionToPlayer);
-            
-            // Check for collision with player if we haven't hit them yet
+            // Check if we hit the player
             if (!hasHitPlayer)
             {
                 float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-                if (distanceToPlayer < 1.5f) // Close enough to count as a hit
+                if (distanceToPlayer < 1.5f)
                 {
-                    // Apply leap damage
                     PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
                     if (playerPerformance != null)
                     {
                         playerPerformance.TakeDamage(leapDamage, gameObject);
                         gameObject.SetIndicator();
-                        Debug.Log($"Jograt dealt {leapDamage} leap damage to the player.");
+                        Debug.Log($"Jograt dealt {leapDamage} leap damage");
                         hasHitPlayer = true;
+                        
+                        // Create impact effect on player hit
+                        if (leapImpactEffect != null)
+                        {
+                            CreateImpactEffect(player.position, true);
+                        }
                     }
                 }
             }
             
+            // Check if we're on the ground (landed)
+            if (leapTime > 0.2f && IsGrounded()) // Only check after initial jump
+            {
+                // Create impact effect on landing if we haven't hit the player
+                if (!hasHitPlayer && leapImpactEffect != null)
+                {
+                    CreateImpactEffect(transform.position, false);
+                }
+                break;
+            }
+            
             yield return null;
         }
-
-        // Make sure we end up on a valid position on the NavMesh
+        
+        // Landed - stop physics and reset
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
+        
+        // Stop the trail effect
+        if (activeTrailEffect != null)
+        {
+            // Stop emitting but let existing particles fade out
+            var emission = activeTrailEffect.emission;
+            emission.enabled = false;
+            
+            // Detach from parent so it doesn't follow Jograt anymore
+            activeTrailEffect.transform.SetParent(null);
+            
+            // Destroy after particles fade
+            Destroy(activeTrailEffect.gameObject, activeTrailEffect.main.duration + activeTrailEffect.main.startLifetime.constantMax);
+            activeTrailEffect = null;
+        }
+        
+        // After landing, COMPLETELY DESTROY the Rigidbody
+        if (rb != null)
+        {
+            Destroy(rb);
+            rb = null;
+        }
+        
+        // Make sure we're on the NavMesh
         NavMeshHit hit;
         if (NavMesh.SamplePosition(transform.position, out hit, 2.0f, NavMesh.AllAreas))
         {
-            // Adjust position to be on NavMesh
             transform.position = hit.position;
         }
         
-        // Wait a moment after landing before re-enabling NavMeshAgent
+        // Short pause before re-enabling navigation
         yield return new WaitForSeconds(0.2f);
         
-        // Re-enable NavMeshAgent
+        // Re-enable navigation
         if (agent && !isDead)
         {
             agent.enabled = true;
             agent.isStopped = false;
             agent.SetDestination(player.position);
         }
-
-        // Reset flags after a brief delay
+        
+        // Reset flags
         yield return new WaitForSeconds(0.3f);
         isLeaping = false;
         isAttacking = false;
-
-        // Start leap cooldown
+        
+        // Cooldown
         yield return new WaitForSeconds(leapCooldown);
         canLeap = true;
+    }
+
+    // Helper method to check if grounded
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, 0.3f);
     }
 
     // Add this method to check if the leap hits the player
@@ -540,6 +672,84 @@ public class Jograt : MonoBehaviour
             }
             
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+    // Add this new method to handle zombie collision ignoring
+    private void SetupZombieCollisionIgnore()
+    {
+        // First get all colliders on this Jograt
+        Collider[] myColliders = GetComponentsInChildren<Collider>();
+        
+        // Find all objects with the "Zombie" tag
+        GameObject[] allZombies = GameObject.FindGameObjectsWithTag("Zombie");
+        
+        foreach (GameObject zombie in allZombies)
+        {
+            // Skip self
+            if (zombie == gameObject) continue;
+            
+            // Get all colliders on the other zombie
+            Collider[] zombieColliders = zombie.GetComponentsInChildren<Collider>();
+            
+            // Ignore collisions between all colliders
+            foreach (Collider myCol in myColliders)
+            {
+                foreach (Collider zombieCol in zombieColliders)
+                {
+                    Physics.IgnoreCollision(myCol, zombieCol, true);
+                }
+            }
+        }
+    }
+
+    // Optionally, add this method to dynamically ignore new zombie colliders that spawn
+    private void OnTriggerEnter(Collider other)
+    {
+        // If we hit another zombie during movement, ignore its collision
+        if (other.CompareTag("Zombie") && other.gameObject != gameObject)
+        {
+            Collider[] myColliders = GetComponentsInChildren<Collider>();
+            Collider[] zombieColliders = other.gameObject.GetComponentsInChildren<Collider>();
+            
+            foreach (Collider myCol in myColliders)
+            {
+                foreach (Collider zombieCol in zombieColliders)
+                {
+                    Physics.IgnoreCollision(myCol, zombieCol, true);
+                }
+            }
+        }
+    }
+    
+    private void CreateImpactEffect(Vector3 position, bool hitPlayer)
+    {
+        // Position the effect slightly above ground to ensure visibility
+        Vector3 effectPosition = position;
+        effectPosition.y += 0.1f;
+        
+        // Create the impact effect
+        GameObject impactObj = Instantiate(leapImpactEffect, effectPosition, Quaternion.identity);
+        
+        // Set up the effect's properties based on whether it hit a player or ground
+        LeapImpactEffect impactEffect = impactObj.GetComponent<LeapImpactEffect>();
+        if (impactEffect != null)
+        {
+            // Use the new Initialize method that doesn't need a damage parameter
+            impactEffect.Initialize(gameObject, hitPlayer, 3f);
+        }
+        else
+        {
+            // Fallback if no custom script - adjust particle color
+            ParticleSystem particleEffect = impactObj.GetComponent<ParticleSystem>();
+            if (particleEffect != null)
+            {
+                var main = particleEffect.main;
+                main.startColor = hitPlayer ? Color.red : Color.yellow;
+            }
+            
+            // Just destroy after a few seconds
+            Destroy(impactObj, 3f);
         }
     }
 }
