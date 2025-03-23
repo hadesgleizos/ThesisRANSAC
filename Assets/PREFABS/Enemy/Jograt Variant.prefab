@@ -134,7 +134,7 @@ MonoBehaviour:
   leapRange: 90
   leapMinRange: 10
   leapCooldown: 5
-  leapDamage: 15
+  leapDamage: 10
   leapForce: 20
   leapHeight: 0.5
   leapDuration: 1.8
