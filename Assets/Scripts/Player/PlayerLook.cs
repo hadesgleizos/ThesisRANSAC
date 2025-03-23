@@ -29,6 +29,13 @@ public class PlayerLook : MonoBehaviour
             sensitivitySlider.value = xSensitivity; // Use loaded sensitivity value
             sensitivitySlider.onValueChanged.AddListener(UpdateSensitivity);
         }
+
+        // Find the invisible wall manager and set the player reference
+        InvisibleWallManager wallManager = FindObjectOfType<InvisibleWallManager>();
+        if (wallManager != null)
+        {
+            wallManager.SetPlayerReference(transform);
+        }
     }
 
     private void UpdateSensitivity(float value)
