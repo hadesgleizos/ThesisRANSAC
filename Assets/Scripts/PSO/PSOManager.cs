@@ -35,9 +35,24 @@ public class PSOManager : MonoBehaviour
     [Header("Struggle Thresholds")]
     public float lowHealthThreshold = 0.5f;
     public float lowKillRateThreshold = 0.2f;
-
+    
+    [Header("Fitness Evaluation Parameters")]
+    public float baseKillRatePerSpawner = 0.3f; // Previously hardcoded as 0.3f
+    public float noKillsPenaltyFitness = 0.1f;  // Previously hardcoded as 0.1f
+    public float killRateWeight = 0.7f;         // Previously hardcoded as 0.7f
+    public float healthWeight = 0.3f;           // Previously hardcoded as 0.3f
+    
+    [Header("PSO Adaptation Parameters")]
+    public float initialInertiaWeight = 0.7f;    // Previously hardcoded as 0.7f
+    public float finalInertiaWeight = 0.4f;      // Previously hardcoded as 0.4f
+    public float initialCognitiveWeight = 1.5f;  // Previously hardcoded as 1.5f
+    public float finalCognitiveWeight = 0.8f;    // Previously hardcoded as 0.8f
+    public float initialSocialWeight = 0.8f;     // Previously hardcoded as 0.8f
+    public float finalSocialWeight = 1.5f;       // Previously hardcoded as 1.5f
+    
     [Header("Performance Metrics")]
     public bool enableMetrics = true;
+    public int metricsHistoryLimit = 100;       // Previously hardcoded as 100
     private List<float> fitnessHistory = new List<float>();
     private List<Vector2> parameterHistory = new List<Vector2>();
 
@@ -188,22 +203,34 @@ private void AdjustDifficulty(float killRate, float healthPercentage)
     float bestSpawnRate = bestParticle.x;
     float bestSpeed = bestParticle.y;
 
-    bool isStruggling = (healthPercentage < lowHealthThreshold || killRate < lowKillRateThreshold);
+    // Use the same struggle definition as in EvaluateParticle
+    float expectedKillRate = baseKillRatePerSpawner * spawner.GetActiveSpawnerCount() * 
+                           (currentSpawnRate / maxSpawnRate) * 
+                           (currentSpeed / maxSpeed);
+    float performanceRatio = killRate / Mathf.Max(0.01f, expectedKillRate);
+    bool isStruggling = (healthPercentage < lowHealthThreshold || performanceRatio < 0.85f);
 
     float newSpawnRate;
     float newSpeed;
 
     if (isStruggling)
     {
-        // Aggressively reduce spawn rate and speed
-        newSpawnRate = Mathf.Lerp(currentSpawnRate, bestSpawnRate, bigDropFactor);
-        newSpeed = Mathf.Lerp(currentSpeed, bestSpeed * 0.5f, bigDropFactor); // Reduce speed more aggressively
+        // Use a more aggressive drop when struggling
+        newSpawnRate = Mathf.Lerp(currentSpawnRate, minSpawnRate + (maxSpawnRate - minSpawnRate) * 0.3f, bigDropFactor);
+        newSpeed = Mathf.Lerp(currentSpeed, minSpeed + (maxSpeed - minSpeed) * 0.3f, bigDropFactor);
     }
     else
     {
-        // Gradually increase spawn rate and speed
-        newSpawnRate = Mathf.Lerp(currentSpawnRate, bestSpawnRate, smallUpFactor);
-        newSpeed = Mathf.Lerp(currentSpeed, bestSpeed, smallUpFactor);
+        // When not struggling, consider applying best position more aggressively
+        // Increase adjustment factor based on how well the player is doing
+        float adjustmentFactor = smallUpFactor;
+        if (performanceRatio > 1.2f) {
+            // Player is doing very well, increase adjustment speed
+            adjustmentFactor = smallUpFactor * 2f;
+        }
+        
+        newSpawnRate = Mathf.Lerp(currentSpawnRate, bestSpawnRate, adjustmentFactor);
+        newSpeed = Mathf.Lerp(currentSpeed, bestSpeed, adjustmentFactor);
     }
 
     // Clamp values to ensure they stay within bounds
@@ -211,10 +238,15 @@ private void AdjustDifficulty(float killRate, float healthPercentage)
     newSpeed = Mathf.Clamp(newSpeed, minSpeed, maxSpeed);
 
     // Apply adjustments
-    spawner.UpdateSpawnRate(newSpawnRate);
-    spawner.SetAllZombieSpeeds(newSpeed);
+    if (spawner != null) {
+        spawner.UpdateSpawnRate(newSpawnRate);
+        spawner.SetAllZombieSpeeds(newSpeed);
+    }
 
-    UnityEngine.Debug.Log($"[PSOManager] Adjustments - Spawn Rate: {newSpawnRate:F3}, Speed: {newSpeed:F3}");
+    UnityEngine.Debug.Log($"[PSOManager] Adjustments - Spawn Rate: {newSpawnRate:F3}, Speed: {newSpeed:F3}, " +
+                         $"Global Best: ({bestSpawnRate:F2}, {bestSpeed:F2}), " +
+                         $"Performance Ratio: {performanceRatio:F2}, " +
+                         $"Struggling: {isStruggling}");
 }
 
 
@@ -257,9 +289,6 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
     // Get number of active spawners
     int spawnerCount = spawner.GetActiveSpawnerCount();
     
-    // Base kill rate per spawner (kills expected per second per spawner)
-    float baseKillRatePerSpawner = 0.3f; // Lowered from 0.05f for better balance
-    
     // Calculate expected kill rate based on number of spawners and current parameters
     float expectedKillRate = baseKillRatePerSpawner * spawnerCount * 
                            (spawnRate / maxSpawnRate) * 
@@ -268,45 +297,92 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
     // If no kills when zombies are available
     if (killRate <= 0 && spawnRate > minSpawnRate)
     {
-        return 0.1f;
+        return noKillsPenaltyFitness;
     }
 
-    // Calculate scores
-    float killRateScore = 1f - Mathf.Pow(Mathf.Abs(killRate - expectedKillRate), 2);
+    // Calculate the performance ratio (how player is doing relative to expectation)
+    float performanceRatio = killRate / Mathf.Max(0.01f, expectedKillRate);
+    
+    // More clear struggling detection - consider struggling if achieving less than 85% of expected
+    bool playerStruggling = (healthPct < lowHealthThreshold || performanceRatio < 0.85f);
+    
+    float killRateScore;
+    if (playerStruggling) {
+        // When struggling, reward lower spawn rates and speeds
+        // The lower the parameters, the higher the score
+        killRateScore = 1.0f - ((spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate)) * 
+                              ((speed - minSpeed) / (maxSpeed - minSpeed));
+    } else {
+        // When doing well, reward parameters that challenge the player appropriately
+        // Score highest when kill rate is near expected (not too easy, not too hard)
+        killRateScore = 1.0f - Mathf.Pow(Mathf.Abs(killRate - expectedKillRate), 2);
+        
+        // Bonus for challenging parameters when player is doing well
+        if (performanceRatio > 1.1f) {  // Player doing better than expected
+            // Encourage higher parameters
+            killRateScore *= 0.8f + 0.2f * ((spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate)) * 
+                                    ((speed - minSpeed) / (maxSpeed - minSpeed));
+        }
+    }
+    
     float healthScore = Mathf.Clamp01(healthPct);
 
     // Final fitness calculation
-    float fitness = (killRateScore * 0.7f) + (healthScore * 0.3f);
+    float fitness = (killRateScore * killRateWeight) + (healthScore * healthWeight);
 
     UnityEngine.Debug.Log($"PSO Evaluation - Spawners: {spawnerCount}, " +
                          $"Expected KillRate: {expectedKillRate:F2}, " +
                          $"Actual KillRate: {killRate:F2}, " +
+                         $"Performance Ratio: {performanceRatio:F2}, " +
                          $"SpawnRate: {spawnRate:F2}, Speed: {speed:F2}, " +
+                         $"Struggling: {playerStruggling}, " +
                          $"Fitness: {fitness:F2}");
 
     return fitness;
 }
 
 
-    private Vector2 GetGlobalBestPosition()
+private Vector2 GetGlobalBestPosition()
+{
+    Vector2 bestPosition = Vector2.zero;
+    float bestFitness = float.MinValue;
+
+    float currentKillRate = playerPerformance.GetKillRate();
+    float currentHealthPct = playerPerformance.GetHealth() / 100f;
+    
+    // Cache player state
+    bool isStruggling = (currentHealthPct < lowHealthThreshold || 
+                        currentKillRate < lowKillRateThreshold);
+
+    foreach (Particle particle in particles)
     {
-        Vector2 bestPosition = Vector2.zero;
-        float bestFitness = float.MinValue;
-
-        float currentKillRate = playerPerformance.GetKillRate();
-        float currentHealthPct = playerPerformance.GetHealth() / 100f;
-
-        foreach (Particle particle in particles)
+        // Get current fitness 
+        float fitness = EvaluateParticle(particle, currentKillRate, currentHealthPct);
+        
+        // If player is struggling, favor lower parameters
+        if (isStruggling)
         {
-            float fitness = EvaluateParticle(particle, currentKillRate, currentHealthPct);
-            if (fitness > bestFitness)
-            {
-                bestFitness = fitness;
-                bestPosition = particle.Position;
-            }
+            // Apply a bias toward lower parameters when struggling
+            float spawnRateNormalized = (particle.Position.x - minSpawnRate) / (maxSpawnRate - minSpawnRate);
+            float speedNormalized = (particle.Position.y - minSpeed) / (maxSpeed - minSpeed);
+            
+            // Invert the score - lower parameters get higher fitness when struggling
+            float parameterPenalty = (spawnRateNormalized + speedNormalized) / 2.0f;
+            fitness *= (1.0f - parameterPenalty * 0.5f);
         }
-        return bestPosition;
+        
+        if (fitness > bestFitness)
+        {
+            bestFitness = fitness;
+            bestPosition = particle.Position;
+        }
     }
+    
+    UnityEngine.Debug.Log($"PSO Global Best - Position: ({bestPosition.x:F2}, {bestPosition.y:F2}), " +
+                         $"Player Struggling: {isStruggling}");
+    
+    return bestPosition;
+}
 
     private void LogMetrics(float fitness, Vector2 parameters)
     {
@@ -315,7 +391,7 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
         fitnessHistory.Add(fitness);
         parameterHistory.Add(parameters);
         
-        if (fitnessHistory.Count > 100)
+        if (fitnessHistory.Count > metricsHistoryLimit)
         {
             float avgFitness = fitnessHistory.Average();
             float parameterVariance = CalculateParameterVariance();
@@ -330,9 +406,14 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
         // Adapt weights based on wave progression
         float progress = (float)currentWave / totalWaves;
         
-        inertiaWeight = Mathf.Lerp(0.7f, 0.4f, progress);
-        cognitiveWeight = Mathf.Lerp(1.5f, 0.8f, progress);
-        socialWeight = Mathf.Lerp(0.8f, 1.5f, progress);
+        inertiaWeight = Mathf.Lerp(initialInertiaWeight, finalInertiaWeight, progress);
+        cognitiveWeight = Mathf.Lerp(initialCognitiveWeight, finalCognitiveWeight, progress);
+        socialWeight = Mathf.Lerp(initialSocialWeight, finalSocialWeight, progress);
+        
+        UnityEngine.Debug.Log($"PSO Parameters Updated - Wave: {currentWave}/{totalWaves}, " +
+                             $"Inertia: {inertiaWeight:F2}, " +
+                             $"Cognitive: {cognitiveWeight:F2}, " +
+                             $"Social: {socialWeight:F2}");
     }
 
     private float CalculateParameterVariance()

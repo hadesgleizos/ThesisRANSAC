@@ -52,7 +52,13 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (optionsMenu.activeSelf)
+            {
+                // If options menu is open, return to pause menu
+                optionsMenu.SetActive(false);
+                pauseMenu.SetActive(true);
+            }
+            else if (isPaused)
             {
                 ResumeGame();
             }
@@ -66,6 +72,7 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        optionsMenu.SetActive(false); // Ensure options menu is closed when pausing
         Time.timeScale = 0f;
         isPaused = true;
         SetCursorState(true);
@@ -83,6 +90,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        optionsMenu.SetActive(false); // Ensure options menu is also closed
         Time.timeScale = 1f;
         isPaused = false;
         SetCursorState(false);
