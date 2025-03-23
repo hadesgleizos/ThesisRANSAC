@@ -60,6 +60,16 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] jogratLeapSounds;    // NEW: Special leap sounds
     public AudioClip[] jogratDeathSounds;   // NEW: Death sounds
 
+    // Add this after the Jograt sounds section in SoundManager.cs
+    [Header("Bomba Sounds")]
+    public AudioClip[] bombaIdleSounds;    // Ticking, beeping sounds
+    public AudioClip[] bombaDetectionSounds;  // Warning sounds when player detected
+    public AudioClip[] bombaExplosionSounds;  // Explosion sounds
+    public AudioClip[] bombaDeathSounds;   // Death sounds (if killed before exploding)
+
+    // Add a dedicated audio source for Bomba
+    public AudioSource bombaAudioSource;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -262,6 +272,29 @@ public class SoundManager : MonoBehaviour
         if (jogratAudioSource != null)
         {
             jogratAudioSource.volume = Mathf.Clamp01(volume);
+        }
+    }
+
+    // Add this method after the Jograt sound methods
+    public void PlayRandomBombaSound(AudioClip[] clips, float volumeMultiplier = 1f)
+    {
+        if (clips != null && clips.Length > 0 && bombaAudioSource != null)
+        {
+            AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+            bombaAudioSource.PlayOneShot(randomClip, volumeMultiplier);
+        }
+        else if (clips != null && clips.Length > 0) // Fallback to zombie audio source if Bomba source isn't set up
+        {
+            AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+            zombieAudioSource.PlayOneShot(randomClip, volumeMultiplier);
+        }
+    }
+
+    public void SetBombaVolume(float volume)
+    {
+        if (bombaAudioSource != null)
+        {
+            bombaAudioSource.volume = Mathf.Clamp01(volume);
         }
     }
 }

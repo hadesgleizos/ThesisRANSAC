@@ -370,11 +370,19 @@ public void NextStage()
                     updatedEnemies++;
                 }
                 
-                // NEW: Check for Jograt
+                // Check for Jograt
                 var jogratComponent = zombie.GetComponent<Jograt>();
                 if (jogratComponent != null)
                 {
                     jogratComponent.SetSpeed(currentZombieSpeed);
+                    updatedEnemies++;
+                }
+                
+                // Add check for Bomba
+                var bombaComponent = zombie.GetComponent<Bomba>();
+                if (bombaComponent != null)
+                {
+                    bombaComponent.SetSpeed(currentZombieSpeed);
                     updatedEnemies++;
                 }
             }

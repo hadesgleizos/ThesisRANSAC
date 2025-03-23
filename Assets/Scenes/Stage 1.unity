@@ -575,6 +575,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 135869202}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaAudioSource
+      value: 
+      objectReference: {fileID: 539726836}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: musicAudioSource
       value: 
       objectReference: {fileID: 539726829}
@@ -599,7 +603,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaIdleSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: bossDeathSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaDeathSounds.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
@@ -631,6 +643,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaIdleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 170c5a49891716a4e8cf62b9e4342729, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: bossDeathSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 6754bf97d405c2e4ca1c274b8354b9e9, type: 3}
@@ -646,6 +662,10 @@ PrefabInstance:
       propertyPath: stageAmbientSounds.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaDeathSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ee6fa8fddb250546a79ad9e7ebc14f7, type: 3}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: bossAttackSounds.Array.data[0]
       value: 
@@ -666,6 +686,14 @@ PrefabInstance:
       propertyPath: zombieIdleSounds.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: ebda9f99abfcac04c8004abe52959340, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaDetectionSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaExplosionSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: jogratDeathSounds.Array.data[0]
       value: 
@@ -702,6 +730,14 @@ PrefabInstance:
       propertyPath: spitterAttackSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 0d616cd8cf895f64bba17bca2ee10420, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaDetectionSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e5a1745cbd6e9ce48bbc2b6083f02cc4, type: 3}
+    - target: {fileID: 6642298469773210650, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
+      propertyPath: bombaExplosionSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ee6fa8fddb250546a79ad9e7ebc14f7, type: 3}
     - target: {fileID: 6812805797213233381, guid: 5d7b42fe560a08343815088a689fd3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5924037
@@ -1247,84 +1283,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4618940740531202320, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
   m_PrefabInstance: {fileID: 698401512}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &705614994
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.195065
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.195065
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.195065
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 29.874
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.26537
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -204.7563
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162982671390235149, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168492907123828463, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_Name
-      value: Bomba
-      objectReference: {fileID: 0}
-    - target: {fileID: 1284690630206864779, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300004, guid: 7933c903cd8e81a4592f32062ab6883f, type: 3}
-    - target: {fileID: 1284690630206864779, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: eb075b40d9d1ade4fbd418ff81befffb, type: 2}
-    m_RemovedComponents:
-    - {fileID: 3343104894512749100, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 32beeff48691fdf43ac7256395ec2a42, type: 3}
 --- !u!1 &799138061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2738,7 @@ PrefabInstance:
       objectReference: {fileID: 822198517}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: spawnPoints.Array.data[0]
@@ -2843,6 +2801,10 @@ PrefabInstance:
       value: Jograt
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[12].zombieName
+      value: Bomba
+      objectReference: {fileID: 0}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[1].spawnChance
       value: 100
       objectReference: {fileID: 0}
@@ -2891,6 +2853,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[12].spawnChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: zombieTypes.Array.data[1].zombiePrefab
       value: 
       objectReference: {fileID: 2153488194533384058, guid: 41403d588a01a4106b7d54dea13313f0, type: 3}
@@ -2934,6 +2900,10 @@ PrefabInstance:
       propertyPath: zombieTypes.Array.data[11].zombiePrefab
       value: 
       objectReference: {fileID: 3455529623609715289, guid: 9d2f1144dcfab424f83580c8a1e5e90e, type: 3}
+    - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
+      propertyPath: zombieTypes.Array.data[12].zombiePrefab
+      value: 
+      objectReference: {fileID: 8480638381787810788, guid: 140cc4384ca6f7c488a996a9a1cdc6e4, type: 3}
     - target: {fileID: 1180291157750065552, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.78555
@@ -13238,4 +13208,3 @@ SceneRoots:
   - {fileID: 445126684}
   - {fileID: 1190303567}
   - {fileID: 115655868}
-  - {fileID: 705614994}

@@ -13,12 +13,15 @@ public class Bomba : MonoBehaviour
     private float updateInterval = 1.0f; // How often to update speed in seconds
     private Animator animator;
     public float damage = 20f;            // Damage dealt to player
-    public float attackRange = 2f;        // Range at which zombie can attack
-    public float attackCooldown = 2f;     // Time between attacks
-    private bool canAttack = true;
+    public float explosionRange = 5f;     // Range of explosion effect
+    public float explosionDelay = 1.5f;   // Delay before explosion after detection
+    private bool isDetonating = false;
     private bool isDead = false;
-    private bool isAttacking = false;     // Flag to track if zombie is attacking
     public float health = 100f;
+
+    [Header("Explosion Settings")]
+    public float detectionRange = 3f;     // Range at which to start detonation sequence
+    public GameObject explosionEffectPrefab; // Particle system prefab for explosion
 
     [Header("Movement Settings")]
     public float rotationSpeed = 10f;
@@ -28,13 +31,19 @@ public class Bomba : MonoBehaviour
     [Header("Sound Settings")]
     public float idleSoundInterval = 5f;
     public float idleSoundVolume = 1f;
-    public float attackSoundVolume = 1f;
+    public float explosionSoundVolume = 1f;
     public float deathSoundVolume = 1f;
     private float nextIdleSoundTime;
 
     [Header("Debug Visualization")]
-    public bool showAttackRange = true;
-    public Color attackRangeColor = Color.red;
+    public bool showDetectionRange = true;
+    public Color detectionRangeColor = Color.yellow;
+    public bool showExplosionRange = true;
+    public Color explosionRangeColor = Color.red;
+
+    [Header("Effect Positioning")]
+    public Transform explosionOrigin; // Optional - if null, will use this transform
+    public Vector3 explosionOffset = new Vector3(0, 1f, 0); // Default offset from center
 
     void Start()
     {
@@ -43,7 +52,7 @@ public class Bomba : MonoBehaviour
         
         if (animator == null)
         {
-            Debug.LogError("Animator component missing from zombie!");
+            Debug.LogError("Animator component missing from Bomba!");
         }
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -63,7 +72,7 @@ public class Bomba : MonoBehaviour
             agent.autoRepath = true;
             agent.autoBraking = true;
             
-            Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
+            Debug.Log($"[Bomba {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
         }
         
         playerPerformance = FindObjectOfType<PlayerPerformance>();
@@ -78,8 +87,17 @@ public class Bomba : MonoBehaviour
 
     void Update()
     {
-        if (isDead || isAttacking) return; // If dead or attacking, don't move
+        if (isDead || isDetonating) 
+        {
+            // Ensure the agent stays stopped during detonation
+            if (isDetonating && agent != null && agent.enabled)
+            {
+                agent.isStopped = true;
+            }
+            return; 
+        }
 
+        // Rest of the method remains unchanged
         if (player != null && agent != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -101,106 +119,183 @@ public class Bomba : MonoBehaviour
                 animator.SetFloat("Speed", agent.velocity.magnitude / agent.speed);
             }
 
-            if (distanceToPlayer <= attackRange && canAttack)
+            if (distanceToPlayer <= detectionRange && !isDetonating)
             {
-                StartCoroutine(AttackPlayer());
+                StartCoroutine(DetonateSequence());
             }
         }
     }
 
+    // Update PlayIdleSoundsRoutine in your Bomba class
     private IEnumerator PlayIdleSoundsRoutine()
     {
         while (!isDead)
         {
             if (Time.time >= nextIdleSoundTime)
             {
-                SoundManager.Instance.PlayRandomZombieSound(
-                    SoundManager.Instance.zombieIdleSounds
-                );
+                // Use Bomba-specific sounds with zombie sounds as fallback
+                if (SoundManager.Instance.bombaIdleSounds != null && 
+                    SoundManager.Instance.bombaIdleSounds.Length > 0)
+                {
+                    SoundManager.Instance.PlayRandomBombaSound(
+                        SoundManager.Instance.bombaIdleSounds,
+                        idleSoundVolume
+                    );
+                }
+                else
+                {
+                    SoundManager.Instance.PlayRandomZombieSound(
+                        SoundManager.Instance.zombieIdleSounds,
+                        idleSoundVolume
+                    );
+                }
                 nextIdleSoundTime = Time.time + idleSoundInterval + Random.Range(-1f, 1f);
             }
             yield return new WaitForSeconds(1f);
         }
     }
 
-    private IEnumerator AttackPlayer()
+    // Update DetonateSequence to use Bomba-specific detection sounds
+    private IEnumerator DetonateSequence()
     {
-        if (!agent || !agent.isOnNavMesh) yield break;
+        if (!agent || !agent.isOnNavMesh || isDetonating || isDead) yield break;
 
-        isAttacking = true;
-        canAttack = false; 
+        isDetonating = true;
         agent.isStopped = true;
 
-        // Apply damage immediately if in range
-        if (!isDead && player != null && Vector3.Distance(transform.position, player.position) <= attackRange)
+        // Reset any existing animation triggers that might interfere
+        if (animator != null)
         {
-            PlayerPerformance playerPerformance = player.GetComponent<PlayerPerformance>();
-            if (playerPerformance != null)
+            animator.ResetTrigger("OnHit");
+            
+            // Set a boolean parameter to block transitions in Animator
+            animator.SetBool("IsExploding", true);
+            
+            // Trigger the detonation animation
+            animator.SetTrigger("Detonate");
+        }
+
+        // Play warning sound using Bomba-specific sounds
+        if (SoundManager.Instance.bombaDetectionSounds != null && 
+            SoundManager.Instance.bombaDetectionSounds.Length > 0)
+        {
+            SoundManager.Instance.PlayRandomBombaSound(
+                SoundManager.Instance.bombaDetectionSounds,
+                explosionSoundVolume
+            );
+        }
+        else
+        {
+            SoundManager.Instance.PlayRandomZombieSound(
+                SoundManager.Instance.zombieAttackSounds,
+                explosionSoundVolume
+            );
+        }
+
+        // Wait for explosion delay
+        yield return new WaitForSeconds(explosionDelay);
+
+        // Check if we're still detonating (wasn't destroyed during delay)
+        if (isDetonating && !isDead)
+        {
+            // Explode!
+            Explode();
+        }
+    }
+
+    // Update Explode method to use Bomba-specific explosion sounds
+    private void Explode()
+    {
+        // Determine explosion position
+        Vector3 explosionPosition;
+        
+        if (explosionOrigin != null)
+        {
+            explosionPosition = explosionOrigin.position;
+        }
+        else
+        {
+            explosionPosition = transform.position + explosionOffset;
+        }
+
+        // Apply damage to player if in range
+        if (player != null && playerPerformance != null)
+        {
+            float distanceToPlayer = Vector3.Distance(explosionPosition, player.position);
+            if (distanceToPlayer <= explosionRange)
             {
+                // Apply damage directly
                 playerPerformance.TakeDamage(damage, gameObject);
-                gameObject.SetIndicator();
-                Debug.Log($"Zombie dealt {damage} damage to the player.");
+                Debug.Log($"Bomba explosion dealt {damage} damage to player at distance {distanceToPlayer}");
             }
         }
 
-        // Play attack sound and animation
-        SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieAttackSounds
-        );
-        animator.SetTrigger("Attack");
-
-        // Wait for attack animation
-        yield return new WaitForSeconds(attackCooldown);
-
-        if (agent && agent.isOnNavMesh && !isDead)
+        // Instantiate explosion particle effect
+        if (explosionEffectPrefab != null)
         {
-            agent.isStopped = false;
+            GameObject explosionObj = Instantiate(explosionEffectPrefab, explosionPosition, Quaternion.identity);
+            BombaExplosionEffect explosionEffect = explosionObj.GetComponent<BombaExplosionEffect>();
+            
+            if (explosionEffect == null)
+            {
+                explosionEffect = explosionObj.AddComponent<BombaExplosionEffect>();
+            }
+            
+            if (explosionEffect != null)
+            {
+                explosionEffect.Initialize(gameObject, damage, explosionRange);
+            }
+            else
+            {
+                Debug.LogWarning("BombaExplosionEffect component not found on explosionEffectPrefab");
+            }
         }
 
-        canAttack = true;
-        isAttacking = false;
+        // Play explosion sound using Bomba-specific sounds
+        if (SoundManager.Instance.bombaExplosionSounds != null && 
+            SoundManager.Instance.bombaExplosionSounds.Length > 0)
+        {
+            SoundManager.Instance.PlayRandomBombaSound(
+                SoundManager.Instance.bombaExplosionSounds,
+                explosionSoundVolume * 1.5f  // Make explosion sound louder
+            );
+        }
+        else
+        {
+            SoundManager.Instance.PlayRandomZombieSound(
+                SoundManager.Instance.zombieDeathSounds,
+                explosionSoundVolume
+            );
+        }
+
+        // Die immediately after explosion
+        Die(true); // Pass true to destroy instantly
     }
 
-    public void TakeDamage(float damageAmount, CollisionType hitLocation)
-    {
-        if (isDead) return;
-
-        float multiplier = 1f;
-        switch (hitLocation)
-        {
-            case CollisionType.HEAD:
-                multiplier = 2f;
-                break;
-            case CollisionType.ARMS:
-                multiplier = 0.5f;
-                break;
-            case CollisionType.BODY:
-                multiplier = 1f;
-                break;
-        }
-
-        health -= damageAmount * multiplier;
-
-        // Trigger hit animation
-        if (animator != null)
-        {
-            animator.SetTrigger("OnHit");
-        }
-
-        if (health <= 0 && !isDead)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
+    // Update Die method to use Bomba-specific death sounds if not exploding
+    private void Die(bool instantDestroy = false)
     {
         isDead = true;
+        isDetonating = false; // Reset this flag
+        
+        // Only play death sound if we're not exploding (otherwise the explosion sound plays)
+        if (!instantDestroy && SoundManager.Instance.bombaDeathSounds != null && 
+            SoundManager.Instance.bombaDeathSounds.Length > 0)
+        {
+            SoundManager.Instance.PlayRandomBombaSound(
+                SoundManager.Instance.bombaDeathSounds,
+                deathSoundVolume
+            );
+        }
 
-        // Play death sound
-        SoundManager.Instance.PlayRandomZombieSound(
-            SoundManager.Instance.zombieDeathSounds
-        );
+        // Rest of the method remains the same
+        if (animator != null)
+        {
+            // Reset animation parameters
+            animator.SetBool("IsExploding", false);
+            animator.ResetTrigger("Detonate");
+            animator.ResetTrigger("OnHit");
+        }
 
         if (agent != null)
         {
@@ -220,17 +315,63 @@ public class Bomba : MonoBehaviour
             collider.enabled = false;
         }
 
-        if (animator != null)
-        {
-            animator.SetTrigger("Death");
-        }
-
         if (playerPerformance != null)
         {
-            playerPerformance.ZombieKilled(); // Already correctly updating kills
+            playerPerformance.ZombieKilled(); // Update kills counter
         }
 
-        Destroy(gameObject, 3f);
+        // Hide the model immediately
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer renderer in renderers)
+        {
+            renderer.enabled = false;
+        }
+
+        // Destroy immediately or after delay
+        if (instantDestroy)
+        {
+            Destroy(gameObject); // Destroy immediately
+        }
+        else
+        {
+            Destroy(gameObject, 2f); // Default behavior - destroy after 2 seconds
+        }
+    }
+
+    public void TakeDamage(float damageAmount, CollisionType hitLocation)
+    {
+        if (isDead || isDetonating) return;  // Add isDetonating check
+
+        float multiplier = 1f;
+        switch (hitLocation)
+        {
+            case CollisionType.HEAD:
+                multiplier = 2f;
+                break;
+            case CollisionType.ARMS:
+                multiplier = 0.5f;
+                break;
+            case CollisionType.BODY:
+                multiplier = 1f;
+                break;
+        }
+
+        health -= damageAmount * multiplier;
+
+        // Trigger hit animation only if not detonating
+        if (animator != null && !isDetonating)
+        {
+            animator.SetTrigger("OnHit");
+        }
+
+        if (health <= 0 && !isDead)
+        {
+            // If low health, explode immediately
+            if (!isDetonating)
+            {
+                StartCoroutine(DetonateSequence());
+            }
+        }
     }
 
     public void SetSpeed(float newSpeed)
@@ -240,46 +381,64 @@ public class Bomba : MonoBehaviour
             float oldSpeed = agent.speed;
             agent.speed = newSpeed;
             agent.acceleration = acceleration * (newSpeed / 3.5f);
-            Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
+            Debug.Log($"[Bomba {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
         }
     }
 
     private void OnDrawGizmos()
     {
-        if (showAttackRange)
+        // Get explosion position for visualization
+        Vector3 explosionPosition;
+        if (explosionOrigin != null)
         {
-            Gizmos.color = attackRangeColor;
+            explosionPosition = explosionOrigin.position;
+        }
+        else
+        {
+            explosionPosition = transform.position + explosionOffset;
+        }
+
+        // Draw detection range
+        if (showDetectionRange)
+        {
+            Gizmos.color = detectionRangeColor;
+            DrawCircle(transform.position, detectionRange);
+        }
+        
+        // Draw explosion range
+        if (showExplosionRange)
+        {
+            Gizmos.color = explosionRangeColor;
+            DrawCircle(explosionPosition, explosionRange);
+        }
+        
+        // Draw a small sphere at explosion origin
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(explosionPosition, 0.2f);
+    }
+    
+    private void DrawCircle(Vector3 position, float radius)
+    {
+        int segments = 32;
+        float angleStep = 360f / segments;
+        for (int i = 0; i < segments; i++)
+        {
+            float angle1 = i * angleStep;
+            float angle2 = (i + 1) * angleStep;
             
-            // Draw a horizontal circle at zombie's position
-            Vector3 position = transform.position;
-            Vector3 forward = transform.forward;
+            Vector3 point1 = position + new Vector3(
+                Mathf.Sin(angle1 * Mathf.Deg2Rad) * radius,
+                0.1f,
+                Mathf.Cos(angle1 * Mathf.Deg2Rad) * radius
+            );
             
-            // Draw main circle
-            int segments = 32;
-            float angleStep = 360f / segments;
-            for (int i = 0; i < segments; i++)
-            {
-                float angle1 = i * angleStep;
-                float angle2 = (i + 1) * angleStep;
-                
-                Vector3 point1 = position + new Vector3(
-                    Mathf.Sin(angle1 * Mathf.Deg2Rad) * attackRange,
-                    0f,
-                    Mathf.Cos(angle1 * Mathf.Deg2Rad) * attackRange
-                );
-                
-                Vector3 point2 = position + new Vector3(
-                    Mathf.Sin(angle2 * Mathf.Deg2Rad) * attackRange,
-                    0f,
-                    Mathf.Cos(angle2 * Mathf.Deg2Rad) * attackRange
-                );
-                
-                Gizmos.DrawLine(point1, point2);
-            }
+            Vector3 point2 = position + new Vector3(
+                Mathf.Sin(angle2 * Mathf.Deg2Rad) * radius,
+                0.1f,
+                Mathf.Cos(angle2 * Mathf.Deg2Rad) * radius
+            );
             
-            // Draw forward direction indicator
-            Gizmos.color = Color.blue;
-            Gizmos.DrawRay(position, forward * attackRange);
+            Gizmos.DrawLine(point1, point2);
         }
     }
 }

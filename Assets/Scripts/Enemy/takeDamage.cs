@@ -16,6 +16,7 @@ public class takeDamage : MonoBehaviour
     private Boss1 bossController;
     private Spitter spitterController;
     private Jograt jogratController; // Add Jograt reference
+    private Bomba bombaController; // Add Bomba reference
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class takeDamage : MonoBehaviour
         bossController = GetComponentInParent<Boss1>();
         spitterController = GetComponentInParent<Spitter>();
         jogratController = GetComponentInParent<Jograt>(); // Get Jograt component
+        bombaController = GetComponentInParent<Bomba>(); // Get Bomba component
     }
 
     public void HIT(float damage, CollisionType damageType)
@@ -47,6 +49,11 @@ public class takeDamage : MonoBehaviour
         {
             jogratController.TakeDamage(damage, bodyPart);
             Debug.Log($"Jograt hit registered! Damage: {damage}, Part: {bodyPart}");
+        }
+        else if (bombaController != null) // Add check for Bomba
+        {
+            bombaController.TakeDamage(damage, bodyPart);
+            Debug.Log($"Bomba hit registered! Damage: {damage}, Part: {bodyPart}");
         }
         else
         {
