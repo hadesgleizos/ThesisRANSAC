@@ -144,7 +144,7 @@ MonoBehaviour:
   damage: 20
   explosionRange: 6
   explosionDelay: 1.2
-  health: 100
+  health: 250
   detectionRange: 4
   explosionEffectPrefab: {fileID: 8759425619044975565, guid: 4c103e4cf2cbd9d4da63dc240a030831, type: 3}
   rotationSpeed: 10

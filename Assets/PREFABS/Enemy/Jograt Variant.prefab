@@ -132,11 +132,11 @@ MonoBehaviour:
   showMinLeapRange: 1
   minLeapRangeColor: {r: 0, g: 1, b: 1, a: 1}
   leapRange: 90
-  leapMinRange: 10
+  leapMinRange: 0.5
   leapCooldown: 5
   leapDamage: 10
   leapForce: 20
   leapHeight: 0.5
-  leapDuration: 1.8
+  leapDuration: 2.5
   leapTrailEffect: {fileID: 8184590193368118188, guid: a99a10f28867f584cb872dae9dd61466, type: 3}
   leapImpactEffect: {fileID: 2404827479828741669, guid: 740ef35aa2510134ca45f3f9ec3d80ee, type: 3}
