@@ -320,17 +320,41 @@ public class CollisionCorrector : MonoBehaviour
     
     private void CheckAndPreventWallClipping()
     {
+        // Only perform wall correction if we're actually trying to move or if we're very close to walls
+        bool isInputActive = Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
+        bool isVeryCloseToWall = IsNearWall(characterController.radius * 0.5f);
+        
+        // Skip correction when not moving unless we're very close to a wall
+        if (!isInputActive && !isVeryCloseToWall)
+        {
+            if (visualizeRays) 
+            {
+                // Still visualize rays for debugging even when skipping correction
+                VisualizeRays();
+            }
+            return;
+        }
+        
         Vector3 center = transform.position + characterController.center;
         
         // Calculate ray length based on player size
         float rayLength = correctionDistance + characterController.radius;
         
-        // Cast rays in multiple directions to detect walls
+        // Track if we're already applying corrections this frame
+        bool correctionApplied = false;
+        Vector3 totalCorrection = Vector3.zero;
+        
+        // Cast rays in multiple directions HORIZONTALLY ONLY to detect walls
         for (int i = 0; i < raycastCount; i++)
         {
-            // Calculate evenly distributed directions around the player
+            // Calculate evenly distributed directions AROUND the player (not up or down)
             float angle = i * (360f / raycastCount);
-            Vector3 direction = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+            // Create a HORIZONTAL direction vector (no vertical component)
+            Vector3 direction = new Vector3(
+                Mathf.Sin(angle * Mathf.Deg2Rad),
+                0f, // Force Y to be zero so rays only cast horizontally
+                Mathf.Cos(angle * Mathf.Deg2Rad)
+            );
             
             // Cast the ray to check for walls
             RaycastHit hit;
@@ -346,22 +370,66 @@ public class CollisionCorrector : MonoBehaviour
                 // Calculate how much the player is penetrating the wall
                 float penetrationDepth = rayLength - hit.distance;
                 
-                // Apply a corrective position change
-                if (penetrationDepth > 0)
+                // Only apply correction for SIGNIFICANT penetration (increased threshold)
+                if (penetrationDepth > 0.05f) // Higher threshold when not moving
                 {
-                    // Move the character away from the wall
-                    transform.position += hit.normal * penetrationDepth;
+                    // Make sure we only move horizontally to fix wall clipping
+                    Vector3 correction = hit.normal * penetrationDepth;
+                    correction.y = 0; // No vertical correction
                     
-                    // If we're deeply penetrating, teleport away from the wall
+                    // Add to total correction instead of applying immediately
+                    totalCorrection += correction;
+                    correctionApplied = true;
+                    
+                    // Handle deep penetration horizontally only
                     if (penetrationDepth > rayLength * teleportThreshold)
                     {
-                        transform.position += hit.normal * 0.15f;
+                        Vector3 emergencyCorrection = hit.normal * 0.15f;
+                        emergencyCorrection.y = 0; // No vertical emergency correction
+                        totalCorrection += emergencyCorrection;
                     }
                 }
             }
             else if (visualizeRays)
             {
                 // Debug visualization for rays that don't hit
+                Debug.DrawRay(center, direction * rayLength, Color.green, 0.1f);
+            }
+        }
+        
+        // Apply the averaged correction once at the end to prevent jitter
+        if (correctionApplied && totalCorrection.magnitude > 0.01f)
+        {
+            // Apply less aggressive smoothing when not moving
+            float smoothingFactor = isInputActive ? 0.7f : 0.3f;
+            
+            // Apply smoothed correction
+            transform.position += Vector3.Lerp(Vector3.zero, totalCorrection, smoothingFactor);
+        }
+    }
+
+    // Helper method for debug visualization
+    private void VisualizeRays()
+    {
+        Vector3 center = transform.position + characterController.center;
+        float rayLength = correctionDistance + characterController.radius;
+        
+        for (int i = 0; i < raycastCount; i++)
+        {
+            float angle = i * (360f / raycastCount);
+            Vector3 direction = new Vector3(
+                Mathf.Sin(angle * Mathf.Deg2Rad),
+                0f,
+                Mathf.Cos(angle * Mathf.Deg2Rad)
+            );
+            
+            RaycastHit hit;
+            if (Physics.Raycast(center, direction, out hit, rayLength, wallLayers))
+            {
+                Debug.DrawRay(center, direction * rayLength, Color.red, 0.1f);
+            }
+            else
+            {
                 Debug.DrawRay(center, direction * rayLength, Color.green, 0.1f);
             }
         }
