@@ -5194,7 +5194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctionForce: 10
-  checkDistance: 0.5
+  checkDistance: 0.3
   wallLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -5211,6 +5211,11 @@ MonoBehaviour:
   emergencyEscapeDistance: 0.3
   stuckTimeThreshold: 0.5
   restorePositionWhenStuck: 1
+  preventStandingOnZombies: 1
+  slideForce: 8
+  downwardForce: 15
+  zombieTopCheckRadius: 0.5
+  maxStandingOnZombieTime: 0.5
 --- !u!1 &1924971041
 GameObject:
   m_ObjectHideFlags: 0

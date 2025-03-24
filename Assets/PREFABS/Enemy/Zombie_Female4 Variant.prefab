@@ -919,6 +919,7 @@ MonoBehaviour:
   deathSoundVolume: 1
   showAttackRange: 1
   attackRangeColor: {r: 1, g: 0, b: 0, a: 1}
+  slipperyTopMaterial: {fileID: 13400000, guid: 54b1d8cb94d444aa5a0bb5e522e675f5, type: 2}
 --- !u!195 &3056519782256124228
 NavMeshAgent:
   m_ObjectHideFlags: 0

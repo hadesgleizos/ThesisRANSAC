@@ -2354,7 +2354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctionForce: 10
-  checkDistance: 0.5
+  checkDistance: 0.3
   wallLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2371,6 +2371,11 @@ MonoBehaviour:
   emergencyEscapeDistance: 0.3
   stuckTimeThreshold: 0.5
   restorePositionWhenStuck: 1
+  preventStandingOnZombies: 1
+  slideForce: 8
+  downwardForce: 15
+  zombieTopCheckRadius: 0.5
+  maxStandingOnZombieTime: 0.5
 --- !u!1001 &777724960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13047,6 +13052,7 @@ SceneRoots:
   - {fileID: 1565835619}
   - {fileID: 1371366935}
   - {fileID: 777724960}
+  - {fileID: 365619231}
   - {fileID: 1770930392}
   - {fileID: 1714503930}
   - {fileID: 620355178}
@@ -13054,7 +13060,6 @@ SceneRoots:
   - {fileID: 1408535056}
   - {fileID: 1688508259}
   - {fileID: 3557988455289509821}
-  - {fileID: 365619231}
   - {fileID: 481274680}
   - {fileID: 533775588}
   - {fileID: 384689486}

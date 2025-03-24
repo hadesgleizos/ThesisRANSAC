@@ -51,6 +51,16 @@ public class CollisionCorrector : MonoBehaviour
     private Queue<Vector3> positionHistory = new Queue<Vector3>();
     private int positionHistoryLength = 5;
     private float lastUpdateTime = 0f;
+
+    [Header("Anti-Cheese Settings")]
+    [SerializeField] private bool preventStandingOnZombies = true;
+    [SerializeField] private float slideForce = 8f; // Increased from 5f
+    [SerializeField] private float downwardForce = 15f; // Increased from 10f
+    [SerializeField] private float zombieTopCheckRadius = 0.5f; // NEW: Check radius for zombies below player
+    [SerializeField] private float maxStandingOnZombieTime = 0.5f; // NEW: Maximum time allowed to stand on zombies
+    private float standingOnZombieTimer = 0f; // NEW: Track how long player has been on zombies
+    private bool isOnTopOfZombie = false; // NEW: Track if player is on top of zombies
+    private Vector3 lastGroundedPosition; // NEW: Last position where player was safely grounded
     
     void Start()
     {
@@ -114,7 +124,28 @@ public class CollisionCorrector : MonoBehaviour
             {
                 lastSafePosition = transform.position;
                 timeSinceLastSafePosition = 0f;
+                
+                // NEW: If we're on ground and not on zombies, update lastGroundedPosition
+                if (Physics.Raycast(transform.position, Vector3.down, 0.3f) && !isOnTopOfZombie)
+                {
+                    lastGroundedPosition = transform.position;
+                }
             }
+        }
+        
+        // NEW: Handle the timer for standing on zombies
+        if (isOnTopOfZombie)
+        {
+            standingOnZombieTimer += Time.deltaTime;
+            if (standingOnZombieTimer > maxStandingOnZombieTime)
+            {
+                // Force player off zombies after being on top too long
+                ForcePlayerOffZombies();
+            }
+        }
+        else
+        {
+            standingOnZombieTimer = 0f;
         }
     }
     
@@ -137,6 +168,122 @@ public class CollisionCorrector : MonoBehaviour
         
         // NEW: Check for sudden position changes that might indicate clipping through walls
         CheckForTeleportation();
+        
+        // NEW: Check if player is standing on top of zombies
+        if (preventStandingOnZombies)
+        {
+            CheckIfStandingOnZombies();
+        }
+    }
+    
+    // NEW: Check if player is currently standing on top of any zombies
+    private void CheckIfStandingOnZombies()
+    {
+        bool wasOnZombie = isOnTopOfZombie;
+        isOnTopOfZombie = false;
+        
+        // Cast a short ray downward to detect what's below
+        RaycastHit[] hits = Physics.SphereCastAll(
+            transform.position, 
+            zombieTopCheckRadius, 
+            Vector3.down, 
+            0.5f
+        );
+        
+        foreach (RaycastHit hit in hits)
+        {
+            // Check if we hit a zombie
+            if (hit.collider.CompareTag(zombieTag) || hit.transform.root.CompareTag(zombieTag))
+            {
+                isOnTopOfZombie = true;
+                
+                // If player just got on top of a zombie, apply immediate downward force
+                if (!wasOnZombie)
+                {
+                    rb.AddForce(Vector3.down * downwardForce * 0.5f, ForceMode.Impulse);
+                }
+                
+                // Get the horizontal direction from zombie to player
+                Vector3 slideDirection = transform.position - hit.transform.position;
+                slideDirection.y = 0;
+                
+                if (slideDirection.magnitude > 0.01f)
+                {
+                    slideDirection.Normalize();
+                    
+                    // Apply stronger slide force
+                    rb.AddForce(slideDirection * slideForce + Vector3.down * downwardForce, ForceMode.Acceleration);
+                }
+                else
+                {
+                    // If directly on top, apply random horizontal force to break the stalemate
+                    Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+                    rb.AddForce(randomDir * slideForce + Vector3.down * downwardForce, ForceMode.Acceleration);
+                }
+                
+                // If multiple zombies are detected, break out after handling the first one
+                // This prevents conflicting forces that cause circular motion
+                break;
+            }
+        }
+    }
+    
+    // NEW: Force the player off zombies after standing on them too long
+    private void ForcePlayerOffZombies()
+    {
+        if (lastGroundedPosition != Vector3.zero)
+        {
+            // Teleport back to last grounded position
+            transform.position = lastGroundedPosition + Vector3.up * 0.5f;
+            rb.velocity = Vector3.zero;
+            Debug.Log("Anti-cheese protection: Teleported player back to ground");
+        }
+        else
+        {
+            // Apply strong downward impulse
+            rb.AddForce(Vector3.down * downwardForce * 3f, ForceMode.Impulse);
+            
+            // Apply random horizontal impulse to break stalemates
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+            rb.AddForce(randomDir * slideForce * 2f, ForceMode.Impulse);
+            
+            Debug.Log("Anti-cheese protection: Applied strong forces to get player off zombies");
+        }
+        
+        // Reset timer
+        standingOnZombieTimer = 0f;
+        
+        // Apply temporary physics materials change to make player slide off better
+        StartCoroutine(TemporarySuperSlipperyMode());
+    }
+    
+    // NEW: Make the player super slippery temporarily
+    private IEnumerator TemporarySuperSlipperyMode()
+    {
+        Collider playerCol = GetComponent<Collider>();
+        if (playerCol != null)
+        {
+            // Save original material
+            PhysicMaterial originalMaterial = playerCol.material;
+            
+            // Create and apply a super slippery material
+            PhysicMaterial superSlippery = new PhysicMaterial
+            {
+                dynamicFriction = 0,
+                staticFriction = 0,
+                frictionCombine = PhysicMaterialCombine.Minimum,
+                bounciness = 0,
+                bounceCombine = PhysicMaterialCombine.Minimum
+            };
+            
+            playerCol.material = superSlippery;
+            
+            // Wait for a short time
+            yield return new WaitForSeconds(1.0f);
+            
+            // Restore original material
+            playerCol.material = originalMaterial;
+        }
     }
     
     // NEW: Check if sudden teleportation occurred (might indicate clipping through walls)
@@ -453,6 +600,71 @@ public class CollisionCorrector : MonoBehaviour
     // Handle continuous collisions with walls
     void OnCollisionStay(Collision collision)
     {
+        // Handle zombie collisions for preventing standing on top
+        if (preventStandingOnZombies && 
+            (collision.gameObject.CompareTag(zombieTag) || 
+             collision.transform.root.CompareTag(zombieTag)))
+        {
+            // Count how many contacts point downward (player on top of zombie)
+            int downwardContactCount = 0;
+            Vector3 averageNormal = Vector3.zero;
+            
+            foreach (ContactPoint contact in collision.contacts)
+            {
+                // If player is on top of zombie (contact normal points down)
+                if (Vector3.Dot(contact.normal, Vector3.down) > 0.5f)
+                {
+                    downwardContactCount++;
+                    averageNormal += contact.normal;
+                    
+                    // Draw debug visualizations
+                    if (visualizeRays)
+                    {
+                        Debug.DrawRay(contact.point, contact.normal * 0.5f, Color.red, 0.2f);
+                    }
+                }
+            }
+            
+            // If we have downward contacts, handle player standing on zombie
+            if (downwardContactCount > 0)
+            {
+                // Normalize the average normal direction
+                averageNormal.Normalize();
+                
+                // Calculate slide direction (horizontal component of contact normal)
+                Vector3 slideDirection = averageNormal;
+                slideDirection.y = 0;
+                
+                // If the slide direction is too small, use direction from zombie to player
+                if (slideDirection.magnitude < 0.1f)
+                {
+                    slideDirection = transform.position - collision.transform.position;
+                    slideDirection.y = 0;
+                    
+                    if (slideDirection.magnitude > 0.01f)
+                    {
+                        slideDirection.Normalize();
+                    }
+                    else
+                    {
+                        // If directly on top, use random direction
+                        slideDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+                    }
+                }
+                else
+                {
+                    slideDirection.Normalize();
+                }
+                
+                // Apply slide force
+                rb.AddForce(slideDirection * slideForce + Vector3.down * downwardForce, ForceMode.Acceleration);
+                
+                // Allow vertical penetration but keep horizontal collision
+                Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider, true);
+                StartCoroutine(ReenableZombieTopCollision(collision.collider));
+            }
+        }
+
         // NEW: If this is a zombie collision and we should ignore it completely
         if (preventZombiePushing && 
             (collision.gameObject.CompareTag(zombieTag) || 
@@ -571,6 +783,39 @@ public class CollisionCorrector : MonoBehaviour
         {
             Physics.IgnoreCollision(zombieCollider, GetComponent<Collider>(), false);
             ignoredColliders.Remove(zombieCollider);
+        }
+    }
+
+    // Modify the existing ReenableZombieTopCollision method to be more gradual
+    private IEnumerator ReenableZombieTopCollision(Collider zombieCollider)
+    {
+        // Wait for initial sliding to happen
+        yield return new WaitForSeconds(0.2f);
+        
+        // Check if we're still on top before re-enabling
+        bool stillOnTop = false;
+        
+        if (zombieCollider != null && gameObject != null)
+        {
+            Vector3 toZombie = zombieCollider.transform.position - transform.position;
+            // If zombie is below us with little horizontal offset, we're still on top
+            if (toZombie.y > 0 && new Vector2(toZombie.x, toZombie.z).magnitude < 0.5f)
+            {
+                stillOnTop = true;
+                
+                // Apply one more impulse to help get off
+                Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+                rb.AddForce(randomDir * slideForce * 1.5f + Vector3.down * downwardForce * 1.5f, ForceMode.Impulse);
+                
+                // Wait a bit longer
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
+        
+        // Finally re-enable collision
+        if (zombieCollider != null && gameObject != null && GetComponent<Collider>() != null)
+        {
+            Physics.IgnoreCollision(zombieCollider, GetComponent<Collider>(), false);
         }
     }
     

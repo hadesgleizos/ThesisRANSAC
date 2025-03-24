@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctionForce: 10
-  checkDistance: 0.5
+  checkDistance: 0.3
   wallLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1316,6 +1316,11 @@ MonoBehaviour:
   emergencyEscapeDistance: 0.3
   stuckTimeThreshold: 0.5
   restorePositionWhenStuck: 1
+  preventStandingOnZombies: 1
+  slideForce: 5
+  downwardForce: 10
+  zombieTopCheckRadius: 0.5
+  maxStandingOnZombieTime: 0.5
 --- !u!1 &799138061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,6 +1363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21655addeb8b2274db0b89e4ecf7c28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &840717864 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 422715760042957778, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
+  m_PrefabInstance: {fileID: 2112077610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &859433795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,12 +1678,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421171532}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6636939, y: -0.24394871, z: -0.2439477, w: 0.66369355}
-  m_LocalPosition: {x: 1.36, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.70701367, y: 0.011497785, z: 0.011498667, w: 0.70701295}
+  m_LocalPosition: {x: -0.4880638, y: -1.4549259, z: -10.442993}
+  m_LocalScale: {x: 0.957502, y: 0.95750207, z: 0.95750207}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2112077611}
+  m_Father: {fileID: 840717864}
   m_LocalEulerAnglesHint: {x: 49.637, y: -90, z: -90}
 --- !u!114 &1421171534
 MonoBehaviour:
@@ -1710,10 +1720,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.17676413, g: 1, b: 0, a: 1}
-  m_Intensity: 90
+  m_Intensity: 5
   m_Range: 10
-  m_SpotAngle: 51.361416
-  m_InnerSpotAngle: 16.391941
+  m_SpotAngle: 103.25592
+  m_InnerSpotAngle: 68.286446
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -2550,25 +2560,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1748411663669391325, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8265837034703317594, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
-      insertIndex: -1
+    - targetCorrespondingSourceObject: {fileID: 422715760042957778, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 1421171533}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8790452878577905888, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2112077618}
-    - targetCorrespondingSourceObject: {fileID: 8790452878577905888, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2112077625}
   m_SourcePrefab: {fileID: 100100000, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
---- !u!4 &2112077611 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8265837034703317594, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
-  m_PrefabInstance: {fileID: 2112077610}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2112077618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,29 +2586,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptMessage: Press E to pickup gun
   door: {fileID: 164450820}
---- !u!114 &2112077625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164450820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!1 &2143669454
 GameObject:
   m_ObjectHideFlags: 0

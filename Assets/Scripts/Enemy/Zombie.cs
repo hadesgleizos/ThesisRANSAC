@@ -36,6 +36,8 @@ public class Zombie : MonoBehaviour
     public bool showAttackRange = true;
     public Color attackRangeColor = Color.red;
 
+    [SerializeField] private PhysicMaterial slipperyTopMaterial;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -74,6 +76,26 @@ public class Zombie : MonoBehaviour
         
         nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
         StartCoroutine(PlayIdleSoundsRoutine());
+
+        // Create a slippery physics material for the top collider if none assigned
+        if (slipperyTopMaterial == null)
+        {
+            slipperyTopMaterial = new PhysicMaterial
+            {
+                dynamicFriction = 0,
+                staticFriction = 0,
+                frictionCombine = PhysicMaterialCombine.Minimum,
+                bounciness = 0,
+                bounceCombine = PhysicMaterialCombine.Minimum
+            };
+        }
+        
+        // Apply it to the collider
+        CapsuleCollider capsule = GetComponent<CapsuleCollider>();
+        if (capsule != null)
+        {
+            capsule.material = slipperyTopMaterial;
+        }
     }
 
     void Update()

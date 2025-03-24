@@ -900,6 +900,7 @@ MonoBehaviour:
   deathSoundVolume: 1
   showAttackRange: 1
   attackRangeColor: {r: 1, g: 0, b: 0, a: 1}
+  slipperyTopMaterial: {fileID: 13400000, guid: 54b1d8cb94d444aa5a0bb5e522e675f5, type: 2}
 --- !u!1 &2153647207848170206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1368861272248906, guid: 8d862076c59fabf43b7ca2084f63226f, type: 3}
