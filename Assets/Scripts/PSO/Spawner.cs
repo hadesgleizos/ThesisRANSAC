@@ -86,6 +86,10 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
     private bool inCooldown = false; // Add this with other private variables
     private float cooldownTimeRemaining = 0f; // Add this with other private variables
 
+    // Add these variables for deterministic spawning
+    private float nextSpawnTime = 0f;
+    private float spawnInterval = 2f; // Will be calculated from spawnRate
+
     private void Start()
     {
         // NEW: If no PlayerPerformance assigned in Inspector, try finding it
@@ -245,43 +249,67 @@ public void NextStage()
 
     private IEnumerator SpawnZombies()
     {
+        // Initialize nextSpawnTime when spawning starts
+        nextSpawnTime = Time.time;
+        // Calculate initial spawn interval
+        spawnInterval = 1f / spawnRate;
+        
         while (spawning)
         {
             if (spawnRate > 0 && spawnPoints.Count > 0)
             {
-                // Generate a random value to determine if we spawn this frame
-                if (Random.value < spawnRate * Time.deltaTime)
+                // Check if it's time to spawn
+                if (Time.time >= nextSpawnTime)
                 {
                     GameObject zombiePrefab = GetRandomZombiePrefab();
                     if (zombiePrefab != null)
                     {
-                        // Randomly select one of the available spawn points
-                        int randomSpawnIndex = Random.Range(0, spawnPoints.Count);
-                        Vector3 spawnPosition = spawnPoints[randomSpawnIndex].transform.position;
-                        
-                        GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
-                        
-                        var zombieComponent = newZombie.GetComponent<Zombie>();
-                        if (zombieComponent != null)
+                        // Get the spawn point
+                        int spawnIndex = currentSpawnIndex % spawnPoints.Count;
+                        GameObject spawnPoint = spawnPoints[spawnIndex];
+                        currentSpawnIndex++;
+
+                        // Spawn the zombie
+                        if (spawnPoint != null)
                         {
-                            zombieComponent.SetSpeed(currentZombieSpeed); // Use current speed from PSO
-                            if (debugSpeedChanges)
+                            Vector3 spawnPosition = spawnPoint.transform.position;
+                            GameObject spawnedZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
+                            
+                            // Set zombie speed to the current speed
+                            if (spawnedZombie.GetComponent<Zombie>() != null)
                             {
-                                Debug.Log($"[Spawner] New zombie spawned with speed: {currentZombieSpeed:F2}");
+                                spawnedZombie.GetComponent<Zombie>().SetSpeed(currentZombieSpeed);
                             }
+                            else if (spawnedZombie.GetComponent<Spitter>() != null)
+                            {
+                                spawnedZombie.GetComponent<Spitter>().SetSpeed(currentZombieSpeed * 0.9f);
+                            }
+                            else if (spawnedZombie.GetComponent<Jograt>() != null)
+                            {
+                                spawnedZombie.GetComponent<Jograt>().SetSpeed(currentZombieSpeed);
+                            }
+                            else if (spawnedZombie.GetComponent<Bomba>() != null)
+                            {
+                                spawnedZombie.GetComponent<Bomba>().SetSpeed(currentZombieSpeed);
+                            }
+                            
+                            // Add to the active zombies list
+                            activeZombies.Add(spawnedZombie);
                         }
                         
-                        activeZombies.Add(newZombie);
+                        // Set the next spawn time based on CURRENT interval
+                        nextSpawnTime = Time.time + spawnInterval;
+                        
+                        // Log the exact spawn time for debugging
+                        if (debugSpeedChanges)
+                        {
+                            Debug.Log($"[Spawner] New zombie spawned at {Time.time:F2}s, next spawn at {nextSpawnTime:F2}s (interval: {spawnInterval:F2}s)");
+                        }
                     }
                 }
-                
-                // Wait a short time before checking again
-                yield return null;
             }
-            else
-            {
-                yield return null;
-            }
+            
+            yield return null;
         }
     }
 
@@ -409,8 +437,29 @@ public void NextStage()
 
     public void UpdateSpawnRate(float newSpawnRate)
     {
+        float oldRate = spawnRate;
         spawnRate = newSpawnRate;
-        Debug.Log($"Spawn Rate Updated: {spawnRate}");
+        
+        // Calculate new interval
+        float newInterval = 1f / spawnRate;
+        
+        // Only update the spawn interval if significantly different (over 10%)
+        if (Mathf.Abs(newInterval - spawnInterval) / spawnInterval > 0.1f)
+        {
+            // Log before change
+            Debug.Log($"Spawn Rate Updated: {spawnRate:F2} (changing interval from {spawnInterval:F2}s to {newInterval:F2}s)");
+            
+            // Update the spawn interval
+            spawnInterval = newInterval;
+            
+            // Optionally, adjust the next spawn time based on the new interval
+            // This makes changes apply more smoothly
+            if (nextSpawnTime > Time.time)
+            {
+                float remainingTimeRatio = (nextSpawnTime - Time.time) / spawnInterval;
+                nextSpawnTime = Time.time + (remainingTimeRatio * newInterval);
+            }
+        }
     }
 
     public float GetCurrentSpawnRate()
