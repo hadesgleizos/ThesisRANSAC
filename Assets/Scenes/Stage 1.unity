@@ -1321,6 +1321,11 @@ MonoBehaviour:
   downwardForce: 10
   zombieTopCheckRadius: 0.5
   maxStandingOnZombieTime: 0.5
+--- !u!4 &698401527 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7889298640303136199, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+  m_PrefabInstance: {fileID: 698401512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &799138061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1372,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 422715760042957778, guid: c6443a455d720fc41b83de7b9b1c5e2d, type: 3}
   m_PrefabInstance: {fileID: 2112077610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &840873372 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5458942337298440497, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+  m_PrefabInstance: {fileID: 698401512}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &859433795
 GameObject:
@@ -6861,7 +6871,7 @@ MonoBehaviour:
   LerpMovement: 1
   UseCameraReference: 1
   ShowDistance: 1
-  LocalPlayer: {fileID: 0}
+  LocalPlayer: {fileID: 840873372}
   IndicatorUI: {fileID: 100000, guid: 2dbbd7213a688504da10f3724787323e, type: 3}
   PanelIndicator: {fileID: 2407138018747370384}
 --- !u!222 &4233494447598380103
@@ -7741,7 +7751,7 @@ MonoBehaviour:
   MaxHealthColor: {r: 1, g: 1, b: 1, a: 1}
   MinHealthColor: {r: 0.88235295, g: 0, b: 0.34509805, a: 1}
   useShake: 0
-  ShakeObject: {fileID: 0}
+  ShakeObject: {fileID: 698401527}
   ShakeDecay: 0.0035
   ShakeIntensity: 0.07
   ShakeAmount: 0.25
