@@ -947,6 +947,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+      propertyPath: minSpawnRate
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: playerPerformance
       value: 
       objectReference: {fileID: 762497804}
