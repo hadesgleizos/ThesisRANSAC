@@ -57,6 +57,10 @@ public class Jograt : MonoBehaviour
     public GameObject leapImpactEffect;     // Assign in inspector - particle effect for impact
     private ParticleSystem activeTrailEffect;  // Reference to the currently active trail effect
 
+    [Header("Layer Settings")]
+    [SerializeField] private LayerMask ignoredLayers; // Assign this in inspector to include Invisible Wall layer
+    [SerializeField] private string invisibleWallLayerName = "Invisible Wall"; // Layer name to ignore
+
     void Start()
     {
         // Get existing components
@@ -108,6 +112,9 @@ public class Jograt : MonoBehaviour
         
         nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
         StartCoroutine(PlayIdleSoundsRoutine());
+
+        // Set up layer collision ignoring
+        SetupLayerCollisionIgnore();
     }
 
     // Update method with improved leap decision making including minimum range
@@ -515,6 +522,9 @@ public class Jograt : MonoBehaviour
             rb.drag = 0;
             rb.angularDrag = 10;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
+            
+            // Make sure we re-apply layer collision ignoring after creating Rigidbody
+            SetupLayerCollisionIgnore();
         }
         
         // Activate physics for the leap
@@ -751,5 +761,37 @@ public class Jograt : MonoBehaviour
             // Just destroy after a few seconds
             Destroy(impactObj, 3f);
         }
+    }
+
+    // Add this method to set up layer collision ignoring
+    private void SetupLayerCollisionIgnore()
+    {
+        // Find the Invisible Wall layer
+        int invisibleWallLayer = LayerMask.NameToLayer(invisibleWallLayerName);
+        
+        if (invisibleWallLayer == -1)
+        {
+            Debug.LogWarning($"Layer '{invisibleWallLayerName}' not found. Create this layer in your project settings.");
+            return;
+        }
+        
+        // Get all colliders on this Jograt
+        Collider[] myColliders = GetComponentsInChildren<Collider>();
+        
+        // Ignore collision between this Jograt's colliders and the invisible wall layer
+        foreach (Collider col in myColliders)
+        {
+            // Set the collider to ignore the invisible wall layer
+            Physics.IgnoreLayerCollision(col.gameObject.layer, invisibleWallLayer, true);
+        }
+        
+        Debug.Log($"Jograt {gameObject.name} set to ignore collisions with layer '{invisibleWallLayerName}'");
+    }
+
+    // Also handle this when Rigidbody is destroyed and recreated
+    private void OnEnable()
+    {
+        // Make sure we're ignoring the invisible wall layer whenever this component is enabled
+        SetupLayerCollisionIgnore();
     }
 }

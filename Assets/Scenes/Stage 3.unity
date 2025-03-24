@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 82b660520bdecce4daf45d270ec93fe4, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 274018ba075fc1e4e98f4602ea1f011a, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2020,7 +2020,7 @@ PrefabInstance:
       objectReference: {fileID: 1912219531}
     - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
       propertyPath: _layerOverrides.Array.data[0].distance
-      value: 170
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4030102978042334197, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
       propertyPath: m_Name
@@ -3652,7 +3652,7 @@ GameObject:
   - component: {fileID: 1287518520}
   - component: {fileID: 1287518519}
   - component: {fileID: 1287518518}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Trigger 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3803,7 +3803,7 @@ GameObject:
   - component: {fileID: 1318955862}
   - component: {fileID: 1318955861}
   - component: {fileID: 1318955860}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4612,7 +4612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1760011896}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: TriggerColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4725,7 +4725,7 @@ GameObject:
   - component: {fileID: 1831223118}
   - component: {fileID: 1831223117}
   - component: {fileID: 1831223116}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Trigger 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4991,7 +4991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: gravity
-      value: -20
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: jumpHeight
@@ -5193,27 +5193,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ee7bd83b3414f71933799a1d004776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctionForce: 10
-  checkDistance: 0.3
+  correctionDistance: 0.3
   wallLayers:
     serializedVersion: 2
     m_Bits: 4294967295
   visualizeRays: 1
   raycastCount: 12
-  clipPreventionMultiplier: 3
-  cornerDetectionAngle: 120
   teleportThreshold: 0.5
   preventZombiePushing: 1
   zombieTag: Zombie
   makeZombiesPassThrough: 1
-  absolutePhysicsImmunity: 1
   enableEmergencyTeleport: 1
   emergencyEscapeDistance: 0.3
   stuckTimeThreshold: 0.5
   restorePositionWhenStuck: 1
   preventStandingOnZombies: 1
-  slideForce: 8
-  downwardForce: 15
   zombieTopCheckRadius: 0.5
   maxStandingOnZombieTime: 0.5
 --- !u!1 &1924971041

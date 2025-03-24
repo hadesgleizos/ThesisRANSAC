@@ -12,29 +12,29 @@ public class Zombie : MonoBehaviour
     private PlayerPerformance playerPerformance;
     private float updateInterval = 1.0f; // How often to update speed in seconds
     private Animator animator;
-    public float damage = 20f;            // Damage dealt to player
-    public float attackRange = 2f;        // Range at which zombie can attack
-    public float attackCooldown = 2f;     // Time between attacks
+    [SerializeField] private float damage = 20f;            // Damage dealt to player
+    [SerializeField] private float attackRange = 2f;        // Range at which zombie can attack
+    [SerializeField] private float attackCooldown = 2f;     // Time between attacks
     private bool canAttack = true;
     private bool isDead = false;
     private bool isAttacking = false;     // Flag to track if zombie is attacking
-    public float health = 100f;
+    [SerializeField] private float health = 100f;
 
     [Header("Movement Settings")]
-    public float rotationSpeed = 10f;
-    public float acceleration = 8f;
-    public float stoppingDistance = 1.5f;
+    [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private float acceleration = 8f;
+    [SerializeField] private float stoppingDistance = 1.5f;
 
     [Header("Sound Settings")]
-    public float idleSoundInterval = 5f;
-    public float idleSoundVolume = 1f;
-    public float attackSoundVolume = 1f;
-    public float deathSoundVolume = 1f;
+    [SerializeField] private float idleSoundInterval = 5f;
+    [SerializeField] private float idleSoundVolume = 1f;
+    [SerializeField] private float attackSoundVolume = 1f;
+    [SerializeField] private float deathSoundVolume = 1f;
     private float nextIdleSoundTime;
 
     [Header("Debug Visualization")]
-    public bool showAttackRange = true;
-    public Color attackRangeColor = Color.red;
+    [SerializeField] private bool showAttackRange = true;
+    [SerializeField] private Color attackRangeColor = Color.red;
 
     [SerializeField] private PhysicMaterial slipperyTopMaterial;
 

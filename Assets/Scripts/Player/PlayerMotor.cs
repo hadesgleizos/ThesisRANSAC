@@ -25,6 +25,9 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true; // Doesn't respond to forces
+        rb.interpolation = RigidbodyInterpolation.Interpolate; // Smoother movement
     }
 
     void Update()

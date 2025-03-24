@@ -96,7 +96,7 @@ MonoBehaviour:
   - Concrete
   acidParticles: {fileID: 5997146954190191620}
   damagePerSecond: 3
-  damageTickRate: 0.5
+  damageTickRate: 0.2
   damageableLayers:
     serializedVersion: 2
     m_Bits: 8193

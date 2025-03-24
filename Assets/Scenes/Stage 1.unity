@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 632344209}
   - component: {fileID: 632344210}
   - component: {fileID: 632344211}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Trigger1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1117,7 +1117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: gravity
-      value: -20
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+      propertyPath: isGrounded
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: jumpHeight
@@ -1298,27 +1302,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ee7bd83b3414f71933799a1d004776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctionForce: 10
-  checkDistance: 0.3
+  correctionDistance: 0.3
   wallLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  visualizeRays: 1
-  raycastCount: 8
-  clipPreventionMultiplier: 2
-  cornerDetectionAngle: 120
+    m_Bits: 16367
+  visualizeRays: 0
+  raycastCount: 12
   teleportThreshold: 0.5
   preventZombiePushing: 1
   zombieTag: Zombie
-  makeZombiesPassThrough: 0
-  absolutePhysicsImmunity: 1
+  makeZombiesPassThrough: 1
   enableEmergencyTeleport: 1
   emergencyEscapeDistance: 0.3
   stuckTimeThreshold: 0.5
   restorePositionWhenStuck: 1
   preventStandingOnZombies: 1
-  slideForce: 5
-  downwardForce: 10
   zombieTopCheckRadius: 0.5
   maxStandingOnZombieTime: 0.5
 --- !u!4 &698401527 stripped
@@ -2387,7 +2385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2003333916}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: TriggerColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3559,6 +3557,26 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 698401525}
+    - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
+      propertyPath: _useRoundFar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
+      propertyPath: _layerOverrides.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
+      propertyPath: _layerOverrides.Array.data[0].distance
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
+      propertyPath: _layerOverrides.Array.data[1].distance
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759506964052241529, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
+      propertyPath: _layerOverrides.Array.data[1].layerName
+      value: DontCorrect
+      objectReference: {fileID: 0}
     - target: {fileID: 4030102978042334197, guid: 0386da2ff1ff63746a781e3243eb513d, type: 3}
       propertyPath: m_Name
       value: PerLayerDistance
