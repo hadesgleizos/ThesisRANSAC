@@ -1117,11 +1117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: gravity
-      value: -15
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: jumpHeight
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6016366018522766237, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       propertyPath: maxFallSpeed
@@ -1197,6 +1197,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7613886527027991264, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 698401515}
+    - targetCorrespondingSourceObject: {fileID: 7613886527027991264, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 698401526}
     - targetCorrespondingSourceObject: {fileID: 1563465356436283590, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 698401516}
@@ -1283,6 +1286,36 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4618940740531202320, guid: 972e48d95dbbbd448b929dcdbcd5efb5, type: 3}
   m_PrefabInstance: {fileID: 698401512}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &698401526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698401513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ee7bd83b3414f71933799a1d004776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctionForce: 10
+  checkDistance: 0.5
+  wallLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  visualizeRays: 1
+  raycastCount: 8
+  clipPreventionMultiplier: 2
+  cornerDetectionAngle: 120
+  teleportThreshold: 0.5
+  preventZombiePushing: 1
+  zombieTag: Zombie
+  makeZombiesPassThrough: 0
+  absolutePhysicsImmunity: 1
+  enableEmergencyTeleport: 1
+  emergencyEscapeDistance: 0.3
+  stuckTimeThreshold: 0.5
+  restorePositionWhenStuck: 1
 --- !u!1 &799138061
 GameObject:
   m_ObjectHideFlags: 0

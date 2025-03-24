@@ -10,6 +10,15 @@ public class PlayerLook : MonoBehaviour
     private float xRotation = 0f;
     public float xSensitivity = 30f;
     public float ySensitivity = 30f;
+    
+    // Maximum allowed delta time to prevent large jumps
+    [SerializeField] private float maxAllowedDeltaTime = 0.1f; 
+    
+    // Smoothing variables
+    [SerializeField] private bool useSmoothing = true;
+    [SerializeField] private float smoothingFactor = 10f;
+    private Vector2 currentLookVelocity;
+    private Vector2 smoothedLookInput;
 
     void Start()
     {
@@ -49,26 +58,41 @@ public class PlayerLook : MonoBehaviour
     // Process the input to rotate the camera and player
     public void ProcessLook(Vector2 input)
     {
+        // Cap deltaTime to prevent jumps during fps drops
+        float deltaTime = Mathf.Min(Time.deltaTime, maxAllowedDeltaTime);
+        
+        // Apply smoothing to the input
+        if (useSmoothing)
+        {
+            smoothedLookInput = Vector2.SmoothDamp(
+                smoothedLookInput, 
+                input, 
+                ref currentLookVelocity, 
+                0.1f, 
+                Mathf.Infinity, 
+                deltaTime * smoothingFactor);
+            
+            input = smoothedLookInput;
+        }
+        
         float mouseX = input.x;
         float mouseY = input.y;
 
-        // Calculate camera rotation for both axes
-        xRotation -= (mouseY * Time.deltaTime) * ySensitivity;
+        // Calculate camera rotation for both axes with capped deltaTime
+        xRotation -= (mouseY * deltaTime) * ySensitivity;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
         
         // Apply both vertical and horizontal rotation to the camera
-        cam.transform.rotation = Quaternion.Euler(xRotation, 
-            cam.transform.eulerAngles.y + (mouseX * Time.deltaTime) * xSensitivity, 
-            0);
+        float yRotation = cam.transform.eulerAngles.y + (mouseX * deltaTime) * xSensitivity;
         
-        // Make the player body follow the camera's horizontal rotation (optional)
+        // Apply the rotation with Euler angles
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 
     public Vector2 GetLookInput()
     {
         return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }
-
 
     void Update()
     {
