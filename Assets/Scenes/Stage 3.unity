@@ -2258,7 +2258,7 @@ MonoBehaviour:
   toggleKey: 9
   windowPosition: {x: 20, y: 20}
   windowSize: {x: 400, y: 270}
-  backgroundAlpha: 0.4
+  backgroundAlpha: 0.1
   psoManager: {fileID: 687400654}
   easySpawnRateThreshold: 0.37
   hardSpawnRateThreshold: 0.73

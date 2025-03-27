@@ -218,9 +218,28 @@ private void AdjustDifficulty(float killRate, float healthPercentage)
 
     if (isStruggling)
     {
-        // Use a more aggressive drop when struggling
-        newSpawnRate = Mathf.Lerp(currentSpawnRate, minSpawnRate + (maxSpawnRate - minSpawnRate) * 0.3f, bigDropFactor);
-        newSpeed = Mathf.Lerp(currentSpeed, minSpeed + (maxSpeed - minSpeed) * 0.3f, bigDropFactor);
+        // Calculate health-based scaling factor - more aggressive reduction as health gets lower
+        float healthFactor = 0.0f;
+        if (healthPercentage < lowHealthThreshold) {
+            // Scale from 0-1 based on how far below threshold the health is
+            // The lower the health, the higher the healthFactor (up to 0.6 at zero health)
+            healthFactor = 0.6f * (1.0f - (healthPercentage / lowHealthThreshold));
+        }
+        
+        // Dynamic target based on health - lower health means lower target parameters
+        float targetPercent = 0.3f - healthFactor;
+        
+        // Apply more aggressive drop factor when health is low
+        float adjustedDropFactor = Mathf.Lerp(bigDropFactor, 0.9f, healthFactor);
+        
+        // Calculate new parameters with health-based adjustment
+        newSpawnRate = Mathf.Lerp(currentSpawnRate, minSpawnRate + (maxSpawnRate - minSpawnRate) * targetPercent, adjustedDropFactor);
+        newSpeed = Mathf.Lerp(currentSpeed, minSpeed + (maxSpeed - minSpeed) * targetPercent, adjustedDropFactor);
+
+        // Debug info
+        //Debug.Log($"[PSOManager] Health-based adjustment: Health: {healthPercentage:F2}, " +
+        //          $"HealthFactor: {healthFactor:F2}, TargetPercent: {targetPercent:F2}, " +
+        //          $"AdjustedDropFactor: {adjustedDropFactor:F2}");
     }
     else
     {
@@ -396,7 +415,7 @@ private Vector2 GetGlobalBestPosition()
     }
     
     //UnityEngine.Debug.Log($"PSO Global Best - Position: ({bestPosition.x:F2}, {bestPosition.y:F2}), " +
-    //                     $"Player Struggling: {isStruggling}");
+                        // $"Player Struggling: {isStruggling}");
     
     return bestPosition;
 }

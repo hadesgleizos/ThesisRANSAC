@@ -50,6 +50,10 @@ public class PSODisplay : MonoBehaviour
     // Add this to track the last toggle time to prevent double-toggling
     private float lastToggleTime = 0f;
     private float toggleCooldown = 0.5f; // Minimum seconds between toggles
+
+    // Add these new fields to refresh the display periodically
+    private float displayRefreshInterval = 0.5f;
+    private float lastRefreshTime = 0f;
     
     void Start()
     {
@@ -93,6 +97,20 @@ public class PSODisplay : MonoBehaviour
             ToggleVisibility();
             lastToggleTime = Time.unscaledTime;
             wasKeyPressed = true; // Set wasKeyPressed to prevent OnGUI from toggling again
+        }
+        
+        // Refresh displayed values periodically when visible
+        if (isDisplayVisible && psoManager != null && psoManager.spawner != null)
+        {
+            if (Time.unscaledTime - lastRefreshTime > displayRefreshInterval)
+            {
+                // Get current values directly from the spawner
+                spawnRate = psoManager.spawner.GetCurrentSpawnRate();
+                speed = psoManager.spawner.GetCurrentZombieSpeed();
+                
+                // The rest of the data will be updated through UpdateDisplayData
+                lastRefreshTime = Time.unscaledTime;
+            }
         }
         
         // No need for the alternative detection here since we're already checking properly
@@ -273,8 +291,18 @@ public class PSODisplay : MonoBehaviour
         expectedKillRate = expectedKR;
         actualKillRate = actualKR;
         performanceRatio = perfRatio;
-        spawnRate = sRate;
-        speed = zombieSpeed;
+        // Override these values with the direct ones from spawner
+        if (psoManager != null && psoManager.spawner != null)
+        {
+            spawnRate = psoManager.spawner.GetCurrentSpawnRate();
+            speed = psoManager.spawner.GetCurrentZombieSpeed();
+        }
+        else
+        {
+            // Fallback to provided values if spawner not available
+            spawnRate = sRate;
+            speed = zombieSpeed;
+        }
         playerStruggling = struggling;
         fitness = fitScore;
     }
@@ -352,6 +380,13 @@ public class PSODisplay : MonoBehaviour
             minSpeed = psoManager.minSpeed;
             maxSpeed = psoManager.maxSpeed;
             UpdateThresholdsFromRanges();
+            
+            // Force immediate refresh of current values from spawner
+            if (psoManager.spawner != null)
+            {
+                spawnRate = psoManager.spawner.GetCurrentSpawnRate();
+                speed = psoManager.spawner.GetCurrentZombieSpeed();
+            }
         }
     }
 }
