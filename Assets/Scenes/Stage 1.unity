@@ -424,13 +424,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc918d5f505d4e6badf985f72735b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showOnStart: 1
+  toggleKey: 282
+  windowPosition: {x: 20, y: 20}
+  windowSize: {x: 400, y: 200}
+  backgroundAlpha: 0.7
   psoManager: {fileID: 136150279779953268}
-  showDisplay: 1
-  backgroundColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 0.7}
-  textColor: {r: 1, g: 1, b: 1, a: 1}
-  fontSize: 14
-  position: {x: 10, y: 10}
-  size: {x: 300, y: 120}
+  easySpawnRateThreshold: 0.65
+  hardSpawnRateThreshold: 0.85
+  easySpeedThreshold: 0.5
+  hardSpeedThreshold: 0.8
 --- !u!4 &258153301
 Transform:
   m_ObjectHideFlags: 0
