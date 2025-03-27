@@ -16,7 +16,7 @@ public class GunPickup : MonoBehaviour
         weaponManager = GetComponent<WeaponManager>();
         if (weaponManager == null)
         {
-            Debug.LogError("WeaponManager not found on the player!");
+            //Debug.LogError("WeaponManager not found on the player!");
             return;
         }
 
@@ -65,7 +65,7 @@ public class GunPickup : MonoBehaviour
 
 void PickupGun(GameObject fakeGun)
 {
-    Debug.Log("Attempting to pick up gun: " + fakeGun.name);
+    //Debug.Log("Attempting to pick up gun: " + fakeGun.name);
 
     // Destroy the pickup object immediately
     Destroy(fakeGun);  // Changed from SetActive(false) to Destroy()
@@ -101,7 +101,7 @@ void ThrowGun()
     // Get the currently EQUIPPED weapon index (not just the first owned weapon)
     int currentIndex = weaponManager.currentWeaponIndex;
     
-    Debug.Log($"Throwing weapon at index: {currentIndex}");
+    //Debug.Log($"Throwing weapon at index: {currentIndex}");
     
     GameObject fakeGunPrefab = weaponManager.fakeGunPrefabs[currentIndex];
     if (fakeGunPrefab != null)
