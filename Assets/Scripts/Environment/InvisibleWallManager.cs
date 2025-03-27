@@ -66,11 +66,11 @@ public class InvisibleWallManager : MonoBehaviour
         if (playerObject != null)
         {
             player = playerObject.transform;
-            Debug.Log($"Found player in scene: {playerObject.scene.name}");
+            //Debug.Log($"Found player in scene: {playerObject.scene.name}");
         }
         else
         {
-            Debug.LogWarning("Player not found in any loaded scene. Make sure it has the correct tag.");
+            //Debug.LogWarning("Player not found in any loaded scene. Make sure it has the correct tag.");
         }
     }
     
@@ -85,7 +85,7 @@ public class InvisibleWallManager : MonoBehaviour
             Collider wallCollider = wall.GetComponent<Collider>();
             if (wallCollider == null)
             {
-                Debug.LogWarning($"Wall {wall.name} has no collider. Adding a box collider.");
+                //Debug.LogWarning($"Wall {wall.name} has no collider. Adding a box collider.");
                 wallCollider = wall.AddComponent<BoxCollider>();
             }
             wallColliders[wall] = wallCollider;

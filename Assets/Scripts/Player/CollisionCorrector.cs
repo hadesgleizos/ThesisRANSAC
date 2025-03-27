@@ -69,7 +69,7 @@ public class CollisionCorrector : MonoBehaviour
         
         if (rb == null)
         {
-            Debug.LogError("CollisionCorrector requires a Rigidbody component on the player!");
+            //Debug.LogError("CollisionCorrector requires a Rigidbody component on the player!");
         }
         
         if (playerCollider == null)
@@ -78,7 +78,7 @@ public class CollisionCorrector : MonoBehaviour
             playerCollider = GetComponent<CapsuleCollider>();
             if (playerCollider == null)
             {
-                Debug.LogWarning("No CapsuleCollider found. CollisionCorrector works best with a CapsuleCollider.");
+                //Debug.LogWarning("No CapsuleCollider found. CollisionCorrector works best with a CapsuleCollider.");
             }
         }
         
@@ -87,7 +87,7 @@ public class CollisionCorrector : MonoBehaviour
         usingCMFMover = (moverComponent != null);
         if (usingCMFMover)
         {
-            Debug.Log("CMF Mover found - enabling compatibility mode");
+            //Debug.Log("CMF Mover found - enabling compatibility mode");
             
             // Set the appropriate CMF Mover settings for better collision prevention
             moverComponent.SetColliderThickness(1.2f);
@@ -236,7 +236,7 @@ public class CollisionCorrector : MonoBehaviour
             // Teleport back to last grounded position
             transform.position = lastGroundedPosition + Vector3.up * 0.5f;
             rb.velocity = Vector3.zero;
-            Debug.Log("Anti-cheese protection: Teleported player back to ground");
+            //Debug.Log("Anti-cheese protection: Teleported player back to ground");
         }
         else
         {
@@ -247,7 +247,7 @@ public class CollisionCorrector : MonoBehaviour
             Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
             rb.AddForce(randomDir * slideForce * 2f, ForceMode.Impulse);
             
-            Debug.Log("Anti-cheese protection: Applied strong forces to get player off zombies");
+            //Debug.Log("Anti-cheese protection: Applied strong forces to get player off zombies");
         }
         
         // Reset timer
@@ -305,7 +305,7 @@ public class CollisionCorrector : MonoBehaviour
             if (Physics.Raycast(oldestPosition, direction, out hit, distance, wallLayers))
             {
                 // There is a wall between our positions, we likely clipped through
-                Debug.LogWarning("Detected potential wall clip-through! Restoring position.");
+                //Debug.LogWarning("Detected potential wall clip-through! Restoring position.");
                 transform.position = lastSafePosition;
                 rb.velocity = Vector3.zero;
             }
@@ -389,7 +389,7 @@ public class CollisionCorrector : MonoBehaviour
                     {
                         // Teleport back to last safe position
                         transform.position = lastSafePosition;
-                        Debug.Log("Restored to safe position!");
+                        //Debug.Log("Restored to safe position!");
                     }
                     else
                     {
@@ -420,7 +420,7 @@ public class CollisionCorrector : MonoBehaviour
         {
             // Teleport slightly in that direction
             transform.position += escapeDirection * emergencyEscapeDistance;
-            Debug.Log("Emergency escape activated!");
+            //Debug.Log("Emergency escape activated!");
         }
     }
     
