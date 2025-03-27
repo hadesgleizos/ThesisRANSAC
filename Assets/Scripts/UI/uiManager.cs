@@ -21,7 +21,7 @@ public class uiManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Failed to parse color #B5F165. Ensure the code is correct.");
+            //Debug.LogError("Failed to parse color #B5F165. Ensure the code is correct.");
         }
     }
 

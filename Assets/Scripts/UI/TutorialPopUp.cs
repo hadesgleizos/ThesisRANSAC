@@ -14,7 +14,7 @@ public class TutorialPopUp : MonoBehaviour
         // Check if it's the player and if we haven't displayed the pop-up before
         if (!hasBeenTriggered && other.CompareTag("MainCamera"))
         {
-            Debug.Log("Test");
+            //Debug.Log("Test");
             popUp.SetActive(true);
             hasBeenTriggered = true;
         }
@@ -24,7 +24,7 @@ public class TutorialPopUp : MonoBehaviour
     {
         if (hasBeenTriggered && other.CompareTag("MainCamera"))
         {
-            Debug.Log("Tutorial completed. Destroying trigger...");
+            //Debug.Log("Tutorial completed. Destroying trigger...");
             
             // Destroy the GameObject that has this script (the trigger zone)
             Destroy(gameObject);
