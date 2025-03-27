@@ -69,9 +69,6 @@ public class PSOManager : MonoBehaviour
     private int currentWave = 0;
     private int totalWaves;
 
-    [SerializeField] 
-    private PSODisplay psoDisplay;
-
     private void Start()
     {
         // Subscribe to wave events
@@ -340,20 +337,6 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
                          $"SpawnRate: {spawnRate:F2}, Speed: {speed:F2}, " +
                          $"Struggling: {playerStruggling}, " +
                          $"Fitness: {fitness:F2}");
-
-    if (psoDisplay != null)
-    {
-        psoDisplay.UpdateDisplayData(
-            spawnerCount,
-            expectedKillRate,
-            killRate,
-            performanceRatio,
-            spawnRate,
-            speed,
-            playerStruggling,
-            fitness
-        );
-    }
 
     return fitness;
 }

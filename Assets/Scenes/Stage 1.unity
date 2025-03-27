@@ -427,13 +427,13 @@ MonoBehaviour:
   showOnStart: 1
   toggleKey: 282
   windowPosition: {x: 20, y: 20}
-  windowSize: {x: 400, y: 200}
-  backgroundAlpha: 0.7
+  windowSize: {x: 400, y: 270}
+  backgroundAlpha: 0.4
   psoManager: {fileID: 136150279779953268}
-  easySpawnRateThreshold: 0.65
-  hardSpawnRateThreshold: 0.85
-  easySpeedThreshold: 0.5
-  hardSpeedThreshold: 0.8
+  easySpawnRateThreshold: 0.37
+  hardSpawnRateThreshold: 0.73
+  easySpeedThreshold: 4.2
+  hardSpeedThreshold: 5.8
 --- !u!4 &258153301
 Transform:
   m_ObjectHideFlags: 0
