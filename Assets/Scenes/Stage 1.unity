@@ -395,6 +395,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1878856502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &258153299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 258153301}
+  - component: {fileID: 258153300}
+  m_Layer: 0
+  m_Name: PSODisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &258153300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258153299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc918d5f505d4e6badf985f72735b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  psoManager: {fileID: 136150279779953268}
+  showDisplay: 1
+  backgroundColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 0.7}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  fontSize: 14
+  position: {x: 10, y: 10}
+  size: {x: 300, y: 120}
+--- !u!4 &258153301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258153299}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 46.966835, y: 5.2667756, z: -210.62262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &304166535 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1966849687265213420, guid: eae55d284208c374aaef9454e110cb6a, type: 3}
@@ -3029,6 +3080,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+      propertyPath: psoDisplay
+      value: 
+      objectReference: {fileID: 258153300}
+    - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: healthWeight
       value: 0.2
       objectReference: {fileID: 0}
@@ -3113,6 +3168,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+--- !u!114 &136150279779953268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+  m_PrefabInstance: {fileID: 136150279779953267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60924595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18163d65727c28e4093cbfe04feab424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &156448935102729052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13271,3 +13337,4 @@ SceneRoots:
   - {fileID: 445126684}
   - {fileID: 1190303567}
   - {fileID: 115655868}
+  - {fileID: 258153301}
