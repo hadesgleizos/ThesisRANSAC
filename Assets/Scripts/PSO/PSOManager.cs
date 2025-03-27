@@ -69,6 +69,9 @@ public class PSOManager : MonoBehaviour
     private int currentWave = 0;
     private int totalWaves;
 
+    [SerializeField] 
+    private PSODisplay psoDisplay;
+
     private void Start()
     {
         // Subscribe to wave events
@@ -82,7 +85,7 @@ public class PSOManager : MonoBehaviour
         }
         else
         {
-            UnityEngine.Debug.LogError("Spawner reference not set in PSOManager!");
+            ////UnityEngine.Debug.LogError("Spawner reference not set in PSOManager!");
         }
 
         InitializeParticles();
@@ -102,14 +105,14 @@ public class PSOManager : MonoBehaviour
         isPSOPaused = false;
         currentWave = waveNumber;
         UpdatePSOParameters();
-        UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} started. PSO calculations resumed.");
+        //UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} started. PSO calculations resumed.");
     }
 
     private void OnWaveEnd(int waveNumber)
     {
         isWaveActive = false;
         isPSOPaused = true;
-        UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} ended. PSO calculations paused.");
+        //UnityEngine.Debug.Log($"[PSOManager] Wave {waveNumber} ended. PSO calculations paused.");
         
         // Reset evaluation timer to ensure fresh start on next wave
         evaluationTimer = 0f;
@@ -190,8 +193,8 @@ public class PSOManager : MonoBehaviour
         float averageTime = totalExecutionTime / runCount;
         long averageMemory = totalMemoryUsage / runCount;
 
-        UnityEngine.Debug.Log($"Rolling Average Execution Time: {averageTime} ms");
-        UnityEngine.Debug.Log($"Rolling Average Memory Usage: {averageMemory} bytes");
+        //UnityEngine.Debug.Log($"Rolling Average Execution Time: {averageTime} ms");
+        //UnityEngine.Debug.Log($"Rolling Average Memory Usage: {averageMemory} bytes");
     }
 
 private void AdjustDifficulty(float killRate, float healthPercentage)
@@ -243,10 +246,10 @@ private void AdjustDifficulty(float killRate, float healthPercentage)
         spawner.SetAllZombieSpeeds(newSpeed);
     }
 
-    UnityEngine.Debug.Log($"[PSOManager] Adjustments - Spawn Rate: {newSpawnRate:F3}, Speed: {newSpeed:F3}, " +
-                         $"Global Best: ({bestSpawnRate:F2}, {bestSpeed:F2}), " +
-                         $"Performance Ratio: {performanceRatio:F2}, " +
-                         $"Struggling: {isStruggling}");
+    //UnityEngine.Debug.Log($"[PSOManager] Adjustments - Spawn Rate: {newSpawnRate:F3}, Speed: {newSpeed:F3}, " +
+    //                     $"Global Best: ({bestSpawnRate:F2}, {bestSpeed:F2}), " +
+    //                     $"Performance Ratio: {performanceRatio:F2}, " +
+    //                     $"Struggling: {isStruggling}");
 }
 
 
@@ -330,13 +333,27 @@ private float EvaluateParticle(Particle particle, float killRate, float healthPc
     // Final fitness calculation
     float fitness = (killRateScore * killRateWeight) + (healthScore * healthWeight);
 
-    UnityEngine.Debug.Log($"PSO Evaluation - Spawners: {spawnerCount}, " +
-                         $"Expected KillRate: {expectedKillRate:F2}, " +
-                         $"Actual KillRate: {killRate:F2}, " +
-                         $"Performance Ratio: {performanceRatio:F2}, " +
-                         $"SpawnRate: {spawnRate:F2}, Speed: {speed:F2}, " +
-                         $"Struggling: {playerStruggling}, " +
-                         $"Fitness: {fitness:F2}");
+    //UnityEngine.Debug.Log($"PSO Evaluation - Spawners: {spawnerCount}, " +
+    //                     $"Expected KillRate: {expectedKillRate:F2}, " +
+    //                     $"Actual KillRate: {killRate:F2}, " +
+    //                     $"Performance Ratio: {performanceRatio:F2}, " +
+    //                     $"SpawnRate: {spawnRate:F2}, Speed: {speed:F2}, " +
+    //                     $"Struggling: {playerStruggling}, " +
+    //                     $"Fitness: {fitness:F2}");
+
+    if (psoDisplay != null)
+    {
+        psoDisplay.UpdateDisplayData(
+            spawnerCount,
+            expectedKillRate,
+            killRate,
+            performanceRatio,
+            spawnRate,
+            speed,
+            playerStruggling,
+            fitness
+        );
+    }
 
     return fitness;
 }
@@ -378,8 +395,8 @@ private Vector2 GetGlobalBestPosition()
         }
     }
     
-    UnityEngine.Debug.Log($"PSO Global Best - Position: ({bestPosition.x:F2}, {bestPosition.y:F2}), " +
-                         $"Player Struggling: {isStruggling}");
+    //UnityEngine.Debug.Log($"PSO Global Best - Position: ({bestPosition.x:F2}, {bestPosition.y:F2}), " +
+    //                     $"Player Struggling: {isStruggling}");
     
     return bestPosition;
 }
@@ -395,7 +412,7 @@ private Vector2 GetGlobalBestPosition()
         {
             float avgFitness = fitnessHistory.Average();
             float parameterVariance = CalculateParameterVariance();
-            UnityEngine.Debug.Log($"PSO Metrics - Avg Fitness: {avgFitness:F3}, Parameter Variance: {parameterVariance:F3}");
+            //UnityEngine.Debug.Log($"PSO Metrics - Avg Fitness: {avgFitness:F3}, Parameter Variance: {parameterVariance:F3}");
             fitnessHistory.Clear();
             parameterHistory.Clear();
         }
@@ -410,10 +427,10 @@ private Vector2 GetGlobalBestPosition()
         cognitiveWeight = Mathf.Lerp(initialCognitiveWeight, finalCognitiveWeight, progress);
         socialWeight = Mathf.Lerp(initialSocialWeight, finalSocialWeight, progress);
         
-        UnityEngine.Debug.Log($"PSO Parameters Updated - Wave: {currentWave}/{totalWaves}, " +
-                             $"Inertia: {inertiaWeight:F2}, " +
-                             $"Cognitive: {cognitiveWeight:F2}, " +
-                             $"Social: {socialWeight:F2}");
+        //UnityEngine.Debug.Log($"PSO Parameters Updated - Wave: {currentWave}/{totalWaves}, " +
+        //                     $"Inertia: {inertiaWeight:F2}, " +
+        //                    $"Cognitive: {cognitiveWeight:F2}, " +
+        //                     $"Social: {socialWeight:F2}");
     }
 
     private float CalculateParameterVariance()

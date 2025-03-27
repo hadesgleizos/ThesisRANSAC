@@ -43,6 +43,13 @@ public class PSODisplay : MonoBehaviour
     private float maxSpawnRate;
     private float minSpeed;
     private float maxSpeed;
+
+    // Add this for key detection debugging
+    private bool wasKeyPressed = false;
+
+    // Add this to track the last toggle time to prevent double-toggling
+    private float lastToggleTime = 0f;
+    private float toggleCooldown = 0.5f; // Minimum seconds between toggles
     
     void Start()
     {
@@ -54,7 +61,7 @@ public class PSODisplay : MonoBehaviour
             psoManager = FindObjectOfType<PSOManager>();
             if (psoManager == null)
             {
-                Debug.LogError("PSODisplay: No PSOManager found in scene!");
+                //Debug.LogError("PSODisplay: No PSOManager found in scene!");
             }
         }
         
@@ -72,65 +79,45 @@ public class PSODisplay : MonoBehaviour
         
         // Initialize styles in Start so they're ready when needed
         InitializeStyles();
+        
+        //Debug.Log($"PSODisplay initialized. Toggle with {toggleKey}. Initial visibility: {isDisplayVisible}");
     }
     
     void Update()
     {
-        // Toggle visibility with F1 key
-        if (Input.GetKeyDown(toggleKey))
+        // Check if we're allowed to toggle based on cooldown
+        bool canToggle = (Time.unscaledTime - lastToggleTime) > toggleCooldown;
+        
+        if (canToggle && Input.GetKeyDown(toggleKey))
         {
-            isDisplayVisible = !isDisplayVisible;
+            ToggleVisibility();
+            lastToggleTime = Time.unscaledTime;
+            wasKeyPressed = true; // Set wasKeyPressed to prevent OnGUI from toggling again
         }
+        
+        // No need for the alternative detection here since we're already checking properly
     }
     
-    // Update thresholds based on actual min/max values from PSOManager
-    void UpdateThresholdsFromRanges()
-    {
-        // Calculate thresholds as percentages of the available range
-        float spawnRateRange = maxSpawnRate - minSpawnRate;
-        float speedRange = maxSpeed - minSpeed;
-        
-        // Easy: bottom 30% of the range
-        easySpawnRateThreshold = minSpawnRate + spawnRateRange * 0.3f;
-        easySpeedThreshold = minSpeed + speedRange * 0.3f;
-        
-        // Hard: top 30% of the range
-        hardSpawnRateThreshold = maxSpawnRate - spawnRateRange * 0.3f;
-        hardSpeedThreshold = maxSpeed - speedRange * 0.3f;
-    }
-    
-    void InitializeStyles()
-    {
-        // Style for text
-        textStyle = new GUIStyle();
-        textStyle.normal.textColor = Color.white;
-        textStyle.fontSize = 12;
-        textStyle.fontStyle = FontStyle.Bold;
-        textStyle.wordWrap = true;
-        
-        // Style for background
-        backgroundStyle = new GUIStyle();
-        backgroundStyle.normal.background = MakeTexture(2, 2, new Color(0.1f, 0.1f, 0.2f, backgroundAlpha));
-        
-        // Difficulty styles
-        difficultyEasyStyle = new GUIStyle();
-        difficultyEasyStyle.normal.textColor = Color.green;
-        difficultyEasyStyle.fontSize = 14;
-        difficultyEasyStyle.fontStyle = FontStyle.Bold;
-        
-        difficultyNormalStyle = new GUIStyle();
-        difficultyNormalStyle.normal.textColor = Color.yellow;
-        difficultyNormalStyle.fontSize = 14;
-        difficultyNormalStyle.fontStyle = FontStyle.Bold;
-        
-        difficultyHardStyle = new GUIStyle();
-        difficultyHardStyle.normal.textColor = Color.red;
-        difficultyHardStyle.fontSize = 14;
-        difficultyHardStyle.fontStyle = FontStyle.Bold;
-    }
-    
+    // Add this to handle key presses in OnGUI as a fallback
     void OnGUI()
     {
+        // Only check for key press in OnGUI if it wasn't already handled in Update
+        Event e = Event.current;
+        bool canToggle = (Time.unscaledTime - lastToggleTime) > toggleCooldown;
+        
+        if (canToggle && e.type == EventType.KeyDown && e.keyCode == toggleKey && !wasKeyPressed)
+        {
+            ToggleVisibility();
+            lastToggleTime = Time.unscaledTime;
+            wasKeyPressed = true;
+            e.Use(); // Mark event as used
+        }
+        
+        if (e.type == EventType.KeyUp && e.keyCode == toggleKey)
+        {
+            wasKeyPressed = false;
+        }
+        
         if (!isDisplayVisible) return;
         
         // Draw background
@@ -201,6 +188,52 @@ public class PSODisplay : MonoBehaviour
             GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
                 "PSOManager not found. Data unavailable.", textStyle);
         }
+    }
+    
+    // Update thresholds based on actual min/max values from PSOManager
+    void UpdateThresholdsFromRanges()
+    {
+        // Calculate thresholds as percentages of the available range
+        float spawnRateRange = maxSpawnRate - minSpawnRate;
+        float speedRange = maxSpeed - minSpeed;
+        
+        // Easy: bottom 30% of the range
+        easySpawnRateThreshold = minSpawnRate + spawnRateRange * 0.3f;
+        easySpeedThreshold = minSpeed + speedRange * 0.3f;
+        
+        // Hard: top 30% of the range
+        hardSpawnRateThreshold = maxSpawnRate - spawnRateRange * 0.3f;
+        hardSpeedThreshold = maxSpeed - speedRange * 0.3f;
+    }
+    
+    void InitializeStyles()
+    {
+        // Style for text
+        textStyle = new GUIStyle();
+        textStyle.normal.textColor = Color.white;
+        textStyle.fontSize = 12;
+        textStyle.fontStyle = FontStyle.Bold;
+        textStyle.wordWrap = true;
+        
+        // Style for background
+        backgroundStyle = new GUIStyle();
+        backgroundStyle.normal.background = MakeTexture(2, 2, new Color(0.1f, 0.1f, 0.2f, backgroundAlpha));
+        
+        // Difficulty styles
+        difficultyEasyStyle = new GUIStyle();
+        difficultyEasyStyle.normal.textColor = Color.green;
+        difficultyEasyStyle.fontSize = 14;
+        difficultyEasyStyle.fontStyle = FontStyle.Bold;
+        
+        difficultyNormalStyle = new GUIStyle();
+        difficultyNormalStyle.normal.textColor = Color.yellow;
+        difficultyNormalStyle.fontSize = 14;
+        difficultyNormalStyle.fontStyle = FontStyle.Bold;
+        
+        difficultyHardStyle = new GUIStyle();
+        difficultyHardStyle.normal.textColor = Color.red;
+        difficultyHardStyle.fontSize = 14;
+        difficultyHardStyle.fontStyle = FontStyle.Bold;
     }
     
     // Calculate spawn rate as percentage of total range
@@ -302,6 +335,23 @@ public class PSODisplay : MonoBehaviour
                 return difficultyHardStyle;
             default:
                 return textStyle;
+        }
+    }
+
+    // Method to toggle visibility
+    private void ToggleVisibility()
+    {
+        isDisplayVisible = !isDisplayVisible;
+        //Debug.Log($"PSODisplay visibility toggled to: {isDisplayVisible}");
+        
+        // Force immediate update of thresholds when toggling on
+        if (isDisplayVisible && psoManager != null)
+        {
+            minSpawnRate = psoManager.minSpawnRate;
+            maxSpawnRate = psoManager.maxSpawnRate;
+            minSpeed = psoManager.minSpeed;
+            maxSpeed = psoManager.maxSpeed;
+            UpdateThresholdsFromRanges();
         }
     }
 }
