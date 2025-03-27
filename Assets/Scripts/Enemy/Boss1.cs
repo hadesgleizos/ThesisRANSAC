@@ -49,7 +49,7 @@ public class Boss1 : MonoBehaviour
 
         if (animator == null)
         {
-            Debug.LogError("Animator component missing from boss!");
+            //Debug.LogError("Animator component missing from boss!");
         }
         
         // Set the same tag and layer as zombies
@@ -71,13 +71,13 @@ public class Boss1 : MonoBehaviour
             agent.autoBraking = true;
             agent.stoppingDistance = 0.5f;
             
-            Debug.Log($"Initial boss speed set to: {agent.speed}");
+            //Debug.Log($"Initial boss speed set to: {agent.speed}");
         }
 
         playerPerformance = FindObjectOfType<PlayerPerformance>();
         if (playerPerformance == null)
         {
-            Debug.LogWarning("PlayerPerformance not found in scene!");
+            //Debug.LogWarning("PlayerPerformance not found in scene!");
         }
         
         nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
@@ -145,7 +145,7 @@ public class Boss1 : MonoBehaviour
             {
                 playerPerformance.TakeDamage(damage, gameObject);
                 gameObject.SetIndicator();
-                Debug.Log($"Boss dealt {damage} damage to the player.");
+                //Debug.Log($"Boss dealt {damage} damage to the player.");
             }
         }
 
@@ -183,7 +183,7 @@ public class Boss1 : MonoBehaviour
                 float newSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedAdjustmentRate);
                 
                 SetSpeed(newSpeed);
-                Debug.Log($"[Boss] Updated speed to: {newSpeed:F2} based on player health: {healthPercentage:P0}");
+                //Debug.Log($"[Boss] Updated speed to: {newSpeed:F2} based on player health: {healthPercentage:P0}");
             }
             yield return new WaitForSeconds(updateInterval);
         }
@@ -195,7 +195,7 @@ public class Boss1 : MonoBehaviour
         {
             agent.speed = newSpeed;
             agent.acceleration = acceleration * (newSpeed / 3.5f);
-            Debug.Log($"Boss speed set to: {newSpeed}");
+            //Debug.Log($"Boss speed set to: {newSpeed}");
         }
     }
 
@@ -227,7 +227,7 @@ public class Boss1 : MonoBehaviour
         }
 
         // Add debug logging
-        Debug.Log($"Boss hit! Location: {hitLocation}, Damage: {totalDamage}, Health remaining: {health}");
+        //Debug.Log($"Boss hit! Location: {hitLocation}, Damage: {totalDamage}, Health remaining: {health}");
 
         if (health <= 0 && !isDead)
         {

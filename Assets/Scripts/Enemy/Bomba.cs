@@ -52,7 +52,7 @@ public class Bomba : MonoBehaviour
         
         if (animator == null)
         {
-            Debug.LogError("Animator component missing from Bomba!");
+            //Debug.LogError("Animator component missing from Bomba!");
         }
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -72,13 +72,13 @@ public class Bomba : MonoBehaviour
             agent.autoRepath = true;
             agent.autoBraking = true;
             
-            Debug.Log($"[Bomba {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
+            //Debug.Log($"[Bomba {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
         }
         
         playerPerformance = FindObjectOfType<PlayerPerformance>();
         if (playerPerformance == null)
         {
-            Debug.LogWarning("PlayerPerformance not found in scene!");
+            //Debug.LogWarning("PlayerPerformance not found in scene!");
         }
         
         nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
@@ -226,7 +226,7 @@ public class Bomba : MonoBehaviour
             {
                 // Apply damage directly
                 playerPerformance.TakeDamage(damage, gameObject);
-                Debug.Log($"Bomba explosion dealt {damage} damage to player at distance {distanceToPlayer}");
+                //Debug.Log($"Bomba explosion dealt {damage} damage to player at distance {distanceToPlayer}");
             }
         }
 
@@ -247,7 +247,7 @@ public class Bomba : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("BombaExplosionEffect component not found on explosionEffectPrefab");
+                //Debug.LogWarning("BombaExplosionEffect component not found on explosionEffectPrefab");
             }
         }
 
@@ -381,7 +381,7 @@ public class Bomba : MonoBehaviour
             float oldSpeed = agent.speed;
             agent.speed = newSpeed;
             agent.acceleration = acceleration * (newSpeed / 3.5f);
-            Debug.Log($"[Bomba {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
+            //Debug.Log($"[Bomba {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
         }
     }
 

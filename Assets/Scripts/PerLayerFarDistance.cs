@@ -4,10 +4,6 @@ using UnityEngine;
 
 namespace UnityEssentials.CameraPerLayerFarDist
 {
-    /// <summary>
-    /// Customize camera layer culling distances, using a default distance for most layers,
-    /// but allowing per-layer overrides for certain layers you need visible beyond the default.
-    /// </summary>
     [ExecuteInEditMode]
     public class PerLayerFarDistance : MonoBehaviour
     {
@@ -70,7 +66,7 @@ namespace UnityEssentials.CameraPerLayerFarDist
                 }
                 else
                 {
-                    Debug.LogWarning($"Layer \"{layerOverride.layerName}\" not found or out of range (0-31).");
+                    //Debug.LogWarning($"Layer \"{layerOverride.layerName}\" not found or out of range (0-31).");
                 }
             }
 

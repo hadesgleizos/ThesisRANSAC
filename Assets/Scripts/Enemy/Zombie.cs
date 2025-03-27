@@ -45,7 +45,7 @@ public class Zombie : MonoBehaviour
         
         if (animator == null)
         {
-            Debug.LogError("Animator component missing from zombie!");
+            //Debug.LogError("Animator component missing from zombie!");
         }
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -65,13 +65,13 @@ public class Zombie : MonoBehaviour
             agent.autoRepath = true;
             agent.autoBraking = true;
             
-            Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
+            //Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
         }
         
         playerPerformance = FindObjectOfType<PlayerPerformance>();
         if (playerPerformance == null)
         {
-            Debug.LogWarning("PlayerPerformance not found in scene!");
+            //Debug.LogWarning("PlayerPerformance not found in scene!");
         }
         
         nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
@@ -161,7 +161,7 @@ public class Zombie : MonoBehaviour
             {
                 playerPerformance.TakeDamage(damage, gameObject);
                 gameObject.SetIndicator();
-                Debug.Log($"Zombie dealt {damage} damage to the player.");
+                //Debug.Log($"Zombie dealt {damage} damage to the player.");
             }
         }
 
@@ -262,7 +262,7 @@ public class Zombie : MonoBehaviour
             float oldSpeed = agent.speed;
             agent.speed = newSpeed;
             agent.acceleration = acceleration * (newSpeed / 3.5f);
-            Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
+            //Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
         }
     }
 

@@ -82,7 +82,7 @@ public class BombaExplosionEffect : MonoBehaviour
                     }
                     
                     damageApplied = true;
-                    Debug.Log($"Explosion dealt {actualDamage} damage (at distance: {distance:F2})");
+                    //Debug.Log($"Explosion dealt {actualDamage} damage (at distance: {distance:F2})");
                 }
             }
         }

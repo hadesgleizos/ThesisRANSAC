@@ -33,7 +33,7 @@ public class Jograt : MonoBehaviour
     public float deathSoundVolume = 1f;
     private float nextIdleSoundTime;
 
-    [Header("Debug Visualization")]
+    [Header("//Debug Visualization")]
     public bool showAttackRange = true;
     public Color attackRangeColor = Color.red;
     public bool showLeapRange = true;           // Toggle for leap range visualization
@@ -77,7 +77,7 @@ public class Jograt : MonoBehaviour
         
         if (animator == null)
         {
-            Debug.LogError("Animator component missing from zombie!");
+            //Debug.LogError("Animator component missing from zombie!");
         }
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -97,13 +97,13 @@ public class Jograt : MonoBehaviour
             agent.autoRepath = true;
             agent.autoBraking = true;
             
-            Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
+            //Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Initialized with speed: {currentSpeed}");
         }
         
         playerPerformance = FindObjectOfType<PlayerPerformance>();
         if (playerPerformance == null)
         {
-            Debug.LogWarning("PlayerPerformance not found in scene!");
+            //Debug.LogWarning("PlayerPerformance not found in scene!");
         }
         
         nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
@@ -226,7 +226,7 @@ public class Jograt : MonoBehaviour
             {
                 playerPerformance.TakeDamage(damage, gameObject);
                 gameObject.SetIndicator();
-                Debug.Log($"Zombie dealt {damage} damage to the player.");
+                //Debug.Log($"Zombie dealt {damage} damage to the player.");
             }
         }
 
@@ -376,7 +376,7 @@ public class Jograt : MonoBehaviour
             float oldSpeed = agent.speed;
             agent.speed = newSpeed;
             agent.acceleration = acceleration * (newSpeed / 3.5f);
-            Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
+            //Debug.Log($"[Zombie {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
         }
     }
 
@@ -458,7 +458,7 @@ public class Jograt : MonoBehaviour
         float currentDistanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (currentDistanceToPlayer <= attackRange + 0.5f)
         {
-            Debug.Log("Leap canceled - player within attack range");
+            //Debug.Log("Leap canceled - player within attack range");
             isLeaping = false;
             canLeap = true;
             yield break;
@@ -565,7 +565,7 @@ public class Jograt : MonoBehaviour
                     {
                         playerPerformance.TakeDamage(leapDamage, gameObject);
                         gameObject.SetIndicator();
-                        Debug.Log($"Jograt dealt {leapDamage} leap damage");
+                        //Debug.Log($"Jograt dealt {leapDamage} leap damage");
                         hasHitPlayer = true;
                         
                         // Create impact effect on player hit
@@ -666,7 +666,7 @@ public class Jograt : MonoBehaviour
                 {
                     playerPerformance.TakeDamage(leapDamage, gameObject);
                     gameObject.SetIndicator();
-                    Debug.Log($"Jograt dealt {leapDamage} leap damage to the player.");
+                    //Debug.Log($"Jograt dealt {leapDamage} leap damage to the player.");
                 }
                 break;
             }

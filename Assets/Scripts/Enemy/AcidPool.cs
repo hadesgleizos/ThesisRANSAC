@@ -86,7 +86,7 @@ public class AcidPool : MonoBehaviour
                 // If it's ground, stick to it
                 if (isGround)
                 {
-                    Debug.Log($"Acid pool landed on {hit.collider.gameObject.name} with tag {hit.collider.tag}");
+                    // Debug.Log($"Acid pool landed on {hit.collider.gameObject.name} with tag {hit.collider.tag}");
                     targetPosition = hit.point + (Vector3.up * 0.3f); // Adjusted to 0.1f to prevent clipping
                     hasLanded = true;
 
