@@ -99,7 +99,8 @@ public class PSODisplay : MonoBehaviour
             wasKeyPressed = true; // Set wasKeyPressed to prevent OnGUI from toggling again
         }
         
-        // Refresh displayed values periodically when visible
+        // Only refresh displayed values when display is visible
+        // This saves performance by not calculating values when they're not being shown
         if (isDisplayVisible && psoManager != null && psoManager.spawner != null)
         {
             if (Time.unscaledTime - lastRefreshTime > displayRefreshInterval)
@@ -112,13 +113,14 @@ public class PSODisplay : MonoBehaviour
                 lastRefreshTime = Time.unscaledTime;
             }
         }
-        
-        // No need for the alternative detection here since we're already checking properly
     }
     
     // Add this to handle key presses in OnGUI as a fallback
     void OnGUI()
     {
+        // Skip all GUI rendering when not visible to save performance
+        if (!isDisplayVisible) return;
+        
         // Only check for key press in OnGUI if it wasn't already handled in Update
         Event e = Event.current;
         bool canToggle = (Time.unscaledTime - lastToggleTime) > toggleCooldown;
@@ -287,6 +289,10 @@ public class PSODisplay : MonoBehaviour
                                  float perfRatio, float sRate, float zombieSpeed, 
                                  bool struggling, float fitScore)
     {
+        // Only update data if the display is visible to save performance
+        if (!isDisplayVisible)
+            return;
+            
         spawnerCount = spawners;
         expectedKillRate = expectedKR;
         actualKillRate = actualKR;
@@ -310,42 +316,53 @@ public class PSODisplay : MonoBehaviour
     // Determine current difficulty level based on spawn rate and speed
     private string GetDifficultyText()
     {
-        // Calculate a combined difficulty score based on spawn rate and speed
+        // Calculate a weighted difficulty score based on spawn rate and speed
         float spawnRateScore = 0f;
         float speedScore = 0f;
         
-        // Evaluate spawn rate difficulty using normalized values
-        float spawnRateNormalized = (spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate);
-        if (spawnRateNormalized < 0.3f)
-            spawnRateScore = 0f; // Easy
-        else if (spawnRateNormalized > 0.7f)
-            spawnRateScore = 2f; // Hard
-        else
-            spawnRateScore = 1f; // Normal
-            
-        // Evaluate speed difficulty using normalized values
-        float speedNormalized = (speed - minSpeed) / (maxSpeed - minSpeed);
-        if (speedNormalized < 0.3f)
-            speedScore = 0f; // Easy
-        else if (speedNormalized > 0.7f)
-            speedScore = 2f; // Hard
-        else
-            speedScore = 1f; // Normal
-            
-        // Combined difficulty score
-        float combinedScore = (spawnRateScore + speedScore) / 2f;
+        // Evaluate spawn rate difficulty using normalized values (0 to 1)
+        float spawnRateNormalized = Mathf.Clamp01((spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate));
         
-        // Apply any struggling modifier
+        // Evaluate speed difficulty using normalized values (0 to 1)
+        float speedNormalized = Mathf.Clamp01((speed - minSpeed) / (maxSpeed - minSpeed));
+        
+        // Calculate a single combined normalized value (0 to 1)
+        // Weight speed higher since it has more impact on gameplay difficulty
+        float weightedSpeed = 0.5f;
+        float weightedSpawnRate = 0.5f;
+        float combinedNormalized = (speedNormalized * weightedSpeed) + (spawnRateNormalized * weightedSpawnRate);
+        
+        // Apply struggling modifier - shifts the difficulty up when player is struggling
         if (playerStruggling)
-            combinedScore = Mathf.Min(combinedScore + 0.5f, 2f); // Make it feel harder when struggling
+        {
+            combinedNormalized = Mathf.Min(combinedNormalized + 0.2f, 1.0f);
+        }
         
-        // Convert to text
-        if (combinedScore < 0.5f)
+        // Convert normalized value to difficulty text
+        if (combinedNormalized < 0.33f)
             return "EASY";
-        else if (combinedScore < 1.5f)
+        else if (combinedNormalized < 0.66f)
             return "NORMAL";
         else
             return "HARD";
+    }
+
+    // Add a new method to get a numeric difficulty value for UI elements
+    private float GetDifficultyValue()
+    {
+        float spawnRateNormalized = Mathf.Clamp01((spawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate));
+        float speedNormalized = Mathf.Clamp01((speed - minSpeed) / (maxSpeed - minSpeed));
+        
+        float weightedSpeed = 0.7f;
+        float weightedSpawnRate = 0.3f;
+        float combinedNormalized = (speedNormalized * weightedSpeed) + (spawnRateNormalized * weightedSpawnRate);
+        
+        if (playerStruggling)
+        {
+            combinedNormalized = Mathf.Min(combinedNormalized + 0.2f, 1.0f);
+        }
+        
+        return combinedNormalized; // Returns 0-1 value
     }
     
     // Get the appropriate style for the current difficulty
