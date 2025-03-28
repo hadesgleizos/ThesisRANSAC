@@ -150,7 +150,7 @@ public class LeapImpactEffect : MonoBehaviour
                 playerPerf.TakeDamage(damage, sender);
                 sender.SetIndicator();
                 damageApplied = true;
-                Debug.Log($"Impact effect dealt {damage} damage");
+                //Debug.Log($"Impact effect dealt {damage} damage");
             }
             
             // React based on the tag of the hit object

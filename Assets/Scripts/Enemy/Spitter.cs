@@ -47,7 +47,7 @@ public class Spitter : MonoBehaviour
         
         if (animator == null)
         {
-            Debug.LogError("Animator component missing from spitter!");
+            //Debug.LogError("Animator component missing from spitter!");
         }
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -67,13 +67,13 @@ public class Spitter : MonoBehaviour
             agent.autoRepath = true;
             agent.autoBraking = true;
             
-            Debug.Log($"[Spitter {gameObject.GetInstanceID()}] Initialized with speed: {agent.speed}");
+            //Debug.Log($"[Spitter {gameObject.GetInstanceID()}] Initialized with speed: {agent.speed}");
         }
         
         playerPerformance = FindObjectOfType<PlayerPerformance>();
         if (playerPerformance == null)
         {
-            Debug.LogWarning("PlayerPerformance not found in scene!");
+            //Debug.LogWarning("PlayerPerformance not found in scene!");
         }
         
         nextIdleSoundTime = Time.time + Random.Range(0f, idleSoundInterval);
@@ -146,7 +146,7 @@ public class Spitter : MonoBehaviour
         float rotationTime = 0;
         float maxRotationTime = 1.0f; // Increased max time to spend rotating for visibility
         
-        Debug.Log($"Spitter {gameObject.GetInstanceID()} starting rotation toward player");
+        //Debug.Log($"Spitter {gameObject.GetInstanceID()} starting rotation toward player");
         
         while (rotationTime < maxRotationTime)
         {
@@ -158,7 +158,7 @@ public class Spitter : MonoBehaviour
             // If close enough to target rotation, break early
             if (angleDifference < 5f)
             {
-                Debug.Log($"Spitter {gameObject.GetInstanceID()} rotation complete, angle to target: {angleDifference}");
+                //Debug.Log($"Spitter {gameObject.GetInstanceID()} rotation complete, angle to target: {angleDifference}");
                 break;
             }
             
@@ -187,7 +187,7 @@ public class Spitter : MonoBehaviour
             attackSoundVolume
         );
         
-        Debug.Log($"Spitter {gameObject.GetInstanceID()} playing attack animation");
+        //Debug.Log($"Spitter {gameObject.GetInstanceID()} playing attack animation");
         animator.SetTrigger("Attack");
         
         // Wait a moment before spawning projectile (time it with animation)
@@ -223,7 +223,7 @@ public class Spitter : MonoBehaviour
                 acidProjectile.SetSender(gameObject);
             }
             
-            Debug.Log($"Spitter {gameObject.GetInstanceID()} fired projectile at player");
+            //Debug.Log($"Spitter {gameObject.GetInstanceID()} fired projectile at player");
         }
 
         // Wait for attack cooldown (minus the time we already spent in animation)
@@ -318,7 +318,7 @@ public class Spitter : MonoBehaviour
             float oldSpeed = agent.speed;
             agent.speed = newSpeed;
             agent.acceleration = acceleration * (newSpeed / 3.5f);
-            Debug.Log($"[Spitter {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
+            //Debug.Log($"[Spitter {gameObject.GetInstanceID()}] Speed changed from {oldSpeed:F2} to {newSpeed:F2}");
         }
     }
 

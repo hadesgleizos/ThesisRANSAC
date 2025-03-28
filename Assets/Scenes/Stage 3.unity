@@ -2225,6 +2225,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5156de67fc124d46920fdfb4ec1d592, type: 3}
+--- !u!1 &659993269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 659993271}
+  - component: {fileID: 659993270}
+  m_Layer: 0
+  m_Name: PSODisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &659993270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659993269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc918d5f505d4e6badf985f72735b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showOnStart: 0
+  toggleKey: 9
+  windowPosition: {x: 20, y: 20}
+  windowSize: {x: 400, y: 270}
+  backgroundAlpha: 0.1
+  psoManager: {fileID: 687400654}
+  easySpawnRateThreshold: 0.37
+  hardSpawnRateThreshold: 0.73
+  easySpeedThreshold: 4.2
+  hardSpeedThreshold: 5.8
+--- !u!4 &659993271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659993269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 46.966835, y: 5.2667756, z: -210.62262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &687400652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2307,6 +2361,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 410629153053744964, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
   m_PrefabInstance: {fileID: 687400652}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &687400654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+  m_PrefabInstance: {fileID: 687400652}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687400653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18163d65727c28e4093cbfe04feab424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &717699830
 GameObject:
   m_ObjectHideFlags: 0
@@ -5879,3 +5944,4 @@ SceneRoots:
   - {fileID: 1271719995}
   - {fileID: 336479594}
   - {fileID: 1135868818}
+  - {fileID: 659993271}

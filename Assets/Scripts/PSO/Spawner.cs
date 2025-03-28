@@ -124,7 +124,7 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
             waveStartTime = totalElapsedTime;
 
             OnWaveStart?.Invoke(currentWave);
-            Debug.Log($"Wave {currentWave} started!");
+            //Debug.Log($"Wave {currentWave} started!");
 
             // Only spawn regular zombies if it's not the final wave
             if (currentWave < totalWaves)
@@ -163,10 +163,10 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
             }
 
             OnWaveEnd?.Invoke(currentWave);
-            Debug.Log($"Wave {currentWave} ended!");
+            //Debug.Log($"Wave {currentWave} ended!");
         }
 
-        Debug.Log("All waves completed!");
+        //Debug.Log("All waves completed!");
     }
 
     private void ShowScoreScreen()
@@ -211,7 +211,7 @@ public void NextStage()
     {
         if (zombieTypes.Count == 0)
         {
-            Debug.LogError("No zombie types defined!");
+            //Debug.LogError("No zombie types defined!");
             return null;
         }
 
@@ -303,7 +303,7 @@ public void NextStage()
                         // Log the exact spawn time for debugging
                         if (debugSpeedChanges)
                         {
-                            Debug.Log($"[Spawner] New zombie spawned at {Time.time:F2}s, next spawn at {nextSpawnTime:F2}s (interval: {spawnInterval:F2}s)");
+                            //Debug.Log($"[Spawner] New zombie spawned at {Time.time:F2}s, next spawn at {nextSpawnTime:F2}s (interval: {spawnInterval:F2}s)");
                         }
                     }
                 }
@@ -359,7 +359,7 @@ public void NextStage()
     public void IncrementKillCount()
     {
         totalKillCount++;
-        Debug.Log($"Zombie killed! Total kills: {totalKillCount}");
+        //Debug.Log($"Zombie killed! Total kills: {totalKillCount}");
     }
 
     public int GetWaveKillCount()
@@ -418,7 +418,7 @@ public void NextStage()
 
         if (debugSpeedChanges)
         {
-            Debug.Log($"[Spawner] Speed Change - Old: {oldSpeed:F2}, New: {currentZombieSpeed:F2}, Updated {updatedEnemies} enemies");
+            //Debug.Log($"[Spawner] Speed Change - Old: {oldSpeed:F2}, New: {currentZombieSpeed:F2}, Updated {updatedEnemies} enemies");
         }
     }
 
@@ -447,7 +447,7 @@ public void NextStage()
         if (Mathf.Abs(newInterval - spawnInterval) / spawnInterval > 0.1f)
         {
             // Log before change
-            Debug.Log($"Spawn Rate Updated: {spawnRate:F2} (changing interval from {spawnInterval:F2}s to {newInterval:F2}s)");
+            //Debug.Log($"Spawn Rate Updated: {spawnRate:F2} (changing interval from {spawnInterval:F2}s to {newInterval:F2}s)");
             
             // Update the spawn interval
             spawnInterval = newInterval;
@@ -491,12 +491,12 @@ public void NextStage()
             // Check if SoundManager instance exists before playing music
             if (SoundManager.Instance != null)
             {
-                Debug.Log("Playing boss music...");
+                //Debug.Log("Playing boss music...");
                 SoundManager.Instance.PlayBossMusic();
             }
             else
             {
-                Debug.LogWarning("SoundManager.Instance is null! Cannot play boss music.");
+                //Debug.LogWarning("SoundManager.Instance is null! Cannot play boss music.");
             }
             
             int randomSpawnIndex = Random.Range(0, spawnPoints.Count);
@@ -510,7 +510,7 @@ public void NextStage()
             }
             
             activeZombies.Add(currentBoss);
-            Debug.Log("Final Boss spawned!");
+            //Debug.Log("Final Boss spawned!");
         }
     }
 
@@ -521,12 +521,12 @@ public void NextStage()
         {
             RemoveZombie(currentBoss);
             currentBoss = null;
-            Debug.Log("Boss defeated!");
+            //Debug.Log("Boss defeated!");
             
             // Stop the boss music
             if (SoundManager.Instance != null)
             {
-                Debug.Log("Stopping boss music...");
+                //Debug.Log("Stopping boss music...");
                 SoundManager.Instance.StopMusic();
             }
             

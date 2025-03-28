@@ -56,7 +56,7 @@ public void EquipWeapon(int index)
 {
     if (index < 0 || index >= weaponStatsArray.Length || index >= weaponPrefabs.Length)
     {
-        Debug.LogWarning($"Invalid weapon index: {index}. Unable to equip.");
+        ////Debug.LogWarning($"Invalid weapon index: {index}. Unable to equip.");
         return;
     }
 
@@ -151,7 +151,7 @@ public void EquipWeapon(int index)
         if (currentWeaponIndex >= 0 && currentWeaponIndex < fakeGunPrefabs.Length)
             return fakeGunPrefabs[currentWeaponIndex];
 
-        Debug.LogWarning($"No fake gun prefab found for index {currentWeaponIndex}");
+        ////Debug.LogWarning($"No fake gun prefab found for index {currentWeaponIndex}");
         return null;
     }
 
@@ -159,7 +159,7 @@ public void AddWeapon(int index)
 {
     if (index < 0 || index >= weaponsOwned.Length)
     {
-        Debug.LogError($"Attempted to add weapon with invalid index: {index}");
+        //Debug.LogError($"Attempted to add weapon with invalid index: {index}");
         return;
     }
 
@@ -167,7 +167,7 @@ public void AddWeapon(int index)
     {
         ammoCounts[index] = weaponStatsArray[index].magazineSize; 
         totalAmmoCounts[index] = weaponStatsArray[index].totalAmmo;
-        Debug.Log($"New weapon pickup at index {index}, giving full ammo!");
+        //Debug.Log($"New weapon pickup at index {index}, giving full ammo!");
     }
 
     weaponsOwned[index] = true;
@@ -200,7 +200,7 @@ public void RemoveWeapon(int index)
     }
 
     weaponsOwned[index] = false;
-    Debug.Log($"Removed weapon at index: {index}. (Keeping leftover ammo in dictionary!)");
+    //Debug.Log($"Removed weapon at index: {index}. (Keeping leftover ammo in dictionary!)");
 
     // If we removed the currently equipped weapon, try switching
     if (currentWeaponIndex == index)

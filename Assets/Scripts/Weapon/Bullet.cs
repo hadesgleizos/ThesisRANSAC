@@ -71,7 +71,7 @@ public void CreateBulletImpactEffect(Collision objectWeHit) // Change to public
     }
     else
     {
-        Debug.LogWarning($"No impact effect prefab assigned for tag: {objectWeHit.gameObject.tag}");
+        //Debug.LogWarning($"No impact effect prefab assigned for tag: {objectWeHit.gameObject.tag}");
     }
 }
 

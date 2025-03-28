@@ -29,7 +29,7 @@ public class takeDamage : MonoBehaviour
 
     public void HIT(float damage, CollisionType damageType)
     {
-        Debug.Log($"Hit on {gameObject.name} ({bodyPart}) with damage: {damage}");
+        //Debug.Log($"Hit on {gameObject.name} ({bodyPart}) with damage: {damage}");
         
         if (zombieController != null)
         {
@@ -38,26 +38,26 @@ public class takeDamage : MonoBehaviour
         else if (bossController != null)
         {
             bossController.TakeDamage(damage, bodyPart);
-            Debug.Log($"Boss hit registered! Damage: {damage}, Part: {bodyPart}");
+            //Debug.Log($"Boss hit registered! Damage: {damage}, Part: {bodyPart}");
         }
         else if (spitterController != null)
         {
             spitterController.TakeDamage(damage, bodyPart);
-            Debug.Log($"Spitter hit registered! Damage: {damage}, Part: {bodyPart}");
+            //Debug.Log($"Spitter hit registered! Damage: {damage}, Part: {bodyPart}");
         }
         else if (jogratController != null) // Add check for Jograt
         {
             jogratController.TakeDamage(damage, bodyPart);
-            Debug.Log($"Jograt hit registered! Damage: {damage}, Part: {bodyPart}");
+            //Debug.Log($"Jograt hit registered! Damage: {damage}, Part: {bodyPart}");
         }
         else if (bombaController != null) // Add check for Bomba
         {
             bombaController.TakeDamage(damage, bodyPart);
-            Debug.Log($"Bomba hit registered! Damage: {damage}, Part: {bodyPart}");
+            //Debug.Log($"Bomba hit registered! Damage: {damage}, Part: {bodyPart}");
         }
         else
         {
-            Debug.LogError($"No damage controller found on {gameObject.name}!");
+            //Debug.LogError($"No damage controller found on {gameObject.name}!");
         }
     }
 }

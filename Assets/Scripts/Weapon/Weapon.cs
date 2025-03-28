@@ -169,11 +169,11 @@ public class Weapon : MonoBehaviour
             readyToShoot = true;
 
             UpdateUI();
-            Debug.Log($"Weapon reset: {currentWeaponStats.weaponName} | Bullets: {bulletsLeft}/{totalAmmo}");
+            //Debug.Log($"Weapon reset: {currentWeaponStats.weaponName} | Bullets: {bulletsLeft}/{totalAmmo}");
         }
         else
         {
-            Debug.LogError("ResetWeapon called with null WeaponStats!");
+            //Debug.LogError("ResetWeapon called with null WeaponStats!");
         }
     }
 
@@ -240,7 +240,7 @@ private void FireWeapon()
     if (Physics.Raycast(muzzlePoint.position, shootingDirection, out RaycastHit hit, 100f))
     {
         Debug.DrawLine(muzzlePoint.position, hit.point, Color.red, 2f);
-        Debug.Log($"Hit object: {hit.collider.gameObject.name} with tag: {hit.collider.gameObject.tag}");
+        //Debug.Log($"Hit object: {hit.collider.gameObject.name} with tag: {hit.collider.gameObject.tag}");
 
         // Get the parent object to check the tag for main entity (e.g., zombie)
         GameObject hitObject = hit.collider.gameObject;
@@ -253,7 +253,7 @@ private void FireWeapon()
         switch (parentObject.tag)
         {
             case "Zombie":
-                Debug.Log("Zombie tag detected, applying zombie effect.");
+                //Debug.Log("Zombie tag detected, applying zombie effect.");
                 effectPrefab = GlobalReferences.Instance.zombieImpactEffectPrefab;
                 break;
             case "Dirt":
@@ -287,7 +287,7 @@ private void FireWeapon()
         }
         else
         {
-            Debug.LogWarning($"No impact effect prefab assigned for tag: {hit.collider.gameObject.tag}");
+            //Debug.LogWarning($"No impact effect prefab assigned for tag: {hit.collider.gameObject.tag}");
         }
 
         // Handle damage
@@ -295,17 +295,17 @@ private void FireWeapon()
                                      ?? hit.collider.GetComponentInParent<takeDamage>();
         if (damageComponent != null)
         {
-            Debug.Log($"Applying damage: {currentWeaponStats.damage}");
+            //Debug.Log($"Applying damage: {currentWeaponStats.damage}");
             damageComponent.HIT(currentWeaponStats.damage, CollisionType.BODY);
         }
         else
         {
-            Debug.Log("No takeDamage component found on hit object");
+            //Debug.Log("No takeDamage component found on hit object");
         }
     }
     else
     {
-        Debug.Log("Raycast didn't hit anything");
+        //Debug.Log("Raycast didn't hit anything");
     }
 
     // Set readyToShoot to false and reset after shooting delay
@@ -376,7 +376,7 @@ private void ResetShot()
     {
         if (totalAmmo <= 0)
         {
-            Debug.Log("No ammo left to reload!");
+            //Debug.Log("No ammo left to reload!");
             return;
         }
 

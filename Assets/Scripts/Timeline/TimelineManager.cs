@@ -45,12 +45,12 @@ public class TimelineManager : MonoBehaviour
 
     private void Director_Played(PlayableDirector obj)
     {
-        Debug.Log("Cutscene started");
+        //Debug.Log("Cutscene started");
     }
 
     private void Director_Stopped(PlayableDirector obj)
     {
-        Debug.Log("Cutscene finished");
+        //Debug.Log("Cutscene finished");
         StartCoroutine(TransitionToGameScene());
     }
 

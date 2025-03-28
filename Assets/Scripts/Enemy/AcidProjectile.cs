@@ -135,7 +135,7 @@ public class AcidProjectile : MonoBehaviour
             // Set the transform values to ensure the acid pool lays flat
             acidPool.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
             acidPool.transform.localScale = new Vector3(1f, 1f, 1f);
-            Debug.Log($"Spawned acid pool at position: {spawnPos} with rotation and scale set");
+            //Debug.Log($"Spawned acid pool at position: {spawnPos} with rotation and scale set");
 
             // Pass the sender to the acid pool
             var poolScript = acidPool.GetComponent<AcidPool>();
@@ -162,9 +162,9 @@ public class AcidProjectile : MonoBehaviour
 
     private void DealSplashDamage(Vector3 position)
     {
-        Debug.Log($"Attempting to deal splash damage at position: {position}");
+        //Debug.Log($"Attempting to deal splash damage at position: {position}");
         Collider[] hitColliders = Physics.OverlapSphere(position, splashRadius, damageableLayers);
-        Debug.Log($"Found {hitColliders.Length} objects in splash radius");
+        //Debug.Log($"Found {hitColliders.Length} objects in splash radius");
 
         // Track unique players that received damage to prevent multiple hits
         HashSet<PlayerPerformance> damagedPlayers = new HashSet<PlayerPerformance>();
@@ -192,13 +192,13 @@ public class AcidProjectile : MonoBehaviour
             // Only apply damage if we haven't already damaged this player
             if (playerPerformance != null && !damagedPlayers.Contains(playerPerformance))
             {
-                Debug.Log($"Found PlayerPerformance component, dealing {damage} damage");
+                //Debug.Log($"Found PlayerPerformance component, dealing {damage} damage");
                 playerPerformance.TakeDamage(damage, sender);
                 
                 // Add to the set to prevent multiple damage applications
                 damagedPlayers.Add(playerPerformance);
                 
-                Debug.Log($"Successfully dealt {damage} damage to player");
+                //Debug.Log($"Successfully dealt {damage} damage to player");
             }
         }
     }

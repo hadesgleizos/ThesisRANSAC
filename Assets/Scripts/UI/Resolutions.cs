@@ -113,7 +113,7 @@ public class Resolutions : MonoBehaviour
     {
         if (resolutionIndex < 0 || resolutionIndex >= filteredResolutions.Count)
         {
-            Debug.LogError($"Invalid resolution index: {resolutionIndex}");
+            //Debug.LogError($"Invalid resolution index: {resolutionIndex}");
             return;
         }
 
@@ -146,7 +146,7 @@ public class Resolutions : MonoBehaviour
             }
             catch (System.Exception e)
             {
-                Debug.LogError($"Error changing resolution (Attempt {retryCount + 1}/{MAX_RETRIES}): {e.Message}");
+                //Debug.LogError($"Error changing resolution (Attempt {retryCount + 1}/{MAX_RETRIES}): {e.Message}");
                 success = false;
             }
 
@@ -173,7 +173,7 @@ public class Resolutions : MonoBehaviour
                 }
                 catch (System.Exception e)
                 {
-                    Debug.LogError($"Error changing screen mode (Attempt {retryCount + 1}/{MAX_RETRIES}): {e.Message}");
+                    //Debug.LogError($"Error changing screen mode (Attempt {retryCount + 1}/{MAX_RETRIES}): {e.Message}");
                     success = false;
                 }
             }
@@ -194,7 +194,7 @@ public class Resolutions : MonoBehaviour
         }
 
         // If we get here, all attempts failed
-        Debug.LogWarning("Failed to set resolution after multiple attempts. Reverting to original resolution.");
+        //Debug.LogWarning("Failed to set resolution after multiple attempts. Reverting to original resolution.");
         Screen.SetResolution(originalResolution.width, originalResolution.height, originalMode != FullScreenMode.Windowed);
         Screen.fullScreenMode = originalMode;
 

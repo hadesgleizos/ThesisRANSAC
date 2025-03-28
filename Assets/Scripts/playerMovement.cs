@@ -31,7 +31,7 @@ public class playerMovement : MonoBehaviour
         // Keep the attack input check in Update
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            Debug.Log("Attacking");
+            //Debug.Log("Attacking");
             AttackZombie();
         }
     }
@@ -39,7 +39,7 @@ public class playerMovement : MonoBehaviour
     public void OnMove(InputValue movementValue)
     {
         moveVector = movementValue.Get<Vector2>();
-        Debug.Log("Move Input: " + moveVector); // Add this debug log
+        //Debug.Log("Move Input: " + moveVector); // Add this debug log
     }
 
     // Method to destroy zombies within a certain radius of the player
@@ -59,7 +59,7 @@ public class playerMovement : MonoBehaviour
                 }
 
                 Destroy(hitCollider.gameObject); // Destroy the zombie
-                Debug.Log("Zombie destroyed!");
+                //Debug.Log("Zombie destroyed!");
 
                 // Increment the kill count
                 if (playerPerformance != null) // Ensure the PlayerPerformance component was found
