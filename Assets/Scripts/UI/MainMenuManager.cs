@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
+        // Make sure ScoreManager is initialized
+        //Debug.Log("Initializing ScoreManager from MainMenuManager");
+        var scoreManager = ScoreManager.Instance;
+        
         if (sensitivitySlider != null)
         {
             sensitivitySlider.minValue = 1f;
@@ -32,5 +37,26 @@ public class MainMenuManager : MonoBehaviour
 
         // Then, load Stage1 Additively on top of the BaseScene.
         SceneManager.LoadScene("Stage 1", LoadSceneMode.Additive);
+        
+        // Set the stage scene as the active scene
+        StartCoroutine(SetStageAsActive("Stage 1"));
+    }
+
+    private IEnumerator SetStageAsActive(string stageName)
+    {
+        // Wait for the scene to be fully loaded
+        yield return new WaitForSeconds(0.1f);
+        
+        // Get the scene and set it as active
+        Scene stageScene = SceneManager.GetSceneByName(stageName);
+        if (stageScene.IsValid())
+        {
+            SceneManager.SetActiveScene(stageScene);
+            //Debug.Log($"Set active scene to: {stageName}");
+        }
+        else
+        {
+            //Debug.LogError($"Could not set {stageName} as active - scene not found");
+        }
     }
 }

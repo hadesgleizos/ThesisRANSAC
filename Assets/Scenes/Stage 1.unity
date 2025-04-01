@@ -1356,21 +1356,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ee7bd83b3414f71933799a1d004776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctionDistance: 0.3
+  correctionForce: 10
+  checkDistance: 0.3
   wallLayers:
     serializedVersion: 2
     m_Bits: 16367
   visualizeRays: 0
   raycastCount: 12
+  clipPreventionMultiplier: 3
+  cornerDetectionAngle: 120
   teleportThreshold: 0.5
   preventZombiePushing: 1
   zombieTag: Zombie
   makeZombiesPassThrough: 1
+  absolutePhysicsImmunity: 1
   enableEmergencyTeleport: 1
   emergencyEscapeDistance: 0.3
   stuckTimeThreshold: 0.5
   restorePositionWhenStuck: 1
   preventStandingOnZombies: 1
+  slideForce: 8
+  downwardForce: 15
   zombieTopCheckRadius: 0.5
   maxStandingOnZombieTime: 0.5
 --- !u!4 &698401527 stripped
@@ -4809,6 +4815,7 @@ MonoBehaviour:
   health: {fileID: 2502275178414749685}
   ammo: {fileID: 6195154274201635473}
   score: {fileID: 6306691582557795901}
+  highScoreText: {fileID: 0}
   weaponIndicator:
   - {fileID: 2050491634783046270}
   - {fileID: 5777474890480042467}

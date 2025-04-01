@@ -100,7 +100,7 @@ public class PlayerMotor : MonoBehaviour
         // Debug.Log to check movement components
         if (input.magnitude > 0.1f || Mathf.Abs(playerVelocity.y) > 0.1f)
         {
-            Debug.Log($"Movement: H={input.magnitude:F2}, V={playerVelocity.y:F2}, Looking Y={Camera.main.transform.forward.y:F2}");
+            //Debug.Log($"Movement: H={input.magnitude:F2}, V={playerVelocity.y:F2}, Looking Y={Camera.main.transform.forward.y:F2}");
         }
     }
 
