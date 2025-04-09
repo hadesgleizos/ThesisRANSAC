@@ -189,15 +189,21 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
                 ScorePoints.text = $"Score: {totalKillCount}";
             }
         }
-
         Time.timeScale = 0; // Pause the game
     }
 
 public void RestartGame()
 {
     Time.timeScale = 1;
-    SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
-    SceneManager.LoadScene(restartSceneName, LoadSceneMode.Additive);
+        if (restartSceneName != "Tutorial") 
+        {
+            SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
+            SceneManager.LoadScene(restartSceneName, LoadSceneMode.Additive);
+        }
+        else 
+        {
+            SceneManager.LoadScene(restartSceneName, LoadSceneMode.Single);
+        }
 }
 
 public void NextStage()

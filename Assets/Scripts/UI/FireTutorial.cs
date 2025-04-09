@@ -6,20 +6,28 @@ public class FireTutorial : MonoBehaviour
 {
     public GameObject tutorialCanvasGroup;
 
-    public TextMeshProUGUI tutorialText; 
+    public TextMeshProUGUI tutorialText;
 
+    private GameObject firePass;
 
+    public bool GunPickUpBool;
+    
     private KeyCode[] tutorialKeys = new KeyCode[]
     {
         KeyCode.E,
         KeyCode.Mouse0,
-        KeyCode.R
+        KeyCode.R,
+        KeyCode.G,
+        KeyCode.Alpha2,
+        KeyCode.Alpha1
     };
     private string[] tutorialMessages = new string[]
     {
         "Press E to pick up the gun!",
         "Press Left Click to shoot!",
-        "Press R to reload!"
+        "Press R to reload!",
+        "Press G to throw!",
+        "Press 1 or 2 to switch weapons!"
     };
 
     private int currentIndex = 0;
@@ -27,15 +35,14 @@ public class FireTutorial : MonoBehaviour
 
     private void Start()
     {
-
+        GunPickUpBool = false;
+        firePass = GameObject.FindGameObjectWithTag("FirePass");
         UpdateTutorialMessage();
     }
-
     private void Update()
     {
         if (isFadingOut) return;
-
-        if (Input.GetKeyDown(tutorialKeys[currentIndex]))
+        if (Input.GetKeyDown(tutorialKeys[currentIndex]) && currentIndex >= 1)
         {
             // Move on to the next key
             currentIndex++;
@@ -47,8 +54,19 @@ public class FireTutorial : MonoBehaviour
             }
             else
             {
+                firePass.SetActive(false);
                 gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void GunPickUpCue() 
+    {
+        GunPickUpBool = true;
+        currentIndex++;
+        if (currentIndex < tutorialKeys.Length)
+        {
+            UpdateTutorialMessage();
         }
     }
 

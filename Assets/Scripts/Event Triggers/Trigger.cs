@@ -7,6 +7,7 @@ using System;
 public class Trigger : MonoBehaviour
 {
     [SerializeField] bool destroyOnTriggerEnter;
+    [SerializeField] bool destroyOnTriggerExit;
     [SerializeField] string tagFilter;
     [SerializeField] UnityEvent onTriggerEnter;
     [SerializeField] UnityEvent onTriggerExit;
@@ -33,5 +34,10 @@ public class Trigger : MonoBehaviour
     {
         if (!String.IsNullOrEmpty(tagFilter) && !other.gameObject.CompareTag(tagFilter)) return;
         onTriggerExit.Invoke();
+
+        if (destroyOnTriggerExit)
+        {
+            Destroy(gameObject);
+        }
     }
 }

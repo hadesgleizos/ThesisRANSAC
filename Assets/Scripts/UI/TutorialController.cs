@@ -5,7 +5,9 @@ public class TutorialController : MonoBehaviour
 {
     public GameObject tutorialCanvasGroup;
 
-    public TextMeshProUGUI tutorialText; 
+    public TextMeshProUGUI tutorialText;
+
+    private GameObject MoveContPass;
 
 
     private KeyCode[] tutorialKeys = new KeyCode[]
@@ -31,7 +33,7 @@ public class TutorialController : MonoBehaviour
 
     private void Start()
     {
-
+        MoveContPass = GameObject.FindGameObjectWithTag("MovementPass");
         UpdateTutorialMessage();
     }
 
@@ -51,6 +53,7 @@ public class TutorialController : MonoBehaviour
             }
             else
             {
+                MoveContPass.SetActive(false);
                 gameObject.SetActive(false);
             }
         }

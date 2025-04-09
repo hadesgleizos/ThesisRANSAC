@@ -11,9 +11,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject optionsMenu;
     public static bool isPaused;
     private AudioSource[] allAudioSources;
+    private GameObject scoreScreen;
 
     void Awake()
     {
+        scoreScreen = GameObject.FindGameObjectWithTag("ScoreScreen");
         if (Instance == null)
         {
             Instance = this;
@@ -135,14 +137,14 @@ public class PauseMenu : MonoBehaviour
         // Reset pause state when a new scene loads
         isPaused = false;
         Time.timeScale = 1f;
-        
+
         // Re-cache audio sources as they will be different in the new scene
         RefreshAudioSources();
-        
+
         // Show cursor in main menu, hide in gameplay scenes
-        if (scene.name == "MainMenu")
+        if (scene.name == "MainMenu" ||  scoreScreen)
         {
-            SetCursorState(true); // Show cursor in main menu
+            SetCursorState(true); // Show cursor in main menu & score screen
         }
         else
         {

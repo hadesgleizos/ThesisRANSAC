@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7543277910197956850}
   - component: {fileID: 5663785826926890677}
+  - component: {fileID: 2760658133189227480}
   m_Layer: 6
   m_Name: AmmoLight
   m_TagString: Untagged
@@ -46,8 +47,8 @@ Light:
   m_Color: {r: 0.9137255, g: 1, b: 0, a: 1}
   m_Intensity: 4
   m_Range: 10
-  m_SpotAngle: 28.2
-  m_InnerSpotAngle: 1
+  m_SpotAngle: 65
+  m_InnerSpotAngle: 12.1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -94,6 +95,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2760658133189227480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34669486343757853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &6783852825175509153
 PrefabInstance:
   m_ObjectHideFlags: 0

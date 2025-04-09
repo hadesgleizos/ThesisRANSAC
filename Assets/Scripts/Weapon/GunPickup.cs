@@ -10,6 +10,7 @@ public class GunPickup : MonoBehaviour
 
     private GameObject currentGun;         // Currently equipped gun (rig-attached)
     private WeaponManager weaponManager;   // Reference to the WeaponManager
+    public FireTutorial fireTutorial;     // For Tutorial Only
 
     void Start()
     {
@@ -52,6 +53,10 @@ public class GunPickup : MonoBehaviour
                 if (hit.collider.CompareTag("Pickup"))
                 {
                     PickupGun(hit.collider.gameObject);
+                    if (!fireTutorial.GunPickUpBool && fireTutorial != null) // For Tutorial Only
+                    {
+                        fireTutorial.GunPickUpCue();
+                    }
                 }
             }
         }

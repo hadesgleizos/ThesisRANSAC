@@ -13,6 +13,10 @@ TagManager:
   - Wood
   - Grass
   - Concrete
+  - Missile
+  - MovementPass
+  - FirePass
+  - ScoreScreen
   layers:
   - Default
   - TransparentFX
