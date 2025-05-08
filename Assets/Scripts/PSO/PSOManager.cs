@@ -72,6 +72,12 @@ public class PSOManager : MonoBehaviour
     [SerializeField] 
     private PSODisplay psoDisplay;
 
+    [Header("Performance Display")]
+    public bool showPerformanceOverlay = true;
+    public bool showDetailedMetrics = false;
+    private float currentAggressiveness = 0.5f; // 0-1 scale
+    private Rect performanceRect = new Rect(10, 10, 200, 100);
+
     private void Start()
     {
         // Subscribe to wave events
@@ -469,6 +475,67 @@ private Vector2 GetGlobalBestPosition()
             variance += (param - mean).sqrMagnitude;
         }
         return variance / parameterHistory.Count;
+    }
+
+    private void OnGUI()
+    {
+        if (!showPerformanceOverlay) return;
+
+        GUI.backgroundColor = new Color(0, 0, 0, 0.6f);
+        performanceRect = GUI.Window(0, performanceRect, DrawPerformanceWindow, "PSO Performance");
+    }
+
+    private void DrawPerformanceWindow(int windowID)
+    {
+        // Calculate aggressiveness (0-1 scale)
+        CalculateAlgorithmAggressiveness();
+
+        GUILayout.BeginVertical();
+
+        // Memory usage
+        long memoryUsage = GC.GetTotalMemory(false) / 1024; // KB
+        string memoryColor = memoryUsage > 2000 ? "red" : memoryUsage > 1000 ? "yellow" : "white";
+        GUILayout.Label($"<color={memoryColor}>Memory: {memoryUsage} KB</color>");
+
+        // Execution speed
+        float speedMs = (runCount > 0) ? totalExecutionTime / runCount : 0;
+        string speedColor = speedMs > 20 ? "red" : speedMs > 10 ? "yellow" : "white";
+        GUILayout.Label($"<color={speedColor}>Speed: {speedMs:F2} ms</color>");
+
+        // Aggressiveness as a decimal value (0-1)
+        string aggrColor = currentAggressiveness > 0.7f ? "red" : 
+                         currentAggressiveness > 0.4f ? "yellow" : "green";
+        GUILayout.Label($"<color={aggrColor}>Aggressiveness: {currentAggressiveness:F2}</color>");
+
+        if (showDetailedMetrics)
+        {
+            GUILayout.Space(5);
+            GUILayout.Label($"Social Weight: {socialWeight:F2}");
+            GUILayout.Label($"Spawn Rate: {spawner.GetCurrentSpawnRate():F2}/{maxSpawnRate:F2}");
+            GUILayout.Label($"Speed: {spawner.GetCurrentZombieSpeed():F2}/{maxSpeed:F2}");
+        }
+
+        GUILayout.EndVertical();
+
+        // Make window draggable
+        GUI.DragWindow();
+    }
+
+    private void CalculateAlgorithmAggressiveness()
+    {
+        // Calculate aggressiveness based on multiple factors
+        float currentSpawnRate = spawner?.GetCurrentSpawnRate() ?? 0;
+        float currentSpeed = spawner?.GetCurrentZombieSpeed() ?? 0;
+        
+        float spawnRateNormalized = (currentSpawnRate - minSpawnRate) / (maxSpawnRate - minSpawnRate);
+        float speedNormalized = (currentSpeed - minSpeed) / (maxSpeed - minSpeed);
+        
+        // Calculate overall aggressiveness (weighted average)
+        currentAggressiveness = (spawnRateNormalized * 0.5f) + 
+                                (speedNormalized * 0.5f);
+        
+        // Clamp to 0-1 range
+        currentAggressiveness = Mathf.Clamp01(currentAggressiveness);
     }
 
     private class Particle

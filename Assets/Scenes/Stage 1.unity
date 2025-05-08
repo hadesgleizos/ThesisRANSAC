@@ -297,6 +297,65 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &154108727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 154108729}
+  - component: {fileID: 154108728}
+  m_Layer: 0
+  m_Name: GWOManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &154108728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154108727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19be7669e6be4495f957dfecd8be68c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  packSize: 10
+  aDecreaseRate: 0.02
+  simulationSpeed: 1
+  minParamX: 0.1
+  maxParamX: 1
+  minParamY: 0.1
+  maxParamY: 1
+  enableMetrics: 1
+  metricsHistoryLimit: 100
+  showPerformanceOverlay: 1
+  showDetailedMetrics: 0
+  autoRun: 1
+  updateFrequency: 10
+  functionType: 0
+  maximizeFunction: 0
+--- !u!4 &154108729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154108727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 311.52338, y: 110.8086, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &158541364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnTriggerEnter: 1
+  destroyOnTriggerExit: 0
   tagFilter: MainCamera
   onTriggerEnter:
     m_PersistentCalls:
@@ -1591,6 +1651,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1878856502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1234834271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1234834272}
+  - component: {fileID: 1234834273}
+  m_Layer: 0
+  m_Name: GAManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1234834272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234834271}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 311.52338, y: 110.8086, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1234834273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234834271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcca74ac36cc54a1d84135adb9c0cda4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationSize: 10
+  mutationRate: 0.1
+  crossoverRate: 0.7
+  minParamX: 0.1
+  maxParamX: 1
+  minParamY: 0.1
+  maxParamY: 1
+  enableMetrics: 1
+  metricsHistoryLimit: 100
+  showPerformanceOverlay: 1
+  showDetailedMetrics: 0
+  autoRun: 1
+  updateFrequency: 10
+  functionType: 0
+  maximizeFunction: 0
 --- !u!1 &1255945683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,7 +2926,7 @@ PrefabInstance:
       objectReference: {fileID: 6659282219479892896}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: waveDuration
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: cooldownDuration
@@ -3105,6 +3224,10 @@ PrefabInstance:
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: socialWeight
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+      propertyPath: enableMetrics
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
       propertyPath: inertiaWeight
@@ -13366,3 +13489,5 @@ SceneRoots:
   - {fileID: 1190303567}
   - {fileID: 115655868}
   - {fileID: 258153301}
+  - {fileID: 154108729}
+  - {fileID: 1234834272}
