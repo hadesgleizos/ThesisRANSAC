@@ -531,7 +531,7 @@ MonoBehaviour:
   windowPosition: {x: 20, y: 20}
   windowSize: {x: 400, y: 300}
   backgroundAlpha: 0.7
-  psoManager: {fileID: 0}
+  psoManager: {fileID: 136150279779953268}
   easySpawnRateThreshold: 0.65
   hardSpawnRateThreshold: 0.85
   easySpeedThreshold: 0.5
@@ -3730,6 +3730,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+--- !u!114 &136150279779953268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2171757968262649058, guid: 5f2beba9c8047644d8afb631cb12655c, type: 3}
+  m_PrefabInstance: {fileID: 136150279779953267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60924595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18163d65727c28e4093cbfe04feab424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &156448935102729052
 RectTransform:
   m_ObjectHideFlags: 0
