@@ -810,22 +810,32 @@ private void FindVoicelineUIReferences()
         {
             RemoveZombie(currentBoss);
             currentBoss = null;
-            //Debug.Log("Boss defeated!");
+            Debug.Log("Boss defeated!");
             
             // Stop the boss music
             if (SoundManager.Instance != null)
             {
-                //Debug.Log("Stopping boss music...");
                 SoundManager.Instance.StopMusic();
             }
             
-            // Disable timer text
+            // Clear the "Defeat the Boss!" text
             if (TimerText != null)
             {
-                TimerText.gameObject.SetActive(false);
+                TimerText.text = "";
             }
             
-            StartCoroutine(ShowScoreScreenDelayed(5f));
+            // Only show score screen if this is a regular wave boss (not an event)
+            // OR if the event is configured to end the game on completion
+            if (!eventActive || (eventActive && currentEvent.endGameOnCompletion))
+            {
+                // Disable timer text completely
+                if (TimerText != null)
+                {
+                    TimerText.gameObject.SetActive(false);
+                }
+                
+                StartCoroutine(ShowScoreScreenDelayed(5f));
+            }
         }
     }
 
@@ -933,19 +943,67 @@ private IEnumerator EventWaveSystem(Transform triggerLocation, List<Transform> c
         // Last wave completed, show event complete message immediately
         if (currentWave >= currentEvent.eventWaves)  // <-- FIXED COMPARISON
         {
-            // Skip the cooldown for the last wave and show completion immediately
+            // Skip regular cooldown for the last wave but still despawn zombies
             inCooldown = false;
-            DespawnAllZombies();
+            DespawnAllZombies(); // Ensure all zombies from the final wave are despawned
             
-            // Update UI to show Event Complete right away
-            if (WaveText != null)
+            // Check if we should spawn a boss
+            if (currentEvent.spawnBossAtEnd && bossPrefab != null)
             {
-                WaveText.text = "Event Complete";
+                // Show a brief cooldown period before boss fight
+                inCooldown = true;
+                cooldownTimeRemaining = 5f; // Use a shorter cooldown before boss
+                
+                // Update UI to show preparing for boss
+                if (WaveText != null)
+                {
+                    WaveText.text = "Preparing for Boss Fight";
+                }
+                
+                if (TimerText != null)
+                {
+                    TimerText.text = "Get Ready!";
+                }
+                
+                // Wait for the boss cooldown
+                yield return new WaitForSeconds(5f);
+                inCooldown = false;
+                
+                // Update UI to show boss wave
+                if (WaveText != null)
+                {
+                    WaveText.text = "BOSS WAVE";
+                }
+                
+                // Wait a moment before spawning the boss
+                yield return new WaitForSeconds(bossSpawnDelay);
+                
+                // Spawn the boss
+                SpawnBoss();
+                
+                // Wait until boss is defeated
+                while (currentBoss != null)
+                {
+                    if (TimerText != null)
+                    {
+                        TimerText.text = "Defeat the Boss!";
+                    }
+                    yield return new WaitForSeconds(0.5f);
+                }
             }
-            
-            if (TimerText != null)
+            else
             {
-                TimerText.text = "";
+                // If no boss, just show completion
+                // Update UI to show Event Complete
+                if (WaveText != null)
+                {
+                    WaveText.text = "Event Complete";
+                }
+                
+                if (TimerText != null)
+                {
+                    TimerText.text = "";
+                }
             }
             
             OnWaveEnd?.Invoke(currentWave);

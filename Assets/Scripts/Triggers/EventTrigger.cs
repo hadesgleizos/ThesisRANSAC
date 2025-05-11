@@ -99,7 +99,7 @@ public class EventTrigger : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("MainCamera"))
         {
             playerInTrigger = false;
             if (interactionPrompt != null)
