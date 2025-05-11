@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class Voicelines : MonoBehaviour
 {
@@ -26,13 +27,37 @@ public class Voicelines : MonoBehaviour
         public float[] partDurations; // Duration for each part
         public bool useTypingEffect = false;
         public float typingSpeed = 30f; // Characters per second
+        
+        // New field for sequence actions
+        public UnityEvent onComplete;
     }
 
+    // New class for multiple sequential voicelines
+    [System.Serializable]
+    public class VoicelineSequence
+    {
+        public string sequenceId;
+        
+        [System.Serializable]
+        public class SequenceEntry
+        {
+            public string voicelineId;
+            public float delayAfterVoiceline = 0.5f;
+            public UnityEvent actionsAfterVoiceline;
+        }
+        
+        public List<SequenceEntry> entries = new List<SequenceEntry>();
+        public UnityEvent actionsAfterSequence;
+    }
+    
     [Header("Voiceline Settings")]
     public List<VoicelineClip> voicelineClips = new List<VoicelineClip>();
     public AudioSource audioSource;
     public TMPro.TMP_Text subtitleText;
-
+    
+    [Header("Voiceline Sequences")]
+    public List<VoicelineSequence> voicelineSequences = new List<VoicelineSequence>();
+    
     [Header("Subtitle Display")]
     public float defaultSubtitleDuration = 3f;
     public GameObject subtitlePanel;
@@ -46,6 +71,7 @@ public class Voicelines : MonoBehaviour
     public string defaultWaveEndId = "";
 
     private Dictionary<string, VoicelineClip> voicelineDict = new Dictionary<string, VoicelineClip>();
+    private Dictionary<string, VoicelineSequence> sequenceDict = new Dictionary<string, VoicelineSequence>();
     private Coroutine currentVoicelineCoroutine;
     private bool isPlaying = false;
 
@@ -71,12 +97,20 @@ public class Voicelines : MonoBehaviour
             }
         }
 
-        // Initialize dictionary for faster lookups
+        // Initialize dictionaries for faster lookups
         foreach (VoicelineClip clip in voicelineClips)
         {
             if (!string.IsNullOrEmpty(clip.id) && !voicelineDict.ContainsKey(clip.id))
             {
                 voicelineDict.Add(clip.id, clip);
+            }
+        }
+        
+        foreach (VoicelineSequence sequence in voicelineSequences)
+        {
+            if (!string.IsNullOrEmpty(sequence.sequenceId) && !sequenceDict.ContainsKey(sequence.sequenceId))
+            {
+                sequenceDict.Add(sequence.sequenceId, sequence);
             }
         }
 
@@ -148,9 +182,15 @@ public class Voicelines : MonoBehaviour
                 // Check if this is the last wave of the event
                 if (waveNumber == currentEvent.eventWaves)
                 {
-                    // Play the event completion voiceline if specified
-                    if (!string.IsNullOrEmpty(currentEvent.completeVoicelineId))
+                    // Check if using sequence or single voiceline
+                    if (currentEvent.useVoicelineSequenceOnComplete && 
+                        !string.IsNullOrEmpty(currentEvent.completeSequenceId))
                     {
+                        PlayVoicelineSequence(currentEvent.completeSequenceId);
+                    }
+                    else if (!string.IsNullOrEmpty(currentEvent.completeVoicelineId))
+                    {
+                        // Play the event completion voiceline if specified
                         PlayVoiceline(currentEvent.completeVoicelineId);
                     }
                     return;
@@ -250,16 +290,62 @@ public class Voicelines : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayVoicelineCoroutine(VoicelineClip clip)
+    // Add method to play a sequence
+    public void PlayVoicelineSequence(string sequenceId)
+    {
+        if (string.IsNullOrEmpty(sequenceId))
+        {
+            return;
+        }
+
+        if (sequenceDict.TryGetValue(sequenceId, out VoicelineSequence sequence))
+        {
+            StopCurrentVoiceline(); // Stop any currently playing voiceline
+            StartCoroutine(PlaySequenceCoroutine(sequence));
+        }
+        else
+        {
+            Debug.LogWarning($"Voiceline sequence with ID '{sequenceId}' not found.");
+        }
+    }
+    
+    private IEnumerator PlaySequenceCoroutine(VoicelineSequence sequence)
+    {
+        // Play each voiceline in the sequence
+        foreach (var entry in sequence.entries)
+        {
+            // Play the individual voiceline
+            if (!string.IsNullOrEmpty(entry.voicelineId) && voicelineDict.TryGetValue(entry.voicelineId, out VoicelineClip clip))
+            {
+                // Play the voiceline and wait for it to complete
+                yield return PlayVoicelineAndWait(clip);
+                
+                // Invoke any actions attached to this entry
+                entry.actionsAfterVoiceline?.Invoke();
+                
+                // Wait for specified delay before next voiceline
+                if (entry.delayAfterVoiceline > 0)
+                {
+                    yield return new WaitForSeconds(entry.delayAfterVoiceline);
+                }
+            }
+        }
+        
+        // Invoke actions after the entire sequence is complete
+        sequence.actionsAfterSequence?.Invoke();
+    }
+    
+    // Helper method to play a voiceline and wait for it to complete
+    private IEnumerator PlayVoicelineAndWait(VoicelineClip clip)
     {
         isPlaying = true;
-
+        
         // Play audio
         audioSource.clip = clip.clip;
         audioSource.volume = clip.volume;
         audioSource.Play();
-
-        // Handle subtitle display based on type
+        
+        // Handle subtitles
         if (subtitleText != null)
         {
             if (subtitlePanel != null)
@@ -267,7 +353,7 @@ public class Voicelines : MonoBehaviour
                 subtitlePanel.SetActive(true);
             }
             
-            // Check if using multi-part subtitles
+            // Use existing logic for multi-part subtitles
             if (clip.useMultiPartSubtitles && clip.subtitleParts != null && clip.subtitleParts.Length > 0)
             {
                 // Calculate default duration if audio clip exists
@@ -349,8 +435,17 @@ public class Voicelines : MonoBehaviour
             // If no subtitle, just wait for audio to finish
             yield return new WaitForSeconds(clip.clip.length);
         }
-
+        
+        // Invoke any actions attached to this clip
+        clip.onComplete?.Invoke();
+        
         isPlaying = false;
+    }
+    
+    // Modified version of original PlayVoicelineCoroutine to use the shared code
+    private IEnumerator PlayVoicelineCoroutine(VoicelineClip clip)
+    {
+        yield return PlayVoicelineAndWait(clip);
     }
 
     // Typing effect for text

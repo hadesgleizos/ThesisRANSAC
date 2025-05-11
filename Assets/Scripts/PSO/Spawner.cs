@@ -38,7 +38,11 @@ public class SpawnEvent
     
     [Header("Voicelines")]
     public string startVoicelineId = "";
+    public bool useVoicelineSequenceOnComplete = false;
+    [Tooltip("Use this for a single voiceline on completion")]
     public string completeVoicelineId = "";
+    [Tooltip("Or use this for a sequence of voicelines with actions")]
+    public string completeSequenceId = "";
     public string[] waveStartVoicelineIds; // Array for each wave start
     public string[] waveEndVoicelineIds;   // Array for each wave end
     
