@@ -34,7 +34,14 @@ public class SpawnEvent
     public float eventCooldown = 10f;
     public bool spawnBossAtEnd = false;
     public bool endGameOnCompletion = false;
-    public bool startRegularWavesAfterCompletion = false; // NEW: Add this line
+    public bool startRegularWavesAfterCompletion = false;
+    
+    [Header("Voicelines")]
+    public string startVoicelineId = "";
+    public string completeVoicelineId = "";
+    public string[] waveStartVoicelineIds; // Array for each wave start
+    public string[] waveEndVoicelineIds;   // Array for each wave end
+    
     public UnityEvent onEventStart;
     public UnityEvent onEventComplete;
 }
@@ -811,4 +818,18 @@ private IEnumerator EventWaveSystem(Transform triggerLocation, List<Transform> c
         currentEvent = null;
     }
 }
+
+    // Add these public methods to your Spawner class
+
+    // Check if an event is currently active
+    public bool IsEventActive()
+    {
+        return eventActive;
+    }
+
+    // Get the current event configuration
+    public SpawnEvent GetCurrentEvent()
+    {
+        return currentEvent;
+    }
 }

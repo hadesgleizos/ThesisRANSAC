@@ -21,6 +21,12 @@ public class CustomEventTrigger : MonoBehaviour
     [Header("Detection Settings")]
     public string playerTag = "MainCamera"; // Make this configurable
     
+    [Header("Voiceline")]
+    public bool playVoiceline = false;
+    public string voicelineId = "";
+    public bool playVoicelineOnTriggerExit = false;
+    public string exitVoicelineId = "";
+    
     [Header("Debug")]
     public bool debugMode = false; // Add toggle for debug mode
     
@@ -90,6 +96,13 @@ public class CustomEventTrigger : MonoBehaviour
             playerInTrigger = true;
             if (debugMode) Debug.Log($"Player entered trigger: {gameObject.name}");
             
+            // Play voiceline if configured
+            if (playVoiceline && !string.IsNullOrEmpty(voicelineId) && Voicelines.Instance != null)
+            {
+                Voicelines.Instance.PlayVoiceline(voicelineId);
+                if (debugMode) Debug.Log($"Playing enter voiceline: {voicelineId}");
+            }
+            
             if (interactionPrompt != null && requireKeyPress)
             {
                 interactionPrompt.SetActive(true);
@@ -107,6 +120,13 @@ public class CustomEventTrigger : MonoBehaviour
         {
             playerInTrigger = false;
             if (debugMode) Debug.Log($"Player exited trigger: {gameObject.name}");
+            
+            // Play exit voiceline if configured
+            if (playVoicelineOnTriggerExit && !string.IsNullOrEmpty(exitVoicelineId) && Voicelines.Instance != null)
+            {
+                Voicelines.Instance.PlayVoiceline(exitVoicelineId);
+                if (debugMode) Debug.Log($"Playing exit voiceline: {exitVoicelineId}");
+            }
             
             if (interactionPrompt != null)
             {
