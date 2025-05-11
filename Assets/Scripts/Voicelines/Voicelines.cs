@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Voicelines : MonoBehaviour
 {
@@ -80,21 +81,12 @@ public class Voicelines : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // Remove this line:
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
-        }
-
-        // If no audio source is assigned, try to get one
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-            if (audioSource == null)
-            {
-                audioSource = gameObject.AddComponent<AudioSource>();
-            }
         }
 
         // Initialize dictionaries for faster lookups
@@ -121,11 +113,23 @@ public class Voicelines : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // Just use the regular setup method - don't look for PersistentCanvas
+        SetupUIReferences();
+        
+        // Log for debugging
+        Debug.Log("Voicelines initialized with local references");
+    }
+
     private void OnEnable()
     {
         // Subscribe to Spawner events
         Spawner.OnWaveStart += HandleWaveStart;
         Spawner.OnWaveEnd += HandleWaveEnd;
+        
+        // Subscribe to scene loading events
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
@@ -133,6 +137,104 @@ public class Voicelines : MonoBehaviour
         // Unsubscribe from Spawner events
         Spawner.OnWaveStart -= HandleWaveStart;
         Spawner.OnWaveEnd -= HandleWaveEnd;
+        
+        // Unsubscribe from scene loading events
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // This will be called whenever a new scene is loaded
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log($"Scene loaded: {scene.name}, refreshing voiceline UI references");
+        // Give a small delay to ensure all objects are initialized
+        StartCoroutine(SetupUIReferencesDelayed());
+    }
+
+    private IEnumerator SetupUIReferencesDelayed()
+    {
+        // Wait for the end of the frame to ensure all objects are initialized
+        yield return new WaitForEndOfFrame();
+        
+        // Re-initialize UI references if they're missing
+        SetupUIReferences();
+    }
+
+    // Method to set up UI references
+    public void SetupUIReferences()
+    {
+        // Check if we've lost our subtitle text reference
+        if (subtitleText == null)
+        {
+            // Try to find by tag first
+            GameObject subtitleTextObj = GameObject.FindWithTag("SubtitleText");
+            if (subtitleTextObj != null)
+            {
+                subtitleText = subtitleTextObj.GetComponent<TMPro.TMP_Text>();
+                Debug.Log("Found subtitle text by tag");
+            }
+            else
+            {
+                // Try to find by name as fallback
+                GameObject foundByName = GameObject.Find("SubtitleText");
+                if (foundByName != null)
+                {
+                    subtitleText = foundByName.GetComponent<TMPro.TMP_Text>();
+                    Debug.Log("Found subtitle text by name");
+                }
+                else
+                {
+                    Debug.LogWarning("Could not find subtitle text object");
+                }
+            }
+        }
+        
+        // Check if we've lost our subtitle panel reference
+        if (subtitlePanel == null)
+        {
+            // Try to find by tag first
+            GameObject subtitlePanelObj = GameObject.FindWithTag("SubtitlePanel");
+            if (subtitlePanelObj != null)
+            {
+                subtitlePanel = subtitlePanelObj;
+                Debug.Log("Found subtitle panel by tag");
+            }
+            else
+            {
+                // Try to find by name as fallback
+                GameObject foundByName = GameObject.Find("SubtitlePanel");
+                if (foundByName != null)
+                {
+                    subtitlePanel = foundByName;
+                    Debug.Log("Found subtitle panel by name");
+                }
+                else
+                {
+                    Debug.LogWarning("Could not find subtitle panel object");
+                }
+            }
+        }
+        
+        // Initialize panel state
+        if (subtitlePanel != null)
+        {
+            subtitlePanel.SetActive(false);
+        }
+        
+        // If no audio source is assigned, try to get one
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+                Debug.Log("Created new audio source for voicelines");
+            }
+        }
+        
+        // Log the current status of references
+        Debug.Log($"Voicelines references - Panel: {(subtitlePanel != null ? "Found" : "Missing")}, " +
+                  $"Text: {(subtitleText != null ? "Found" : "Missing")}, " +
+                  $"Audio: {(audioSource != null ? "Found" : "Missing")}");
     }
 
     // Handle wave start event
@@ -485,5 +587,51 @@ public class Voicelines : MonoBehaviour
         }
         
         isPlaying = false;
+    }
+
+    // Public methods to reset references
+    public void SetSubtitleText(TMPro.TMP_Text text)
+    {
+        subtitleText = text;
+        Debug.Log("Subtitle text reference set manually");
+    }
+
+    public void SetSubtitlePanel(GameObject panel)
+    {
+        subtitlePanel = panel;
+        if (subtitlePanel != null)
+        {
+            subtitlePanel.SetActive(false);
+        }
+        Debug.Log("Subtitle panel reference set manually");
+    }
+
+    public void SetAudioSource(AudioSource source)
+    {
+        audioSource = source;
+        Debug.Log("Audio source reference set manually");
+    }
+
+    // A convenient method to set all references at once
+    public void SetAllReferences(TMPro.TMP_Text text, GameObject panel, AudioSource source = null)
+    {
+        SetSubtitleText(text);
+        SetSubtitlePanel(panel);
+        if (source != null)
+        {
+            SetAudioSource(source);
+        }
+    }
+
+    // Add this method to reset the state of the voicelines system
+    public void Reset()
+    {
+        // Stop any current voiceline playback
+        StopCurrentVoiceline();
+        
+        // Re-establish UI references
+        SetupUIReferences();
+        
+        Debug.Log("Voicelines system reset");
     }
 }

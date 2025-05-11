@@ -135,6 +135,11 @@ public string nextStageSceneName = "Stage 3"; // Used by NextStage
     [Header("Spawner Settings")]
 public bool startRegularWavesAutomatically = false; // Set this to false in Inspector
 
+    [Header("Voiceline UI References")]
+// These references would be set in the inspector
+public TMPro.TMP_Text subtitleTextReference;
+public GameObject subtitlePanelReference;
+
     private void Start()
     {
         // Initialize lists, references, and other setup
@@ -144,7 +149,41 @@ public bool startRegularWavesAutomatically = false; // Set this to false in Insp
         {
             StartCoroutine(WaveSystem());
         }
+
+        // Call this method when level starts or restarts
+        InitializeVoicelineSystem();
     }
+
+    // Call this method when level starts or restarts
+private void InitializeVoicelineSystem()
+{
+    if (Voicelines.Instance != null)
+    {
+        // Try to find references if they're not set
+        if (subtitleTextReference == null || subtitlePanelReference == null)
+        {
+            FindVoicelineUIReferences();
+        }
+        
+        // Set up the voiceline references
+        if (subtitleTextReference != null && subtitlePanelReference != null)
+        {
+            Voicelines.Instance.SetAllReferences(
+                subtitleTextReference,
+                subtitlePanelReference
+            );
+            Debug.Log("Voiceline references initialized by Spawner");
+        }
+        else
+        {
+            Debug.LogWarning("Missing UI references for Voicelines system!");
+        }
+    }
+    else
+    {
+        Debug.LogWarning("Voicelines instance not found!");
+    }
+}
 
     private IEnumerator WaveSystem()
     {
@@ -233,23 +272,172 @@ public bool startRegularWavesAutomatically = false; // Set this to false in Insp
 
 public void RestartGame()
 {
+    // Reset time scale to normal
     Time.timeScale = 1;
-        if (restartSceneName != "Tutorial") 
-        {
-            SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
-            SceneManager.LoadScene(restartSceneName, LoadSceneMode.Additive);
-        }
-        else 
-        {
-            SceneManager.LoadScene(restartSceneName, LoadSceneMode.Single);
-        }
+    
+    // Reset all game state variables
+    ResetGameState();
+    
+    // Use Unity's LoadScene to create a clean restart
+    if (restartSceneName != "Tutorial") 
+    {
+        // For multi-scene setup (base + stage)
+        SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
+        
+        // Use a coroutine to load the second scene after the first is loaded
+        StartCoroutine(LoadSecondSceneAfterDelay(restartSceneName));
+    }
+    else 
+    {
+        // For single scene setup (simpler case)
+        SceneManager.LoadScene(restartSceneName, LoadSceneMode.Single);
+    }
+}
+
+// Helper method to load second scene with a slight delay
+private IEnumerator LoadSecondSceneAfterDelay(string sceneName)
+{
+    // Wait for end of frame to ensure first scene is fully loaded
+    yield return new WaitForEndOfFrame();
+    
+    // Load the second scene additively
+    SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+    
+    // Set this scene as active after loading
+    yield return null;
+    Scene sceneToActivate = SceneManager.GetSceneByName(sceneName);
+    if (sceneToActivate.IsValid())
+    {
+        SceneManager.SetActiveScene(sceneToActivate);
+    }
+}
+
+// Helper method to reset all game state variables
+private void ResetGameState()
+{
+    // Reset all persistent state variables
+    currentWave = 0;
+    totalKillCount = 0;
+    totalElapsedTime = 0f;
+    waveStartKillCount = 0;
+    waveStartTime = 0f;
+    inCooldown = false;
+    spawning = false;
+    cooldownTimeRemaining = 0f;
+    nextSpawnTime = 0f;
+    eventActive = false;
+    currentEvent = null;
+    
+    // Clear lists
+    activeZombies.Clear();
+    
+    // Reset boss state
+    if (currentBoss != null)
+    {
+        Destroy(currentBoss);
+        currentBoss = null;
+    }
+    
+    // Reset UI elements
+    if (WaveText != null)
+    {
+        WaveText.text = "";
+    }
+    
+    if (TimerText != null)
+    {
+        TimerText.text = "";
+    }
+    
+    if (ScoreScreen != null)
+    {
+        ScoreScreen.SetActive(false);
+    }
+    
+    // Reset any static state in other classes (if applicable)
+    // This is important for ensuring a truly clean restart
+    
+    // Additionally, you might want to reset any static state in other classes
+    // For example, if PlayerPerformance has static variables:
+    // Reset the spawn rate and zombie speed to initial values
+    spawnRate = 0.1f; // Use your default value
+    currentZombieSpeed = baseZombieSpeed;
+    
+    // Reset the Voicelines system
+    if (Voicelines.Instance != null)
+    {
+        Voicelines.Instance.Reset();
+    }
+    
+    Debug.Log("Game state reset for clean restart");
 }
 
 public void NextStage()
 {
+    // Reset time scale to normal
     Time.timeScale = 1;
+    
+    // Reset all game state variables
+    ResetGameState();
+    
+    // Load the base scene first
     SceneManager.LoadScene(baseSceneName, LoadSceneMode.Single);
-    SceneManager.LoadScene(nextStageSceneName, LoadSceneMode.Additive);
+    
+    // Load the next stage scene additively with a slight delay
+    StartCoroutine(LoadSecondSceneAfterDelay(nextStageSceneName));
+}
+
+// Add this coroutine to wait for scene loading before initializing
+private IEnumerator InitializeVoicelinesAfterSceneLoad()
+{
+    // Wait for scene to be fully loaded - two frames is usually enough
+    yield return null;
+    yield return null;
+    
+    // Find UI references again
+    FindVoicelineUIReferences();
+    
+    // Now initialize the voiceline system
+    InitializeVoicelineSystem();
+}
+
+// Add this method to find references in the newly loaded scene
+private void FindVoicelineUIReferences()
+{
+    // Try to find the subtitle text by tag or name
+    if (subtitleTextReference == null)
+    {
+        GameObject subtitleTextObj = GameObject.FindWithTag("SubtitleText");
+        if (subtitleTextObj != null)
+        {
+            subtitleTextReference = subtitleTextObj.GetComponent<TMPro.TMP_Text>();
+        }
+        else
+        {
+            // Try finding by name as fallback
+            subtitleTextObj = GameObject.Find("SubtitleText");
+            if (subtitleTextObj != null)
+            {
+                subtitleTextReference = subtitleTextObj.GetComponent<TMPro.TMP_Text>();
+            }
+        }
+    }
+    
+    // Try to find the subtitle panel by tag or name
+    if (subtitlePanelReference == null)
+    {
+        subtitlePanelReference = GameObject.FindWithTag("SubtitlePanel");
+        if (subtitlePanelReference == null)
+        {
+            // Try finding by name as fallback
+            subtitlePanelReference = GameObject.Find("SubtitlePanel");
+        }
+    }
+    
+    if (subtitleTextReference == null || subtitlePanelReference == null)
+    {
+        Debug.LogWarning("Could not find subtitle UI references in the scene!");
+    }
 }
 
     private GameObject GetRandomZombiePrefab()
@@ -652,7 +840,7 @@ public void NextStage()
         return inCooldown;
     }
 
-    // Add this method to the Spawner class
+    // Add this to your Spawner class
 public void StartEvent(int eventIndex, Transform triggerLocation, List<Transform> customSpawnPoints = null)
 {
     // Don't start an event if one is already running
@@ -836,4 +1024,28 @@ private IEnumerator EventWaveSystem(Transform triggerLocation, List<Transform> c
     {
         return currentEvent;
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    StartCoroutine(InitializeVoicelinesAfterSceneLoad());
+}
+
+private void OnEnable()
+{
+    // Subscribe to scene loading events
+    SceneManager.sceneLoaded += OnSceneLoaded;
+}
+
+private void OnDisable()
+{
+    // Unsubscribe from scene loading events
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
+
+// Public method that can be called from other scripts if needed
+public void ReinitializeVoicelines()
+{
+    FindVoicelineUIReferences();
+    InitializeVoicelineSystem();
+}
 }
