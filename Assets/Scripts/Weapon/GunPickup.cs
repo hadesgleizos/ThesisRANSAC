@@ -47,8 +47,8 @@ public class GunPickup : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             RaycastHit hit;
-            // Cast a ray forward to detect pickupable fake guns
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 5f))
+            // Increase this value from 5f to something larger, like 10f
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 50f))
             {
                 if (hit.collider.CompareTag("Pickup"))
                 {

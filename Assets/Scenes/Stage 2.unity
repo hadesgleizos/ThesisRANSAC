@@ -2411,6 +2411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to pickup gun
+  playerTag: MainCamera
   door: {fileID: 620355180}
 --- !u!1 &664319202
 GameObject:
@@ -3084,7 +3085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[1].eventWaveDuration
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].completeSequenceId
@@ -5767,6 +5768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to grab the gun
+  playerTag: MainCamera
   door: {fileID: 2119018428983885650}
 --- !u!224 &419819671053196693
 RectTransform:
@@ -5955,6 +5957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to open the Door
+  playerTag: MainCamera
   door: {fileID: 4102335284109674155}
 --- !u!1 &454546788084259575
 GameObject:
@@ -6484,6 +6487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to grab the gun
+  playerTag: MainCamera
   door: {fileID: 1670725166374416748}
 --- !u!23 &878034663822774457
 MeshRenderer:
@@ -8356,6 +8360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to grab the gun
+  playerTag: MainCamera
   door: {fileID: 2089943359362320781}
 --- !u!114 &2515836342462284123
 MonoBehaviour:
@@ -9842,6 +9847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to open the Door
+  playerTag: MainCamera
   door: {fileID: 984143499217080704}
 --- !u!114 &3701988226560320724
 MonoBehaviour:
@@ -11147,6 +11153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to grab the gun
+  playerTag: MainCamera
   door: {fileID: 3376025343616819431}
 --- !u!224 &4466357502209129489
 RectTransform:
@@ -13637,6 +13644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to grab the gun
+  playerTag: MainCamera
   door: {fileID: 3891301233552485105}
 --- !u!114 &5912249457813573613
 MonoBehaviour:
@@ -13730,6 +13738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to grab the gun
+  playerTag: MainCamera
   door: {fileID: 5457121517304951579}
 --- !u!224 &6088302037968694760
 RectTransform:
@@ -15021,6 +15030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to grab the gun
+  playerTag: MainCamera
   door: {fileID: 780456169807459055}
 --- !u!23 &7039431596368210512
 MeshRenderer:
@@ -16795,6 +16805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to grab the gun
+  playerTag: MainCamera
   door: {fileID: 8406296055183344309}
 --- !u!222 &8304783859375893091
 CanvasRenderer:
@@ -17204,6 +17215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to open the Door
+  playerTag: MainCamera
   door: {fileID: 5409733486233724966}
 --- !u!222 &8533573112753701659
 CanvasRenderer:

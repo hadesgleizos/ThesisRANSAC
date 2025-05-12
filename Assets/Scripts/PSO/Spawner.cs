@@ -247,28 +247,29 @@ private void InitializeVoicelineSystem()
         //Debug.Log("All waves completed!");
     }
 
-    private void ShowScoreScreen()
+    // Change this from private to public
+public void ShowScoreScreen()
+{
+    if (ScoreScreen != null)
     {
-        if (ScoreScreen != null)
-        {
-            ScoreScreen.SetActive(true); // Show the Score Screen
-        }
-
-        if (ScorePoints != null)
-        {
-            // NEW: Show PlayerPerformance score if available
-            if (playerPerformance != null)
-            {
-                ScorePoints.text = $"Score: {playerPerformance.GetScore()}";
-            }
-            else
-            {
-                // Fallback to spawner kill count if no PlayerPerformance reference
-                ScorePoints.text = $"Score: {totalKillCount}";
-            }
-        }
-        Time.timeScale = 0; // Pause the game
+        ScoreScreen.SetActive(true); // Show the Score Screen
     }
+
+    if (ScorePoints != null)
+    {
+        // NEW: Show PlayerPerformance score if available
+        if (playerPerformance != null)
+        {
+            ScorePoints.text = $"Score: {playerPerformance.GetScore()}";
+        }
+        else
+        {
+            // Fallback to spawner kill count if no PlayerPerformance reference
+            ScorePoints.text = $"Score: {totalKillCount}";
+        }
+    }
+    Time.timeScale = 0; // Pause the game
+}
 
 public void RestartGame()
 {

@@ -634,4 +634,21 @@ public class Voicelines : MonoBehaviour
         
         Debug.Log("Voicelines system reset");
     }
+
+    // Add this method to your Voicelines class
+    public AudioClip GetVoicelineClip(string id)
+    {
+        if (voicelineClips == null) return null;
+        
+        foreach (VoicelineClip clip in voicelineClips)
+        {
+            if (clip.id == id)
+            {
+                return clip.clip;
+            }
+        }
+        
+        Debug.LogWarning($"Voiceline with ID '{id}' not found!");
+        return null;
+    }
 }
