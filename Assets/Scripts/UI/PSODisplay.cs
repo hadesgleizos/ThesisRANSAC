@@ -7,6 +7,20 @@ public class PSODisplay : MonoBehaviour
     [Header("Display Settings")]
     public bool showOnStart = false;
     public KeyCode toggleKey = KeyCode.F1;
+    
+    // Add auto-scaling options
+    [Header("UI Scaling")]
+    public bool autoScale = true;
+    [Tooltip("Reference resolution the UI was designed for")]
+    public Vector2 referenceResolution = new Vector2(1920, 1080);
+    [Range(0.5f, 3.0f)]
+    public float uiScale = 1.0f;
+    [Range(0.5f, 3.0f)]
+    public float minScale = 0.75f;
+    [Range(0.5f, 3.0f)]
+    public float maxScale = 2.0f;
+    
+    // Original position/size fields (these will be modified by auto-scaling)
     public Vector2 windowPosition = new Vector2(20, 20); // Top left corner by default
     public Vector2 windowSize = new Vector2(400, 200);
     public float backgroundAlpha = 0.7f;
@@ -55,6 +69,9 @@ public class PSODisplay : MonoBehaviour
     private float displayRefreshInterval = 0.5f;
     private float lastRefreshTime = 0f;
     
+    // Add this for storing the calculated scale
+    private float calculatedScale = 1.0f;
+    
     void Start()
     {
         isDisplayVisible = showOnStart;
@@ -81,6 +98,9 @@ public class PSODisplay : MonoBehaviour
             UpdateThresholdsFromRanges();
         }
         
+        // Calculate initial scale based on screen resolution
+        CalculateUIScale();
+        
         // Initialize styles in Start so they're ready when needed
         InitializeStyles();
         
@@ -89,6 +109,9 @@ public class PSODisplay : MonoBehaviour
     
     void Update()
     {
+        // Recalculate scale if needed
+        CalculateUIScale();
+        
         // Check if we're allowed to toggle based on cooldown
         bool canToggle = (Time.unscaledTime - lastToggleTime) > toggleCooldown;
         
@@ -115,7 +138,43 @@ public class PSODisplay : MonoBehaviour
         }
     }
     
-    // Add this to handle key presses in OnGUI as a fallback
+    // Add this method to calculate UI scale based on screen resolution
+    private void CalculateUIScale()
+    {
+        if (autoScale)
+        {
+            // Calculate scale based on current resolution vs reference resolution
+            float widthRatio = Screen.width / referenceResolution.x;
+            float heightRatio = Screen.height / referenceResolution.y;
+            
+            // Use the smaller ratio to ensure UI fits on screen
+            float baseScale = Mathf.Min(widthRatio, heightRatio);
+            
+            // Clamp the scale between min and max values
+            calculatedScale = Mathf.Clamp(baseScale, minScale, maxScale);
+        }
+        else
+        {
+            calculatedScale = uiScale; // Use manual scale if auto-scale is disabled
+        }
+        
+        // Update font sizes based on scale
+        UpdateFontSizes();
+    }
+    
+    // Update font sizes based on calculated scale
+    private void UpdateFontSizes()
+    {
+        if (textStyle != null)
+        {
+            textStyle.fontSize = Mathf.RoundToInt(12 * calculatedScale);
+            difficultyEasyStyle.fontSize = Mathf.RoundToInt(14 * calculatedScale);
+            difficultyNormalStyle.fontSize = Mathf.RoundToInt(14 * calculatedScale);
+            difficultyHardStyle.fontSize = Mathf.RoundToInt(14 * calculatedScale);
+        }
+    }
+    
+    // Modify the OnGUI method to use scaled positions and sizes
     void OnGUI()
     {
         // Skip all GUI rendering when not visible to save performance
@@ -140,16 +199,27 @@ public class PSODisplay : MonoBehaviour
         
         if (!isDisplayVisible) return;
         
-        // Draw background
-        GUI.Box(new Rect(windowPosition.x, windowPosition.y, windowSize.x, windowSize.y), "", backgroundStyle);
+        // Calculate scaled window dimensions
+        float scaledWidth = windowSize.x * calculatedScale;
+        float scaledHeight = windowSize.y * calculatedScale;
+        
+        // Position can be adjusted based on screen size if needed
+        float posX = windowPosition.x;
+        float posY = windowPosition.y;
+        
+        // Draw background with scaled dimensions
+        GUI.Box(new Rect(posX, posY, scaledWidth, scaledHeight), "", backgroundStyle);
+        
+        // Calculate scaled padding for content
+        float padding = 10 * calculatedScale;
+        float lineHeight = 20 * calculatedScale;
         
         // Draw title
-        GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + 10, windowSize.x - 20, 20), 
+        GUI.Label(new Rect(posX + padding, posY + padding, scaledWidth - (padding * 2), lineHeight), 
             "PSO Evaluation Data", textStyle);
         
         // Draw data
-        float yOffset = 35;
-        float lineHeight = 20;
+        float yOffset = padding + lineHeight + padding/2;
         
         // Get latest data if PSOManager exists
         if (psoManager != null)
@@ -159,53 +229,53 @@ public class PSODisplay : MonoBehaviour
             GUIStyle difficultyStyle = GetDifficultyStyle();
             
             // Display difficulty indicator
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Difficulty: {difficultyText}", difficultyStyle);
-            yOffset += lineHeight + 5; // Add a little extra space
+            yOffset += lineHeight + (5 * calculatedScale); // Add a little extra space
             
             // Display parameter ranges for context
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Spawn Rate Range: {minSpawnRate:F2} - {maxSpawnRate:F2}", textStyle);
             yOffset += lineHeight;
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Speed Range: {minSpeed:F2} - {maxSpeed:F2}", textStyle);
-            yOffset += lineHeight + 5; // Add extra space
+            yOffset += lineHeight + (5 * calculatedScale); // Add extra space
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Spawners: {spawnerCount}", textStyle);
             yOffset += lineHeight;
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Expected Kill Rate: {expectedKillRate:F2}", textStyle);
             yOffset += lineHeight;
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Actual Kill Rate: {actualKillRate:F2}", textStyle);
             yOffset += lineHeight;
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Performance Ratio: {performanceRatio:F2}", textStyle);
             yOffset += lineHeight;
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Current Spawn Rate: {spawnRate:F2} ({GetSpawnRatePercentage():P0})", textStyle);
             yOffset += lineHeight;
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Current Speed: {speed:F2} ({GetSpeedPercentage():P0})", textStyle);
             yOffset += lineHeight;
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Struggling: {playerStruggling}", textStyle);
             yOffset += lineHeight;
             
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 $"Fitness: {fitness:F2}", textStyle);
         }
         else
         {
-            GUI.Label(new Rect(windowPosition.x + 10, windowPosition.y + yOffset, windowSize.x - 20, lineHeight),
+            GUI.Label(new Rect(posX + padding, posY + yOffset, scaledWidth - (padding * 2), lineHeight),
                 "PSOManager not found. Data unavailable.", textStyle);
         }
     }
@@ -231,7 +301,7 @@ public class PSODisplay : MonoBehaviour
         // Style for text
         textStyle = new GUIStyle();
         textStyle.normal.textColor = Color.white;
-        textStyle.fontSize = 12;
+        textStyle.fontSize = Mathf.RoundToInt(12 * calculatedScale);
         textStyle.fontStyle = FontStyle.Bold;
         textStyle.wordWrap = true;
         
@@ -242,17 +312,17 @@ public class PSODisplay : MonoBehaviour
         // Difficulty styles
         difficultyEasyStyle = new GUIStyle();
         difficultyEasyStyle.normal.textColor = Color.green;
-        difficultyEasyStyle.fontSize = 14;
+        difficultyEasyStyle.fontSize = Mathf.RoundToInt(14 * calculatedScale);
         difficultyEasyStyle.fontStyle = FontStyle.Bold;
         
         difficultyNormalStyle = new GUIStyle();
         difficultyNormalStyle.normal.textColor = Color.yellow;
-        difficultyNormalStyle.fontSize = 14;
+        difficultyNormalStyle.fontSize = Mathf.RoundToInt(14 * calculatedScale);
         difficultyNormalStyle.fontStyle = FontStyle.Bold;
         
         difficultyHardStyle = new GUIStyle();
         difficultyHardStyle.normal.textColor = Color.red;
-        difficultyHardStyle.fontSize = 14;
+        difficultyHardStyle.fontSize = Mathf.RoundToInt(14 * calculatedScale);
         difficultyHardStyle.fontStyle = FontStyle.Bold;
     }
     
