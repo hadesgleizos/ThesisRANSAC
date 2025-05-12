@@ -1084,7 +1084,13 @@ private IEnumerator EventWaveSystem(Transform triggerLocation, List<Transform> c
         return currentEvent;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    // Add this public method to your Spawner class
+public bool IsBossFightActive()
+{
+    return currentBoss != null;
+}
+
+private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 {
     StartCoroutine(InitializeVoicelinesAfterSceneLoad());
 }

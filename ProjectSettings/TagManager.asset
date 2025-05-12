@@ -19,6 +19,7 @@ TagManager:
   - ScoreScreen
   - SubtitleText
   - SubtitlePanel
+  - Trigger
   layers:
   - Default
   - TransparentFX

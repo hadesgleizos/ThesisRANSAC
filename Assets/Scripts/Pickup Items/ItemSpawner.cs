@@ -92,7 +92,19 @@ public class ItemSpawner : MonoBehaviour
     private bool IsSpawnPointOccupied(Transform spawnPoint)
     {
         Collider[] hitColliders = Physics.OverlapSphere(spawnPoint.position, 0.5f);
-        return hitColliders.Length > 0;
+        
+        foreach (Collider collider in hitColliders)
+        {
+            // Skip colliders that are triggers AND have the "Trigger" tag
+            if (collider.isTrigger && collider.CompareTag("Trigger"))
+                continue;
+                
+            // If we find any non-trigger collider or a trigger without the "Trigger" tag, the spot is occupied
+            return true;
+        }
+        
+        // No blocking colliders found
+        return false;
     }
 
     private void OnDrawGizmos()

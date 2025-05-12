@@ -93,13 +93,14 @@ public class VoicelineInteractable : Interactable
                     // Progress animation loop
                     while (elapsedTime < progressDuration)
                     {
-                        // Check if we're in a cooldown period - if so, wait until it's over
-                        if (Spawner.Instance != null && Spawner.Instance.IsInCooldown())
+                        // Check if we're in a cooldown period or if a boss fight is active - if so, wait until it's over
+                        if (Spawner.Instance != null && 
+                            (Spawner.Instance.IsInCooldown() || IsBossFightActive()))
                         {
-                            yield return new WaitUntil(() => !Spawner.Instance.IsInCooldown());
+                            yield return new WaitUntil(() => !(Spawner.Instance.IsInCooldown() || IsBossFightActive()));
                         }
                         
-                        // Only increment time when not in cooldown
+                        // Only increment time when not in cooldown or boss fight
                         elapsedTime += Time.deltaTime;
                         float progress = (elapsedTime / progressDuration) * 100f; // Convert to 0-100 scale
                         
@@ -134,13 +135,14 @@ public class VoicelineInteractable : Interactable
                     float elapsedTime = 0f;
                     while (elapsedTime < progressDuration)
                     {
-                        // Check if we're in a cooldown period - if so, wait until it's over
-                        if (Spawner.Instance != null && Spawner.Instance.IsInCooldown())
+                        // Check if we're in a cooldown period or if a boss fight is active - if so, wait until it's over
+                        if (Spawner.Instance != null && 
+                            (Spawner.Instance.IsInCooldown() || IsBossFightActive()))
                         {
-                            yield return new WaitUntil(() => !Spawner.Instance.IsInCooldown());
+                            yield return new WaitUntil(() => !(Spawner.Instance.IsInCooldown() || IsBossFightActive()));
                         }
                         
-                        // Only increment time when not in cooldown
+                        // Only increment time when not in cooldown or boss fight
                         elapsedTime += Time.deltaTime;
                         progressBarImage.fillAmount = elapsedTime / progressDuration;
                         yield return null;
@@ -462,5 +464,26 @@ public class VoicelineInteractable : Interactable
         }
         
         return null;
+    }
+
+    // Add this helper method to detect if a boss fight is active
+    private bool IsBossFightActive()
+    {
+        if (Spawner.Instance == null) return false;
+        
+        // Check if the TimerText shows "Defeat the Boss!" which indicates a boss fight is active
+        // This approach relies on the text displayed during boss fights in the Spawner class
+        if (Spawner.Instance.TimerText != null && 
+            Spawner.Instance.TimerText.text == "Defeat the Boss!")
+        {
+            return true;
+        }
+        
+        // Alternative: Check if currentBoss is not null (requires adding a public getter in Spawner)
+        // You might need to add a public method in Spawner.cs like:
+        // public bool IsBossFightActive() { return currentBoss != null; }
+        // Then call it here instead
+        
+        return false;
     }
 }
