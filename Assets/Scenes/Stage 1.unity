@@ -2911,7 +2911,7 @@ MonoBehaviour:
       actionsAfterVoiceline:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1434140477}
+          - m_Target: {fileID: 1472709247}
             m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_MethodName: SetActive
             m_Mode: 6
@@ -2923,7 +2923,7 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 1
             m_CallState: 2
-          - m_Target: {fileID: 1472709247}
+          - m_Target: {fileID: 1434140477}
             m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_MethodName: SetActive
             m_Mode: 6
@@ -3479,11 +3479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].eventCooldown
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].spawnBossAtEnd
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].startVoicelineId
@@ -3491,7 +3491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].eventWaveDuration
-      value: 40
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].completeSequenceId
