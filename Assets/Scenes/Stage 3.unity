@@ -753,7 +753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].eventCooldown
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[1].eventCooldown
@@ -6309,12 +6309,11 @@ MonoBehaviour:
   customSpawnPoints:
   - {fileID: 111411889}
   - {fileID: 2030592111}
+  - {fileID: 712870066}
   - {fileID: 451365170}
-  - {fileID: 0}
   - {fileID: 1382393554}
   - {fileID: 192744998}
   - {fileID: 1204884267}
-  - {fileID: 0}
   - {fileID: 1850142964}
   showProgressBar: 1
   progressBarObject: {fileID: 873127699}
