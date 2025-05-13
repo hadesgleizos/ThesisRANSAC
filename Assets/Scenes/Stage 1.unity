@@ -1251,7 +1251,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5167281103880954739, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6666667
+      value: 2.052082
       objectReference: {fileID: 0}
     - target: {fileID: 5167281103880954739, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_LocalScale.y
@@ -1259,19 +1259,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5167281103880954739, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6666667
+      value: 1.8500063
       objectReference: {fileID: 0}
     - target: {fileID: 5167281103880954739, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -598.9367
+      value: -513.37
       objectReference: {fileID: 0}
     - target: {fileID: 5167281103880954739, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -359.10004
+      value: -358.58
       objectReference: {fileID: 0}
     - target: {fileID: 5167281103880954739, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -136.54202
+      value: -419.62
       objectReference: {fileID: 0}
     - target: {fileID: 5167281103880954739, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1304,6 +1304,10 @@ PrefabInstance:
     - target: {fileID: 5353189004909077772, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_Name
       value: PointerObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 5353189004909077772, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6326406040325560036, guid: 6fc3e8ae662d096408c4e58caea61d4b, type: 3}
       propertyPath: m_Convex
@@ -3120,6 +3124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Press E to pickup gun
+  playerTag: MainCamera
   door: {fileID: 164450820}
 --- !u!1 &2143669454
 GameObject:
@@ -3482,7 +3487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].eventWaveDuration
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 55499805354018386, guid: 7654e5b0831c00f488d5536f39e3441f, type: 3}
       propertyPath: configuredEvents.Array.data[0].completeSequenceId
@@ -6038,8 +6043,8 @@ RectTransform:
   m_Children:
   - {fileID: 292091779}
   - {fileID: 1890444319}
-  - {fileID: 1434140479}
   - {fileID: 5812508082498530109}
+  - {fileID: 1434140479}
   - {fileID: 6489878426074461196}
   - {fileID: 5714064380580012633}
   - {fileID: 7972689795302609635}
