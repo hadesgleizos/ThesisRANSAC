@@ -6371,7 +6371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae179b237d1e9e40a6788aeb88b5e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRadius: 10
+  interactionRadius: 1
   voicelineInteractable: {fileID: 1786502083}
 --- !u!1 &1840969684
 GameObject:
